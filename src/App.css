@@ -1,38 +1,161 @@
-.App {
-  text-align: center;
+/* NavBar */
+.navbar{
+    background-color: #e3f2fd;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav img{
+    height: 50px;
+    width: 120px;
+    /* margin:0 72rem 0 0 */
+    
+}
+ .nav-link{
+    font-family: sans-serif;
+    font-size:large;
+    font-weight: bold; 
+    text-align: right; 
+    margin: 0 1rem;
+ }
+ .navbar-toggler-icon{
+     color: black;
+ }
+/* End of NavBar */
+
+/* Hero Component */
+.defaultHero,
+.roomsHero{
+    min-height: calc(100vh - 66px);
+    background: url("./images/hotel2.jpg") center/ cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.roomsHero{
+    background-image: url("./images/hotel-room.jpg");
+    min-height: 60vh;
+}
+/* End of Hero */
+
+/* BAnner */
+.jumbotron{
+    display:inline-block;
+    background:rgba(0, 0, 0, 0.5);
+    color:cornsilk;
+    padding: 2rem 9rem;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: var(--mainSpacing);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.jumbotron h1{
+    font-size: 3rem;
+    font-family: verdana;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.jumbotron div{
+    width:10rem;
+    height: 3px;
+    background:lightgrey;
+    margin: 1.7rem auto;
 }
 
-.App-link {
-  color: #61dafb;
+.jumbotron h2{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+/* End of Banner */
+/* Section title */
+.section-title{
+    text-align: center;
+    padding:2px;
+   
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.section-title h4{
+    font-size: 2.5rem;
+   
+}
+
+.section-title div{
+    width:4rem;
+    height: 3px;
+    background:black;
+    align-items: center;
+    margin: 1.3rem auto;
+}
+ 
+/* Animation */
+.animation-area { 
+    /* position: absolute; */
+    top: 0;
+    z-index: -1;
+    background: url("./images/Double-Room.jpg") center/ cover no-repeat;
+    width: 100%;
+     min-height: calc(120vh - 66px);
+}
+.box-area {
+    /* position:relative; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.box-area li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    animation: animate 20s linear infinite;
+    bottom: -150px;
+}
+.box-area li:nth-child(1) {
+    left: 86%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+.box-area li:nth-child(2) {
+    left: 12%;
+    width: 30px;
+    height: 30px;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+}
+.box-area li:nth-child(3) {
+    left: 70%;
+    width: 100px;
+    height: 100px;
+    animation-delay: 5.5s;
+}
+.box-area li:nth-child(4) {
+    left: 42%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 15s;
+}
+.box-area li:nth-child(5) {
+    left: 65%;
+    width: 40px;
+    height: 40px;
+    animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+    left: 15%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3.5s;
+}
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px) rotate(360deg);
+        opacity: 0;
+    }
 }
