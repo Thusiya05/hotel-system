@@ -37,6 +37,12 @@ nav img{
 /* End of Hero */
 
 /* BAnner */
+.default-Hero{
+    min-height: calc(100vh - 66px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .jumbotron{
     display:inline-block;
     background:rgba(0, 0, 0, 0.5);
@@ -62,6 +68,7 @@ nav img{
 .jumbotron h2{
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    font-family:'Times New Roman';
 }
 /* End of Banner */
 /* Section title */
@@ -89,7 +96,7 @@ nav img{
     /* position: absolute; */
     top: 0;
     z-index: -1;
-    background: url("./images/Double-Room.jpg") center/ cover no-repeat;
+    background: url("./images/hotel.jpg") center/ cover no-repeat;
     width: 100%;
      min-height: calc(120vh - 66px);
 }
@@ -152,10 +159,10 @@ nav img{
 @keyframes animate {
     0% {
         transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        opacity: 0.2;
     }
     100% {
         transform: translateY(-800px) rotate(360deg);
-        opacity: 0;
+        opacity: 0.5;
     }
 }
