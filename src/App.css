@@ -76,6 +76,8 @@ nav img{
     font-size: 3rem;
     color:mediumturquoise;
 }
+/* End of Banner */
+
 /* Section title */
 .section-title{
     text-align: center;
@@ -95,7 +97,8 @@ nav img{
     align-items: center;
     margin: 1.3rem auto;
 }
- 
+ /* End of title */
+
 /* Animation */
 .animation-area { 
     /* position: absolute; */
@@ -171,3 +174,4 @@ nav img{
         opacity: 0.3;
     }
 }
+/* End Of Animation */
