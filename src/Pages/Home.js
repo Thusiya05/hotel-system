@@ -8,9 +8,7 @@ export default function Home() {
     return(
         <>
         <div>
-          <Background className="area">
-
-          </Background>
+          <Background className="area"></Background>
         </div>
       
         <div>
