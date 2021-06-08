@@ -55,8 +55,9 @@ nav img{
 
 .jumbotron h1{
     font-size: 3rem;
-    font-family: verdana;
-    text-shadow: 2px 2px 5px gold;
+    font-family:Helvetica;
+    color:ghostwhite;
+    /* text-shadow: 2px 2px 5px gold; */
 }
 
 .jumbotron div{
@@ -71,7 +72,10 @@ nav img{
     margin-bottom: 2rem;
     font-family:'Times New Roman';
 }
-/* End of Banner */
+.jumbotron h3{
+    font-size: 3rem;
+    color:mediumturquoise;
+}
 /* Section title */
 .section-title{
     text-align: center;
@@ -99,7 +103,7 @@ nav img{
     z-index: -1;
     background: url("./images/hotel.jpg") center/ cover no-repeat;
     width: 100%;
-     min-height: calc(120vh - 66px);
+    min-height: calc(120vh - 66px);
 }
 .box-area {
     /* position:relative; */
@@ -164,6 +168,6 @@ nav img{
     }
     100% {
         transform: translateY(-800px) rotate(360deg);
-        opacity: 0.5;
+        opacity: 0.3;
     }
 }
