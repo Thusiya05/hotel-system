@@ -104,7 +104,7 @@ nav img{
     /* position: absolute; */
     top: 0;
     z-index: -1;
-    background: url("./images/hotel.jpg") center/ cover no-repeat;
+    background: url("./images/adventure.jpg") center/ cover no-repeat;
     width: 100%;
     min-height: calc(120vh - 66px);
 }
