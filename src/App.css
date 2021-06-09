@@ -37,6 +37,12 @@ nav img{
 /* End of Hero */
 
 /* BAnner */
+.default-Hero{
+    min-height: calc(100vh - 66px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .jumbotron{
     display:inline-block;
     background:rgba(0, 0, 0, 0.5);
@@ -49,7 +55,9 @@ nav img{
 
 .jumbotron h1{
     font-size: 3rem;
-    font-family: verdana;
+    font-family:Helvetica;
+    color:ghostwhite;
+    /* text-shadow: 2px 2px 5px gold; */
 }
 
 .jumbotron div{
@@ -60,10 +68,16 @@ nav img{
 }
 
 .jumbotron h2{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    font-family:'Times New Roman';
+}
+.jumbotron h3{
+    font-size: 3rem;
+    color:mediumturquoise;
 }
 /* End of Banner */
+
 /* Section title */
 .section-title{
     text-align: center;
@@ -83,15 +97,16 @@ nav img{
     align-items: center;
     margin: 1.3rem auto;
 }
- 
+ /* End of title */
+
 /* Animation */
 .animation-area { 
     /* position: absolute; */
     top: 0;
     z-index: -1;
-    background: url("./images/Double-Room.jpg") center/ cover no-repeat;
+    background: url("./images/adventure.jpg") center/ cover no-repeat;
     width: 100%;
-     min-height: calc(120vh - 66px);
+    min-height: calc(120vh - 66px);
 }
 .box-area {
     /* position:relative; */
@@ -152,11 +167,11 @@ nav img{
 @keyframes animate {
     0% {
         transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        opacity: 0.2;
     }
     100% {
         transform: translateY(-800px) rotate(360deg);
-        opacity: 0;
+        opacity: 0.3;
     }
 }
 
@@ -677,3 +692,22 @@ h6 {
   }
 }
 /* end of rooms fitler*/
+/* End Of Animation */
+
+.row{
+    /* background-image: url("./images/adventure.jpg"); */
+    background-color: black;
+    color: blanchedalmond;
+    /* height: 25rem; */
+}
+.col-6 h1{
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+.col-6 p{
+    justify-content: center;
+    /* padding: 1rem; */
+}
+.col-6{
+    padding: 2rem;
+}
