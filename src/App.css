@@ -176,6 +176,20 @@ nav img{
 }
 /* End Of Animation */
 
-.room-hero{
-    min-height: 60vh;
+.row{
+    /* background-image: url("./images/adventure.jpg"); */
+    background-color: black;
+    color: blanchedalmond;
+    /* height: 25rem; */
+}
+.col-6 h1{
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+.col-6 p{
+    justify-content: center;
+    /* padding: 1rem; */
+}
+.col-6{
+    padding: 2rem;
 }
