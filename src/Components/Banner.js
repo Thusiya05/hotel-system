@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 export default function Banner({children,title,subtitle,path}) {
     return (
-         <div class="jumbotron">
+         <div className="jumbotron">
             <h1 className="display-4">{title}</h1>
             <div></div>
             <h2 className="lead">{subtitle}</h2>

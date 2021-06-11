@@ -174,8 +174,27 @@ nav img{
         opacity: 0.3;
     }
 }
-
-
+/* Slider */
+Carousel img{
+  max-height: 50vh;
+}
+.slider-row{
+  display: flex;
+  background-color: black;
+  color: blanchedalmond;
+  flex-flow: row wrap;
+  /* height: 25rem; */
+}
+.col-6 h1{
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+.col-6 p{
+  justify-content: center;
+}
+.col-6{
+  padding: 2rem;
+}
 
 /* services */
 .services {
@@ -409,20 +428,3 @@ nav img{
 }
 /* end of roomlist */
 
-.row{
-    /* background-image: url("./images/adventure.jpg"); */
-    background-color: black;
-    color: blanchedalmond;
-    /* height: 25rem; */
-}
-.col-6 h1{
-    padding: 1.5rem;
-    font-size: 2rem;
-}
-.col-6 p{
-    justify-content: center;
-    /* padding: 1rem; */
-}
-.col-6{
-    padding: 2rem;
-}
