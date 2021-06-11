@@ -1,10 +1,7 @@
 import React from 'react'
 import {Carousel} from "react-bootstrap"
-import img1 from "../images/hotel.jpg"
-import img3 from "../images/Double-Room.jpg"
-import img2 from "../images/hotel-room.jpg"
 
-const Slider = () => {
+export default function Slider({img1,img2,img3}) {
     return (
             <Carousel controls="false" fade="true" pause="false">
                 <Carousel.Item interval={1000}>
@@ -13,6 +10,7 @@ const Slider = () => {
                     src={img1}
                     alt="First slide"
                     />
+                    
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
                     <img
@@ -31,4 +29,3 @@ const Slider = () => {
             </Carousel>
     )
 }
-export default Slider;

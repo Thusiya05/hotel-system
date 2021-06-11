@@ -23,12 +23,27 @@ nav img{
 
 /* Hero Component */
 .defaultHero,
-.roomsHero{
-    min-height: calc(100vh - 66px);
+.roomsHero
+{
+    min-height: calc(90vh - 66px);
     background: url("./images/hotel2.jpg") center/ cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.activityHero{ 
+  min-height: calc(90vh - 66px);
+  background: url("./images/waterBoat.jpg") center/ cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.facilityHero{ 
+  min-height: calc(90vh - 66px);
+  background: url("./images/bbq-2.jpg") center/ cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
@@ -204,7 +219,7 @@ nav img{
   padding: 5rem 0;
 }
 .services {
-  background: var(--darkGrey);
+  background:#e3f2fd;
   text-align: center;
 }
 .services-center {
@@ -241,6 +256,25 @@ nav img{
   }
 }
 /*end of services */
+
+/* Footer */
+.main-footer{
+  background-color: black;
+  color: aliceblue;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.main-footer img{
+  height: 70%;
+  width: 70%;
+}
+.underline{
+  width:70rem;
+  height: 1px;
+  background:lightgrey;
+  margin: 1.7rem auto;
+}
 /* featured rooms */
 
 .featured-rooms {
