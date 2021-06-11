@@ -12,7 +12,7 @@ export default function Home() {
         <div>
           <Background className="area"></Background>
         </div>
-        <div className="container-fluid">
+        <div className="slider-row">
         <div className="row">
             <div className="col-6">
                 <h1>Overview of Adventure Base Camp</h1>
@@ -29,9 +29,7 @@ export default function Home() {
             <div className="col-6">
                 <Slider />
             </div>
-        </div>
-       
-           
+        </div>   
             
         </div>
         <div>
