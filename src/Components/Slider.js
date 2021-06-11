@@ -4,22 +4,31 @@ import img1 from "../images/hotel.jpg"
 import img3 from "../images/Double-Room.jpg"
 import img2 from "../images/hotel-room.jpg"
 
-function Slider() {
+const Slider = () => {
     return (
-            <div>
-            <Carousel fade>
-                <Carousel.Item>
-                    <img className="d-block w-100" src={img1} alt="First slide"/>
+            <Carousel controls="false" fade="true" pause="false">
+                <Carousel.Item interval={1000}>
+                    <img
+                    className="d-block w-100"
+                    src={img1}
+                    alt="First slide"
+                    />
                 </Carousel.Item>
-                <Carousel.Item>
-                    <img className="d-block w-100" src={img2} alt="Second slide"/>
+                <Carousel.Item interval={1000}>
+                    <img
+                    className="d-block w-100"
+                    src={img2}
+                    alt="Second slide"
+                    />
                 </Carousel.Item>
-                <Carousel.Item>
-                    <img className="d-block w-100" src={img3} alt="Third slide"/>
+                <Carousel.Item interval={1000}>
+                    <img
+                    className="d-block w-100"
+                    src={img3}
+                    alt="Third slide"
+                    />
                 </Carousel.Item>
             </Carousel>
-        </div>
-        
     )
 }
-export default Slider
+export default Slider;

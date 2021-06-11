@@ -175,9 +175,12 @@ nav img{
     }
 }
 /* Slider */
-Carousel img{
-  max-height: 50vh;
+.carousel-item img {
+
+  width:640px;
+  height:340px;
 }
+
 .slider-row{
   display: flex;
   background-color: black;
