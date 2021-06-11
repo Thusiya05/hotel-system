@@ -185,14 +185,14 @@ Carousel img{
   flex-flow: row wrap;
   /* height: 25rem; */
 }
-.col-6 h1{
+.col-md-6 h1{
   padding: 1.5rem;
   font-size: 2rem;
 }
-.col-6 p{
+.col-md-6 p{
   justify-content: center;
 }
-.col-6{
+.col-md-6{
   padding: 2rem;
 }
 
