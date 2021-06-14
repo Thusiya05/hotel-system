@@ -1,8 +1,4 @@
 /* NavBar */
-.navbar{
-    background-color: #e3f2fd;
-}
-
 nav img{
     height: 50px;
     width: 120px;
@@ -16,9 +12,9 @@ nav img{
     text-align: right; 
     margin: 0 1rem;
  }
- .navbar-toggler-icon{
+ /* .navbar-toggler-icon{
      color: black;
- }
+ } */
 /* End of NavBar */
 
 /* Hero Component */
@@ -276,15 +272,22 @@ nav img{
   align-items: center;
   justify-content: center;
 }
+
 .main-footer img{
-  height: 70%;
-  width: 70%;
+  height: 60%;
+  width: 50%;
 }
 .underline{
   width:70rem;
   height: 1px;
   background:lightgrey;
   margin: 1.7rem auto;
+}
+.main-footer h4{
+  text-align: center;
+}
+.main-footer ul li{
+  text-align: center;
 }
 /* featured rooms */
 
