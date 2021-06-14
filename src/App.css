@@ -2,7 +2,6 @@
 nav img{
     height: 50px;
     width: 120px;
-    /* margin:0 72rem 0 0 */
     
 }
  .nav-link{
@@ -12,24 +11,22 @@ nav img{
     text-align: right; 
     margin: 0 1rem;
  }
- /* .navbar-toggler-icon{
-     color: black;
- } */
+ 
 /* End of NavBar */
 
 /* Hero Component */
 .defaultHero,
-.roomsHero
-{
+.roomsHero{
     min-height: calc(90vh - 66px);
     background: url("./images/hotel2.jpg") center/ cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.activityHero{ 
+.activityHero,
+.activity-Hero{ 
   min-height: calc(90vh - 66px);
-  background: url("./images/waterBoat.jpg") center/ cover no-repeat;
+  background: url("./images/waterBoat.jpg") center/ cover no-repeat; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,6 +41,10 @@ nav img{
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
     min-height: 60vh;
+}
+.activity-Hero{
+  background-image: url("./images/waterBoat.jpg");
+  min-height: 60vh;
 }
 /* End of Hero */
 
