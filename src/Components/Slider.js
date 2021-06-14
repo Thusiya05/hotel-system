@@ -1,8 +1,5 @@
 import React from 'react'
 import {Carousel} from "react-bootstrap"
-import img1 from "../images/hotel.jpg"
-import img3 from "../images/Double-Room.jpg"
-import img2 from "../images/hotel-room.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Slider({img1,img2,img3}) {
