@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from "../images/capture6.png"
 import { Navbar,Nav } from 'react-bootstrap'
+import {FaUserCircle} from 'react-icons/fa'
 
 export default class NavBar extends Component {
    render(){
@@ -18,7 +19,7 @@ export default class NavBar extends Component {
                   <Nav.Link href="/facilities">Facilities</Nav.Link>
                 </Nav>
                 <Nav>
-                  <Nav.Link href="/signIn" >Login/Signup</Nav.Link>
+                  <Nav.Link href="/signIn" ><FaUserCircle />  Login</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
