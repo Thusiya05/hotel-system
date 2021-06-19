@@ -2,12 +2,13 @@ import React from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
 import {Container} from 'react-bootstrap'
-import Card from '../Components/Card'
+import ActCard from '../Components/ActCard'
 import img1 from '../images/waterRafting.jpg'
 import img2 from '../images/abselling.jpg'
+import img3 from '../images/bbq-2.jpg'
 import Title from '../Components/Title'
 
-const Activities = () => {
+export default function Activities() {
     return (
         <>
         <Hero hero="activity-Hero">
@@ -19,13 +20,13 @@ const Activities = () => {
         <Container>
         <div className="row">
             <div className="col-md-4 col-sm-6">
-                <Card img={img1} title="water rafting" text="jvcdhvsdhcvjSVDCJKsvchjv chjvhsdvchsVCHDSVCHSVCDHSVCK VUCVDKUvcksvcvshcvhscvh"></Card>
+                <ActCard img={img1} title="Darshana" text="nsvdhvchsdvckjvsdjc jhbjkcvkuscfkufsckuv jvdkjcvkusdfcu"></ActCard>
             </div>
             <div className="col-md-4 col-sm-6">
-                <Card img={img2} title="Abseling" text="jhvcashvcvchj jvhcvhdcvkavdkc jvachvkusfvdckjsvdc vjsdVCUKFKUSDCVK vdsv"></Card>
+            <ActCard img={img2} title="BAndara" text="avckhgvckvkgc jvcakusfacfvk vckusfduckwvcukvc hvcaskhgcvku"></ActCard>
             </div>
             <div className="col-md-4 col-sm-6">
-                <Card title="Ane Manda" text="jsafchjsfcvcku gkucgwucguwegcy giwcgdwgc gciowoc giwgovciwgovc gcilwgcki"></Card>
+            <ActCard img={img3} title="RAvindu" text="aschjCKVSDKC Vckvuvdsckvsd bd svcvsdcjs dv"></ActCard>
             </div>
 
         </div>
@@ -33,4 +34,4 @@ const Activities = () => {
     </>
     )
 }
-export default Activities
+

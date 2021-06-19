@@ -1,6 +1,7 @@
 import React from 'react'
+import {Card} from 'react-bootstrap'
 
-export default function Card({img,title,text}) {
+export default function ActCard({img,title,text}) {
     return (
         <div>
              <Card style={{ width: '20rem' }}>
