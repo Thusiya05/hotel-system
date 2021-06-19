@@ -43,9 +43,9 @@ nav img{
     min-height: 60vh;
 }
 .activity-Hero{
-  background-image: url("./images/waterBoat.jpg");
   min-height: 60vh;
-}
+  background-image: url("./images/new1.jpg") ;
+ }
 /* End of Hero */
 
 /* BAnner */
@@ -58,7 +58,7 @@ nav img{
 .jumbotron{
     display:inline-block;
     background:rgba(0, 0, 0, 0.5);
-    color:cornsilk;
+    color:rgb(0, 0, 0);
     padding: 2rem 9rem;
     text-align: center;
     text-transform: capitalize;
@@ -83,6 +83,7 @@ nav img{
     font-size: 1.5rem;
     margin-bottom: 2rem;
     font-family:'Times New Roman';
+    color:ghostwhite;
 }
 .jumbotron h3{
     font-size: 3rem;
@@ -479,3 +480,7 @@ nav img{
   }
 }
 /* end of roomlist */
+
+.card body{
+  border-color: aqua;
+}

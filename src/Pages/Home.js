@@ -53,7 +53,7 @@ export default function Home() {
                 </Carousel.Item>
                 <Carousel.Item interval={3000}>
                     <Hero hero="facilityHero">
-                        <Banner title="See our Facilities" subtitle="we make your day comfotable" children="Facilities" path="/facilities"></Banner>
+                        <Banner title="See our Facilities" subtitle="we make your day comfortable" children="Facilities" path="/facilities"></Banner>
                     </Hero>    
                 </Carousel.Item>
             </Carousel>
