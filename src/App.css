@@ -1,12 +1,7 @@
 /* NavBar */
-.navbar{
-    background-color: #e3f2fd;
-}
-
 nav img{
     height: 50px;
     width: 120px;
-    /* margin:0 72rem 0 0 */
     
 }
  .nav-link{
@@ -16,24 +11,41 @@ nav img{
     text-align: right; 
     margin: 0 1rem;
  }
- .navbar-toggler-icon{
-     color: black;
- }
+ 
 /* End of NavBar */
 
 /* Hero Component */
 .defaultHero,
 .roomsHero{
-    min-height: calc(100vh - 66px);
+    min-height: calc(90vh - 66px);
     background: url("./images/hotel2.jpg") center/ cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.activityHero,
+.activity-Hero{ 
+  min-height: calc(90vh - 66px);
+  background: url("./images/waterBoat.jpg") center/ cover no-repeat; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.facilityHero{ 
+  min-height: calc(90vh - 66px);
+  background: url("./images/bbq-2.jpg") center/ cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
     min-height: 60vh;
 }
+.activity-Hero{
+  min-height: 60vh;
+  background-image: url("./images/new1.jpg") ;
+ }
 /* End of Hero */
 
 /* BAnner */
@@ -46,7 +58,7 @@ nav img{
 .jumbotron{
     display:inline-block;
     background:rgba(0, 0, 0, 0.5);
-    color:cornsilk;
+    color:rgb(0, 0, 0);
     padding: 2rem 9rem;
     text-align: center;
     text-transform: capitalize;
@@ -71,6 +83,7 @@ nav img{
     font-size: 1.5rem;
     margin-bottom: 2rem;
     font-family:'Times New Roman';
+    color:ghostwhite;
 }
 .jumbotron h3{
     font-size: 3rem;
@@ -174,247 +187,48 @@ nav img{
         opacity: 0.3;
     }
 }
+/* Slider */
+.carousel-item img {
 
-
-
-/*new*/
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-:root {
-  --primaryColor: #af9a7d;
-  --mainWhite: #fff;
-  --offWhite: #f7f7f7;
-  --mainBlack: #222;
-  --mainGrey: #ececec;
-  --darkGrey: #cfcfcf;
-  --mainTransition: all 0.3s linear;
-  --mainSpacing: 3px;
-  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
-  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
-}
-/* globals */
-body {
-  padding-top: 66px;
-  color: var(--mainBlack);
-  background: var(--mainWhite);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  line-height: 1.4;
-}
-h1 {
-  font-size: 3em;
-  line-height: 1;
-  margin-bottom: 0.5em;
-}
-h2 {
-  font-size: 2em;
-  margin-bottom: 0.75em;
-}
-h3 {
-  font-size: 1.5em;
-  line-height: 1;
-  margin-bottom: 1em;
-}
-h4 {
-  font-size: 1.2em;
-  line-height: 1.25;
-  margin-bottom: 1.25em;
-}
-h5 {
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 1.5em;
-}
-h6 {
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 1.5em;
+  width:640px;
+  height:340px;
 }
 
-.btn-primary {
-  display: inline-block;
-  text-decoration: none;
-  letter-spacing: var(--mainSpacing);
-  color: var(--mainBlack);
-  background: var(--primaryColor);
-  padding: 0.4rem 0.9rem;
-  border: 3px solid var(--primaryColor);
-  transition: var(--mainTransition);
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.btn-primary:hover {
-  background: transparent;
-  color: var(--primaryColor);
-}
-.loading {
-  text-transform: capitalize;
-  text-align: center;
-  margin-top: 3rem;
-}
-.error {
-  text-align: center;
-  text-transform: uppercase;
-  margin: 2rem 0;
-}
-.empty-search {
-  text-align: center;
-  text-transform: capitalize;
-  margin: 2rem 0;
-  padding: 1rem;
-  letter-spacing: var(--mainSpacing);
-}
-/* end of globals */
-/* Navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.75rem 2rem;
-  background: var(--offWhite);
-  z-index: 1;
-}
-.nav-header {
+.slider-row{
   display: flex;
-  justify-content: space-between;
+  background-color: black;
+  color: blanchedalmond;
+  flex-flow: row wrap;
+  /* height: 25rem; */
 }
-.nav-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
+.col-md-6 h1{
+  padding: 1.5rem;
+  font-size: 2rem;
 }
-.nav-icon {
-  font-size: 1.5rem;
-  color: var(--primaryColor);
-}
-.nav-links {
-  height: 0;
-  overflow: hidden;
-  transition: var(--mainTransition);
-  list-style-type: none;
-}
-.nav-links a {
-  display: block;
-  text-decoration: none;
-  padding: 1rem 0;
-  color: var(--mainBlack);
-  transition: var(--mainTransition);
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: var(--mainSpacing);
-}
-.nav-links a:hover {
-  color: var(--primaryColor);
-}
-
-.show-nav {
-  height: 100px;
-}
-@media screen and (min-width: 768px) {
-  .nav-btn {
-    display: none;
-  }
-  .nav-center {
-    max-width: 1170px;
-    margin: 0 auto;
-    display: flex;
-  }
-  .nav-links {
-    height: auto;
-    display: flex;
-    margin-left: 4rem;
-  }
-  .nav-links a {
-    margin: 0 1rem;
-    padding: 0.5rem 0;
-  }
-}
-/* end of navbar */
-/* Hero */
-.defaultHero,
-.roomsHero {
-  min-height: calc(100vh - 66px);
-  background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
+.col-md-6 p{
   justify-content: center;
 }
-.roomsHero {
-  background-image: url("./images/room-2.jpeg");
-  min-height: 60vh;
+.col-md-6{
+  padding: 2rem;
 }
-/* End of Hero */
-/* Banner */
-.banner {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.5);
-  color: var(--mainWhite);
-  padding: 2rem 1rem;
-  text-align: center;
-  text-transform: capitalize;
-  letter-spacing: var(--mainSpacing);
-}
-.banner h1 {
-  font-size: 2.5rem;
-}
-.banner div {
-  width: 10rem;
-  height: 5px;
-  background: var(--primaryColor);
-  margin: 1.7rem auto;
-}
-.banner p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-@media screen and (min-width: 576px) {
-  .banner {
-    padding: 2rem 3rem;
-  }
-  .banner h1 {
-    font-size: 3rem;
+@media screen and (max-width: 800px) {
+  .col-md-6 h1 {
+    font-size: 18px;
   }
 }
-@media screen and (min-width: 992px) {
-  .banner {
-    padding: 2rem 6rem;
-  }
-  .banner h1 {
-    font-size: 4rem;
+
+@media screen and (max-width: 800px) {
+  .col-md-6 {
+    font-size: 14px;
   }
 }
-/* End of Banner */
-/* Title */
-.section-title {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.section-title h4 {
-  font-size: 2rem;
-  letter-spacing: var(--mainSpacing);
-  text-transform: capitalize;
-  margin-bottom: 1rem;
-}
-.section-title div {
-  width: 5rem;
-  height: 5px;
-  margin: 0 auto;
-  background: var(--primaryColor);
-}
-/* end of Title */
 
 /* services */
 .services {
   padding: 5rem 0;
 }
 .services {
-  background: var(--darkGrey);
+  background:#e3f2fd;
   text-align: center;
 }
 .services-center {
@@ -451,6 +265,32 @@ h6 {
   }
 }
 /*end of services */
+
+/* Footer */
+.main-footer{
+  background-color: black;
+  color: aliceblue;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-footer img{
+  height: 60%;
+  width: 50%;
+}
+.underline{
+  width:70rem;
+  height: 1px;
+  background:lightgrey;
+  margin: 1.7rem auto;
+}
+.main-footer h4{
+  text-align: center;
+}
+.main-footer ul li{
+  text-align: center;
+}
 /* featured rooms */
 
 .featured-rooms {
@@ -640,74 +480,7 @@ h6 {
   }
 }
 /* end of roomlist */
-/*  rooms fitler*/
-.filter-container {
-  padding: 5rem 0;
-}
-.filter-form {
-  width: 60vw;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr));
-  grid-row-gap: 2rem;
-  grid-column-gap: 40px;
-}
-.form-group {
-  text-transform: capitalize;
-}
-.form-group label {
-  display: block;
-  letter-spacing: var(--mainSpacing);
-  margin-bottom: 0.5rem;
-}
-.form-control {
-  width: 100%;
-  background: transparent;
-  font-size: 1rem;
-}
-.size-inputs {
-  display: flex;
-}
-.size-input {
-  width: 40%;
-  padding: 0.2rem;
-  border: 1px solid var(--mainBlack);
-  border-radius: 0.3rem;
-  margin-right: 0.3rem;
-}
-.single-extra label {
-  display: inline-block;
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
-@media screen and (min-width: 776px) {
-  .filter-form {
-    width: 70vw;
-  }
-}
-@media screen and (min-width: 992px) {
-  .filter-form {
-    width: 95vw;
-    max-width: 1170px;
-  }
-}
-/* end of rooms fitler*/
-/* End Of Animation */
 
-.row{
-    /* background-image: url("./images/adventure.jpg"); */
-    background-color: black;
-    color: blanchedalmond;
-    /* height: 25rem; */
-}
-.col-6 h1{
-    padding: 1.5rem;
-    font-size: 2rem;
-}
-.col-6 p{
-    justify-content: center;
-    /* padding: 1rem; */
-}
-.col-6{
-    padding: 2rem;
+.card body{
+  border-color: aqua;
 }
