@@ -8,25 +8,25 @@ export default class Services extends Component {
         icon: <FaCocktail />,
         title: "Free Cocktails",
         info:
-          "වරෙන් බොන්න"
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
       },
       {
         icon: <FaHiking />,
         title: "Endless Hiking",
         info:
-          "කදු නගිමුතේ"
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
       },
       {
         icon: <FaShuttleVan />,
         title: "Free Shuttle",
         info:
-          "රවුමක් යන්ත"
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
       },
       {
         icon: <FaBeer />,
         title: "Strongest Beer",
         info:
-          "බොම්මු"
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
       }
     ]
   };
