@@ -487,10 +487,12 @@ nav img{
   background-repeat: no-repeat;
 }
 .activity-info{
-  padding: 2rem;
+  padding: 3rem;
+  background-color:#e3f2fd ;
 }
 .activity-info img{
     width: 20rem;
     margin: 0.5rem;
 }
+
 

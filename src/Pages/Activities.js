@@ -24,8 +24,8 @@ export default function Activities() {
             <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule The Day" path="/"></Banner>
         </Hero>
 
-        <Title title="A c t i v i t i e s" />
         <div className="activity-info">
+        <Title title="A c t i v i t i e s" />
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
                 <p>
@@ -66,8 +66,17 @@ export default function Activities() {
                                 <li>Problem Solving</li>
                             </ul>
                         </div>
-                    </div>
+                        <div className="col-md-6">
+                            <h6>Ground Activities/Games</h6>
+                            <p>To enhance Team Building, Leadership and Time Management Skills below are 
+                            the ground games which we conducted and to achieve number of objectives.</p>
 
+                            <p>Commencement of Ground Games with physical exercises<br></br> Dividing in to Teams<br></br>Ice Breakers Games</p>
+                            <p>Trust Games to achieve following objectives<br></br>Ego Breakers / Team Work / Dependence/ Trust</p>
+                            <p>Games to enhance Team Spirit are as follows<br></br>Speed Rabbit<br></br>Toddy Tapper<br></br>Tar- Folding walk and Caterpillar Walk (Giant Slipper Walk)<br></br>
+                            These games will help to achieve the objectives of Team Work / Dependence / Trust & Leadership</p>
+                        </div>
+                    </div>
             </containerFluid>
         </div>
 
