@@ -481,6 +481,16 @@ nav img{
 }
 /* end of roomlist */
 
-.card body{
-  border-color: aqua;
+.activity-row{
+  background-image: url('./images/img4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+.activity-info{
+  padding: 2rem;
+}
+.activity-info img{
+    width: 20rem;
+    margin: 0.5rem;
+}
+
