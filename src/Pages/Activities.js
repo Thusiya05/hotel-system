@@ -1,7 +1,6 @@
 import React from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
-import Title from '../Components/Title'
 import {Container,Carousel} from 'react-bootstrap'
 import InfoCard from '../Components/InfoCard'
 import img1 from '../images/waterRafting.jpg'
@@ -25,7 +24,7 @@ export default function Activities() {
         </Hero>
 
         <div className="activity-info">
-        <Title title="A c t i v i t i e s" />
+        <br></br>
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
                 <p>
@@ -77,6 +76,22 @@ export default function Activities() {
                             These games will help to achieve the objectives of Team Work / Dependence / Trust & Leadership</p>
                         </div>
                     </div>
+                    <h3>Leisure Day Outing</h3>
+                    <p>Rafting, hiking, trekking, canyoneering, rock climbing and outbound leadership training and team building are some of the activities available at the resort.</p>
+                    <br></br>
+                    <h5>We have day outing packages like this</h5>
+                    <div>
+                        <ul>
+                            <li>Adventure Day</li>
+                            <li>Adventure Overnight</li>
+                            <li>Camping Overnight</li>
+                            <li>Weekend Adventure Day</li>
+                            <li>Weekday Adventure Overnight</li>
+                            <li>Weekday Schools overnight Youth Leadership Program</li>
+                            <li>Weekday University 2 night Youth Leadership Program</li>
+                        </ul>
+                    </div>
+                    <h6>In addition, You can customize a package to suit your requirement</h6>
             </containerFluid>
         </div>
 
@@ -98,10 +113,10 @@ export default function Activities() {
                                     push like you have never experienced before. Waterfall Abseiling is an ideal adventure activity to test your confidence."></InfoCard>
                             </div>
                             <div className="col-md-4 col-sm-4">
-                            <InfoCard img={img3} 
-                            title="Canyoning"
-                            text="Canyoning’ is an outdoor activity that combines confidence jump, abseiling, sliding, swimming, and hiking. Adventure Base Camp is one of the premier places in the country to participate
-                                in this exciting activity."></InfoCard>
+                                <InfoCard img={img3} 
+                                title="Canyoning"
+                                text="Canyoning’ is an outdoor activity that combines confidence jump, abseiling, sliding, swimming, and hiking. Adventure Base Camp is one of the premier places in the country to participate
+                                    in this exciting activity."></InfoCard>
                             </div>
                         </div>
                     </Container>
@@ -121,9 +136,9 @@ export default function Activities() {
                                     text="This is adventurous and a thrilling activity includes"></InfoCard>
                                 </div>
                                 <div className="col-md-4 col-sm-4">
-                                <InfoCard img={img6} 
-                                title="Nature trails with bird watching & jungle trekking"
-                                text="This includes a river crossing and bird watching while you visit Makandawa forest ."></InfoCard>
+                                    <InfoCard img={img6} 
+                                    title="Nature trails with bird watching & jungle trekking"
+                                    text="This includes a river crossing and bird watching while you visit Makandawa forest ."></InfoCard>
                                 </div>
                             </div>
                         </Container>
@@ -143,9 +158,9 @@ export default function Activities() {
                                     text="This is adventurous and a thrilling activity includes ."></InfoCard>
                                 </div>
                                 <div className="col-md-4 col-sm-4">
-                                <InfoCard img={img9} 
-                                title="Zip Lining"
-                                text="The two-wire zip-line stretches for more than 100 meters, slides at 50kmph and offers a bird’s-eye view of the beautiful hills of the island ."></InfoCard>
+                                    <InfoCard img={img9} 
+                                    title="Zip Lining"
+                                    text="The two-wire zip-line stretches for more than 100 meters, slides at 50kmph and offers a bird’s-eye view of the beautiful hills of the island ."></InfoCard>
                                 </div>
                             </div>
                         </Container>

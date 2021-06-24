@@ -31,7 +31,8 @@ nav img{
   align-items: center;
   justify-content: center;
 }
-.facilityHero{ 
+.facilityHero,
+.facility-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/bbq-2.jpg") center/ cover no-repeat;
   display: flex;
@@ -45,6 +46,10 @@ nav img{
 .activity-Hero{
   min-height: 60vh;
   background-image: url("./images/new1.jpg") ;
+ }
+ .facility-Hero{
+   min-height: 60vh;
+   background-image: url('./images/servise.jpg');
  }
 /* End of Hero */
 
@@ -95,6 +100,8 @@ nav img{
 .section-title{
     text-align: center;
     padding:2px;
+    font-family: Verdana;
+    font-weight: bolder;
    
 }
 
@@ -481,6 +488,7 @@ nav img{
 }
 /* end of roomlist */
 
+/* Activity Pages */
 .activity-row{
   background-image: url('./images/img4.jpg');
   background-size: cover;
@@ -494,5 +502,19 @@ nav img{
     width: 20rem;
     margin: 0.5rem;
 }
+.activity-info h3{
+  /* font-weight: bold; */
+  font-family: Verdana;
+}
 
+.activity-info p{
+  font-family: 'baloo-tamma-2';
+  font-size: 18px;
+}
+
+.activity-info ul li{
+  font-family: 'baloo-tamma-2';
+  font-size: 18px;
+}
+/* End of Activities */
 
