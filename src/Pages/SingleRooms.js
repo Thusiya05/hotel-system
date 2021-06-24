@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import StyledHero from "../Components/StyledHero";
 
+
 export default class SingleRooms extends Component {
     constructor(props) {
         super(props);
@@ -28,8 +29,8 @@ export default class SingleRooms extends Component {
           return (
             <div className="error">
               <h3> no such room could be found...</h3>
-              <Link to="/rooms" className="btn-primary">
-                back to rooms
+              <Link to="/rooms" className="btn btn-primary">
+                Back to Rooms
               </Link>
             </div>
         );
@@ -50,9 +51,9 @@ const {
 
   return (
     <>
-      <StyledHero img={mainImg[0] || this.state.defaultBcg}>
+      <StyledHero img={mainImg[0]}>
         <Banner title={`${name} room`}>
-          <Link to="/rooms" className="btn-primary">
+          <Link to="/rooms" className="btn btn-primary">
             back to rooms
           </Link>
         </Banner>
