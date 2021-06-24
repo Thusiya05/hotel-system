@@ -291,19 +291,6 @@ nav img{
 .main-footer ul li{
   text-align: center;
 }
-
-
-.card body{
-  border-color: aqua;
-}
-
-/*Adithya*/
-.loading{
-  text-transform: capitalize;
-  text-align:center;
-  margin-top:3rem;
-}
-
 /* featured rooms */
 
 .featured-rooms {
@@ -351,7 +338,7 @@ nav img{
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(240, 236, 236, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   color: var(--mainWhite);
   padding: 0.3rem 0.6rem 0.5rem;
   border-bottom-right-radius: 1rem;
@@ -493,55 +480,19 @@ nav img{
   }
 }
 /* end of roomlist */
-/*  rooms fitler*/
-.filter-container {
-  padding: 5rem 0;
+
+.activity-row{
+  background-image: url('./images/img4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.filter-form {
-  width: 60vw;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr));
-  grid-row-gap: 2rem;
-  grid-column-gap: 40px;
+.activity-info{
+  padding: 3rem;
+  background-color:#e3f2fd ;
 }
-.form-group {
-  text-transform: capitalize;
+.activity-info img{
+    width: 20rem;
+    margin: 0.5rem;
 }
-.form-group label {
-  display: block;
-  letter-spacing: var(--mainSpacing);
-  margin-bottom: 0.5rem;
-}
-.form-control {
-  width: 100%;
-  background: transparent;
-  font-size: 1rem;
-}
-.size-inputs {
-  display: flex;
-}
-.size-input {
-  width: 40%;
-  padding: 0.2rem;
-  border: 1px solid var(--mainBlack);
-  border-radius: 0.3rem;
-  margin-right: 0.3rem;
-}
-.single-extra label {
-  display: inline-block;
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
-@media screen and (min-width: 776px) {
-  .filter-form {
-    width: 70vw;
-  }
-}
-@media screen and (min-width: 992px) {
-  .filter-form {
-    width: 95vw;
-    max-width: 1170px;
-  }
-}
-/* end of rooms fitler*/
+
+
