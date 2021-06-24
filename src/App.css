@@ -495,4 +495,18 @@ nav img{
     margin: 0.5rem;
 }
 
+.activity-info h3{
+  font-family: Verdana;
+}
+
+.activity-info p{
+  font-family: 'baloo-tamma-2';
+  font-size: 18px;
+}
+
+.activity-info ul li{
+  font-family: 'baloo-tamma-2';
+  font-size: 18px;
+}
+
 
