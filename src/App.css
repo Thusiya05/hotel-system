@@ -31,7 +31,8 @@ nav img{
   align-items: center;
   justify-content: center;
 }
-.facilityHero{ 
+.facilityHero,
+.facility-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/bbq-2.jpg") center/ cover no-repeat;
   display: flex;
@@ -45,6 +46,10 @@ nav img{
 .activity-Hero{
   min-height: 60vh;
   background-image: url("./images/new1.jpg") ;
+ }
+ .facility-Hero{
+  min-height: 60vh;
+  background-image: url("./images/Servise.jpg") ;
  }
 /* End of Hero */
 
@@ -67,7 +72,7 @@ nav img{
 
 .jumbotron h1{
     font-size: 3rem;
-    font-family:Helvetica;
+    font-family:monospace;
     color:ghostwhite;
     /* text-shadow: 2px 2px 5px gold; */
 }
@@ -82,7 +87,7 @@ nav img{
 .jumbotron h2{
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    font-family:'Times New Roman';
+    font-family:monospace;
     color:ghostwhite;
 }
 .jumbotron h3{
@@ -491,7 +496,7 @@ nav img{
   }
 }
 /* end of roomlist */
-
+/* Activity Page */
 .activity-row{
   background-image: url('./images/img4.jpg');
   background-size: cover;
@@ -506,19 +511,21 @@ nav img{
     margin: 0.5rem;
 }
 
-.activity-info h3{
-  font-family: Verdana;
+.activity-info h3,h5,h6{
+  font-family:cursive;
+  font-weight: bolder;
 }
 
 .activity-info p{
-  font-family: 'baloo-tamma-2';
+  font-family:cursive;
   font-size: 18px;
 }
 
 .activity-info ul li{
-  font-family: 'baloo-tamma-2';
+  font-family:cursive;
   font-size: 18px;
 }
+/* End of Activity Page */
 /*  rooms fitler*/
 .filter-container {
   padding: 5rem 0;
