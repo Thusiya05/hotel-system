@@ -1,7 +1,6 @@
 import React from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
-import Title from '../Components/Title'
 import {Container,Carousel} from 'react-bootstrap'
 import InfoCard from '../Components/InfoCard'
 import img1 from '../images/waterRafting.jpg'
@@ -25,7 +24,6 @@ export default function Activities() {
         </Hero>
 
         <div className="activity-info">
-        <Title title="A c t i v i t i e s" />
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
                 <p>
