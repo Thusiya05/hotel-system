@@ -1,7 +1,8 @@
 import React from 'react'
 import Hero from '../Components/Hero'
 import Banner from "../Components/Banner"
-import Title from "../Components/Title"
+import FeaturedRooms from '../Components/FeaturedRooms'
+import RoomContainer from '../Components/RoomContainer'
 
 const Rooms = () => {
     return (
@@ -10,7 +11,8 @@ const Rooms = () => {
                 <Banner title="Featured Rooms" subtitle="Enjoy the day and feel the real freedom." children="return Home" path="/"></Banner>
             </Hero>
 
-            <Title title="Services" />
+            <FeaturedRooms />
+            <RoomContainer />
 
         </>
         
