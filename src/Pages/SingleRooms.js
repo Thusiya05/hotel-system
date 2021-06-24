@@ -51,7 +51,7 @@ const {
 
   return (
     <>
-      <StyledHero img={mainImg[0]}>
+      <StyledHero img={mainImg}>
         <Banner title={`${name} room`}>
           <Link to="/rooms" className="btn btn-primary">
             back to rooms
