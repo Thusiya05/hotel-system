@@ -7,9 +7,9 @@ import RoomContainer from '../Components/RoomContainer'
 const Rooms = () => {
     return (
         <>
-            {/* <Hero hero="roomsHero">
+            <Hero hero="roomsHero">
                 <Banner title="Featured Rooms" subtitle="Enjoy the day and feel the real freedom." children="return Home" path="/"></Banner>
-            </Hero> */}
+            </Hero>
 
             <FeaturedRooms />
             <RoomContainer />
