@@ -75,6 +75,20 @@ export default function Activities() {
                             These games will help to achieve the objectives of Team Work / Dependence / Trust & Leadership</p>
                         </div>
                     </div>
+                    <h3>Leisure Day Outing</h3>
+                    <p>Rafting, hiking, trekking, canyoneering, rock climbing and outbound leadership training and team building are some of the activities available at the resort.</p>
+                    <br></br>
+                    <h6>We have day outing packages like this</h6>
+                    <ul>
+                        <li>Adventure Day</li>
+                        <li>Adventure Overnight</li>
+                        <li>Camping Overnight</li>
+                        <li>Weekday Adventure day</li>
+                        <li>Weekday Adventure overnight</li>
+                        <li>Weekday Schools overnight Youth Leadership Program</li>
+                        <li>Weekday University 2 night Youth Leadership Program</li>
+                    </ul>
+                    <h6>In addition, You can customize a package to suit your requirement</h6>
             </containerFluid>
         </div>
 
