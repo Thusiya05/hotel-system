@@ -44,6 +44,7 @@ export default function Activities() {
                     </div>
                     </Container>
                     <br></br>
+                    <br></br>
                     <h5>We have a team of well qualified and well experienced trainers for conducting these programs</h5>
                     <div className="row">
                         <div className="col-md-6">
