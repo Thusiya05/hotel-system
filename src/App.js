@@ -8,7 +8,6 @@ import Facilities from "./Pages/Facilities";
 import Login from "./Pages/Login"
 import Error from "./Pages/Error";
 import {Route,Switch} from "react-router-dom"
-import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer"
 // import Background from "./Components/Background"
 import "./App.css"
@@ -20,9 +19,6 @@ function App() {
 
    
     <div>
-      <div>
-        <NavBar />
-      </div>
       
       <Switch>
         <Route exact path ="/" component={Home} />
