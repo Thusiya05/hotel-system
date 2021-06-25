@@ -94,6 +94,9 @@ nav img{
     font-size: 3rem;
     color:mediumturquoise;
 }
+.jumbotron h2:hover{
+  font-size: 1.6rem;
+}
 /* End of Banner */
 
 /* Section title */
@@ -509,6 +512,11 @@ nav img{
 .activity-info img{
     width: 20rem;
     margin: 0.5rem;
+}
+.activity-info img:hover{
+  box-shadow:  0 6px 10px black;
+  width:20.5rem;
+
 }
 
 .activity-info h3,h5,h6{

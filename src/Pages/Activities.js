@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
 import {Container,Carousel} from 'react-bootstrap'
+import NavBar from "../Components/NavBar"
 import InfoCard from '../Components/InfoCard'
 import img1 from '../images/waterRafting.jpg'
 import img2 from '../images/abselling.jpg'
@@ -19,6 +20,9 @@ import img12 from '../images/Team-Building-3.jpg'
 export default function Activities() {
     return (
         <>
+         <div>
+             <NavBar path1="/" name1="Home" path2="/rooms/" name2="Rooms" path3="/activities" name3="Activities" path4="/facilities" name4="Facilities" path5="/aboutUs" name5="About Us" pathSign="/signIn" LogName="Log In"></NavBar>
+        </div>
         <Hero hero="activity-Hero">
             <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule The Day" path="/"></Banner>
         </Hero>
@@ -43,6 +47,7 @@ export default function Activities() {
                             </div>    
                     </div>
                     </Container>
+                    <br></br>
                     <br></br>
                     <h5>We have a team of well qualified and well experienced trainers for conducting these programs</h5>
                     <div className="row">
