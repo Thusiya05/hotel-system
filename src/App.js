@@ -7,6 +7,7 @@ import Activities from "./Pages/Activities";
 import Facilities from "./Pages/Facilities";
 import Login from "./Pages/Login"
 import Error from "./Pages/Error";
+import AdminLogin from "./Pages/AdminLogin";
 import {Route,Switch} from "react-router-dom"
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer"
@@ -32,6 +33,7 @@ function App() {
         <Route exact path ="/activities" component={Activities} />
         <Route exact path ="/facilities" component={Facilities} />
         <Route exact path ="/signIn" component={Login} />
+        <Route exact path ="/admin/" component={AdminLogin} />
         <Route component={Error} />
       </Switch> 
         <div>
