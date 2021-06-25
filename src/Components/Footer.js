@@ -1,5 +1,6 @@
 import React from 'react'
 import img1 from "../images/Capture5.png"
+import {Link} from 'react-router-dom'
 
 function Footer() {
     return (
@@ -13,10 +14,10 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <h4>Main Pages</h4>
                             <ul className="list-unstyled">
-                                <li>Home</li>
-                                <li>Rooms</li>
-                                <li>Activities</li>
-                                <li>About Us</li>
+                                <li><Link to="/" style={{textDecoration:'none',color:'white'}}>Home</Link></li>
+                                <li><Link to="/rooms/" style={{textDecoration:'none',color:'white'}}>Rooms</Link></li>
+                                <li><Link to="/activities" style={{textDecoration:'none',color:'white'}}>Activities</Link></li>
+                                <li><Link to="/aboutUs" style={{textDecoration:'none',color:'white'}}>About Us</Link></li>
                             </ul>
                         </div>
                         <div className="col-md-3 col-sm-6">
