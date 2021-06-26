@@ -254,12 +254,10 @@ nav img{
   .jumbotron h2:hover{
     font-size: 18px;
   }
-  .underline{
-    width: 40px;
-    margin: 1px auto;
-  }
 }
-
+hr.new1 {
+  border-top: 1px solid rgb(226, 226, 226);
+}
 @media screen and (max-width: 800px) {
   .col-md-6 {
     font-size: 14px;
@@ -321,12 +319,6 @@ nav img{
 .main-footer img{
   height: 60%;
   width: 50%;
-}
-.underline{
-  width:70rem;
-  height: 1px;
-  background:lightgrey;
-  margin: 1.7rem auto;
 }
 .main-footer h4{
   text-align: center;
