@@ -17,10 +17,6 @@ const RoomFilter = ({ rooms }) => {
     price,
     minPrice,
     maxPrice,
-    minSize,
-    maxSize,
-    breakfast,
-    pets
   } = context;
 
   // get unique types
@@ -42,7 +38,7 @@ const RoomFilter = ({ rooms }) => {
   ));
   return (
     <section className="filter-container">
-      <Title title="search rooms" />
+      <Title title="Search Rooms" />
       <form className="filter-form">
         {/* select type */}
         <div className="form-group">
@@ -74,7 +70,7 @@ const RoomFilter = ({ rooms }) => {
         {/* end of guests */}
         {/* room price */}
         <div className="form-group">
-          <label htmlFor="price">room price ${price}</label>
+          <label htmlFor="price">room price Rs.{price}</label>
           <input
             type="range"
             name="price"
@@ -87,50 +83,8 @@ const RoomFilter = ({ rooms }) => {
           />
         </div>
         {/* end of room price*/}
-        {/* size */}
-        <div className="form-group">
-          <label htmlFor="price">room size </label>
-          <div className="size-inputs">
-            <input
-              type="number"
-              name="minSize"
-              value={minSize}
-              onChange={handleChange}
-              className="size-input"
-            />
-            <input
-              type="number"
-              name="maxSize"
-              value={maxSize}
-              onChange={handleChange}
-              className="size-input"
-            />
-          </div>
-        </div>
-        {/* end of select type */}
-        {/* extras */}
-        <div className="form-group">
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
-              onChange={handleChange}
-            />
-            <label htmlFor="breakfast">breakfast</label>
-          </div>
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="pets"
-              checked={pets}
-              onChange={handleChange}
-            />
-            <label htmlFor="breakfast">pets</label>
-          </div>
-        </div>
-        {/* end of extras type */}
+       
+      
       </form>
     </section>
   );
