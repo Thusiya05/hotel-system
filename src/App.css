@@ -254,6 +254,10 @@ nav img{
   .jumbotron h2:hover{
     font-size: 18px;
   }
+  .underline{
+    width: 40px;
+    margin: 1px auto;
+  }
 }
 
 @media screen and (max-width: 800px) {
