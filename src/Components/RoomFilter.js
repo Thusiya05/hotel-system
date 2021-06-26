@@ -17,8 +17,6 @@ const RoomFilter = ({ rooms }) => {
     price,
     minPrice,
     maxPrice,
-    minSize,
-    maxSize,
     breakfast,
     pets
   } = context;
@@ -87,27 +85,7 @@ const RoomFilter = ({ rooms }) => {
           />
         </div>
         {/* end of room price*/}
-        {/* size */}
-        <div className="form-group">
-          <label htmlFor="price">room size </label>
-          <div className="size-inputs">
-            <input
-              type="number"
-              name="minSize"
-              value={minSize}
-              onChange={handleChange}
-              className="size-input"
-            />
-            <input
-              type="number"
-              name="maxSize"
-              value={maxSize}
-              onChange={handleChange}
-              className="size-input"
-            />
-          </div>
-        </div>
-        {/* end of select type */}
+     
         {/* extras */}
         <div className="form-group">
           <div className="single-extra">
