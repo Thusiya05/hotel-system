@@ -36,8 +36,9 @@ function Footer() {
                                 <li>0717365756</li>
                             </ul>
                         </div>
-                    </div>     
-                <div className="underline"></div>
+                    </div>    
+                    <hr className="new1"></hr>
+                {/* <div className="underline"></div> */}
                 <div className="footer-bottom">
                         <p className="text-xs-center">
                             &copy;{new Date().getFullYear()} React App - All Right Reserved
