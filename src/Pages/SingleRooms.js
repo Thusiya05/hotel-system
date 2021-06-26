@@ -5,6 +5,7 @@ import Banner from "../Components/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import StyledHero from "../Components/StyledHero";
+import NavBar from "../Components/NavBar";
 
 
 export default class SingleRooms extends Component {
@@ -22,6 +23,14 @@ export default class SingleRooms extends Component {
       //   console.log(this.props);
       // }
       render() {
+        <NavBar
+          path1="/" name1="Home"
+          path2="/rooms/" name2="Rooms" 
+          path3="/activities" name3="Activities"
+          path4="/facilities" name4="Facilities" 
+          path5="/aboutUs" name5="About Us" 
+          pathSign="/signIn" LogName="Log In">    
+        </NavBar>
         const { getRoom } = this.context;
         const room = getRoom(this.state.slug);
     
