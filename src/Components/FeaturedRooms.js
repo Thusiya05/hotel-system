@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { RoomContext } from '../context'
 import Loading from './Loading';
 import Room from './Room'
-import Title from './Title';
 
 export default class FeaturedRooms extends Component {
     static contextType = RoomContext
@@ -13,7 +12,8 @@ export default class FeaturedRooms extends Component {
         })
         return (
             <section >
-                <Title title="featured-rooms" />
+                {/* <Title title="featured-rooms" /> */}
+                <br></br>
                 <div className="featured-rooms-center">
                     {loading? <Loading/> : rooms}
                 </div>

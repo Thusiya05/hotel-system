@@ -20,9 +20,14 @@ import img13 from '../images/Team-Building-3.jpg'
 const Facilities = () => {
     return (
         <>
-            <div>
-                <NavBar path1="/" name1="Home" path2="/rooms/" name2="Rooms" path3="/activities" name3="Activities" path4="/facilities" name4="Facilities" path5="/aboutUs" name5="About Us" pathSign="/signIn" LogName="Log In"></NavBar>
-            </div>
+            <NavBar
+                path1="/" name1="Home"
+                path2="/rooms/" name2="Rooms" 
+                path3="/activities" name3="Activities"
+                path4="/facilities" name4="Facilities" 
+                path5="/aboutUs" name5="About Us" 
+                pathSign="/signIn" LogName="Log In">    
+            </NavBar>
             <Hero hero="facility-Hero">
                 <Banner title="Just For You" subtitle="Feel the Difference of Our Facilities" children="Return Home" path="/"></Banner>
             </Hero>

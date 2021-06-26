@@ -10,7 +10,6 @@ import Error from "./Pages/Error";
 import AdminLogin from "./Pages/AdminLogin";
 import {Route,Switch} from "react-router-dom"
 import Footer from "./Components/Footer"
-// import Background from "./Components/Background"
 import "./App.css"
 
 
