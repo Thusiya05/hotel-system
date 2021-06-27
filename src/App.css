@@ -16,7 +16,8 @@ nav img{
 
 /* Hero Component */
 .defaultHero,
-.roomsHero{
+.roomsHero,
+.aboutus{
     min-height: calc(90vh - 66px);
     background: url("./images/hotel2.jpg") center/ cover no-repeat;
     display: flex;
@@ -50,6 +51,10 @@ nav img{
  .facility-Hero{
   min-height: 60vh;
   background-image: url("./images/Servise.jpg") ;
+ }
+ .aboutus{
+  min-height: 60vh;
+  background-image: url("./images/cmposs.jpg") ;
  }
 /* End of Hero */
 
