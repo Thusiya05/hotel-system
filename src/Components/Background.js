@@ -13,7 +13,15 @@ export default function Background() {
                         <h2>Enjoy the best comforts of an outdoor leisure activity center with a touch of luxury close to nature.
                                     With amazing food, great accommodation and a breath taking location which is one of the largest and best of its kind in South Asia. We have a 
                                     well experienced and friendly adventure team to customize your days with us.</h2>
-                        <Link to="/aboutUs" className="btn btn-outline-info" role="button">More Info</Link>            
+                        <Link to="/aboutUs" className="btn btn-outline-info" role="button">More Info</Link>   
+
+
+
+                        {/* test 123456789
+                        csdvfv
+                        */}
+
+
                     </div>
                     </div>
              
