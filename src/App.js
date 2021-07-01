@@ -12,6 +12,7 @@ import Dashboard from "./Pages/Dashboard";
 import Reports from "./Pages/Reports";
 import HRManagement from "./Pages/HRManagement";
 import BookedRooms from "./Pages/BookedRooms";
+import Schedule from "./Pages/Schedule"
 import {Route,Switch} from "react-router-dom"
 import Footer from "./Components/Footer"
 import "./App.css"
@@ -37,6 +38,7 @@ function App() {
         <Route exact path ="/admin/"  component={Dashboard} />
         <Route path ="/admin/hrmanagement/" component={HRManagement} />
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
+        <Route exact path = "/schedule/" component={Schedule} />
         <Route component={Error} />
         
        

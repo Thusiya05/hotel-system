@@ -151,6 +151,7 @@ nav img{
     background: rgba(255, 255, 255, 0.8);
     animation: animate 20s linear infinite;
     bottom: -150px;
+    border-radius: 30%;
 }
 .box-area li:nth-child(1) {
     left: 86%;
@@ -636,3 +637,4 @@ hr.new1 {
   background: transparent;
   color: var(--primaryColor);
 }
+
