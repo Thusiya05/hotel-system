@@ -231,30 +231,36 @@ nav img{
   }
   .jumbotron{
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 80%;
+    height: 220px;
   }
   .jumbotron h1{
     font-size: 28px;
     position: absolute;
-    left: 30px;
+    left: 0%;
+    right: 0%;
   }
   .jumbotron div{
-    margin-top: 35px;
+    top: 25%;
     position: absolute;
-    width: 50px;
+    left: 0;
+    right: 0;
+    width: 70px;
     height: 2px;
   }
   .jumbotron h2{
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    top: 45%;
     left: 0;
+    right: 0;
     position: absolute;
     font-size: 16px;
   }
   .jumbotron p{
-    margin-top: 100px;
+    bottom: -5%;
     position: absolute;
-    left: 60px;
+    left:10%;
+    right: 10%;
     padding: 10px 15px;
   }
   .jumbotron h2:hover{
