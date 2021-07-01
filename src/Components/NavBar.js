@@ -19,7 +19,7 @@ export default function NavBar({path1,name1,path2,name2,path3,name3,path4,name4,
                   <Nav.Link href={path5}>{name5}</Nav.Link>
                 </Nav>
                 <Nav>
-                  <Nav.Link href={pathSign} ><FaUserCircle /> {LogName}</Nav.Link>
+                  <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

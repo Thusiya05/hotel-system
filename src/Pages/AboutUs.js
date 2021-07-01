@@ -63,7 +63,7 @@ const AboutUs = () => {
                     <br></br>
                     <div className="row">
                         <div className="col-md-6 col-sm-6">
-                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',alignItems:'center'}}>
+                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'27rem',alignItems:'center'}}>
                                 <h3 style={{textAlign:'center',padding:'2rem 0 2rem 0'}}>Get touch with us</h3>
                                 <br></br>
                                     <Container>
