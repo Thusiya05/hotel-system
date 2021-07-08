@@ -1,5 +1,6 @@
 import React from 'react';
 import Sidebar from '../Components/Sidebar';
+import "../CSS/Sidebar.css";
 
 function manager() {
     return (
