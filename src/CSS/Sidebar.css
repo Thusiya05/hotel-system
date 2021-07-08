@@ -13,7 +13,6 @@ body {
     height: 100%;
     width: 250px;
     background-color: #607D8B;
-
 }
 
 .SidebarList {
@@ -22,7 +21,7 @@ body {
     width: 100%;
 }
 
-.SidebarList.SidebarRow {
+.SidebarList .SidebarRow {
     width: 100%;
     height: 50px;
     /* border: 1px solid black; */
@@ -36,22 +35,22 @@ body {
     font-family: sans-serif;
 }
 
-.SidebarList.SidebarRow:hover{
+.SidebarList .SidebarRow:hover {
     cursor: pointer;
     background-color: #607D8B;
 }
 
-.SidebarList.SidebarRow #active {
+.SidebarList .SidebarRow #active {
     background-color: wheat;
 }
 
-.row #icon{
+.SidebarRow #icon {
     flex: 30%;
     display: grid;
     place-items: center;
 }
 
-.row #title{
-
+.SidebarRow #title{
+    flex: 70%;
 }
 

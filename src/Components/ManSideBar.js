@@ -1,5 +1,6 @@
-import React from 'react'
-import * as AiIcons from 'react-icons/ai'
+import React from 'react';
+import * as AiIcons from 'react-icons/ai';
+import "../CSS/Sidebar.css";
 
 export const ManSideBar = [
    

@@ -2,15 +2,12 @@ import React from 'react';
 import "../CSS/Sidebar.css";
 import {ManSideBar} from "./ManSideBar";
 
-
-
 function Sidebar() {
-    
     return (
         <div className="Sidebar">
             <ul className="SidebarList">
            
-            {ManSideBar.map((val, key)=>{
+            {ManSideBar.map((val, key) => {
             return (
                 <li key={key} 
                 className="SidebarRow"
@@ -31,9 +28,8 @@ function Sidebar() {
             );
             })}
             </ul>
-            </div>
+        </div>
             
-        
     );
 }
 
