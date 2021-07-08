@@ -12,7 +12,7 @@ body {
 .Sidebar {
     height: 100%;
     width: 250px;
-    background-color: #607D8B;
+    background-color: #384146;
 }
 
 .SidebarList {
@@ -37,14 +37,14 @@ body {
 
 .SidebarList .SidebarRow:hover {
     cursor: pointer;
-    background-color: #607D8B;
+    background-color: #262C2F;
 }
 
-.SidebarList .SidebarRow #active {
-    background-color: wheat;
+.SidebarList #active {
+    background-color: #262C2F;
 }
 
-.SidebarRow #icon {
+.SidebarList .SidebarRow #icon {
     flex: 30%;
     display: grid;
     place-items: center;
