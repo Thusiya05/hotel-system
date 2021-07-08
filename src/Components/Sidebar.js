@@ -1,6 +1,6 @@
 import React from 'react';
 import "../CSS/Sidebar.css";
-import {ManSideBar} from "./ManSideBar";
+import { ManSideBar } from "./ManSideBar";
 
 function Sidebar() {
     return (
@@ -11,7 +11,7 @@ function Sidebar() {
             return (
                 <li key={key} 
                 className="SidebarRow"
-                id={window.location.pathname == val.link ? "active" : ""}
+                id={window.location.pathname === val.link ? "active" : ""}
                 onClick={() => {
                     window.location.pathname = val.link;
                     }}
