@@ -42,7 +42,7 @@ export const ManSideBar = [
     {
         title: "Calendar",
         icon: <AiIcons.AiFillCalendar />,
-        link:'/HRManagement',
+        link:'/ManCalendar',
     },
 
     {
