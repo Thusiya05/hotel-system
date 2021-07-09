@@ -6,6 +6,7 @@ function manager() {
     return (
         <div className="manager">
             <Sidebar/>
+            hello from dashboard
             
         </div>
     );

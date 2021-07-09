@@ -6,7 +6,7 @@ function Reports() {
     return (
         <div className= 'reports'>
             <Sidebar/>
-                hello from reports
+                Hello from Reports
             
             
         </div>
