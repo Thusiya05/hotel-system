@@ -18,6 +18,12 @@
     display: table;
 }
 
+.statistics{
+    width: 100vw;
+    height: 100vh;
+    display: table;
+}
+
 body {
     margin: 0;
     padding: 0;
