@@ -30,8 +30,12 @@
     height: 100vh;
     display: table; */
     margin-left: 250px;
+    padding: 0px 10px;  
+}
+
+.ManCalendar{
+    margin-left: 250px;
     padding: 0px 10px;
-   
 }
 .users{
     margin-left: 250px;

@@ -16,8 +16,10 @@ import BookedRooms from "./Pages/BookedRooms";
 import Schedule from "./Pages/Schedule";
 import {Route,Switch} from "react-router-dom";
 import Footer from "./Components/Footer";
-import Statistics from "./Pages/Statistics";
+// import Statistics from "./Pages/Statistics";
 import Users from "./Pages/Users"
+import Statistics from "./Pages/manager";
+import ManCalendar from "./Pages/ManCalendar"
 import "./App.css"
 
 
@@ -45,6 +47,8 @@ function App() {
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/admin/controlPanel/users/" component={Users} />
 
+        <Route exact path = "/manager/" component={Statistics} />
+        <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
         <Route component={Error} />
         
