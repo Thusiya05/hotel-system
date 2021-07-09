@@ -3,6 +3,7 @@ import "../CSS/Sidebar.css";
 import { ManSideBar } from "./ManSideBar";
 
 function Sidebar() {
+    
     return (
         <div className="Sidebar">
             <ul className="SidebarList">
