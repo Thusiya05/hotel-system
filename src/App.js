@@ -16,7 +16,6 @@ import BookedRooms from "./Pages/BookedRooms";
 import Schedule from "./Pages/Schedule";
 import {Route,Switch} from "react-router-dom";
 import Footer from "./Components/Footer";
-// import Statistics from "./Pages/Statistics";
 import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
 import ManCalendar from "./Pages/ManCalendar"
