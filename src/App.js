@@ -7,6 +7,7 @@ import Activities from "./Pages/Activities";
 import Facilities from "./Pages/Facilities";
 import Login from "./Pages/Login";
 import Error from "./Pages/Error";
+import manager from "./Pages/manager";
 import AdminLogin from "./Pages/AdminLogin";
 import Dashboard from "./Pages/Dashboard";
 import Reports from "./Pages/Reports";
@@ -35,13 +36,14 @@ function App() {
         <Route exact path ="/facilities" component={Facilities} />
         <Route exact path ="/signIn" component={Login} />
         <Route exact path ="/admin/" component={AdminLogin} />
-        <Route exact path = "/admin/reports/" component={Reports} />
+        <Route exact path = "/reports/" component={Reports} />
         <Route exact path ="/admin/"  component={Dashboard} />
-        <Route path ="/admin/hrmanagement/" component={HRManagement} />
+        <Route path ="/hrmanagement/" component={HRManagement} />
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
         <Route exact path = "/schedule/" component={Schedule} />
         <Route exact path = "/statistics/" component={Statistics} />
 
+        <Route path = "/manager/" component={manager} />
         <Route component={Error} />
         
        

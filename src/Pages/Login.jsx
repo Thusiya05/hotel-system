@@ -36,7 +36,7 @@ export default class Login extends Component {
                                 <input type="password" name="password"></input>
                             </label>
                             <div class="text-center">
-                            <Link to="/admin"><Button variant="outline-dark" style={{width:"200px"}} className="submit">Sign In</Button></Link>
+                            <Link to="/manager"><Button variant="outline-dark" style={{width:"200px"}} className="submit">Sign In</Button></Link>
                             </div>
                             <p className="forgot-pass">Forgot Password ?</p>
                             <div className="social-media">
