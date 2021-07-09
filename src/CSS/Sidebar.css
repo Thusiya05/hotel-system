@@ -1,21 +1,27 @@
 .manager {
-    width: 100vw;
+    margin-left: 250px;
+    padding: 0px 10px;
+    /* width: 100vw;
     height: 100vh;
-    display: table;
+    display: table; */
     
 }
 
 .reports {
-    width: 100vw;
+    margin-left: 250px;
+    padding: 0px 10px;
+    /* width: 100vw;
     height: 100vh;
-    display: table;
+    display: table; */
     
 }
 
 .hrmanagement {
-    width: 100vw;
+    margin-left: 250px;
+    padding: 0px 10px;
+    /* width: 100vw;
     height: 100vh;
-    display: table;
+    display: table; */
 }
 
 .statistics{
@@ -37,7 +43,7 @@ body {
     height: 100%;
     width: 250px;
     background-color: #384146;
-    /* display: table-cell; */
+    display: table-cell;
     position: fixed; 
     z-index:1;
     left: 0;
