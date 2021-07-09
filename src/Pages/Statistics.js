@@ -2,11 +2,17 @@ import React from 'react'
 import BarChart from '../Components/BarChart'
 import Title from '../Components/Title'
 import Lines from '../Components/Lines'
+import Sidebar from '../Components/Sidebar'
 
 const Statistics = ()=>{
     return(
        <>
         <div>
+            <div>
+                <Sidebar></Sidebar>
+            </div>
+
+            <div>
             <Title title="S t a t i s t i c s"></Title>
                 <div className="row">
                     <div className="col-md-6 col-sm-6" >
@@ -25,6 +31,8 @@ const Statistics = ()=>{
                 
                 <Lines></Lines>
                 <BarChart></BarChart>
+            </div>
+            
         </div>
             
        </>
