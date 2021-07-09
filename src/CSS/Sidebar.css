@@ -19,9 +19,13 @@
 }
 
 .statistics{
-    width: 100vw;
+
+    /* width: 100vw;
     height: 100vh;
-    display: table;
+    display: table; */
+    margin-left: 250px;
+    padding: 0px 10px;
+   
 }
 
 body {
@@ -33,7 +37,13 @@ body {
     height: 100%;
     width: 250px;
     background-color: #384146;
-    display: table-cell; 
+    /* display: table-cell; */
+    position: fixed; 
+    z-index:1;
+    left: 0;
+    /* overflow-x: hidden; */
+    /* padding-top: 20px; */
+    /* top:0; */
 }
 
 .SidebarList {
