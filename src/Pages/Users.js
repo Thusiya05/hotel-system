@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
-import { Button,Form,Col } from 'react-bootstrap'
+import { Button,Form,Col,Table } from 'react-bootstrap'
 import { FaTrash } from "react-icons/fa";
 
 
