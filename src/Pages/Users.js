@@ -30,14 +30,14 @@ const Users =()=>{
                         </Form.Row>
                         <Form.Row  controlId="editGender">
                             <Form.Label><h6>Gender</h6></Form.Label>
-                                <div className="form-check">
+                                <Form.Group as={Col} className="form-check">
                                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
                                     <label className="form-check-label" for="exampleRadios1"> Male</label>
-                                </div>
-                                <div className="form-check">
+                                </Form.Group>
+                                <Form.Group as={Col} className="form-check">
                                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
                                     <label className="form-check-label" for="exampleRadios2"> Fe-Male</label>  
-                                </div>
+                                </Form.Group>
                             </Form.Row>
 
                             <Form.Row>
