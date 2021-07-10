@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
 import { Button,Form,Col } from 'react-bootstrap'
+import { FaTrash } from "react-icons/fa";
 
 
 const Users =()=>{
@@ -60,17 +61,11 @@ const Users =()=>{
 
                                     <Form.Group as={Col} controlId="formGridMobile">
                                     <Form.Label><h6>User Role</h6></Form.Label>
-                                    <Form.Control
-                                                as="select"
-                                                className="my-1 mr-sm-2"
-                                                id="inlineFormCustomSelectPref"
-                                                custom
-                                                
-                                            >
+                                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                                 <option value="0">Choose...</option>
                                                 <option value="1">Receptionist</option>
                                                 <option value="2">Guide</option>
-                                                <option value="3">Stuwart</option>
+                                                <option value="3">Steward</option>
                                                 <option value="3">Kitchen Staff</option>
                                         </Form.Control>
                                     </Form.Group>
@@ -80,6 +75,53 @@ const Users =()=>{
                            
                             
                     }
+                </div>
+                <br></br><br></br>
+                <div>
+                <Table striped bordered hover size="sm">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Mobile No</th>
+                        <th>Gender</th>
+                        <th>User Type</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>darshanaravindu9196@gmail.com</td>
+                            <td>071 125 3698</td>
+                            <td>Male</td>
+                            <td>Guid</td>
+                            <td><Button><FaTrash /></Button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>071 125 3698</td>
+                            <td>Female</td>
+                            <td>Steward</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>071 125 3698</td>
+                            <td>Female</td>
+                            <td>Steward</td>
+                        </tr>
+                    </tbody>
+                    </Table>
                 </div>
             </div>
             
