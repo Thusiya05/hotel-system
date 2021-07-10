@@ -19,6 +19,8 @@ import Footer from "./Components/Footer";
 import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
 import ManCalendar from "./Pages/ManCalendar"
+import Customers from "./Pages/Customers";
+
 import "./App.css"
 
 
@@ -45,7 +47,7 @@ function App() {
         <Route exact path = "/schedule/" component={Schedule} />
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/admin/controlPanel/users/" component={Users} />
-
+        <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
