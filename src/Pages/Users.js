@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
-import { Button,Form,Col,Table } from 'react-bootstrap'
-import { FaTrash } from "react-icons/fa";
+import { Button,Form,Col,Table, Collapse } from 'react-bootstrap'
+import { FaTrash,FaPen } from "react-icons/fa";
 
 
 const Users =()=>{
-    const [show,setShow]=useState(true)
+    const [show,setShow]=useState(false)
     return(
         <>
             <div className="users" >
@@ -14,10 +14,8 @@ const Users =()=>{
                 
                 <Title title="U S E R S"></Title>
                 <div>
-                    <Button variant="dark" onClick={()=>setShow(!show)} >+ Add New User</Button>
-                    <br></br>
-                    {
-                        show?
+                    <Button variant="dark" onClick={()=>setShow(!show)}aria-controls="form" aria-expanded={show}>+ Add New User</Button>
+                    <Collapse in={show}>
                         <div className="containerFluid" style={{boxShadow:'0 6px 6px gray',padding:'1rem'}}>
                             <Form>
                                 <Form.Row>
@@ -71,10 +69,9 @@ const Users =()=>{
                                     </Form.Group>
                                 </Form.Row>
                             </Form>
-                        </div>:null
-                           
-                            
-                    }
+                        </div>
+                    </Collapse>
+                        
                 </div>
                 <br></br><br></br>
                 <div>
@@ -100,7 +97,7 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Male</td>
                             <td>Guid</td>
-                            <td><Button><FaTrash /></Button></td>
+                            <td style={{textAlign:'center'}}><Button><FaTrash /></Button> <Button><FaPen /></Button></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -110,6 +107,7 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Female</td>
                             <td>Steward</td>
+                            <td style={{textAlign:'center'}}><Button><FaTrash /></Button> <Button><FaPen /></Button></td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -119,6 +117,7 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Female</td>
                             <td>Steward</td>
+                            <td style={{textAlign:'center'}}><Button><FaTrash /></Button> <Button ><FaPen /></Button></td>
                         </tr>
                     </tbody>
                     </Table>
