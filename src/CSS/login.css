@@ -38,22 +38,27 @@
     transition: transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
   }
+
+
   h2{
     width: 100%;
     font-size: 30px;
     text-align: center;
+    margin-top: -30px;
   }
   
   label{
     display: block;
-    width: 260px;
+    width: 300px;
     margin: -10px auto 0;
     text-align: center;
   }
   
   label span{
+    position: relative;
     font-size: 14px;
     font-weight: 600;
+    top: 8px;
     color: #202020;
     text-transform: uppercase;
   }
@@ -69,7 +74,7 @@
   }
   
   .submit{
-    margin-top: -5px;
+    margin-top: 15px;
     margin-bottom: 30px;
     color: rgb(255, 255, 255);
     text-transform: uppercase;
