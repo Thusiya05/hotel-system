@@ -42,6 +42,31 @@
     padding: 0px 10px;
 }
 
+.cms{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
+.administrative{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
+.archivedbookings{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
+.HotelConfig{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
+.guest{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
 body {
     margin: 0;
     padding: 0;
