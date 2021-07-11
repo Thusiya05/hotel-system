@@ -23,29 +23,29 @@ function AddCart(props) {
                           <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
-                                  <Form.Label><h6>Check-in Date</h6></Form.Label>
+                                  <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
                                   <Form.Control type="date" required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="formGridLastName">
-                                  <Form.Label><h6>Check-out Date</h6></Form.Label>
+                                  <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
                                   <Form.Control type="date" required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridEmail">
-                                  <Form.Label><h6>Number of People</h6></Form.Label>
+                                  <Form.Label style={{textAlign:'center'}}><h6>Number of People</h6></Form.Label>
                                   <Form.Control type="number" placeholder="1" required/>
                                   </Form.Group>
                                  
                                   <Form.Group as={Col} controlId="formGridMobile">
-                                  <Form.Label><h6>Number of Rooms</h6></Form.Label>
+                                  <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
                                   <Form.Control type="number" placeholder="1" required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridEmail">
-                                  <Form.Label><h6>Meal</h6>
+                                  <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
                                   <div>
                                             <br></br>
                                             <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board &nbsp; &nbsp; &nbsp; 
@@ -55,7 +55,7 @@ function AddCart(props) {
                                     </Form.Label>
                                   </Form.Group>
                                   <Form.Group as={Col} controlId="formGridMobile">
-                                  <Form.Label><h6>User Role</h6></Form.Label>
+                                  <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
                                   <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                               <option value="1">Receptionist</option>
                                               <option value="2">Guide</option>
