@@ -43,24 +43,18 @@ function AddCart(props) {
                                   <Form.Control type="number" placeholder="1" required/>
                                   </Form.Group>
                               </Form.Row>
-                              <Row>
-                                  <Col sm={6}>
-                                  <Form.Group controlId="formGridEmail">
-                                  <Form.Label><h6>Meal</h6></Form.Label>
-                                  <>
-                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-                                          <label class="form-check-label" for="exampleRadios1">
-                                              Full-Board
-                                          </label>
-                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-                                          <label class="form-check-label" for="exampleRadios2">
-                                              Half-Board
-                                          </label>
-                                      </>
+                              <Form.Row>
+                                  <Form.Group as={Col} controlId="formGridEmail">
+                                  <Form.Label><h6>Meal</h6>
+                                  <div>
+                                            <br></br>
+                                            <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board &nbsp; &nbsp; &nbsp; 
+                                            <input type="radio" name="meal" id="exampleRadios2" value="option2" />Half-Board
+
+                                    </div>
+                                    </Form.Label>
                                   </Form.Group>
-                                  </Col>
-                                  <Col sm={6}>
-                                  <Form.Group controlId="formGridMobile">
+                                  <Form.Group as={Col} controlId="formGridMobile">
                                   <Form.Label><h6>User Role</h6></Form.Label>
                                   <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                               <option value="1">Receptionist</option>
@@ -69,8 +63,7 @@ function AddCart(props) {
                                               <option value="3">Kitchen Staff</option>
                                       </Form.Control>
                                   </Form.Group>   
-                                  </Col>
-                              </Row>
+                              </Form.Row>
                               <div style={{textAlign:'center'}}>
                                   <Button type="submit" variant="info">Book Now</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                               </div>
