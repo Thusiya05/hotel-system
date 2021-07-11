@@ -11,7 +11,7 @@ function Reports() {
             <Sidebar/>
             <Title title="R E P O R T S"></Title>
             <div class="text-center">
-            <Button size="lg" href="./" variant="secondary" 
+            <Button size="lg" href="./income" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
@@ -20,7 +20,7 @@ function Reports() {
                 textAlign: "center",
                 }}>
             Income  
-            </Button> <Button size="lg" href="./manager" variant="secondary" 
+            </Button> <Button size="lg" href="./expenses" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
@@ -28,7 +28,7 @@ function Reports() {
                 marginTop: "10rem",
                 textAlign: "center",
                 }}
-                >Expenses</Button> <Button size="lg" href="./manager" variant="secondary" 
+                >Expenses</Button> <Button size="lg" href="./guestreport" variant="secondary" 
                 style={{
                     minHeight: "10rem",
                     minWidth: "10rem",

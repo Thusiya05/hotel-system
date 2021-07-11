@@ -20,8 +20,11 @@ import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
 import ManCalendar from "./Pages/ManCalendar"
 import Customers from "./Pages/Customers";
-
+import income from "./Pages/income";
+import expenses from "./Pages/expenses";
+import guestreport from "./Pages/guestreport";
 import "./App.css"
+
 
 
 
@@ -51,6 +54,9 @@ function App() {
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
+        <Route exact path ="/income" component={income} />
+        <Route exact path ="/expenses" component={expenses} />
+        <Route exact path ="/guestreport" component={guestreport} />
         <Route component={Error} />
         
        
