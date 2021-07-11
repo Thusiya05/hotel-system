@@ -30,13 +30,13 @@ export const ManSideBar = [
     {
         title: "Hotel Configuration",
         icon: <AiIcons.AiOutlineControl />,
-        link:'/HRManagement',
+        link:'/HotelConfig',
     },
 
     {
         title: "Guests",
         icon: <IoIcons.IoIosPeople />,
-        link:'/HRManagement',
+        link:'/guest',
     },
 
     {
@@ -48,19 +48,19 @@ export const ManSideBar = [
     {
         title: "CMS",
         icon: <BiIcons.BiBookContent />,
-        link:'/HRManagement',
+        link:'/cms',
     },
 
     {
         title: "Administrative",
         icon: <RiIcons.RiAdminFill />,
-        link:'/HRManagement',
+        link:'/Administrative',
     },
 
     {
         title: "Archived Bookings",
         icon: <FaIcons.FaFileArchive />,
-        link:'/HRManagement',
+        link:'/ArchivedBookings',
     },
 ] ;
 
