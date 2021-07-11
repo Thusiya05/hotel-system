@@ -123,7 +123,7 @@ function AddUser(props) {
                                     <Col sm={6}>
                                     <Form.Group controlId="formGridEmail">
                                     <Form.Label style={{textAlign:'center'}}><h6>Gender</h6></Form.Label>
-                                    <>
+                                    <div style={{textAlign:'center'}}>
                                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
                                             <label class="form-check-label" for="exampleRadios1">
                                                 Male
@@ -132,7 +132,7 @@ function AddUser(props) {
                                             <label class="form-check-label" for="exampleRadios2">
                                                 Fe-Male
                                             </label>
-                                        </>
+                                        </div>
                                     </Form.Group>
                                     </Col>
                                     <Col sm={6}>
