@@ -16,7 +16,7 @@ function AddCart(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New User
+          Add Cart Info
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -104,7 +104,7 @@ export default function Room({ room }){
 
       </div>
       <div>
-                    <Button variant="dark" onClick={()=>setCart(true)}>+ Add New User</Button>
+                    <Button variant="dark" onClick={()=>setCart(true)}>Add To Cart</Button>
                     <AddCart 
                         show={cart}
                         onHide={() => setCart(false)}
