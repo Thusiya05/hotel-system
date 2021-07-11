@@ -91,6 +91,7 @@ nav img{
 
 .jumbotron h2{
     font-size: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     font-family:monospace;
     color:ghostwhite;
@@ -250,7 +251,7 @@ nav img{
   }
   .jumbotron h2{
     /* margin-top: 50px; */
-    top: 45%;
+    top: 35%;
     left: 0;
     right: 0;
     position: absolute;
