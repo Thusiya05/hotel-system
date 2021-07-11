@@ -42,11 +42,11 @@ function App() {
         <Route exact path ="/admin/" component={AdminLogin} />
         <Route exact path = "/reports/" component={Reports} />
         <Route exact path ="/admin/"  component={Dashboard} />
-        <Route path ="/hrmanagement/" component={HRManagement} />
+        {/* <Route path ="/hrmanagement/" component={HRManagement} /> */}
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
         <Route exact path = "/schedule/" component={Schedule} />
         <Route exact path = "/statistics/" component={Statistics} />
-        <Route exact path = "/admin/controlPanel/users/" component={Users} />
+        <Route exact path = "/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
