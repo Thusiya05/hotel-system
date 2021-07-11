@@ -161,61 +161,7 @@ function AddUser(props) {
   }
 
 const Users =()=>{
-//     const popover = (
-//         <Popover id="popover-basic">
-//           <Popover.Title as="h2">Edit User</Popover.Title>
-//             <Popover.Content>
-//                 <div className="containerFluid" style={{padding:'1rem'}}>
-//                     <Form>
-//                         <Form.Row  controlId="editFirstName">
-//                             <Form.Label><h6>First Name</h6></Form.Label>
-//                             <Form.Control type="text" />
-//                         </Form.Row>
-//                         <Form.Row  controlId="editLastName">  
-//                             <Form.Label><h6>Last Name</h6></Form.Label>
-//                             <Form.Control type="text" />
-//                         </Form.Row>
-//                         <Form.Row  controlId="editEmail">
-//                             <Form.Label><h6>Email</h6></Form.Label>
-//                             <Form.Control type="Email" placeholder="Enter Email"/>
-//                         </Form.Row>
-//                         <Form.Row  controlId="editMobile">
-//                             <Form.Label><h6>Mobile No:</h6></Form.Label>
-//                             <Form.Control type="text" placeholder="07x xxx xxx" />
-//                         </Form.Row>
-//                         <Form.Row  controlId="editGender">
-//                             <Form.Label><h6>Gender</h6></Form.Label>
-//                                 <Form.Group as={Col} className="form-check">
-//                                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-//                                     <label className="form-check-label" for="exampleRadios1"> Male</label>
-//                                 </Form.Group>
-//                                 <Form.Group as={Col} className="form-check">
-//                                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-//                                     <label className="form-check-label" for="exampleRadios2"> Fe-Male</label>  
-//                                 </Form.Group>
-//                             </Form.Row>
 
-//                             <Form.Row>
-//                             <Form.Label><h6>User Role</h6></Form.Label>
-//                                 <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-//                                     <option value="0">Choose...</option>
-//                                     <option value="1">Receptionist</option>
-//                                     <option value="2">Guide</option>
-//                                     <option value="3">Steward</option>
-//                                     <option value="3">Kitchen Staff</option>
-//                                 </Form.Control>
-
-//                         </Form.Row>
-//                         <br></br>
-//                         <div style={{textAlign:'center'}}>
-//                             <Button type="submit" variant="info">Update</Button> <Button type="cancel" variant="danger">Cancel</Button>
-//                         </div>
-                        
-//                     </Form>
-//                 </div>
-//         </Popover.Content>
-// </Popover>
-// );
     const [show,setShow]=useState(false)
     const [editshow,setEditShow]=useState(false)
     return(
@@ -229,69 +175,7 @@ const Users =()=>{
                     <AddUser 
                         show={show}
                         onHide={() => setShow(false)}
-                    />
-                    
-                    {/* <Collapse in={show}>
-                        <div className="containerFluid" style={{boxShadow:'0 6px 6px gray',padding:'1rem'}}>
-                            <Form>
-                                <Form.Row>
-                                    <Form.Group as={Col} controlId="formGridFirstName">
-                                    <Form.Label><h6>First Name</h6></Form.Label>
-                                    <Form.Control type="text" />
-                                    </Form.Group>
-
-                                    <Form.Group as={Col} controlId="formGridLastName">
-                                    <Form.Label><h6>Last Name</h6></Form.Label>
-                                    <Form.Control type="text" />
-                                    </Form.Group>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Form.Group as={Col} controlId="formGridEmail">
-                                    <Form.Label><h6>Email</h6></Form.Label>
-                                    <Form.Control type="Email" placeholder="Enter Email"/>
-                                    </Form.Group>
-
-                                    <Form.Group as={Col} controlId="formGridMobile">
-                                    <Form.Label><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control type="text" placeholder="07x xxx xxx" />
-                                    </Form.Group>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Form.Group as={Col} controlId="formGridEmail">
-                                    <Form.Label><h6>Gender</h6></Form.Label>
-                                    <div class="form-check" style={{display:'inline-flex'}}>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Male
-                                            </label>
-                                            </div>
-                                            <div class="form-check" style={{display:'inline-flex'}}>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                Fe-Male
-                                            </label>
-                                        </div>
-                                    </Form.Group>
-
-                                    <Form.Group as={Col} controlId="formGridMobile">
-                                    <Form.Label><h6>User Role</h6></Form.Label>
-                                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                                <option value="0">Choose...</option>
-                                                <option value="1">Receptionist</option>
-                                                <option value="2">Guide</option>
-                                                <option value="3">Steward</option>
-                                                <option value="3">Kitchen Staff</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                                </Form.Row>
-                                <div style={{textAlign:'center'}}>
-                                    <Button type="submit" variant="info">Submit</Button> <Button type="cancel" variant="danger">Cancel</Button>
-                                </div>
-                                
-                            </Form>
-                        </div>
-                    </Collapse> */}
-                        
+                    />    
                 </div>
                 <br></br><br></br>
                 <div>
