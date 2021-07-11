@@ -1,11 +1,20 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Hero from '../Components/Hero'
 import Banner from "../Components/Banner"
 import FeaturedRooms from '../Components/FeaturedRooms'
 import RoomContainer from '../Components/RoomContainer'
 import NavBar from "../Components/NavBar"
+import { Button,Form,Col, Row, Modal } from 'react-bootstrap'
+
+
+
+
 
 const Rooms = () => {
+
+    
+  
+    
     return (
         <>
 
@@ -24,6 +33,7 @@ const Rooms = () => {
 
             <FeaturedRooms />
             <RoomContainer />
+           
 
             </div>
            
