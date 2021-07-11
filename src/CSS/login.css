@@ -46,12 +46,22 @@
     text-align: center;
     margin-top: -30px;
   }
+
+  .signinform{
+    position: relative;
+    margin-left: 50px;
+  }
   
-  label{
-    display: block;
-    width: 300px;
-    margin: -30px auto 0;
+  .signinform > label{
+    /* display: block; */
+    width: 260px;
+    margin: 0px auto 0;
     text-align: center;
+  }
+
+  .submitButton{
+    position: absolute;
+    left: 150px;
   }
   
   label span{
@@ -63,16 +73,18 @@
     text-transform: uppercase;
   }
   
+
   input{
     display: block;
-    width: 100%;
+    width: 90%;    
+    margin-left: 0px;
     margin-top: 5px;
     font-size: 16px;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(109, 93, 93, 0.4);
-    text-align: center;
+    /* text-align: center; */
   }
-  
+
   .submit{
     margin-top: 15px;
     margin-bottom: 30px;

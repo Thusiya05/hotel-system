@@ -388,7 +388,7 @@ export default class Login extends Component {
                         <div className="login-form sign-up">
                             <h2 style={{ color:"black" }}><b>Sign Up</b></h2>
 
-                            <form onSubmit={this.handleSubmit} noValidate>
+                            <form class="signinform" onSubmit={this.handleSubmit} noValidate>
                                 <label>
                                     <span>First Name</span>
                                     <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate required />
@@ -486,7 +486,7 @@ export default class Login extends Component {
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.confirmPassword}</span>}
                                 
                                 </label>
-                                <div class="text-center">
+                                <div class="submitButton">
                                     <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.signup}>Sign Up Now</Button>
                                 </div>
                             </form>    
