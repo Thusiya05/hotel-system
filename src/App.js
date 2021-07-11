@@ -23,6 +23,11 @@ import Customers from "./Pages/Customers";
 import income from "./Pages/income";
 import expenses from "./Pages/expenses";
 import guestreport from "./Pages/guestreport";
+import guest from "./Pages/guest";
+import cms from "./Pages/cms";
+import ArchivedBookings from "./Pages/ArchivedBookings";
+import Administrative from "./Pages/Administrative";
+import HotelConfig from "./Pages/HotelConfig";
 import "./App.css"
 
 
@@ -57,6 +62,11 @@ function App() {
         <Route exact path ="/income" component={income} />
         <Route exact path ="/expenses" component={expenses} />
         <Route exact path ="/guestreport" component={guestreport} />
+        <Route exact path ="/guest" component={guest} />
+        <Route exact path ="/cms" component={cms} />
+        <Route exact path ="/HotelConfig" component={HotelConfig} />
+        <Route exact path ="/Administrative" component={Administrative} />
+        <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />
         <Route component={Error} />
         
        
