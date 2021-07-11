@@ -348,8 +348,9 @@ export default class Login extends Component {
         </NavBar>
             <div className="login">
                 <div className="login-cont">
-                    <div class="loginform" className="login-form login-sign-in">
+                    <div id="loginform" className="login-form login-sign-in">
                         <h2 style={{ color:"black" }}><b>Sign In</b></h2>
+                          <div class="loginFormContainer">
                             <label>
                                 <span>Email Address</span>
                                 <input type="email" name="Email" required></input>
@@ -358,6 +359,10 @@ export default class Login extends Component {
                                 <span>Password</span>
                                 <input type="password" name="password"></input>
                             </label>
+
+                            <br></br>
+                            <br></br>
+                            
                             <div class="text-center">
                             <Link to="/manager"><Button variant="outline-dark" style={{width:"200px"}} className="submit">Sign In</Button></Link>
                             </div>
@@ -369,6 +374,7 @@ export default class Login extends Component {
                                     <li><img src={instagram} alt="instagram.png"></img></li>
                                 </ul>
                             </div>
+                          </div>  
                     </div>
                     <div className="sub-cont">
                         <div className="login-img" style={{ backgroundImage: "url(/sakshi.jpg)" }}>
@@ -395,7 +401,7 @@ export default class Login extends Component {
                                     
                                     {errors.firstName.length > 0 && 
                                                      <span id="popup" className='error'>{errors.firstName}</span>}
-{/* style={{fontSize:"10px", textTransform:'lowercase', color:'red'}} */}
+
                                 </label>
                                 <label>
                                     <span>Last Name</span>

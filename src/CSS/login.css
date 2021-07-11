@@ -70,13 +70,17 @@
   .signin_box{
     height: 100%;
   }
+  
+  .loginFormContainer{
+    margin-top: 10%;
+  }
 
-  .loginform > label{
+  .loginFormContainer > label{
     /* display: block; */
-    position: fixed;
-    width: 260px;
-    margin-left: 15px auto 0;
-    text-align: center;
+    /* position: fixed; */
+    width: 300px;
+    margin-left: 25%;
+    /* text-align: center; */
   }
 
   .signinform > label{
@@ -85,6 +89,11 @@
     margin: 0px auto 0;
     text-align: center;
   }
+  
+    .signInButton{
+      /* position: relative; */
+      /* top: auto;  */
+    }
 
   .submitButton{
     position: absolute;
