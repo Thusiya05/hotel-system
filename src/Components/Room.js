@@ -21,6 +21,7 @@ export default function Room({ room }){
         </Link>
 
       </div>
+      <button className='btn-primary'>Add to Cart</button>
       <p className="room-info">{name}</p>
     </article>
   
