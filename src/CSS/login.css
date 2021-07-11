@@ -90,10 +90,10 @@
     text-align: center;
   }
   
-    .signInButton{
-      /* position: relative; */
-      /* top: auto;  */
-    }
+    /* .signInButton{
+      position: relative; */
+      /* top: auto; 
+    } */
 
   .submitButton{
     position: absolute;
@@ -110,7 +110,7 @@
   }
   
 
-  input{
+  .login > input{
     display: block;
     width: 90%;    
     margin-left: 0px;
