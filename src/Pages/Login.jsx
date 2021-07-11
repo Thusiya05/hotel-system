@@ -24,6 +24,19 @@ export default class Login extends Component {
 		document.querySelector('.login-cont').classList.toggle('s-signup')
       }
 
+
+    //   async componentDidMount() {
+    //     // GET request using fetch with async/await
+    //     const response = await fetch('http://localhost:3030/customers'
+    //     ).then((result)=>{
+    //       result.json().then((resp)=>{
+    //         this.setState.({data:resp})
+    //       })
+    //     })
+    //     // const data = await response.json();
+    //     // this.setState({ totalReactPackages: data.total })
+        
+    // }
       
 
       constructor(props) {
@@ -33,18 +46,33 @@ export default class Login extends Component {
           lastName: "",
           email: "",
           age: "",
-          addr: "",
+          no: "",
+          lane: "",
+          street: "",
+          Bdate: "",
+          Bmonth: "",
+          Byear: "",
           nic: "",
           telephoneNumber: "",
           password: "",
           confirmPassword: "",
 
+          NICfromDB: "",
+          isLoaded: false,
+
+          data: false,
+
           errors: {
             firstName: '',
-            email: '',
             lastName: '',
-            addr: '',
+            email: '',
             age: '',
+            no: "",
+            lane: "",
+            street: "",
+            Bdate: "",
+            Bmonth: "",
+            Byear: "",
             nic: '',
             telephoneNumber: '',
             password: '',
@@ -97,7 +125,7 @@ export default class Login extends Component {
             break;
 
           case 'age': 
-          var letters = /^[1-9]+$/;
+          var letters = /^[0-9]+$/;
             errors.age = 
             !value.match(letters)
                 ? 'invalid age!'
@@ -105,34 +133,83 @@ export default class Login extends Component {
                 this.setState({age: event.target.value});
             break;
 
-          case 'addr': 
-            errors.addr = 
+          case 'no': 
+            errors.no = 
               value.length < 1
                 ? 'The field must be filled!'
                 : '';
-                this.setState({addr: event.target.value});
+                this.setState({no: event.target.value});
+            break;
+
+          case 'lane': 
+            errors.lane = 
+              value.length < 1
+                ? 'The field must be filled!'
+                : '';
+                this.setState({lane: event.target.value});
+            break;
+
+          case 'street': 
+            errors.street = 
+              value.length < 1
+                ? 'The field must be filled!'
+                : '';
+                this.setState({street: event.target.value});
+            break;
+
+            case 'Bdate': 
+            var letters = /^[0-9]+$/;
+              errors.Bdate = 
+              !value.match(letters) 
+                 ? "Invalid date!"
+                 : '';
+                this.setState({Bdate: event.target.value});
+            break;
+
+          case 'Bmonth': 
+          var letters = /^[0-9]+$/;
+          errors.Bmonth = 
+          !value.match(letters) 
+              ? "Invalid month!"
+              : '';
+                this.setState({Bmonth: event.target.value});
+            break;
+
+          case 'Byear': 
+          var letters = /^[0-9]+$/;
+          errors.Byear = 
+          !value.match(letters) 
+              ? "Invalid year!"
+              : '';
+                this.setState({Byear: event.target.value});
             break;
             
           case 'nic': 
-          var letters = /^[1-9Vv]+$/;
+          var letters = /^[0-9Vv]+$/;
             errors.nic = 
             !value.match(letters) 
                 ? "nic don't match!"
                 : '';
                 this.setState({nic: event.target.value});
-                  // axios.get('http://localhost:3030/customers', {
-                  //   param: {
-                  //     nic : this.state.nic 
+                
+                  // componentDidMount(){ 
+                  //   const url = "http://localhost:3030/customers"; 
+                  //   const response = await fetch(url);
+                  //   const data = await response.json();
+                  //   this.setState({NICfromDB: data.result[8]});
+                  // }
+
+                  //   if(this.state.nic==NICfromDB){
+                  //     errors.nic = "nic already exists!"
+                  //   }else{
+                  //     errors.nic = "nic correct!"
                   //   }
-                  // })
-                  // console.log(param)
-                  // // .then(function (param) {
-                  // //   console.log(param);
-                  // // })
+                
+
             break;
 
           case 'telephoneNumber': 
-          var letters = /^[1-9]+$/;
+          var letters = /^[0-9]+$/;
             errors.telephoneNumber = 
                !value.match(letters)
                 ? "telephone number don't match!"
@@ -212,7 +289,12 @@ export default class Login extends Component {
                     "cusLastName": this.state.lastName,
                     "email": this.state.email,
                     "age": this.state.age,
-                    "address": this.state.addr,
+                    "addressLineOne": this.state.no,
+                    "addressLineTwo": this.state.lane,
+                    "addressLineThree": this.state.street,
+                    "dobDate": this.state.Bdate,
+                    "dobMonth": this.state.Bmonth,
+                    "dobYear": this.state.Byear,
                     "nic": this.state.nic,
                     "teleNumber": this.state.telephoneNumber,
                     "password": this.state.password
@@ -249,6 +331,8 @@ export default class Login extends Component {
 
    
     render() {
+      const data=this.state.data; 
+      console.warn(data);
         
         const {errors} = this.state;
 
@@ -307,7 +391,7 @@ export default class Login extends Component {
                             <form onSubmit={this.handleSubmit} noValidate>
                                 <label>
                                     <span>First Name</span>
-                                    <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate />
+                                    <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate required />
                                     
                                     {errors.firstName.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}} className='error'>{errors.firstName}</span>}
@@ -315,7 +399,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Last Name</span>
-                                    <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate />
+                                    <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate required/>
                                 
                                     {errors.lastName.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.lastName}</span>}
@@ -323,7 +407,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Email</span>
-                                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange} noValidate />
+                                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange} noValidate required/>
                                 
                                 {errors.email.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.email}</span>}
@@ -331,7 +415,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Age</span>
-                                    <input type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange} noValidate />
+                                    <input type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange} noValidate required/>
                                 
                                 {errors.age.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.age}</span>}
@@ -339,15 +423,40 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Address</span>
-                                    <input type="text" name="addr" value={this.state.addr} onChange={this.handleChange} noValidate />
-                                
-                                {errors.addr.length > 0 && 
-                                                     <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.addr}</span>}
-                                
+                                    <input type="text" placeholder="No:" name="no" value={this.state.no} onChange={this.handleChange} noValidate required/>                                   
+                                    {errors.no.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.no}</span>}
+                                    
+                                    <input type="text" placeholder="Lane:" name="lane" value={this.state.lane} onChange={this.handleChange} noValidate  required/>                                    
+                                    {errors.lane.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.lane}</span>}
+
+                                    <input type="text" placeholder="Street:" name="street" value={this.state.street} onChange={this.handleChange} noValidate  required/>                                    
+                                    {errors.street.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.street}</span>}
+                                    
                                 </label>
+
+                                <label>
+                                    <span>Date of Birth</span>
+                                    <input type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange} noValidate  required/>                                   
+                                    {errors.Bdate.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.Bdate}</span>}
+                                    
+                                    <input type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange} noValidate required />                                    
+                                    {errors.Bmonth.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.Bmonth}</span>}
+
+                                    <input type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange} noValidate  required/>                                    
+                                    {errors.Byear.length > 0 && 
+                                                        <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.Byear}</span>}
+                                    
+                                </label>
+
+
                                 <label>
                                     <span>NIC</span>
-                                    <input type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange} noValidate />
+                                    <input type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.nic.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.nic}</span>}
@@ -355,7 +464,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Telephone Number</span>
-                                    <input type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange} noValidate />
+                                    <input type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.telephoneNumber.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.telephoneNumber}</span>}
@@ -363,7 +472,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Password</span>
-                                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} noValidate />
+                                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.password.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.password}</span>}
@@ -371,7 +480,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Confirm Password</span>
-                                    <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate />
+                                    <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate required />
                                 
                                 {errors.confirmPassword.length > 0 && 
                                                      <span style={{fontSize:"10px", textTransform:'lowercase', color:'red'}}  className='error'>{errors.confirmPassword}</span>}
