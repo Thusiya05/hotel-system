@@ -20,8 +20,16 @@ import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
 import ManCalendar from "./Pages/ManCalendar"
 import Customers from "./Pages/Customers";
-
+import income from "./Pages/income";
+import expenses from "./Pages/expenses";
+import guestreport from "./Pages/guestreport";
+import guest from "./Pages/guest";
+import cms from "./Pages/cms";
+import ArchivedBookings from "./Pages/ArchivedBookings";
+import Administrative from "./Pages/Administrative";
+import HotelConfig from "./Pages/HotelConfig";
 import "./App.css"
+
 
 
 
@@ -42,15 +50,23 @@ function App() {
         <Route exact path ="/admin/" component={AdminLogin} />
         <Route exact path = "/reports/" component={Reports} />
         <Route exact path ="/admin/"  component={Dashboard} />
-        <Route path ="/hrmanagement/" component={HRManagement} />
+        {/* <Route path ="/hrmanagement/" component={HRManagement} /> */}
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
         <Route exact path = "/schedule/" component={Schedule} />
         <Route exact path = "/statistics/" component={Statistics} />
-        <Route exact path = "/admin/controlPanel/users/" component={Users} />
+        <Route exact path = "/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
+        <Route exact path ="/income" component={income} />
+        <Route exact path ="/expenses" component={expenses} />
+        <Route exact path ="/guestreport" component={guestreport} />
+        <Route exact path ="/guest" component={guest} />
+        <Route exact path ="/cms" component={cms} />
+        <Route exact path ="/HotelConfig" component={HotelConfig} />
+        <Route exact path ="/Administrative" component={Administrative} />
+        <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />
         <Route component={Error} />
         
        
