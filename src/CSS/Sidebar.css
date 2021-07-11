@@ -24,6 +24,11 @@
     display: table; */
 }
 
+.customers{
+    margin-left: 250px;
+    padding: 0px 10px;
+}
+
 .statistics{
 
     /* width: 100vw;
