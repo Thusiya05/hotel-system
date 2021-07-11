@@ -1,11 +1,93 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 //import { memo } from "react";
+import { Button,Form,Col, Row, Modal } from 'react-bootstrap'
+
+
+function AddCart(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Add New User
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+                          <Form>
+                              <Form.Row>
+                                  <Form.Group as={Col} controlId="formGridFirstName">
+                                  <Form.Label><h6>First Name</h6></Form.Label>
+                                  <Form.Control type="text" required/>
+                                  </Form.Group>
+
+                                  <Form.Group as={Col} controlId="formGridLastName">
+                                  <Form.Label><h6>Last Name</h6></Form.Label>
+                                  <Form.Control type="text" required/>
+                                  </Form.Group>
+                              </Form.Row>
+                              <Form.Row>
+                                  <Form.Group as={Col} controlId="formGridEmail">
+                                  <Form.Label><h6>Email</h6></Form.Label>
+                                  <Form.Control type="Email" placeholder="Enter Email" required/>
+                                  </Form.Group>
+                                 
+                                  <Form.Group as={Col} controlId="formGridMobile">
+                                  <Form.Label><h6>Mobile No:</h6></Form.Label>
+                                  <Form.Control type="text" placeholder="07x xxx xxx" required/>
+                                  </Form.Group>
+                              </Form.Row>
+                              <Row>
+                                  <Col sm={6}>
+                                  <Form.Group controlId="formGridEmail">
+                                  <Form.Label><h6>Gender</h6></Form.Label>
+                                  <>
+                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
+                                          <label class="form-check-label" for="exampleRadios1">
+                                              Male
+                                          </label>
+                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
+                                          <label class="form-check-label" for="exampleRadios2">
+                                              Fe-Male
+                                          </label>
+                                      </>
+                                  </Form.Group>
+                                  </Col>
+                                  <Col sm={6}>
+                                  <Form.Group controlId="formGridMobile">
+                                  <Form.Label><h6>User Role</h6></Form.Label>
+                                  <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                              <option value="1">Receptionist</option>
+                                              <option value="2">Guide</option>
+                                              <option value="3">Steward</option>
+                                              <option value="3">Kitchen Staff</option>
+                                      </Form.Control>
+                                  </Form.Group>   
+                                  </Col>
+                              </Row>
+                              <div style={{textAlign:'center'}}>
+                                  <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                              </div>
+                              
+                          </Form>
+      </Modal.Body>
+      <Modal.Footer>
+          Adventure Base Camp, Kitulgala.
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 
 export default function Room({ room }){
   const { name, slug, images, price } = room;
+  const [cart,setCart]=useState(false);
   // console.log(name);
   return (
     
@@ -21,7 +103,13 @@ export default function Room({ room }){
         </Link>
 
       </div>
-      <button className='btn-primary'>Add to Cart</button>
+      <div>
+                    <Button variant="dark" onClick={()=>setCart(true)}>+ Add New User</Button>
+                    <AddCart 
+                        show={cart}
+                        onHide={() => setCart(false)}
+                    ></AddCart>
+            </div>
       <p className="room-info">{name}</p>
     </article>
   
