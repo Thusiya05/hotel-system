@@ -282,7 +282,7 @@ hr.new1 {
   padding: 5rem 0;
 }
 .services {
-  background:#e3f2fd;
+  background:linear-gradient(90deg, rgb(253, 221, 221) 0%, rgb(255, 239, 239) 50%, rgba(255, 255, 255, 1) 100%);
   text-align: center;
 }
 .services-center {
@@ -547,7 +547,7 @@ hr.new1 {
 }
 .activity-info{
   padding: 3rem;
-  background-color:#e3f2fd ;
+  background:linear-gradient(90deg, rgb(253, 221, 221) 0%, rgb(255, 239, 239) 50%, rgba(255, 255, 255, 1) 100%);
 }
 .activity-info img{
     width: 20rem;
