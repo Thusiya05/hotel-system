@@ -14,98 +14,132 @@ function EditCustomer(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Update User Profile
+            Update Customer Details
           </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <Form>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridFirstName">
-                    <Form.Label><h6>First Name</h6></Form.Label>
-                    <Form.Control type="text" required/>
-                    </Form.Group>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label><h6>First Name</h6></Form.Label>
+                            <Form.Control type="text" required/>
+                            </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridLastName">
-                    <Form.Label><h6>Last Name</h6></Form.Label>
-                    <Form.Control type="text" required/>
-                    </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridEmail">
-                    <Form.Label><h6>Email</h6></Form.Label>
-                    <Form.Control type="Email" placeholder="Enter Email" required/>
-                    </Form.Group>
-                    
-                    <Form.Group as={Col} controlId="formGridMobile">
-                    <Form.Label><h6>Mobile No:</h6></Form.Label>
-                    <Form.Control type="text" placeholder="07x xxx xxx" required/>
-                    </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridFirstName">
-                    <Form.Label><h6>Check-in Date</h6></Form.Label>
-                    <Form.Control type="date" required/>
-                    </Form.Group>
+                            <Form.Group as={Col} controlId="formGridLastName">
+                            <Form.Label><h6>Last Name</h6></Form.Label>
+                            <Form.Control type="text" required/>
+                            </Form.Group>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label><h6>Email</h6></Form.Label>
+                            <Form.Control type="Email" placeholder="Enter Email" required/>
+                            </Form.Group>
+                            
+                            <Form.Group as={Col} controlId="formGridMobile">
+                            <Form.Label><h6>Mobile No:</h6></Form.Label>
+                            <Form.Control type="text" placeholder="07x xxx xxx" required/>
+                            </Form.Group>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label><h6>Check-in Date</h6></Form.Label>
+                            <Form.Control type="date" required/>
+                            </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridLastName">
-                    <Form.Label><h6>Check-out Date</h6></Form.Label>
-                    <Form.Control type="date" required/>
-                    </Form.Group>
-                </Form.Row>
-                <Row>
-                    <Col sm={6}>
-                    <Form.Group controlId="formGridEmail">
-                    <Form.Label><h6>Gender</h6></Form.Label>
-                    <>
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Male
-                            </label>
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-                            <label class="form-check-label" for="exampleRadios2">
-                                Fe-Male
-                            </label>
-                        </>
-                    </Form.Group>
-                    </Col>
-                    <Col sm={6}>
-                    <Form.Group controlId="formGridMobile">
-                    <Form.Label><h6>User Role</h6></Form.Label>
-                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                <option value="1">Receptionist</option>
-                                <option value="2">Guide</option>
-                                <option value="3">Steward</option>
-                                <option value="3">Kitchen Staff</option>
-                        </Form.Control>
-                    </Form.Group>   
-                    </Col>
-                </Row>
-                <div style={{textAlign:'center'}}>
-                    <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
-                </div>
-                
-            </Form>
-        </Modal.Body>
-        <Modal.Footer>
-            Adventure Base Camp, Kitulgala.
-        </Modal.Footer>
-      </Modal>
+                            <Form.Group as={Col} controlId="formGridLastName">
+                            <Form.Label><h6>Check-out Date</h6></Form.Label>
+                            <Form.Control type="date" required/>
+                            </Form.Group>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label><h6>NIC</h6></Form.Label>
+                            <Form.Control type="text" required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridMobile">
+                            <Form.Label><h6>Room</h6></Form.Label>
+                            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                        <option value="0">Choose..</option>
+                                        <option value="1">Single Room</option>
+                                        <option value="2">Double Room</option>
+                                        <option value="2">Family Room</option>
+                                        <option value="2">Camping</option>
+                                </Form.Control>
+                            </Form.Group>   
+                        </Form.Row>
+                        <Row>
+                            <Col sm={6}>
+                            <Form.Group controlId="formGridEmail">
+                            <Form.Label><h6>Meal</h6></Form.Label>
+                            <>
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Full board
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Half board
+                                    </label>
+                                </>
+                            </Form.Group>
+                            </Col>
+                            <Col sm={6}>
+                            <Form.Group controlId="formGridMobile">
+                            <Form.Label><h6>Status</h6></Form.Label>
+                            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                        <option value="0">Choose..</option>
+                                        <option value="1">In progress</option>
+                                        <option value="2">Active</option>
+                                        <option value="3">Checkout</option>
+                                </Form.Control>
+                            </Form.Group>   
+                            </Col>
+                        </Row>
+                        <div style={{textAlign:'center'}}>
+                            <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                        </div>
+                        
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    Adventure Base Camp, Kitulgala.
+                </Modal.Footer>
+            </Modal>
     );
   }
 
 const Customers=()=>{
-    const[show,setShow]=useState(false)
+    const[show,setShow]=useState(true)
+    const[open,setOpen]=useState(false)
     const [editshow,setEditShow]=useState(false)
     return(
         <>
             <div className="customers">
                 <Sidebar />
                 <Title title="C u s t o m e r s"></Title>
+                <br></br>
                 <div>
-                    <Button variant="dark" onClick={()=>setShow(!show)}>Checkin Customers</Button>
+                    <div className="row">
+                        <div className="col-md-3">
+                            <Button variant="secondary" onClick={()=>setShow(!show)}>Check In Customers</Button>
+                        </div>  
+                        <div className="col-md-3">
+                            <Button variant="secondary" onClick={()=>setShow(!show)}>Pending Customers</Button>
+                        </div>  
+                        <div className="col-md-3">
+                            <Button variant="secondary" onClick={()=>setShow(!show)}>Checkin Customers</Button>
+                        </div>
+                        <div className="col-md-3">
+                            <Button variant="dark" onClick={()=>setShow(!show)}>+ Add New Customer</Button>
+                        </div>   
+                    </div>
+                    <br></br>
                         {
                             show?
                             <div>
+                            <h4 style={{textAlign:'center'}}>Check In Customers</h4>
                             <Table striped bordered hover size="sm" responsive>
                                 <thead>
                                     <tr>
