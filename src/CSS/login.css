@@ -87,7 +87,7 @@
     /* display: block; */
     width: 260px;
     margin: 0px auto 0;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .submitButton{
@@ -105,16 +105,15 @@
   }
   
 
-  /* input{
+  .Login-Signin-inputs{
     display: block;
     width: 90%;    
     margin-left: 0px;
     margin-top: 5px;
     font-size: 16px;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(109, 93, 93, 0.4); */
-    /* text-align: center; */
-  /* } */
+    border-bottom: 1px solid rgba(109, 93, 93, 0.4);  
+   }
 
   .submit{
     margin-top: 15px;
