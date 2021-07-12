@@ -353,11 +353,11 @@ export default class Login extends Component {
                           <div class="loginFormContainer">
                             <label>
                                 <span>Email Address</span>
-                                <input type="email" name="Email" required></input>
+                                <input class="Login-Signin-inputs" type="email" name="Email" required></input>
                             </label>
                             <label>
                                 <span>Password</span>
-                                <input type="password" name="password"></input>
+                                <input class="Login-Signin-inputs" type="password" name="password"></input>
                             </label>
 
                             <br></br>
@@ -397,7 +397,7 @@ export default class Login extends Component {
                             <form class="signinform" onSubmit={this.handleSubmit} noValidate>
                                 <label>
                                     <span>First Name</span>
-                                    <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate required />
+                                    <input class="Login-Signin-inputs" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate required />
                                     
                                     {errors.firstName.length > 0 && 
                                                      <span id="popup" className='error'>{errors.firstName}</span>}
@@ -405,7 +405,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Last Name</span>
-                                    <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate required/>
                                 
                                     {errors.lastName.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.lastName}</span>}
@@ -413,7 +413,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Email</span>
-                                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="email" name="email" value={this.state.email} onChange={this.handleChange} noValidate required/>
                                 
                                 {errors.email.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.email}</span>}
@@ -421,7 +421,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Age</span>
-                                    <input type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange} noValidate required/>
                                 
                                 {errors.age.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.age}</span>}
@@ -429,15 +429,15 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Address</span>
-                                    <input type="text" placeholder="No:" name="no" value={this.state.no} onChange={this.handleChange} noValidate required/>                                   
+                                    <input class="Login-Signin-inputs" type="text" placeholder="No:" name="no" value={this.state.no} onChange={this.handleChange} noValidate required/>                                   
                                     {errors.no.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.no}</span>}
                                     
-                                    <input type="text" placeholder="Lane:" name="lane" value={this.state.lane} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" placeholder="Lane:" name="lane" value={this.state.lane} onChange={this.handleChange} noValidate  required/>                                    
                                     {errors.lane.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.lane}</span>}
 
-                                    <input type="text" placeholder="Street:" name="street" value={this.state.street} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" placeholder="Street:" name="street" value={this.state.street} onChange={this.handleChange} noValidate  required/>                                    
                                     {errors.street.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.street}</span>}
                                     
@@ -445,15 +445,15 @@ export default class Login extends Component {
 
                                 <label>
                                     <span>Date of Birth</span>
-                                    <input type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange} noValidate  required/>                                   
+                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange} noValidate  required/>                                   
                                     {errors.Bdate.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Bdate}</span>}
                                     
-                                    <input type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange} noValidate required />                                    
+                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange} noValidate required />                                    
                                     {errors.Bmonth.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Bmonth}</span>}
 
-                                    <input type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange} noValidate  required/>                                    
                                     {errors.Byear.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Byear}</span>}
                                     
@@ -462,7 +462,7 @@ export default class Login extends Component {
 
                                 <label>
                                     <span>NIC</span>
-                                    <input type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.nic.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.nic}</span>}
@@ -470,7 +470,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Telephone Number</span>
-                                    <input type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.telephoneNumber.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.telephoneNumber}</span>}
@@ -478,7 +478,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Password</span>
-                                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="password" name="password" value={this.state.password} onChange={this.handleChange} noValidate  required/>
                                 
                                 {errors.password.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.password}</span>}
@@ -486,7 +486,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Confirm Password</span>
-                                    <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate required />
+                                    <input class="Login-Signin-inputs" type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate required />
                                 
                                 {errors.confirmPassword.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.confirmPassword}</span>}
