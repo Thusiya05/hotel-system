@@ -48,7 +48,8 @@ function AddCart(props) {
                                   <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
                                   <div>
                                             <br></br>
-                                            <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board &nbsp; &nbsp; &nbsp; 
+                                            <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board
+                                            <br></br>
                                             <input type="radio" name="meal" id="exampleRadios2" value="option2" />Half-Board
 
                                     </div>
