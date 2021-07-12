@@ -71,9 +71,9 @@ function App() {
         
        
       </Switch> 
-        <div>
+        {/* <div>
           <Footer />
-        </div>
+        </div> */}
     </div>
 
     

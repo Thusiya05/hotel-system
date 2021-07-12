@@ -282,7 +282,7 @@ hr.new1 {
   padding: 5rem 0;
 }
 .services {
-  background:linear-gradient(90deg, rgb(253, 221, 221) 0%, rgb(255, 239, 239) 50%, rgba(255, 255, 255, 1) 100%);
+  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
   text-align: center;
 }
 .services-center {
@@ -382,7 +382,7 @@ hr.new1 {
   transition: var(--mainTransition);
 }
 .roomCover{
-  background:linear-gradient(90deg, rgb(253, 221, 221) 0%, rgb(255, 239, 239) 50%, rgba(255, 255, 255, 1) 100%);;
+  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
 }
 .room:hover {
   box-shadow: var(--darkShadow);
