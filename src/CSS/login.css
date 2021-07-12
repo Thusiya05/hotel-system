@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: -webkit-linear-gradient(left, #000000, #5c5b5b);
+    background: -webkit-linear-gradient(left, #181717, #868484);
   }
   
   input, button{
@@ -223,11 +223,11 @@
     z-index: 2;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 125px;
     width: 100%;
     padding: 0 20px;
     text-align: center;
-    color: #fff;
+    color: rgb(255, 255, 255);
     -webkit-transition:-webkit-transform 1.2s ease-in-out;
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
@@ -302,7 +302,7 @@
   
   .img-btn span{
     position: absolute;
-    left: -15px;
+    /* left: -15px; */
     top: 0;
     display: -webkit-box;
     display: flex;
