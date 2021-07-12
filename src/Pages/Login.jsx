@@ -377,7 +377,7 @@ export default class Login extends Component {
                           </div>  
                     </div>
                     <div className="sub-cont">
-                        <div className="login-img" style={{ backgroundImage: "url(/sakshi.jpg)" }}>
+                        <div class="Login-SignIn-Image" className="login-img" style={{ backgroundImage: "url(/sakshi1.jpg)" }}>
                             <div className="img-text m-up">
                                 <h2>New here?</h2>
                                 <p>Sign up and discover great amount of new opportunities!</p>

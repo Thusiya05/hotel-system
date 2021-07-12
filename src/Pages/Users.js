@@ -41,24 +41,18 @@ function AddUser(props) {
                                     <Form.Control type="text" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
-                                <Row>
-                                    <Col sm={6}>
-                                    <Form.Group controlId="formGridEmail">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6></Form.Label>
-                                    <>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Male
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                Fe-Male
-                                            </label>
-                                        </>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="formGridEmail">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6>
+                                    <div>
+                                            <br></br>
+                                            <input type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Male &nbsp; &nbsp; &nbsp; 
+                                            <input type="radio" name="gender" id="exampleRadios2" value="option2" />Female
+
+                                    </div>
+                                    </Form.Label>
                                     </Form.Group>
-                                    </Col>
-                                    <Col sm={6}>
-                                    <Form.Group controlId="formGridMobile">
+                                    <Form.Group as={Col} controlId="formGridMobile">
                                     <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
                                     <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                                 <option value="1">Receptionist</option>
@@ -67,8 +61,7 @@ function AddUser(props) {
                                                 <option value="3">Kitchen Staff</option>
                                         </Form.Control>
                                     </Form.Group>   
-                                    </Col>
-                                </Row>
+                                </Form.Row>
                                 <div style={{textAlign:'center'}}>
                                     <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                                 </div>
@@ -122,17 +115,14 @@ function AddUser(props) {
                                 <Row>
                                     <Col sm={6}>
                                     <Form.Group controlId="formGridEmail">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6></Form.Label>
-                                    <div style={{textAlign:'center'}}>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Male
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"></input>
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                Fe-Male
-                                            </label>
-                                        </div>
+                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6>
+                                    <div>
+                                            <br></br>
+                                            <input type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Male &nbsp; &nbsp; &nbsp; 
+                                            <input type="radio" name="gender" id="exampleRadios2" value="option2" />Female
+
+                                    </div>
+                                    </Form.Label>
                                     </Form.Group>
                                     </Col>
                                     <Col sm={6}>
