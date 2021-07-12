@@ -550,7 +550,7 @@ hr.new1 {
 }
 .activity-info{
   padding: 3rem;
-  background:linear-gradient(90deg, rgb(253, 221, 221) 0%, rgb(255, 239, 239) 50%, rgba(255, 255, 255, 1) 100%);
+  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
 }
 .activity-info img{
     width: 20rem;
