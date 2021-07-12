@@ -25,7 +25,7 @@ const Rooms = () => {
             <Hero hero="roomsHero">
                 <Banner title="Featured Rooms" subtitle="Enjoy the day and feel the real freedom." children="return Home" path="/"></Banner>
             </Hero>
-            <div style={{backgroundColor:'#e3f2fd'}}>
+            <div className="roomCover">
 
             <FeaturedRooms />
             <RoomContainer />
