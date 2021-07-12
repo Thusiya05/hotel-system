@@ -4,6 +4,7 @@ import Sidebar  from '../Components/Sidebar';
 import { Button,Form,Col,Table, Row, Modal } from 'react-bootstrap'
 import { FaTrash,FaPen } from "react-icons/fa";
 
+
 function AddUser(props) {
     return (
       <Modal
@@ -46,8 +47,8 @@ function AddUser(props) {
                                     <Form.Label style={{textAlign:'center'}}><h6>Gender</h6>
                                     <div>
                                             <br></br>
-                                            <input type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Male &nbsp; &nbsp; &nbsp; 
-                                            <input type="radio" name="gender" id="exampleRadios2" value="option2" />Female
+                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Male &nbsp; &nbsp; &nbsp; 
+                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios2" value="option2" />Female
 
                                     </div>
                                     </Form.Label>
