@@ -5,7 +5,12 @@ import FeaturedRooms from '../Components/FeaturedRooms'
 import RoomContainer from '../Components/RoomContainer'
 import NavBar from "../Components/NavBar"
 
+
 const Rooms = () => {
+
+    
+  
+    
     return (
         <>
 
@@ -24,6 +29,7 @@ const Rooms = () => {
 
             <FeaturedRooms />
             <RoomContainer />
+           
 
             </div>
            
