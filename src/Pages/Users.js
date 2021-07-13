@@ -3,6 +3,8 @@ import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
 import { Button,Form,Col,Table, Row, Modal } from 'react-bootstrap'
 import { FaTrash,FaPen } from "react-icons/fa";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 
 function AddUser(props) {
@@ -192,8 +194,14 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Male</td>
                             <td>Guid</td>
-                            <td style={{textAlign:'center'}}><Button type="delete"><FaTrash /></Button> 
-                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                            <td style={{textAlign:'center'}}>
+                            <Tippy content="Delete">
+                                <Button type="delete"><FaTrash /></Button>
+                            </Tippy>
+                             <Tippy content="Edit">
+                                <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                             </Tippy>
+                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -203,8 +211,14 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Female</td>
                             <td>Steward</td>
-                            <td style={{textAlign:'center'}}><Button type="delete"><FaTrash /></Button> 
-                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                            <td style={{textAlign:'center'}}>
+                            <Tippy content="Delete">
+                                <Button type="delete"><FaTrash /></Button>
+                            </Tippy>
+                             <Tippy content="Edit">
+                                <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                             </Tippy>
+                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -214,8 +228,14 @@ const Users =()=>{
                             <td>071 125 3698</td>
                             <td>Female</td>
                             <td>Steward</td>
-                            <td style={{textAlign:'center'}}><Button type="delete"><FaTrash /></Button> 
-                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                            <td style={{textAlign:'center'}}>
+                            <Tippy content="Delete">
+                                <Button type="delete"><FaTrash /></Button>
+                            </Tippy>
+                             <Tippy content="Edit">
+                                <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                             </Tippy>
+                        </td>
                         </tr>
                     </tbody>
                     </Table>
