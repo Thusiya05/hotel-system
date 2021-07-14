@@ -66,7 +66,7 @@ export const ManSideBar = [
     {
         title: "Log Out",
         icon: <RiIcons.RiLogoutBoxFill />,
-        link:'/Login',
+        link:'/Signin',
     },
 ] ;
 
