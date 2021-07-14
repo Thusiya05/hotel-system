@@ -4,6 +4,7 @@ import Banner from "../Components/Banner"
 import Background from "../Components/Background"
 import Services from "../Components/Services"
 import Slider from "../Components/Slider"
+import Footer from '../Components/Footer'
 import hotel from "../images/hotel.jpg"
 import room1 from "../images/Double-Room.jpg"
 import room2 from "../images/hotel-room.jpg"
@@ -67,6 +68,10 @@ export default function Home() {
                 </Carousel.Item>
             </Carousel>
         </div>
+        <div>
+            <Footer />
+        </div>
+
 
         </>   
 

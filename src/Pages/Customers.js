@@ -180,8 +180,8 @@ function EditCustomer(props) {
                                     <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
                                     <div>
                                             <br></br>
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Full bord &nbsp; &nbsp; &nbsp; 
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios2" value="option2" />half bord
+                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Full board &nbsp; &nbsp; &nbsp; 
+                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios2" value="option2" />half board
 
                                     </div>
                                     </Form.Label>
@@ -274,7 +274,7 @@ const Customers=()=>{
                                         <td>darshana@gmail.com</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>Full bord</td>
+                                        <td>Full board</td>
                                         <td>Single room</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
@@ -298,7 +298,7 @@ const Customers=()=>{
                                         <td>lakith@gmail.com</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>half bord</td>
+                                        <td>half board</td>
                                         <td>Double</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">

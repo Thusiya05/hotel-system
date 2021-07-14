@@ -4,6 +4,7 @@ import Banner from "../Components/Banner"
 import FeaturedRooms from '../Components/FeaturedRooms'
 import RoomContainer from '../Components/RoomContainer'
 import NavBar from "../Components/NavBar"
+import Footer from '../Components/Footer'
 
 
 const Rooms = () => {
@@ -31,6 +32,9 @@ const Rooms = () => {
             <RoomContainer />
            
 
+            </div>
+            <div>
+                <Footer />
             </div>
            
 
