@@ -274,7 +274,7 @@ const Customers=()=>{
                                         <td>darshana@gmail.com</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>Full bord</td>
+                                        <td>Full board</td>
                                         <td>Single room</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
@@ -298,7 +298,7 @@ const Customers=()=>{
                                         <td>lakith@gmail.com</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>half bord</td>
+                                        <td>half board</td>
                                         <td>Double</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">

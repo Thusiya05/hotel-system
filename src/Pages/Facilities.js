@@ -3,6 +3,7 @@ import Hero from '../Components/Hero'
 import Banner from '../Components/Banner'
 import {Container,containerFluid} from 'react-bootstrap'
 import NavBar from "../Components/NavBar"
+import Footer from '../Components/Footer'
 import img1 from '../images/Restaurant.jpg'
 import img2 from '../images/Restaurant-2.jpg'
 import img3 from '../images/restaurant-3.jpg'
@@ -129,6 +130,9 @@ const Facilities = () => {
                     <p>The resort along with the environment allows ideal location for outbound training. We have a team of instructors who are well qualified and well experienced.</p>
 
                 </containerFluid>
+            </div>
+            <div>
+                <Footer />
             </div>
         </>
         
