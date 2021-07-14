@@ -29,6 +29,9 @@ const Facilities = () => {
                 path5="/aboutUs" name5="About Us" 
                 pathSign="/signIn" LogName="Log In">    
             </NavBar>
+            <br></br>
+            <br></br>
+            <br></br>
             <Hero hero="facility-Hero">
                 <Banner title="Just For You" subtitle="Feel the Difference of Our Facilities" children="Return Home" path="/"></Banner>
             </Hero>
