@@ -62,6 +62,12 @@ export const ManSideBar = [
         icon: <FaIcons.FaFileArchive />,
         link:'/ArchivedBookings',
     },
+
+    {
+        title: "Log Out",
+        icon: <RiIcons.RiLogoutBoxFill />,
+        link:'/Login',
+    },
 ] ;
 
 
