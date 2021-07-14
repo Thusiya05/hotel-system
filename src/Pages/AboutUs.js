@@ -2,6 +2,7 @@ import React from 'react'
 import NavBar from "../Components/NavBar"
 import Hero from "../Components/Hero"
 import Banner from '../Components/Banner'
+import Footer from '../Components/Footer'
 import {Container,containerFluid} from 'react-bootstrap'
 import Map from '../Components/Map'
 import img1 from '../images/base-camp-1.jpg'
@@ -88,6 +89,9 @@ const AboutUs = () => {
                     </div>
                        
                 </containerFluid>
+            </div>
+            <div>
+                <Footer />
             </div>
 
         </>

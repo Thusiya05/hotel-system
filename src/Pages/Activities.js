@@ -4,6 +4,7 @@ import Hero from '../Components/Hero'
 import {Container,Carousel} from 'react-bootstrap'
 import NavBar from "../Components/NavBar"
 import InfoCard from '../Components/InfoCard'
+import Footer from '../Components/Footer'
 import img1 from '../images/waterRafting.jpg'
 import img2 from '../images/abselling.jpg'
 import img3 from '../images/Canyoneering.jpg'
@@ -168,6 +169,9 @@ export default function Activities() {
                         </Container>
                     </Carousel.Item>
             </Carousel>
+        </div>
+        <div>
+            <Footer />
         </div> 
             
     </>
