@@ -388,7 +388,7 @@ export default class Login extends Component {
                             </div>
                             <div className="img-btn" onClick={this.myfunc}>
                                 <span className="m-up">Sign Up</span>
-                                <span className="m-in">Log In</span>
+                                <span className="m-in">Sign In</span>
                             </div>
                         </div>
                         <div className="login-form sign-up">
