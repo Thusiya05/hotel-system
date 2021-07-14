@@ -6,6 +6,8 @@ import { FaTrash,FaPen,FaPrint } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+
+
 function AddCustomer(props){
     return (
         <Modal
@@ -86,12 +88,13 @@ function AddCustomer(props){
                             </Col>
                             <Col sm={6}>
                             <Form.Group controlId="addStatus">
-                            <Form.Label><h6>Status</h6></Form.Label>
+                            <Form.Label><h6>Room No</h6></Form.Label>
                             <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                         <option value="0">Choose..</option>
-                                        <option value="1">In progress</option>
-                                        <option value="2">Active</option>
-                                        <option value="3">Checkout</option>
+                                        <option value="2">1</option>
+                                        <option value="3">2</option>
+                                        <option value="2">3</option>
+                                        <option value="3">4</option>
                                 </Form.Control>
                             </Form.Group>   
                             </Col>
@@ -151,7 +154,6 @@ function EditCustomer(props) {
                             <Form.Label><h6>Check-in Date</h6></Form.Label>
                             <Form.Control type="date" required/>
                             </Form.Group>
-
                             <Form.Group as={Col} controlId="editCheckoutDate">
                             <Form.Label><h6>Check-out Date</h6></Form.Label>
                             <Form.Control type="date" required/>
@@ -163,15 +165,33 @@ function EditCustomer(props) {
                             <Form.Control type="text" required/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="editRoomType">
-                            <Form.Label><h6>Room</h6></Form.Label>
-                            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                        <option value="0">Choose..</option>
-                                        <option value="1">Single Room</option>
-                                        <option value="2">Double Room</option>
-                                        <option value="2">Family Room</option>
-                                        <option value="2">Camping</option>
-                                </Form.Control>
+                            <Form.Group as={Col}>
+                            <Form.Row>
+                            <Col sm={6}>
+                                <Form.Group as={Col} controlId="editRoomType">
+                                <Form.Label><h6>Room</h6></Form.Label>
+                                <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                            <option value="0">Choose..</option>
+                                            <option value="1">Single Room</option>
+                                            <option value="2">Double Room</option>
+                                            <option value="2">Family Room</option>
+                                            <option value="2">Camping</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                </Col>
+                                <Col sm={6}>
+                                <Form.Group as={Col} controlId="editRoomNo">
+                                <Form.Label><h6>Room No</h6></Form.Label>
+                                <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                            <option value="0">Choose..</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="2">3</option>
+                                            <option value="2">4</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                </Col>
+                                </Form.Row>
                             </Form.Group>   
                         </Form.Row>
                         <Row>
@@ -192,7 +212,6 @@ function EditCustomer(props) {
                             <Form.Label><h6>Status</h6></Form.Label>
                             <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                         <option value="0">Choose..</option>
-                                        <option value="1">In progress</option>
                                         <option value="2">Active</option>
                                         <option value="3">Checkout</option>
                                 </Form.Control>
@@ -248,7 +267,7 @@ const Customers=()=>{
                             show?
                             <div>
                             <h4 style={{textAlign:'center'}}>Check In Customers</h4>
-                            <Table striped bordered hover size="sm" responsive>
+                            <Table striped bordered hover size="sm" responsive id="CheckInTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -261,6 +280,7 @@ const Customers=()=>{
                                         <th>CheckOut Date</th>
                                         <th>Meal</th>
                                         <th>Room</th>
+                                        <th>Room No</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -276,6 +296,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>Full board</td>
                                         <td>Single room</td>
+                                        <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button><FaPrint /></Button>
@@ -300,6 +321,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half board</td>
                                         <td>Double</td>
+                                        <td>15</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button><FaPrint /></Button>
@@ -324,6 +346,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half bord</td>
                                         <td>Double</td>
+                                        <td>14</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button><FaPrint /></Button>
@@ -364,6 +387,7 @@ const Customers=()=>{
                                         <th>CheckOut Date</th>
                                         <th>Meal</th>
                                         <th>Room</th>
+                                        <th>Room No</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -379,6 +403,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>Full bord</td>
                                         <td>Single room</td>
+                                        <td>12</td>
                                         <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
                                         <Button type="delete"><FaTrash /></Button> 
                                         <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
@@ -395,6 +420,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half bord</td>
                                         <td>Double</td>
+                                        <td>14</td>
                                         <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
                                         <Button type="delete"><FaTrash /></Button> 
                                         <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
@@ -411,6 +437,7 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half bord</td>
                                         <td>Double</td>
+                                        <td>15</td>
                                         <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
                                         <Button type="delete"><FaTrash /></Button> 
                                         <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
@@ -443,6 +470,7 @@ const Customers=()=>{
                                         <th>CheckOut Date</th>
                                         <th>Meal</th>
                                         <th>Room</th>
+                                        <th>Room No</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -458,10 +486,11 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>Full bord</td>
                                         <td>Single room</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                        </td>
+                                        <td>12</td>
+                                        <td style={{textAlign:'center'}}>
+                                        <Tippy content="View Bill">
+                                            <Button><FaPrint /></Button>
+                                        </Tippy></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -474,9 +503,12 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half bord</td>
                                         <td>Double</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                                        <td>14</td>
+                                        <td style={{textAlign:'center'}}>
+                                        <Tippy content="View Bill">
+                                            <Button><FaPrint /></Button>
+                                        </Tippy>
+                                    </td>
                                         
                                     </tr>
                                     <tr>
@@ -490,9 +522,12 @@ const Customers=()=>{
                                         <td>2021-07-25</td>
                                         <td>half bord</td>
                                         <td>Double</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                                        <td>15</td>
+                                        <td style={{textAlign:'center'}}>
+                                        <Tippy content="View Bill">
+                                            <Button><FaPrint /></Button>
+                                        </Tippy>
+                                    </td>
                                         
                                     </tr>
                                 </tbody>
