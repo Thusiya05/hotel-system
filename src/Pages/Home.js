@@ -16,6 +16,7 @@ import NavBar from "../Components/NavBar"
 export default function Home() {
     return(
         <>
+        
         <NavBar
             path1="/" name1="Home"
             path2="/rooms/" name2="Rooms" 
@@ -24,6 +25,9 @@ export default function Home() {
             path5="/aboutUs" name5="About Us" 
             pathSign="/signIn" LogName="Log In">    
         </NavBar>
+        <br></br>
+        <br></br>
+        <br></br>
         <div>
           <Background className="area"></Background>
         </div>

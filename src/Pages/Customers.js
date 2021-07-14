@@ -267,6 +267,9 @@ const Customers=()=>{
                             show?
                             <div>
                             <h4 style={{textAlign:'center'}}>Check In Customers</h4>
+                            <input type="text" id="myInput" name="" placeholder="search by NIC/Name"></input>
+                            <br></br>
+                            <br></br>
                             <Table striped bordered hover size="sm" responsive id="CheckInTable">
                                 <thead>
                                     <tr>

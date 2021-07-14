@@ -24,6 +24,9 @@ const AboutUs = () => {
                     path5="/aboutUs" name5="About Us" 
                     pathSign="/signIn" LogName="Log In">    
                 </NavBar>
+                <br></br>
+                <br></br>
+                <br></br>
             </div>
             <Hero hero="aboutus">
                 <Banner title="We Guide You" subtitle="Know about us and Get touch with us." children="return Home" path="/"></Banner>
