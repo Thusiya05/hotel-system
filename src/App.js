@@ -35,9 +35,11 @@ import "./App.css"
 function App() {
   return (
 
-   
     <div>
-      
+      <br></br>
+      <br></br>
+      <br></br>
+      <test />
       <Switch>
         <Route exact path ="/" component={Home} />
         <Route exact path ="/rooms/" component={Rooms} />
