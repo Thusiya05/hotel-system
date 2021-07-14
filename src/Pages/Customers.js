@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
 import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap'
-import { FaTrash,FaPen,FaPrint } from "react-icons/fa";
+import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -267,7 +267,7 @@ const Customers=()=>{
                             show?
                             <div>
                             <h4 style={{textAlign:'center'}}>Check In Customers</h4>
-                            <input type="text" id="myInput" name="" placeholder="search by NIC/Name"></input>
+                            <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
                             <br></br>
                             <br></br>
                             <Table striped bordered hover size="sm" responsive id="CheckInTable">
