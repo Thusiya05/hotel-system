@@ -348,7 +348,6 @@ export default class Login extends Component {
         </NavBar>
         <br></br>
         <br></br>
-        <br></br>
             <div className="login">
                 <div className="login-cont">
                     <div id="loginform" className="login-form login-sign-in">
