@@ -346,6 +346,8 @@ export default class Login extends Component {
             path5="/aboutUs" name5="About Us" 
             pathSign="/signIn" LogName="Log In">    
         </NavBar>
+        <br></br>
+        <br></br>
             <div className="login">
                 <div className="login-cont">
                     <div id="loginform" className="login-form login-sign-in">
