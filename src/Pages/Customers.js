@@ -376,7 +376,7 @@ const Customers=()=>{
                         {
                             open?
                             <div>
-                            <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Pending Customers.</h4>
+                            <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Pending Customers</h4>
                             <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
                             <br></br>
                             <br></br>
@@ -462,7 +462,7 @@ const Customers=()=>{
                         {
                             view?
                             <div>
-                            <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Checkout Customers.</h4>
+                            <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Checkout Customers</h4>
                             <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
                             <br></br>
                             <br></br>
