@@ -12,7 +12,7 @@ const Statistics = ()=>{
                 <Sidebar></Sidebar>
             
             
-            <Title title="S t a t i s t i c s"></Title>
+            <Title title="S T A T I S T I C S"></Title>
                 <div className="row">
                     <div className="col-md-6 col-sm-6" >
                         <div style={{padding:'2rem',boxShadow:'0 6px 6px gray',textAlign:'center',margin:'0 1rem 0,1rem' }}>

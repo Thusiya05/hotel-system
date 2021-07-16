@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 //import { memo } from "react";
-import { Button,Form,Col, Row, Modal } from 'react-bootstrap'
+import { Button,Form,Col, Row, Modal } from 'react-bootstrap';
 
 
 function AddCart(props) {
@@ -55,7 +55,7 @@ function AddCart(props) {
                                     </div>
                                     </Form.Label>
                                   </Form.Group>
-                                  {/* <Form.Group as={Col} controlId="formGridMobile">
+                                  <Form.Group as={Col} controlId="formGridMobile" hidden>
                                   <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
                                   <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                               <option value="1">Receptionist</option>
@@ -63,7 +63,7 @@ function AddCart(props) {
                                               <option value="3">Steward</option>
                                               <option value="3">Kitchen Staff</option>
                                       </Form.Control>
-                                  </Form.Group>    */}
+                                  </Form.Group>   
                               </Form.Row>
                               <div style={{textAlign:'center'}}>
                                   <Button type="submit" variant="info">Book Now</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
@@ -103,7 +103,7 @@ export default function Room({ room }){
                         show={cart}
                         onHide={() => setCart(false)}
                     ></AddCart>
-            </div>
+      </div>
       <p className="room-info">{name}</p>
     </article>
   
