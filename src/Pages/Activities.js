@@ -105,7 +105,7 @@ export default function Activities() {
             <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Return Home" path="/"></Banner>
         </Hero>
         <div>
-            <Button className="schedule-btn" onClick={()=>setSchedule(true)} variant="secondary">Schedule</Button>
+            <Button className="schedule-btn" onClick={()=>setSchedule(true)} variant="info" size="lg">Schedule the day</Button>
             <AddSchedule 
             show={schedule} 
             onHide={() => setSchedule(false)} />
