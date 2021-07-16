@@ -12,7 +12,7 @@ import AdminLogin from "./Pages/AdminLogin";
 import Dashboard from "./Pages/Dashboard";
 import Reports from "./Pages/Reports";
 import BookedRooms from "./Pages/BookedRooms";
-import Schedule from "./Pages/Schedule";
+// import Schedule from "./Pages/Schedule";
 import {Route,Switch} from "react-router-dom";
 import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
@@ -53,7 +53,7 @@ function App() {
         <Route exact path ="/admin/"  component={Dashboard} />
         {/* <Route path ="/hrmanagement/" component={HRManagement} /> */}
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
-        <Route exact path = "/schedule/" component={Schedule} />
+        {/* <Route exact path = "/schedule/" component={Schedule} /> */}
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
