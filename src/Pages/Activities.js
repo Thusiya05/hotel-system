@@ -66,7 +66,7 @@ function AddSchedule(props) {
                             </div>
                         </Form.Label>
                     </Form.Group>
-                    <Form.Group as={Col} controlId="formGridMobile" >
+                    <Form.Group as={Col} controlId="formGridMobile" hidden>
                     <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
                     <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                 <option value="1">Receptionist</option>
