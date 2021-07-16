@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
-import {Container,Carousel} from 'react-bootstrap'
+import { Container,Carousel,Button,Form,Col, Modal } from 'react-bootstrap'
 import NavBar from "../Components/NavBar"
 import InfoCard from '../Components/InfoCard'
 import Footer from '../Components/Footer'
@@ -18,7 +18,81 @@ import img10 from '../images/Team-Building-1.jpg'
 import img11 from '../images/Team-Building-2.jpg'
 import img12 from '../images/Team-Building-3.jpg'
 
+function AddSchedule(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Schedule the day...
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <Form>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridFirstName">
+                        <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
+                        <Form.Control type="date" required/>
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridLastName">
+                        <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
+                        <Form.Control type="date" required/>
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label style={{textAlign:'center'}}><h6>Number of People</h6></Form.Label>
+                        <Form.Control type="number" placeholder="1" required/>
+                    </Form.Group>
+                    
+                    <Form.Group as={Col} controlId="formGridMobile">
+                        <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
+                        <Form.Control type="number" placeholder="1" required/>
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
+                            <div>
+                                <br></br>
+                                <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board
+                                <br></br>
+                                <input type="radio" name="meal" id="exampleRadios2" value="option2" />Half-Board
+                            </div>
+                        </Form.Label>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridMobile" >
+                    <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
+                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                <option value="1">Receptionist</option>
+                                <option value="2">Guide</option>
+                                <option value="3">Steward</option>
+                                <option value="3">Kitchen Staff</option>
+                        </Form.Control>
+                    </Form.Group>   
+                </Form.Row>
+                <div style={{textAlign:'center'}}>
+                    <Button type="submit" variant="info">Book Now</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                </div>
+                
+            </Form>
+        </Modal.Body>
+        <Modal.Footer>
+            Adventure Base Camp, Kitulgala.
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
 export default function Activities() {
+
+    const [schedule,setSchedule]=useState(false)
+
     return (
         <>
          <div>
@@ -28,9 +102,14 @@ export default function Activities() {
         <br></br>
         <br></br>
         <Hero hero="activity-Hero">
-            <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule The Day" path="/schedule/"></Banner>
+            <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Return Home" path="/"></Banner>
         </Hero>
-
+        <div>
+            <Button className="schedule-btn" onClick={()=>setSchedule(true)} variant="secondary">Schedule</Button>
+            <AddSchedule 
+            show={schedule} 
+            onHide={() => setSchedule(false)} />
+        </div>
         <div className="activity-info">
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
