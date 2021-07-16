@@ -1,12 +1,12 @@
 import React,{ useState } from 'react'
 import SideBar from '../Components/Sidebar'
 import Title from '../Components/Title';
-import { Table,Button, Container,Modal,Form,Col } from 'react-bootstrap'
+import { Table,Button, Container,Modal,Form } from 'react-bootstrap'
 import { FaPen,FaSearch } from 'react-icons/fa';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-function AddSteward(props){
+function AddGuides(props){
     return (
         <Modal
           {...props}
@@ -16,7 +16,7 @@ function AddSteward(props){
         >
         <Modal.Header closeButton  style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
-            Assign Stewards
+            Assign Guides
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -47,7 +47,7 @@ function AddSteward(props){
       ); 
 }
 
-function EditSteward(props){
+function EditGuides(props){
     return(
         <Modal
         {...props}
@@ -57,7 +57,7 @@ function EditSteward(props){
         >
         <Modal.Header closeButton  style={{backgroundColor:'lightgray'}}>
             <Modal.Title id="contained-modal-title-vcenter">
-            Assign Stewards
+            Assign Guides
             </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -89,14 +89,14 @@ function EditSteward(props){
     
 }
 
-const AssignStewards=()=> {
+const AssignGuides=()=> {
     const[view,setView]=useState(false)
     const[show,setShow]=useState(false)
     return (
         <>
             <div className="users">
                 <SideBar />
-                <Title title="Assign Stewards"></Title>
+                <Title title="Assign Guides"></Title>
                 <br></br>
                 <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'12rem'}}></input>
                 <br></br>
@@ -110,8 +110,8 @@ const AssignStewards=()=> {
                                 <h5>Room No: 12</h5>
                             </div>
                             <div className="col-sm-4">
-                            <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Stewards</Button>
-                            <AddSteward
+                            <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Guides</Button>
+                            <AddGuides
                                 show={view}
                                 onHide={()=> setView(false)} 
                             />
@@ -125,8 +125,8 @@ const AssignStewards=()=> {
                                 <h5>Room No: 14</h5>
                             </div>
                             <div className="col-sm-4">
-                            <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Stewards</Button>
-                            <AddSteward
+                            <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Guides</Button>
+                            <AddGuides
                                 show={view}
                                 onHide={()=> setView(false)} 
                             />
@@ -142,7 +142,7 @@ const AssignStewards=()=> {
                                 <th>#</th>
                                 <th>Customer Name</th>
                                 <th>Room No</th>
-                                <th>Steward Name</th>
+                                <th>Guide Name</th>
                                 <th>From</th>
                                 <th>To</th>
                                 <th> </th>
@@ -190,7 +190,7 @@ const AssignStewards=()=> {
                             </tr>
                         </tbody>
                     </Table> 
-                    <EditSteward
+                    <EditGuides
                         show={show}
                         onHide={()=> setShow(false)} 
                     />
@@ -201,4 +201,4 @@ const AssignStewards=()=> {
         </>
     )
 }
-export default AssignStewards;
+export default AssignGuides;
