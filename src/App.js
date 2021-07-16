@@ -11,7 +11,6 @@ import manager from "./Pages/manager";
 import AdminLogin from "./Pages/AdminLogin";
 import Dashboard from "./Pages/Dashboard";
 import Reports from "./Pages/Reports";
-import HRManagement from "./Pages/HRManagement";
 import BookedRooms from "./Pages/BookedRooms";
 import Schedule from "./Pages/Schedule";
 import {Route,Switch} from "react-router-dom";
@@ -27,6 +26,7 @@ import cms from "./Pages/cms";
 import ArchivedBookings from "./Pages/ArchivedBookings";
 import Administrative from "./Pages/Administrative";
 import HotelConfig from "./Pages/HotelConfig";
+import AssignStewards  from "./Pages/AssignStewards";
 import "./App.css"
 
 
@@ -57,6 +57,7 @@ function App() {
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
+        <Route exact path ="/receptionist/controlPanel/AssignStewards/" component={AssignStewards} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
@@ -68,6 +69,7 @@ function App() {
         <Route exact path ="/HotelConfig" component={HotelConfig} />
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />
+        
         <Route component={Error} />
         
        
