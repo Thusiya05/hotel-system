@@ -16,7 +16,7 @@ function AddCustomer(props){
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
             Add New Customer Details
           </Modal.Title>
@@ -105,7 +105,7 @@ function AddCustomer(props){
                         
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{backgroundColor:'lightgray'}}>
                     Adventure Base Camp, Kitulgala.
                 </Modal.Footer>
         </Modal>
@@ -120,7 +120,7 @@ function EditCustomer(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
             Update Customer Details
           </Modal.Title>
@@ -224,7 +224,7 @@ function EditCustomer(props) {
                         
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{backgroundColor:'lightgray'}}>
                     Adventure Base Camp, Kitulgala.
                 </Modal.Footer>
             </Modal>
@@ -267,7 +267,7 @@ const Customers=()=>{
                             show?
                             <div>
                             <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Check In Customers.</h4>
-                            <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
+                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                             <br></br>
                             <br></br>
                             <Table striped bordered hover size="sm" responsive id="CheckInTable">
