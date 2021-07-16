@@ -12,7 +12,6 @@ import AdminLogin from "./Pages/AdminLogin";
 import Dashboard from "./Pages/Dashboard";
 import Reports from "./Pages/Reports";
 import BookedRooms from "./Pages/BookedRooms";
-// import Schedule from "./Pages/Schedule";
 import {Route,Switch} from "react-router-dom";
 import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
@@ -27,6 +26,7 @@ import ArchivedBookings from "./Pages/ArchivedBookings";
 import Administrative from "./Pages/Administrative";
 import HotelConfig from "./Pages/HotelConfig";
 import AssignStewards  from "./Pages/AssignStewards";
+import AssignGuides from "./Pages/assignGuides";
 import "./App.css"
 
 
@@ -36,10 +36,6 @@ function App() {
   return (
 
     <div>
-      {/* <br></br>
-      <br></br>
-      <br></br> */}
-      {/* <test /> */}
       <Switch>
         <Route exact path ="/" component={Home} />
         <Route exact path ="/rooms/" component={Rooms} />
@@ -51,13 +47,12 @@ function App() {
         <Route exact path ="/admin/" component={AdminLogin} />
         <Route exact path = "/reports/" component={Reports} />
         <Route exact path ="/admin/"  component={Dashboard} />
-        {/* <Route path ="/hrmanagement/" component={HRManagement} /> */}
         <Route path = "/admin/bookedrooms/" component={BookedRooms} />
-        {/* <Route exact path = "/schedule/" component={Schedule} /> */}
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/controlPanel/customers/" component={Customers} />
         <Route exact path ="/receptionist/controlPanel/AssignStewards/" component={AssignStewards} />
+        <Route exact path ="/receptionist/controlPanel/AssignGuides/" component={AssignGuides} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
