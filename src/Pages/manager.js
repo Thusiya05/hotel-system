@@ -1,18 +1,16 @@
 import React from 'react'
 import BarChart from '../Components/BarChart'
-import Title from '../Components/Title'
 import Lines from '../Components/Lines'
 import Sidebar from '../Components/Sidebar'
-
+import StatServices from '../Components/StatServices'
 
 const Statistics = ()=>{
     return(
        <>
         <div className="statistics">
                 <Sidebar></Sidebar>
-            
-            
-            <Title title="S T A T I S T I C S"></Title>
+        
+            <StatServices />
                 <div className="row">
                     <div className="col-md-6 col-sm-6" >
                         <div style={{padding:'2rem',boxShadow:'0 6px 6px gray',textAlign:'center',margin:'0 1rem 0,1rem' }}>
