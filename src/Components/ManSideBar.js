@@ -45,17 +45,17 @@ export const ManSideBar = [
         link:'/ManCalendar',
     },
 
-    {
-        title: "CMS",
-        icon: <BiIcons.BiBookContent />,
-        link:'/cms',
-    },
+    // {
+    //     title: "CMS",
+    //     icon: <BiIcons.BiBookContent />,
+    //     link:'/cms',
+    // },
 
-    {
-        title: "Administrative",
-        icon: <RiIcons.RiAdminFill />,
-        link:'/Administrative',
-    },
+    // {
+    //     title: "Administrative",
+    //     icon: <RiIcons.RiAdminFill />,
+    //     link:'/Administrative',
+    // },
 
     {
         title: "Archived Bookings",
