@@ -27,6 +27,7 @@ import Administrative from "./Pages/Administrative";
 import HotelConfig from "./Pages/HotelConfig";
 import AssignStewards  from "./Pages/AssignStewards";
 import AssignGuides from "./Pages/assignGuides";
+import activityschedule from "./Pages/activityschedule";
 import "./App.css"
 
 
@@ -64,7 +65,7 @@ function App() {
         <Route exact path ="/HotelConfig" component={HotelConfig} />
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />
-        
+        <Route exact path ="/activityschedule" components={activityschedule} />
         <Route component={Error} />
         
        
