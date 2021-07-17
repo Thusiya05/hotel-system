@@ -302,7 +302,7 @@ hr.new1 {
   padding: 0.75rem 0;
 }
 .servicess {
-  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
+  /* background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%); */
   text-align: center;
 }
 .servicess-center {
