@@ -10,14 +10,13 @@ export default class StatServices extends Component {
   render() {
     return (
       <section className="servicess">
-    
-        <div className="services-center">
         <Container>
+        <div className="services-center">
             <div className="row">
                 <div className="col-md-4 col-sm-4">
                 <Card style={{width: '20rem',height:'8rem' }}>
                         <div className="row">
-                            <div className="col-md-6"  style={{backgroundColor:'lightblue', height:'8rem'}} >
+                            <div className="col-md-6"  style={{backgroundColor:'gold', height:'8rem'}} >
                                <GiBirdHouse size={75}/>
                             </div>
                             <div className="col-md-6" >
@@ -31,7 +30,7 @@ export default class StatServices extends Component {
                 <div className="col-md-4 col-sm-4">
                 <Card style={{width: '20rem',height:'8rem' }}>
                         <div className="row">
-                            <div className="col-md-6"  style={{backgroundColor:'lightblue', height:'8rem'}}>
+                            <div className="col-md-6"  style={{backgroundColor:'crimson', height:'8rem'}}>
                                <BsFillPersonPlusFill size={75}/>
                             </div>
                             <div className="col-md-6" >
@@ -45,7 +44,7 @@ export default class StatServices extends Component {
                 <div className="col-md-4 col-sm-4">
                 <Card style={{width: '20rem',height:'8rem' }}>
                         <div className="row">
-                            <div className="col-md-6"  style={{backgroundColor:'lightblue', height:'8rem'}}>
+                            <div className="col-md-6"  style={{backgroundColor:'green', height:'8rem'}}>
                                <FaCommentDollar size={75}/>
                             </div>
                             <div className="col-md-6" >
@@ -56,9 +55,9 @@ export default class StatServices extends Component {
                         </div>
                     </Card>
                 </div>
-            </div>
-            </Container>
+            </div> 
          </div>
+        </Container>
     </section>
      
      );
