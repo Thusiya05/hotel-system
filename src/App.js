@@ -58,7 +58,7 @@ function App() {
         <Route exact path ="/HotelConfig" component={HotelConfig} />
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />
-        <Route exact path ="/activityschedule" components={Activityschedule} />
+        <Route exact path ="/activityschedule" component={Activityschedule} />
         <Route component={Error} />
         
        
