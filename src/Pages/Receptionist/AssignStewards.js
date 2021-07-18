@@ -106,7 +106,7 @@ const AssignStewards=()=> {
                         <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
                             <div className="col-sm-4">
                                 <h5>Darshana Bandara</h5>
-                                <h5>NIC: 199732504553</h5>
+                                <h5>task:Room arrangement</h5>
                                 <h5>Room No: 12</h5>
                             </div>
                             <div className="col-sm-4">
@@ -121,7 +121,7 @@ const AssignStewards=()=> {
                         <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
                             <div className="col-sm-4">
                                 <h5>Lakith Kithsara</h5>
-                                <h5>NIC: 975624588V</h5>
+                                <h5>task:Cleaning</h5>
                                 <h5>Room No: 14</h5>
                             </div>
                             <div className="col-sm-4">
@@ -143,8 +143,10 @@ const AssignStewards=()=> {
                                 <th>Customer Name</th>
                                 <th>Room No</th>
                                 <th>Steward Name</th>
+                                <th>Date</th>
                                 <th>From</th>
                                 <th>To</th>
+                                <th>Task</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -155,7 +157,9 @@ const AssignStewards=()=> {
                                 <td>12</td>
                                 <td>Kasun</td>
                                 <td>25/7/2021</td>
-                                <td>28/7/2021</td>
+                                <td>8.00am</td>
+                                <td>10.00am</td>
+                                <td>Room Arrangement</td>
                                 <td> 
                                 <Tippy content="Edit">
                                     <Button onClick={()=>setShow(true)} type="edit"><FaPen /></Button>
@@ -168,7 +172,9 @@ const AssignStewards=()=> {
                                 <td>14</td>
                                 <td>Damith</td>
                                 <td>25/7/2021</td>
-                                <td>28/7/2021</td>
+                                <td>1.00pm</td>
+                                <td>3.00pm</td>
+                                <td>Cleaning</td>
                                 <td> 
                                 <Tippy content="Edit">
                                     <Button onClick={()=>setShow(true)} type="edit"><FaPen /></Button>
@@ -181,7 +187,9 @@ const AssignStewards=()=> {
                                 <td>15</td>
                                 <td>Kelum</td>
                                 <td>25/7/2021</td>
-                                <td>28/7/2021</td>
+                                <td>9.00am</td>
+                                <td>11.00am</td>
+                                <td>Food Order</td>
                                 <td> 
                                 <Tippy content="Edit">
                                     <Button onClick={()=>setShow(true)} type="edit"><FaPen /></Button>
