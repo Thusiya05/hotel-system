@@ -1,8 +1,7 @@
 import React from 'react'
 import Kcsidebar from '../../Components/kcsidebar'
 
-
-function Order() {
+function deliver() {
     return (
         <div>
             <Kcsidebar/>
@@ -10,4 +9,4 @@ function Order() {
     )
 }
 
-export default Order
+export default deliver
