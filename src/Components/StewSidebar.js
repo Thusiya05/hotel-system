@@ -14,7 +14,7 @@ export const StewSidebar = [
     {
         title: "History",
         icon: <FaIcons.FaHistory />,
-        link:'/receptionist/AssignStewards/',
+        link:'/steward/StewardsHistory/',
 
     },
 

@@ -29,6 +29,7 @@ import Order from "./Pages/Kitchen/Order";
 import deliver from "./Pages/Kitchen/deliver";
 import menu from "./Pages/Kitchen/menu";
 import inventory from "./Pages/Kitchen/inventory";
+import StewardsHistory from "./Pages/Stewards/StewardsHistory"
 import "./App.css"
 
 
@@ -64,6 +65,7 @@ function App() {
         <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
         <Route exact path ="/activityschedule" component={Activityschedule} />
         <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
+        <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
         <Route exact path ="/foodmenu" component={Foodmenu} />
         <Route exact path ="/kitchen/order" component={Order} />
         <Route exact path ="/kitchen/deliver" component={deliver} />
