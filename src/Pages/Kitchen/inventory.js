@@ -1,6 +1,6 @@
 import React from 'react'
 
-function income() {
+function inventory() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function income() {
     )
 }
 
-export default income
+export default inventory

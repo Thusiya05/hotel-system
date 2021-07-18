@@ -1,0 +1,27 @@
+#searchLine{
+    float: right;
+
+    margin: 5px;
+    color: white;
+}
+
+#body{
+    /* background-image: url("./images/img1.jpg");
+    background-size: cover; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(202, 10, 10);
+    height: fit-content;
+}
+
+h1{
+    color:yellow;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.foodList{
+    color: white;
+    text-align: center;
+}
+.foodList ul{
+    list-style: none;
+}

@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 // import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import history from '../history';
+import { useHistory } from 'react-router-dom';
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -23,21 +27,6 @@ export default class Login extends Component {
     myfunc = () => {
 		document.querySelector('.login-cont').classList.toggle('s-signup')
       }
-
-
-    //   async componentDidMount() {
-    //     // GET request using fetch with async/await
-    //     const response = await fetch('http://localhost:3030/customers'
-    //     ).then((result)=>{
-    //       result.json().then((resp)=>{
-    //         this.setState.({data:resp})
-    //       })
-    //     })
-    //     // const data = await response.json();
-    //     // this.setState({ totalReactPackages: data.total })
-        
-    // }
-      
 
       constructor(props) {
         super(props);
@@ -57,8 +46,11 @@ export default class Login extends Component {
           password: "",
           confirmPassword: "",
 
+          loginPassword:"",
+          loginEmail:"",
+
           NICfromDB: "",
-          isLoaded: false,
+          
 
           data: false,
 
@@ -79,19 +71,6 @@ export default class Login extends Component {
             confirmPassword: '',
             }
         };
-
-        // this.firstNameChange = this.firstNameChange.bind(this);
-        // this.lastNameChange = this.lastNameChange.bind(this);
-        // this.emailChange = this.emailChange.bind(this);
-        // this.ageChange = this.ageChange.bind(this);
-        // this.addressChange = this.addressChange.bind(this);
-        // this.nicChange = this.nicChange.bind(this);
-        // this.telephoneChange = this.telephoneChange.bind(this);
-        // this.passwordChange = this.passwordChange.bind(this);
-        // this.confirmpasswordChange = this.confirmpasswordChange.bind(this);
-        // this.signup=this.signup.bind(this);
-
-
       }
 
       handleChange = (event) => {
@@ -100,12 +79,13 @@ export default class Login extends Component {
         let errors = this.state.errors;
     
         switch (name) {
-          case 'firstName': 
+          case 'firstName':   
             errors.firstName = 
               value.length < 2
-                ? 'First name must be atleast 2 characters long!'
+                ? 'First name must be atleast 2 characters long!' 
                 : '';
-                this.setState({firstName: event.target.value})    
+                this.setState({firstName: event.target.value}) 
+                  
             break;
 
           case 'lastName': 
@@ -114,6 +94,7 @@ export default class Login extends Component {
                 ? 'Second Name must be atleast 2 characters long!'
                 : '';
                 this.setState({lastName: event.target.value});
+                  
             break; 
 
           case 'email': 
@@ -122,6 +103,7 @@ export default class Login extends Component {
                 ? ''
                 : 'Email is not valid!';
                 this.setState({email: event.target.value});
+                   
             break;
 
           case 'age': 
@@ -131,6 +113,7 @@ export default class Login extends Component {
                 ? 'Invalid Age!'
                 : '';
                 this.setState({age: event.target.value});
+                   
             break;
 
           case 'no': 
@@ -139,6 +122,7 @@ export default class Login extends Component {
                 ? 'Fields must be filled!'
                 : '';
                 this.setState({no: event.target.value});
+                   
             break;
 
           case 'lane': 
@@ -147,6 +131,7 @@ export default class Login extends Component {
                 ? 'Fields must be filled!'
                 : '';
                 this.setState({lane: event.target.value});
+                   
             break;
 
           case 'street': 
@@ -155,6 +140,7 @@ export default class Login extends Component {
                 ? 'Fields must be filled!'
                 : '';
                 this.setState({street: event.target.value});
+                   
             break;
 
             case 'Bdate': 
@@ -164,6 +150,7 @@ export default class Login extends Component {
                  ? "Invalid Date!"
                  : '';
                 this.setState({Bdate: event.target.value});
+                  
             break;
 
           case 'Bmonth': 
@@ -173,6 +160,7 @@ export default class Login extends Component {
               ? "Invalid Month!"
               : '';
                 this.setState({Bmonth: event.target.value});
+                   
             break;
 
           case 'Byear': 
@@ -182,6 +170,7 @@ export default class Login extends Component {
               ? "Invalid Year!"
               : '';
                 this.setState({Byear: event.target.value});
+                   
             break;
             
           case 'nic': 
@@ -191,20 +180,6 @@ export default class Login extends Component {
                 ? "NIC don't match!"
                 : '';
                 this.setState({nic: event.target.value});
-                
-                  // componentDidMount(){ 
-                  //   const url = "http://localhost:3030/customers"; 
-                  //   const response = await fetch(url);
-                  //   const data = await response.json();
-                  //   this.setState({NICfromDB: data.result[8]});
-                  // }
-
-                  //   if(this.state.nic==NICfromDB){
-                  //     errors.nic = "nic already exists!"
-                  //   }else{
-                  //     errors.nic = "nic correct!"
-                  //   }
-                
 
             break;
 
@@ -214,7 +189,8 @@ export default class Login extends Component {
                !value.match(letters)
                 ? "Telephone number don't match!"
                 : '';
-                this.setState({telephoneNumber: event.target.value});      
+                this.setState({telephoneNumber: event.target.value});   
+                   
             break;          
 
           case 'password': 
@@ -223,6 +199,7 @@ export default class Login extends Component {
                 ? 'Password must be 8 characters long!'
                 : '';
                 this.setState({password: event.target.value});
+                   
             break;
 
           case 'confirmPassword': 
@@ -231,9 +208,23 @@ export default class Login extends Component {
 
           if(this.state.confirmPassword!=this.state.password){                
             errors.confirmPassword = "Password don't match!"
+                 
             }else{
             errors.confirmPassword = "Password matched!"
             }
+                   
+            break;
+
+            case 'loginEmail': 
+ 
+                this.setState({loginEmail: event.target.value});
+                   
+            break;
+
+            case 'loginPassword': 
+ 
+                this.setState({loginPassword: event.target.value});
+                   
             break;
           default:
             break;
@@ -252,41 +243,17 @@ export default class Login extends Component {
         }
       }
 
-    //   constructor(props){          
-    //       super(props);
-    //       this.state={
-              
-    //           firstName: "",
-    //           lastName: "",
-    //           email: "",
-    //           age: "",
-    //           addr: "",
-    //           nic: "",
-    //           telephoneNumber: "",
-    //           password: "",
-    //           confirmPassword: ""
-    //       };
-    
-    //   }
-
       signup = (e) => {
-        //   e.preventDefault();
-        //   let customer = {
-        //         firstName: this.state.firstName, 
-        //         lastName:this.state.lastName,
-        //         email:this.email,
-        //         age:this.state.age,
-        //         addr:this.state.addr,
-        //         nic:this.state.nic,
-        //         telephoneNumber:this.state.telephoneNumber,
-        //         password:this.state.password,
-        //         confirmPassword:this.state.confirmPassword};
-        //         console.log('customer =>' + JSON.stringify(customer));
+                // axios.post("http://localhost:3030/addCustomersss",
+                // {
+                //     "email": this.state.email, 
+                //     "password": this.state.password
+                // })
 
-                axios.post("http://localhost:3030/addCustomer", 
+                axios.post("http://localhost:3030/auth/signup", 
                 {
-                    "cusFirstName": this.state.firstName,
-                    "cusLastName": this.state.lastName,
+                    "firstName": this.state.firstName,
+                    "lastName": this.state.lastName,
                     "email": this.state.email,
                     "age": this.state.age,
                     "addressLineOne": this.state.no,
@@ -298,36 +265,59 @@ export default class Login extends Component {
                     "nic": this.state.nic,
                     "teleNumber": this.state.telephoneNumber,
                     "password": this.state.password
-                });              
+                })
+                
+                
+                
+                .then(function (response) {
+                  // handle success
+                  console.log(response);
+                  alert(response.data);
+  
+              })
+              .catch(function (error) {
+                  // handle error
+                  // toast.error('❌ ' + error.response.data);
+                  alert(error.response.data);
+              })
+              .then(function () {
+                  // always executed
+  
+              });              
             }
 
-    //   firstNameChange(event){
-    //       this.setState({firstName: event.target.value});
-    //   }
-    //   lastNameChange(event){
-    //     this.setState({lastName: event.target.value});
-    //   }
-    //   emailChange(event){
-    //     this.setState({email: event.target.value});
-    //   }
-    //   ageChange(event){
-    //     this.setState({age: event.target.value});
-    //   }
-    //   addressChange(event){
-    //     this.setState({addr: event.target.value});
-    //   }
-    //   nicChange(event){
-    //     this.setState({nic: event.target.value});
-    //   }
-    //   telephoneChange(event){
-    //     this.setState({telephoneNumber: event.target.value});
-    //   }
-    //   passwordChange(event){
-    //     this.setState({password: event.target.value});
-    //   }
-    //   confirmpasswordChange(event){
-    //     this.setState({confirmPassword: event.target.value });
-    //   }
+      login = (e) => {
+        
+
+              axios.post("http://localhost:3030/auth/customer/login", 
+              {
+                  "email": this.state.loginEmail,
+                  "password": this.state.loginPassword
+              })
+              .then((response) => {
+                // handle success
+                console.log(response.data.userType);
+                // alert(response.data.token);
+
+                if(response.data.userType=="Admin"){
+                  this.props.history.push('/manager');
+                }
+
+              })
+              .catch((error) => {
+                  // handle error
+                  // toast.error('❌ ' + error.response.data);
+                  alert(error.response.data.message);
+                  
+              })
+              .then(function () {
+                  // always executed
+
+              });              
+          }      
+
+
+            
 
    
     render() {
@@ -355,18 +345,20 @@ export default class Login extends Component {
                           <div class="loginFormContainer">
                             <label>
                                 <span>Email Address</span>
-                                <input class="Login-Signin-inputs" type="email" name="Email" required></input>
+                                <input class="Login-Signin-inputs" type="email" name="loginEmail"  value={this.state.loginEmail} onChange={this.handleChange}  required></input>
                             </label>
                             <label>
                                 <span>Password</span>
-                                <input class="Login-Signin-inputs" type="password" name="password"></input>
+                                <input class="Login-Signin-inputs" type="password"  name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} ></input>
                             </label>
 
                             <br></br>
                             <br></br>
                             
                             <div class="text-center">
-                            <Link to="/manager"><Button variant="outline-dark" style={{width:"200px"}} className="submit">Sign In</Button></Link>
+                            {/* <Link to="/manager"> */}
+                              <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.login} >Log In</Button>
+                            {/* </Link> */}
                             </div>
                             <p className="forgot-pass">Forgot Password ?</p>
                             <div className="social-media">
@@ -396,10 +388,10 @@ export default class Login extends Component {
                         <div className="login-form sign-up">
                             <h2 style={{ color:"black" }}><b>Sign Up</b></h2>
                           <div class="signin_box">
-                            <form class="signinform" onSubmit={this.handleSubmit} noValidate>
+                            <form class="signinform" onSubmit={this.handleSubmit} required>
                                 <label>
                                     <span>First Name</span>
-                                    <input class="Login-Signin-inputs" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate required />
+                                    <input class="Login-Signin-inputs" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}  required />
                                     
                                     {errors.firstName.length > 0 && 
                                                      <span id="popup" className='error'>{errors.firstName}</span>}
@@ -407,7 +399,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Last Name</span>
-                                    <input class="Login-Signin-inputs" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} noVaidate required/>
                                 
                                     {errors.lastName.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.lastName}</span>}
@@ -415,7 +407,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Email</span>
-                                    <input class="Login-Signin-inputs" type="email" name="email" value={this.state.email} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="email" name="email" value={this.state.email} onChange={this.handleChange}  required/>
                                 
                                 {errors.email.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.email}</span>}
@@ -423,7 +415,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Age</span>
-                                    <input class="Login-Signin-inputs" type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange} noValidate required/>
+                                    <input class="Login-Signin-inputs" type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange}  required/>
                                 
                                 {errors.age.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.age}</span>}
@@ -431,15 +423,15 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Address</span>
-                                    <input class="Login-Signin-inputs" type="text" placeholder="No:" name="no" value={this.state.no} onChange={this.handleChange} noValidate required/>                                   
+                                    <input class="Login-Signin-inputs" type="text" placeholder="No:" name="no" value={this.state.no} onChange={this.handleChange}  required/>                                   
                                     {errors.no.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.no}</span>}
                                     
-                                    <input class="Login-Signin-inputs" type="text" placeholder="Lane:" name="lane" value={this.state.lane} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" placeholder="Lane:" name="lane" value={this.state.lane} onChange={this.handleChange}   required/>                                    
                                     {errors.lane.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.lane}</span>}
 
-                                    <input class="Login-Signin-inputs" type="text" placeholder="Street:" name="street" value={this.state.street} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" placeholder="Street:" name="street" value={this.state.street} onChange={this.handleChange}   required/>                                    
                                     {errors.street.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.street}</span>}
                                     
@@ -447,15 +439,15 @@ export default class Login extends Component {
 
                                 <label>
                                     <span>Date of Birth</span>
-                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange} noValidate  required/>                                   
+                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange}   required/>                                   
                                     {errors.Bdate.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Bdate}</span>}
                                     
-                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange} noValidate required />                                    
+                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange}  required />                                    
                                     {errors.Bmonth.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Bmonth}</span>}
 
-                                    <input class="Login-Signin-inputs" type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange} noValidate  required/>                                    
+                                    <input class="Login-Signin-inputs" type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange}   required/>                                    
                                     {errors.Byear.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Byear}</span>}
                                     
@@ -464,7 +456,7 @@ export default class Login extends Component {
 
                                 <label>
                                     <span>NIC</span>
-                                    <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange}   required/>
                                 
                                 {errors.nic.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.nic}</span>}
@@ -472,7 +464,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Telephone Number</span>
-                                    <input class="Login-Signin-inputs" type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange}   required/>
                                 
                                 {errors.telephoneNumber.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.telephoneNumber}</span>}
@@ -480,7 +472,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Password</span>
-                                    <input class="Login-Signin-inputs" type="password" name="password" value={this.state.password} onChange={this.handleChange} noValidate  required/>
+                                    <input class="Login-Signin-inputs" type="password" name="password" value={this.state.password} onChange={this.handleChange}   required/>
                                 
                                 {errors.password.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.password}</span>}
@@ -488,7 +480,7 @@ export default class Login extends Component {
                                 </label>
                                 <label>
                                     <span>Confirm Password</span>
-                                    <input class="Login-Signin-inputs" type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate required />
+                                    <input class="Login-Signin-inputs" type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange}  required />
                                 
                                 {errors.confirmPassword.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.confirmPassword}</span>}
@@ -496,6 +488,7 @@ export default class Login extends Component {
                                 </label>
                                 <div class="submitButton">
                                     <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.signup}>Sign Up Now</Button>
+                                    {/* <input class="submitButton" type="submit" value="Sign Up Now" variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.signup}/> */}
                                 </div>
                             </form>  
                           </div>  

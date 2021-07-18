@@ -1,8 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
+import React,{useState} from 'react';
+import Title from '../../Components/Title';
+import Sidebar  from '../../Components/Sidebar';
 import { Button,Form,Col,Table, Row, Modal } from 'react-bootstrap'
-import { FaTrash,FaPen } from "react-icons/fa";
+import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
@@ -51,7 +54,7 @@ function AddUser(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header style={{backgroundColor:'lightgray'}} closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Add New User
           </Modal.Title>
@@ -110,7 +113,7 @@ function AddUser(props) {
                                 
                             </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{backgroundColor:'lightgray'}}>
             Adventure Base Camp, Kitulgala.
         </Modal.Footer>
       </Modal>
@@ -225,14 +228,19 @@ const Users =()=>{
         <>
             <div className="users" >
                 <Sidebar></Sidebar>
-                
                 <Title title="U S E R S"></Title>
-                <div>
+                <br></br>
+                <div className="row">
+                    <div className="col-md-6">
                     <Button variant="dark" onClick={()=>setShow(true)}>+ Add New User</Button>
                     <AddUser 
                         show={show}
                         onHide={() => setShow(false)}
-                    />    
+                    />   
+                    </div>
+                    <div className="col-md-6" style={{textAlign:'right'}}>
+                     <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Mobile_No/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                    </div>
                 </div>
                 <br></br><br></br>
                 <div>

@@ -15,8 +15,11 @@ nav img{
     display: block;
     text-align: center;
  }
-
- 
+.ManCalendar{
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
+} 
 /* End of NavBar */
 
 /* Hero Component */
@@ -291,6 +294,21 @@ hr.new1 {
   text-align: center;
 }
 .services-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 50px;
+}
+.servicess {
+  padding: 0.75rem 0;
+}
+.servicess {
+  /* background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%); */
+  text-align: center;
+}
+.servicess-center {
   width: 90vw;
   margin: 0 auto;
   display: grid;

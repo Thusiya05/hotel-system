@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
-import SideBar from '../Components/Sidebar'
-import Title from '../Components/Title';
+import RcsideBar from '../../Components/rcsidebar'
+import Title from '../../Components/Title';
 import { Table,Button, Container,Modal,Form } from 'react-bootstrap'
 import { FaPen,FaSearch } from 'react-icons/fa';
 import Tippy from '@tippyjs/react';
@@ -95,7 +95,7 @@ const AssignGuides=()=> {
     return (
         <>
             <div className="users">
-                <SideBar />
+                <RcsideBar />
                 <Title title="Assign Guides"></Title>
                 <br></br>
                 <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'12rem'}}></input>

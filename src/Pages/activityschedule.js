@@ -1,11 +1,11 @@
 import React from 'react'
 import NavBar from "../Components/NavBar"
-// import Footer from '../Components/Footer'
+import Footer from '../Components/Footer'
 
 const activityschedule = () => {
     return (
         <>
-        <div>
+            <div>
                 <NavBar
                     path1="/" name1="Home"
                     path2="/rooms/" name2="Rooms" 
@@ -17,6 +17,9 @@ const activityschedule = () => {
                 <br></br>
                 <br></br>
                 <br></br>
+        </div>
+        <div>
+                <Footer />
         </div>
        </>
        

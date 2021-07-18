@@ -13,54 +13,55 @@ export const ManSideBar = [
         title: "Home",
         icon: <AiIcons.AiFillHome />,
         link:'/manager',
+
     },
 
     {
         title: "Reports",
         icon: <HiIcons.HiDocumentReport />,
-        link:'/Reports',
+        link:'/manager/Reports',
     },
 
     {
         title: "HR Management",
         icon: <AiIcons.AiOutlineAudit />,
-        link:'/HRManagement',
+        link:'/manager/HRManagement',
     },
 
     {
         title: "Hotel Configuration",
         icon: <AiIcons.AiOutlineControl />,
-        link:'/HotelConfig',
+        link:'/manager/HotelConfig',
     },
 
     {
         title: "Guests",
         icon: <IoIcons.IoIosPeople />,
-        link:'/guest',
+        link:'/manager/guest/',
     },
 
     {
         title: "Calendar",
         icon: <AiIcons.AiFillCalendar />,
-        link:'/ManCalendar',
+        link:'/manager/ManCalendar',
     },
 
-    {
-        title: "CMS",
-        icon: <BiIcons.BiBookContent />,
-        link:'/cms',
-    },
+    // {
+    //     title: "CMS",
+    //     icon: <BiIcons.BiBookContent />,
+    //     link:'/cms',
+    // },
 
-    {
-        title: "Administrative",
-        icon: <RiIcons.RiAdminFill />,
-        link:'/Administrative',
-    },
+    // {
+    //     title: "Administrative",
+    //     icon: <RiIcons.RiAdminFill />,
+    //     link:'/Administrative',
+    // },
 
     {
         title: "Archived Bookings",
         icon: <FaIcons.FaFileArchive />,
-        link:'/ArchivedBookings',
+        link:'/manager/ArchivedBookings',
     },
 
     {
