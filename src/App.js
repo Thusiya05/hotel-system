@@ -23,6 +23,7 @@ import HotelConfig from "./Pages/Manager/HotelConfig";
 import AssignStewards  from "./Pages/Receptionist/AssignStewards";
 import AssignGuides from "./Pages/Receptionist/assignGuides";
 import Activityschedule from "./Pages/activityschedule";
+import Foodmenu from "./Pages/foodmenu";
 import "./App.css"
 
 
@@ -56,6 +57,7 @@ function App() {
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
         <Route exact path ="/activityschedule" component={Activityschedule} />
+        <Route exact path ="/foodmenu" component={Foodmenu} />
         <Route component={Error} />
         
        
