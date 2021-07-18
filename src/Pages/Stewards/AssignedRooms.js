@@ -1,11 +1,13 @@
 import React from 'react'
 import { Container,Button } from 'react-bootstrap'
+import Stesidebar from '../../Components/stesidebar';
 
 const AssignedRooms=()=> {
     return (
         <>
             <br></br>
             <div className="users">
+                <Stesidebar/>
                 <div className="row">
                     <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'45rem'}}>
                         <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
