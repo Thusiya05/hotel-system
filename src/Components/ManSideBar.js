@@ -37,7 +37,7 @@ export const ManSideBar = [
     {
         title: "Guests",
         icon: <IoIcons.IoIosPeople />,
-        link:'/manager/guest',
+        link:'/manager/guest/',
     },
 
     {
