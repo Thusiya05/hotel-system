@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import Title from '../../Components/Title';
-import Sidebar  from '../../Components/Sidebar';
+import RcsideBar from '../../Components/rcsidebar'
 import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
@@ -280,7 +280,7 @@ const Customers=()=>{
     return(
         <>
             <div className="customers">
-                <Sidebar />
+                <RcsideBar />
                 <br></br>
                 <div>
                 <Nav fill variant="tabs" defaultActiveKey="/home">
