@@ -59,12 +59,15 @@ export default function NavBar({path1,name1,path2,name2,path3,name3,path4,name4,
                 </Nav>
                 <Nav>
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
-                  <NavDropdown title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
+                  <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
                     <NavDropdown.Item href="/signIn"> {LogName}</NavDropdown.Item>
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">My Bookings</NavDropdown.Item>
                     </NavDropdown>
+                  </Nav>
+                  <Nav>
+                    <Nav.Link href="#"></Nav.Link>
                   </Nav>
                   <Nav>
                     <Nav.Link href="#"></Nav.Link>
