@@ -23,6 +23,7 @@ import HotelConfig from "./Pages/Manager/HotelConfig";
 import AssignStewards  from "./Pages/Receptionist/AssignStewards";
 import AssignGuides from "./Pages/Receptionist/assignGuides";
 import Activityschedule from "./Pages/activityschedule";
+import AssignedRooms from "./Pages/Stewards/AssignedRooms";
 import "./App.css"
 
 
@@ -42,7 +43,7 @@ function App() {
         <Route exact path ="/signIn" component={Login} />
         <Route exact path ="/admin/" component={AdminLogin} />
         <Route exact path = "/manager/reports/" component={Reports} />
-        <Route path = "/admin/bookedrooms/" component={BookedRooms} />
+        <Route exact path = "/admin/bookedrooms/" component={BookedRooms} />
         <Route exact path = "/statistics/" component={Statistics} />
         <Route exact path = "/manager/HRManagement/" component={Users} />
         <Route exact path = "/receptionist/customers/" component={Customers} />
@@ -56,6 +57,7 @@ function App() {
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
         <Route exact path ="/activityschedule" component={Activityschedule} />
+        <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
         <Route component={Error} />
         
        

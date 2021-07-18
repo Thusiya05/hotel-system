@@ -17,7 +17,7 @@ function ManCalendar() {
         <div className='ManCalendar'>
             <Sidebar/>
             <div>
-            <Calendar onChange={onChange} date={date}/>
+            <Calendar onChange={onChange} date={date} />
             </div>
             
         </div>
