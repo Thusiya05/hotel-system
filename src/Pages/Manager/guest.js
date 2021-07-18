@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from '../Components/Sidebar';
+import Sidebar from '../../Components/Sidebar';
 import { Table, Button, Form, Col,Row } from 'react-bootstrap'
-import Title from '../Components/Title';
+import Title from '../../Components/Title';
 import { FaSearch } from "react-icons/fa";
 
 function guest() {

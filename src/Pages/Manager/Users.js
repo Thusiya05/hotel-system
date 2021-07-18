@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-import Title from '../Components/Title';
-import Sidebar  from '../Components/Sidebar';
+import Title from '../../Components/Title';
+import Sidebar  from '../../Components/Sidebar';
 import { Button,Form,Col,Table, Row, Modal } from 'react-bootstrap'
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';

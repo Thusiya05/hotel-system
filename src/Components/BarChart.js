@@ -11,7 +11,7 @@ export default function BarChart(){
                         labels:['Water Rafting','Hiking','Cycling','Swimming','Other'],
                         datasets:[{
                             label:'Customers',
-                            backgroundColor:'darkblue',
+                            backgroundColor:'#343a40',
                             data:[12,38,96,34,40]
                         }]
                     }}
