@@ -31,6 +31,7 @@ import deliver from "./Pages/Kitchen/deliver";
 import menu from "./Pages/Kitchen/menu";
 import inventory from "./Pages/Kitchen/inventory";
 import StewardsHistory from "./Pages/Stewards/StewardsHistory"
+import EditProfile from "./Pages/EditProfile"
 import GuideHistory from "./Pages/Guide/GuideHistory"
 import "./App.css"
 
@@ -71,6 +72,7 @@ function App() {
         <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
         <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
         <Route exact path ="/foodmenu" component={Foodmenu} />
+        <Route exact path ="/EditProfile" component={EditProfile} />
         <Route exact path ="/kitchen/order" component={Order} />
         <Route exact path ="/kitchen/deliver" component={deliver} />
         <Route exact path ="/kitchen/menu" component={menu} />
