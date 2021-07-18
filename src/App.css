@@ -15,11 +15,7 @@ nav img{
     display: block;
     text-align: center;
  }
-.ManCalendar{
-  display: flex;
-  justify-content: 'center';
-  align-items: 'center';
-} 
+ 
 /* End of NavBar */
 
 /* Hero Component */
