@@ -1,9 +1,10 @@
 import React from 'react'
+import Kcsidebar from '../../Components/kcsidebar'
 
 function inventory() {
     return (
         <div>
-            
+            <Kcsidebar/>
         </div>
     )
 }

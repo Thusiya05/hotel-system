@@ -1,62 +1,57 @@
-import React,{useState} from "react"
-import "../CSS/menu.css"
+import React from 'react'
+import Kcsidebar from '../../Components/kcsidebar'
+import { Container,Button } from 'react-bootstrap'
+import Title from '../../Components/Title';
 
 
-const meals=[
-    "KOTTU","FRIED RICE","SEA FOOD",
-    "BURGER","NASIGURAN","FRUIT SALAD",
-    "SHWARMA","CHICKEN DEVEL","BURIYANI",
-    "SUBMARINE","MIX RICE","IDI APPA"
-]
-
-const Menu = ()=>{
-
-    const[searchValue,setSearchValue]=useState("")
-
-    const handleChangeWord =(event)=>{
-        setSearchValue(event.target.value)
-    }
-
-    const clearButton=()=>{
-        setSearchValue("")   
-    }
-
-   meals.map((foodItems)=>{
-       return foodItems.toUpperCase()
-   })
-
-    const filterItems = meals.filter((foodItems)=>{
-        return foodItems.includes(searchValue.toUpperCase())
-    })
-    const checkLength = searchValue.length > 0
-    console.log(checkLength)
-
-    return(
-        <div id='body'>
-            <div id='searchLine'>
-                Search <input type="text" value={searchValue} onChange={handleChangeWord}></input>
-                {checkLength && <button onClick={clearButton}>Clear</button>}
+const Order=()=> {
+    return (
+        <>
+            <div className="users">
+                <Kcsidebar/>
+                <br></br>
+                <Title title="Orders"></Title>
+                <div className="row">
+                    <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'44rem',borderRadius:'2%'}}>
+                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
+                            <div className="col-md-6">
+                                <h5>Darshana Bandara</h5>
+                                <h5>Room No: 12</h5>
+                                <h5>Meals: Chicken Rice(f):01</h5>
+                                
+                            </div>
+                            <div className="col-md-6">
+                            <Button variant="dark"  type="submit">Finish</Button>
+                            </div>
+                        </div>
+                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
+                            <div className="col-md-6">
+                                <h5>Lakith Kithsara</h5>
+                                <h5>Room No: 10</h5>
+                                <h5>Meals: Chicken Kottu(f) : 02</h5>
+                                
+                            </div>
+                            <div className="col-md-6">
+                            <Button variant="dark"  type="submit">Finish</Button>
+                            </div>
+                        </div> 
+                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
+                            <div className="col-md-6">
+                                <h5>Thusitha Karunthilaka</h5>
+                                <h5>Room No: 06</h5>
+                                <h5>Meals: Nasigooreng(f) : 01</h5>
+                                
+                            </div>
+                            <div className="col-md-6">
+                            <Button variant="dark"  type="submit">Finish</Button>
+                            </div>
+                        </div> 
+                    </Container>
+                </div>
             </div>
-
             <br></br>
-            
-            <div className='foodList'>
-                <h1>--------------------------------------- Menu ------------------------------------</h1>
-                <ul>
-                    {filterItems.map((foodItems) =>{
-                                return <li key={foodItems}>{foodItems}</li>
-                            })}
-                        
-                </ul>
-                
-                
-                    
-            </div>
-            
-            
-        </div>
-        
+        </>
     )
 }
 
-export default Menu
+export default Order
