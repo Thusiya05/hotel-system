@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Stesidebar from '../../Components/stesidebar';
+import GuideSidebar from '../../Components/GuideSidebar';
 import {Container, Button,Form,Col, Row, Modal } from 'react-bootstrap';
 
 function ShowGuide(props) {
@@ -127,7 +127,7 @@ const Guide=()=> {
     return (
         <>
             <div className="users">
-                <Stesidebar/>
+                <GuideSidebar/>
                 <br />
                 <br />
                 <div className="row">
