@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../Components/Sidebar';
-import { Table, Button, Form, Col } from 'react-bootstrap'
+import { Table, Button, Form, Col,Row } from 'react-bootstrap'
 import Title from '../Components/Title';
 import { FaSearch } from "react-icons/fa";
 
@@ -9,22 +9,39 @@ function guest() {
         <div className='guest'>
         <Sidebar/>
         <Title title="Guest List"></Title>
-        <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-        <br></br><br></br>
-
         
-            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                        <option value="1">-Filter by Room Type-</option>
-                        <option value="2">Single Room</option>
-                        <option value="3">Double Room</option>
-                        <option value="3">Family Room</option>
-            </Form.Control>
-
-            <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
-                    <Form.Control type="date" required/>
-            
+        <br></br><br></br>
+       
+          <Row>
+            <Col sm={6}>
+              <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
+              <Form.Control type="date" required/>
+            </Col>
+            <Col sm={6}>
             <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                    <Form.Control type="date" required/>
+                        <Form.Control type="date" required/>
+            </Col>
+          </Row>
+          <div className="row">
+          <div className="col-md-6">
+            {/* <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label> */}
+            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                <option value="1">-Filter by Room Type-</option>
+                <option value="2">Single Room</option>
+                <option value="3">Double Room</option>
+                <option value="3">Family Room</option>
+            </Form.Control>
+          </div>
+          <div className="col-md-6" style={{textAlign:"right"}}>
+            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'25rem'}}></input>
+          </div>
+          
+        </div>
+
+         
+
+        <br></br>
+        <br></br>
            
 <Table striped bordered hover>
   <thead>

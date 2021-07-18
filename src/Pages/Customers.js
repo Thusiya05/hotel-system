@@ -1,13 +1,52 @@
 import React,{ useState } from 'react';
 import Title from '../Components/Title';
 import Sidebar  from '../Components/Sidebar';
-import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap'
+import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 
+function ShowBill(props){
+    return(
+        <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+      <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Charges
+        </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Container>
+                <Row>
+                    <Col sm={6}>
+                        <h6>Room Charge </h6>
+                        <h6>Activity Charges </h6>
+                        <h6>Tax</h6>
+                        <hr></hr>
+                        <h6>Total</h6>
+                    </Col>
+                    <Col sm={6}>
+                        <h6>13 500 </h6>
+                        <h6>5000 </h6>
+                        <h6>1000</h6>
+                        <hr></hr>
+                        <h6>19500</h6>
+                    </Col>
+                  </Row>
+                </Container>
+              </Modal.Body>
+              <Modal.Footer style={{backgroundColor:'lightgray'}}>
+                  Adventure Base Camp, Kitulgala.
+              </Modal.Footer>
+      </Modal>
 
+    );
+}
 function AddCustomer(props){
     return (
         <Modal
@@ -237,37 +276,42 @@ const Customers=()=>{
     const[open,setOpen]=useState(false)
     const[view,setView]=useState(false)
     const[editshow,setEditShow]=useState(false)
+    const[viewBill,setViewBill]=useState(false)
     return(
         <>
             <div className="customers">
                 <Sidebar />
-                <Title title="C u s t o m e r s"></Title>
                 <br></br>
                 <div>
-                    <div className="row">
-                        <div className="col-md-3">
-                            <Button variant="info" onClick={()=>setOpen(!open)&setShow(false)&setView(false)}>Pending Customers</Button>
-                        </div>  
-                        <div className="col-md-3">
-                            <Button variant="info" onClick={()=>setShow(!show)&setOpen(false)&setView(false)}>Check In Customers</Button>
-                        </div>  
-                        <div className="col-md-3">
-                            <Button variant="info" onClick={()=>setView(!view)&setShow(false)&setOpen(false)}>Checkout Customers</Button>
-                        </div>
-                        <div className="col-md-3">
-                        <Button variant="dark" onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
-                            <AddCustomer
-                                show={display}
-                                onHide={()=> setDisplay(false)} 
-                            />
-                        </div>   
-                    </div>
+                <Nav fill variant="tabs" defaultActiveKey="/home">
+                    <Nav.Item>
+                        <Nav.Link  onClick={()=>setOpen(!open)&setShow(false)&setView(false)}>Pending Customers</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link  onClick={()=>setShow(!show)&setOpen(false)&setView(false)}>Check In customer</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link  onClick={()=>setView(!view)&setShow(false)&setOpen(false)}>Check Out customer</Nav.Link>
+                    </Nav.Item>
+                </Nav>
                     <br></br>
                         {
                             show?
                             <div>
                             <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Check In Customers.</h4>
-                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                            <div className="row">
+                                <div className="col-md-6">
+                                <Button variant="dark"  onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
+                                    <AddCustomer
+                                        show={display}
+                                        onHide={()=> setDisplay(false)} 
+                                    />
+                                </div>
+                                <div className="col-md-6" style={{textAlign:'right'}}>
+                                    <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                                </div>
+                            </div>
+                            
                             <br></br>
                             <br></br>
                             <Table striped bordered hover size="sm" responsive id="CheckInTable">
@@ -302,7 +346,7 @@ const Customers=()=>{
                                         <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
                                         <Tippy content="Delete">
                                             <Button type="delete"><FaTrash /></Button>
@@ -327,7 +371,7 @@ const Customers=()=>{
                                         <td>15</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
                                         <Tippy content="Delete">
                                             <Button type="delete"><FaTrash /></Button>
@@ -352,7 +396,7 @@ const Customers=()=>{
                                         <td>14</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
                                         <Tippy content="Delete">
                                             <Button type="delete"><FaTrash /></Button>
@@ -369,6 +413,10 @@ const Customers=()=>{
                                 show={editshow}
                                 onHide={()=> setEditShow(false)} 
                             />
+                            <ShowBill
+                                show={viewBill}
+                                onHide={()=>setViewBill(false)}
+                                    />
                             </div>:null
                             
                         }
@@ -377,7 +425,18 @@ const Customers=()=>{
                             open?
                             <div>
                             <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Pending Customers</h4>
-                            <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
+                            <div className="row">
+                                <div className="col-md-6">
+                                <Button variant="dark"  onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
+                                    <AddCustomer
+                                        show={display}
+                                        onHide={()=> setDisplay(false)} 
+                                    />
+                                </div>
+                                <div className="col-md-6" style={{textAlign:'right'}}>
+                                    <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                                </div>
+                            </div>
                             <br></br>
                             <br></br>
                             <Table striped bordered hover size="sm" responsive>
@@ -410,10 +469,16 @@ const Customers=()=>{
                                         <td>Full bord</td>
                                         <td>Single room</td>
                                         <td>12</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                        </td>
+                                        <td>
+                                        <Tippy content="View Bill">
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
+                                        </Tippy>
+                                        <Tippy content="Delete">
+                                            <Button type="delete"><FaTrash /></Button>
+                                        </Tippy>
+                                         <Tippy content="Edit">
+                                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                                         </Tippy></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -427,9 +492,16 @@ const Customers=()=>{
                                         <td>half bord</td>
                                         <td>Double</td>
                                         <td>14</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                                        <td style={{textAlign:'center'}}>
+                                        <Tippy content="View Bill">
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
+                                        </Tippy>
+                                        <Tippy content="Delete">
+                                            <Button type="delete"><FaTrash /></Button>
+                                        </Tippy>
+                                         <Tippy content="Edit">
+                                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                                         </Tippy></td>
                                         
                                     </tr>
                                     <tr>
@@ -444,9 +516,16 @@ const Customers=()=>{
                                         <td>half bord</td>
                                         <td>Double</td>
                                         <td>15</td>
-                                        <td style={{textAlign:'center'}}><Button><FaPrint /></Button>
-                                        <Button type="delete"><FaTrash /></Button> 
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button></td>
+                                        <td style={{textAlign:'center'}}>
+                                        <Tippy content="View Bill">
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
+                                        </Tippy>
+                                        <Tippy content="Delete">
+                                            <Button type="delete"><FaTrash /></Button>
+                                        </Tippy>
+                                         <Tippy content="Edit">
+                                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                                         </Tippy></td>
                                         
                                     </tr>
                                 </tbody>
@@ -454,6 +533,10 @@ const Customers=()=>{
                             <EditCustomer
                                 show={editshow}
                                 onHide={()=> setEditShow(false)} 
+                            />
+                            <ShowBill
+                                show={viewBill}
+                                onHide={()=>setViewBill(false)}
                             />
                             </div>:null
                             
@@ -463,7 +546,18 @@ const Customers=()=>{
                             view?
                             <div>
                             <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Checkout Customers</h4>
-                            <FaSearch /> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name"></input>
+                            <div className="row">
+                                <div className="col-md-6">
+                                <Button variant="dark"  onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
+                                    <AddCustomer
+                                        show={display}
+                                        onHide={()=> setDisplay(false)} 
+                                    />
+                                </div>
+                                <div className="col-md-6" style={{textAlign:'right'}}>
+                                    <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                                </div>
+                            </div>
                             <br></br>
                             <br></br>
                             <Table striped bordered hover size="sm" responsive>
@@ -498,7 +592,7 @@ const Customers=()=>{
                                         <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy></td>
                                     </tr>
                                     <tr>
@@ -515,7 +609,7 @@ const Customers=()=>{
                                         <td>14</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
                                     </td>
                                         
@@ -534,16 +628,16 @@ const Customers=()=>{
                                         <td>15</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
-                                            <Button><FaPrint /></Button>
+                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
                                     </td>
                                         
                                     </tr>
                                 </tbody>
                             </Table>
-                            <EditCustomer
-                                show={editshow}
-                                onHide={()=> setEditShow(false)} 
+                            <ShowBill
+                                show={viewBill}
+                                onHide={()=>setViewBill(false)}
                             />
                             </div>:null
                             
