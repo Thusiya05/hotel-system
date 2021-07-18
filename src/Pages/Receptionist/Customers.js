@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
-import Title from '../Components/Title';
-import Sidebar  from '../Components/Sidebar';
+import Title from '../../Components/Title';
+import Sidebar  from '../../Components/Sidebar';
 import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
@@ -501,8 +501,7 @@ const Customers=()=>{
                                         </Tippy>
                                          <Tippy content="Edit">
                                             <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                         </Tippy></td>
-                                        
+                                         </Tippy></td>  
                                     </tr>
                                     <tr>
                                     <td>3</td>

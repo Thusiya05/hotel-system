@@ -1,8 +1,8 @@
 import React from 'react'
-import BarChart from '../Components/BarChart'
-import Lines from '../Components/Lines'
-import Sidebar from '../Components/Sidebar'
-import StatServices from '../Components/StatServices'
+import BarChart from '../../Components/BarChart'
+import Lines from '../../Components/Lines'
+import Sidebar from '../../Components/Sidebar'
+import StatServices from '../../Components/StatServices'
 
 const Statistics = ()=>{
     return(
