@@ -16,7 +16,6 @@ import Users from "./Pages/Manager/Users"
 import Statistics from "./Pages/Manager/manager";
 import ManCalendar from "./Pages/Manager/ManCalendar"
 import Customers from "./Pages/Receptionist/Customers";
-import income from "./Pages/income";
 import guest from "./Pages/Manager/guest";
 import ArchivedBookings from "./Pages/Manager/ArchivedBookings";
 import Administrative from "./Pages/Administrative";
