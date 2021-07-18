@@ -1,6 +1,5 @@
 import React,{ useState } from 'react';
-import Sidebar from '../Components/Sidebar';
-import Title from '../Components/Title';
+import Sidebar from '../../Components/Sidebar';
 import { Button,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';

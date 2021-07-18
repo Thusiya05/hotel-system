@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../Components/Sidebar';
-import "../CSS/Sidebar.css";
+import Sidebar from '../../Components/Sidebar';
+import "../../CSS/Sidebar.css";
 import Calendar from 'react-calendar';
 import {useState} from 'react'
 import 'react-calendar/dist/Calendar.css';

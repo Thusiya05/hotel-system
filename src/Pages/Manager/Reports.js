@@ -1,7 +1,7 @@
 import React from 'react'
-import Sidebar from '../Components/Sidebar';
-import Title from '../Components/Title';
-import "../CSS/Sidebar.css";
+import Sidebar from '../../Components/Sidebar';
+import Title from '../../Components/Title';
+import "../../CSS/Sidebar.css";
 import { Button,Form,Col } from 'react-bootstrap';
 
 

@@ -57,7 +57,7 @@ export default class StatServices extends Component {
                 <div className="col-md-4 col-sm-4">
                 <Card style={{width: '23.5rem',height:'9rem' }}>
                         <div className="row">
-                            <div className="col-md-6"  style={{backgroundColor:'green', height:'9rem'}}>
+                            <div className="col-md-6"  style={{backgroundColor:'#007bff', height:'9rem'}}>
                                <FaCommentDollar size={75}/>
                             </div>
                             <div className="col-md-6" >
