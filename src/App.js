@@ -16,9 +16,7 @@ import Users from "./Pages/Users"
 import Statistics from "./Pages/manager";
 import ManCalendar from "./Pages/ManCalendar"
 import Customers from "./Pages/Customers";
-import income from "./Pages/income";
 import guest from "./Pages/guest";
-import cms from "./Pages/cms";
 import ArchivedBookings from "./Pages/ArchivedBookings";
 import Administrative from "./Pages/Administrative";
 import HotelConfig from "./Pages/HotelConfig";
@@ -54,7 +52,6 @@ function App() {
         <Route exact path ="/ManCalendar" component={ManCalendar} />
         <Route path = "/manager/" component={manager} />
         <Route exact path ="/guest" component={guest} />
-        <Route exact path ="/cms" component={cms} />
         <Route exact path ="/HotelConfig" component={HotelConfig} />
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/ArchivedBookings" component={ArchivedBookings} />

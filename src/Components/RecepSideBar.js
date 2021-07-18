@@ -1,24 +1,32 @@
 import React from 'react'
-import * as AiIcons from 'react-icons/ai'
+import * as MdIcons from 'react-icons/md'
+import * as FaIcons from 'react-icons/fa'
+import * as RiIcons from 'react-icons/ri'
 
 export const RecepSideBar = [
    
     {
-        title: "Home",
-        icon: <AiIcons.AiFillHome />,
+        title: "Guest",
+        icon: <FaIcons.FaUserCheck />,
         link:'/manager',
     },
 
     {
-        title: "Reports",
-        icon: <AiIcons.AiFillHome />,
+        title: "Assign Steward",
+        icon: <MdIcons.MdAssignmentInd />,
         link:'/Reports',
     },
 
     {
-        title: "HR Management",
-        icon: <AiIcons.AiFillHome />,
+        title: "Assign Guide",
+        icon: <MdIcons.MdAssignmentInd />,
         link:'/HRManagement',
+    },
+
+    {
+        title: "Logout",
+        icon: <RiIcons.RiLogoutBoxFill />,
+        link:'/Signin',
     },
 
 ] ;
