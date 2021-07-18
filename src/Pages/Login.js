@@ -10,6 +10,8 @@ import axios from 'axios';
 // import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import history from '../history';
+import { useHistory } from 'react-router-dom';
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -25,21 +27,6 @@ export default class Login extends Component {
     myfunc = () => {
 		document.querySelector('.login-cont').classList.toggle('s-signup')
       }
-
-
-    //   async componentDidMount() {
-    //     // GET request using fetch with async/await
-    //     const response = await fetch('http://localhost:3030/customers'
-    //     ).then((result)=>{
-    //       result.json().then((resp)=>{
-    //         this.setState.({data:resp})
-    //       })
-    //     })
-    //     // const data = await response.json();
-    //     // this.setState({ totalReactPackages: data.total })
-        
-    // }
-      
 
       constructor(props) {
         super(props);
@@ -58,6 +45,9 @@ export default class Login extends Component {
           telephoneNumber: "",
           password: "",
           confirmPassword: "",
+
+          loginPassword:"",
+          loginEmail:"",
 
           NICfromDB: "",
           
@@ -81,19 +71,6 @@ export default class Login extends Component {
             confirmPassword: '',
             }
         };
-
-        // this.firstNameChange = this.firstNameChange.bind(this);
-        // this.lastNameChange = this.lastNameChange.bind(this);
-        // this.emailChange = this.emailChange.bind(this);
-        // this.ageChange = this.ageChange.bind(this);
-        // this.addressChange = this.addressChange.bind(this);
-        // this.nicChange = this.nicChange.bind(this);
-        // this.telephoneChange = this.telephoneChange.bind(this);
-        // this.passwordChange = this.passwordChange.bind(this);
-        // this.confirmpasswordChange = this.confirmpasswordChange.bind(this);
-        // this.signup=this.signup.bind(this);
-
-
       }
 
       handleChange = (event) => {
@@ -203,22 +180,6 @@ export default class Login extends Component {
                 ? "NIC don't match!"
                 : '';
                 this.setState({nic: event.target.value});
-                   
-
-                
-                  // componentDidMount(){ 
-                  //   const url = "http://localhost:3030/customers"; 
-                  //   const response = await fetch(url);
-                  //   const data = await response.json();
-                  //   this.setState({NICfromDB: data.result[8]});
-                  // }
-
-                  //   if(this.state.nic==NICfromDB){
-                  //     errors.nic = "nic already exists!"
-                  //   }else{
-                  //     errors.nic = "nic correct!"
-                  //   }
-                
 
             break;
 
@@ -253,6 +214,18 @@ export default class Login extends Component {
             }
                    
             break;
+
+            case 'loginEmail': 
+ 
+                this.setState({loginEmail: event.target.value});
+                   
+            break;
+
+            case 'loginPassword': 
+ 
+                this.setState({loginPassword: event.target.value});
+                   
+            break;
           default:
             break;
         }
@@ -270,36 +243,12 @@ export default class Login extends Component {
         }
       }
 
-    //   constructor(props){          
-    //       super(props);
-    //       this.state={
-              
-    //           firstName: "",
-    //           lastName: "",
-    //           email: "",
-    //           age: "",
-    //           addr: "",
-    //           nic: "",
-    //           telephoneNumber: "",
-    //           password: "",
-    //           confirmPassword: ""
-    //       };
-    
-    //   }
-
       signup = (e) => {
-        //   e.preventDefault();
-        //   let customer = {
-        //         firstName: this.state.firstName, 
-        //         lastName:this.state.lastName,
-        //         email:this.email,
-        //         age:this.state.age,
-        //         addr:this.state.addr,
-        //         nic:this.state.nic,
-        //         telephoneNumber:this.state.telephoneNumber,
-        //         password:this.state.password,
-        //         confirmPassword:this.state.confirmPassword};
-        //         console.log('customer =>' + JSON.stringify(customer));
+                // axios.post("http://localhost:3030/addCustomersss",
+                // {
+                //     "email": this.state.email, 
+                //     "password": this.state.password
+                // })
 
                 axios.post("http://localhost:3030/auth/signup", 
                 {
@@ -317,6 +266,9 @@ export default class Login extends Component {
                     "teleNumber": this.state.telephoneNumber,
                     "password": this.state.password
                 })
+                
+                
+                
                 .then(function (response) {
                   // handle success
                   console.log(response);
@@ -325,7 +277,7 @@ export default class Login extends Component {
               })
               .catch(function (error) {
                   // handle error
-                  toast.error('❌ ' + error.response.data);
+                  // toast.error('❌ ' + error.response.data);
                   alert(error.response.data);
               })
               .then(function () {
@@ -334,33 +286,38 @@ export default class Login extends Component {
               });              
             }
 
-    //   firstNameChange(event){
-    //       this.setState({firstName: event.target.value});
-    //   }
-    //   lastNameChange(event){
-    //     this.setState({lastName: event.target.value});
-    //   }
-    //   emailChange(event){
-    //     this.setState({email: event.target.value});
-    //   }
-    //   ageChange(event){
-    //     this.setState({age: event.target.value});
-    //   }
-    //   addressChange(event){
-    //     this.setState({addr: event.target.value});
-    //   }
-    //   nicChange(event){
-    //     this.setState({nic: event.target.value});
-    //   }
-    //   telephoneChange(event){
-    //     this.setState({telephoneNumber: event.target.value});
-    //   }
-    //   passwordChange(event){
-    //     this.setState({password: event.target.value});
-    //   }
-    //   confirmpasswordChange(event){
-    //     this.setState({confirmPassword: event.target.value });
-    //   }
+      login = (e) => {
+        
+
+              axios.post("http://localhost:3030/auth/customer/login", 
+              {
+                  "email": this.state.loginEmail,
+                  "password": this.state.loginPassword
+              })
+              .then((response) => {
+                // handle success
+                console.log(response.data.userType);
+                // alert(response.data.token);
+
+                if(response.data.userType=="Admin"){
+                  this.props.history.push('/manager');
+                }
+
+              })
+              .catch((error) => {
+                  // handle error
+                  // toast.error('❌ ' + error.response.data);
+                  alert(error.response.data.message);
+                  
+              })
+              .then(function () {
+                  // always executed
+
+              });              
+          }      
+
+
+            
 
    
     render() {
@@ -388,18 +345,20 @@ export default class Login extends Component {
                           <div class="loginFormContainer">
                             <label>
                                 <span>Email Address</span>
-                                <input class="Login-Signin-inputs" type="email" name="Email" required></input>
+                                <input class="Login-Signin-inputs" type="email" name="loginEmail"  value={this.state.loginEmail} onChange={this.handleChange}  required></input>
                             </label>
                             <label>
                                 <span>Password</span>
-                                <input class="Login-Signin-inputs" type="password" name="password"></input>
+                                <input class="Login-Signin-inputs" type="password"  name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} ></input>
                             </label>
 
                             <br></br>
                             <br></br>
                             
                             <div class="text-center">
-                            <Link to="/manager"><Button variant="outline-dark" style={{width:"200px"}} className="submit">Sign In</Button></Link>
+                            {/* <Link to="/manager"> */}
+                              <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.login} >Log In</Button>
+                            {/* </Link> */}
                             </div>
                             <p className="forgot-pass">Forgot Password ?</p>
                             <div className="social-media">
