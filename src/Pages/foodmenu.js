@@ -49,7 +49,7 @@ const Foodmenu = ()=>{
 
             <br></br>
             
-            <div className='foodList'>
+            <div className='foodList  ul'>
                 <h1>--------------------------------------- Menu ------------------------------------</h1>
                 <ul>
                     {filterItems.map((foodItems) =>{
