@@ -37,7 +37,7 @@ function AddSteward(props){
                     </Form>
                     <br></br>
                     <div style={{textAlign:'center'}}>
-                        <Button type="submit" variant="info">Submit</Button> <Button type="submit" variant="danger">Cancel</Button>
+                        <Button type="submit" variant="info">Submit</Button>  <Button onClick={props.onHide} variant="danger">Cancel</Button>
                        
                     </div>
                 </Modal.Body>
@@ -78,7 +78,7 @@ function EditSteward(props){
                     </Form>
                     <br></br>
                     <div style={{textAlign:'center'}}>
-                        <Button type="submit" variant="info">Submit</Button> <Button type="submit" variant="danger">Cancel</Button>
+                        <Button type="submit" variant="info">Submit</Button>  <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         
                     </div>
                 </Modal.Body>
