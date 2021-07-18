@@ -50,8 +50,8 @@ function App() {
         <Route exact path ="/receptionist/AssignGuides/" component={AssignGuides} />
         <Route exact path = "/manager/" component={Statistics} />
         <Route exact path ="/manager/ManCalendar" component={ManCalendar} />
-        <Route path = "/manager/" component={manager} />
-        <Route exact path ="/manager/guest" component={guest} />
+        <Route exact path = "/manager/" component={manager} />
+        <Route exact path ="/manager/guest/" component={guest} />
         <Route exact path ="/manager/HotelConfig" component={HotelConfig} />
         <Route exact path ="/Administrative" component={Administrative} />
         <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
