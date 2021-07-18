@@ -559,14 +559,14 @@ function HotelConfig() {
                     <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Discounts.</h4>
                     <div className="row">
                         <div className="col-md-6">
-                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Discount Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-                        </div>
-                        <div className="col-md-6" style={{textAlign:'right'}}>
-                            <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Discounts</Button>
+                        <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Discounts</Button>
                             <AddDiscount
                                 show={addView}
                                 onHide={()=> setAddView(false)} 
-                            />
+                            />  
+                        </div>
+                        <div className="col-md-6" style={{textAlign:'right'}}>
+                        <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Discount Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                         </div>
                     </div>
                     
@@ -628,14 +628,14 @@ function HotelConfig() {
                     <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Rooms.</h4>
                     <div className="row">
                         <div className="col-md-6">
-                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Room Number" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-                        </div>
-                        <div className="col-md-6" style={{textAlign:'right'}}>
-                            <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Room</Button>
+                        <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Room</Button>
                             <AddRooms 
                                 show={addView}
                                 onHide={()=>setAddView(false)}
-                            />
+                            /> 
+                        </div>
+                        <div className="col-md-6" style={{textAlign:'right'}}>
+                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Room Number" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                         </div>
                     </div>
                     <br></br>
@@ -683,9 +683,9 @@ function HotelConfig() {
                         </tbody>
                     </Table>
                     <EditRooms
-                                show={editView}
-                                onHide={()=> setEditView(false)} 
-                            />
+                        show={editView}
+                        onHide={()=> setEditView(false)} 
+                    />
                    </div> :null 
                 }
                 {
@@ -694,14 +694,15 @@ function HotelConfig() {
                     <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Room Types.</h4>
                     <div className="row">
                         <div className="col-md-6">
-                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Room Type" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-                        </div>
-                        <div className="col-md-6" style={{textAlign:'right'}}>
-                            <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Type</Button>
+                        <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Type</Button>
                             <AddRoomTypes 
                                 show={addView}
                                 onHide={()=>setAddView(false)}
                             />
+                        </div>
+                        <div className="col-md-6" style={{textAlign:'right'}}>
+                        <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Room Type" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                          
                         </div>
                     </div>
                     <br></br>
@@ -763,14 +764,15 @@ function HotelConfig() {
                     <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Outdoor Activities</h4>
                     <div className="row">
                         <div className="col-md-6">
-                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Discount Activity" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-                        </div>
-                        <div className="col-md-6" style={{textAlign:'right'}}>
-                            <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Activity</Button>
+                        <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Activity</Button>
                             <AddOutdoorActivities 
                                 show={addView}
                                 onHide={()=>setAddView(false)}
                             />
+                        </div>
+                        <div className="col-md-6" style={{textAlign:'right'}}>
+                            <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Discount Activity" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                            
                         </div>
                     </div>
                     <br></br>
