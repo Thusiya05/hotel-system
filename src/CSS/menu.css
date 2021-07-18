@@ -1,15 +1,15 @@
 #searchLine{
     float: right;
-    font-style: oblique;
+
     margin: 5px;
-    color: thistle;
+    color: white;
 }
 
 #body{
     /* background-image: url("./images/img1.jpg");
     background-size: cover; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color:black;
+    background-color: rgb(202, 10, 10);
     height: fit-content;
 }
 
