@@ -15,7 +15,7 @@ function AddUser(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header style={{backgroundColor:'lightgray'}} closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Add New User
           </Modal.Title>
@@ -71,7 +71,7 @@ function AddUser(props) {
                                 
                             </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{backgroundColor:'lightgray'}}>
             Adventure Base Camp, Kitulgala.
         </Modal.Footer>
       </Modal>
