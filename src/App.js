@@ -26,6 +26,7 @@ import Activityschedule from "./Pages/activityschedule";
 import AssignedRooms from "./Pages/Stewards/AssignedRooms";
 import Foodmenu from "./Pages/foodmenu";
 import StewardsHistory from "./Pages/Stewards/StewardsHistory"
+import EditProfile from "./Pages/EditProfile"
 import "./App.css"
 
 
@@ -62,6 +63,7 @@ function App() {
         <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
         <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
         <Route exact path ="/foodmenu" component={Foodmenu} />
+        <Route exact path ="/EditProfile" component={EditProfile} />
         <Route component={Error} />
         
        
