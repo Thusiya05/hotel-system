@@ -26,6 +26,7 @@ import AssignGuides from "./Pages/Receptionist/assignGuides";
 import Activityschedule from "./Pages/activityschedule";
 import AssignedRooms from "./Pages/Stewards/AssignedRooms";
 import Foodmenu from "./Pages/foodmenu";
+import StewardsHistory from "./Pages/Stewards/StewardsHistory"
 import "./App.css"
 
 
@@ -61,6 +62,7 @@ function App() {
         <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
         <Route exact path ="/activityschedule" component={Activityschedule} />
         <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
+        <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
         <Route exact path ="/foodmenu" component={Foodmenu} />
         <Route component={Error} />
         
