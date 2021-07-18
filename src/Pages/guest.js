@@ -36,8 +36,8 @@ function guest() {
       <th>Mobile</th>
       <th>Check-in Date</th>
       <th>Check-out Date</th>
-      <th>Number of Guests</th>
-      <th>Number of Rooms</th>
+      <th>No. of Guests</th>
+      <th>No. of Rooms</th>
     </tr>
   </thead>
   <tbody>
@@ -49,6 +49,8 @@ function guest() {
       <td>+94767663705</td>
       <td>2018/07/15</td>
       <td>2018/07/17</td>
+      <td>5</td>
+      <td>2</td>
     </tr>
     <tr>
       <td>02</td>
@@ -58,6 +60,8 @@ function guest() {
       <td>+25767663705</td>
       <td>2018/07/15</td>
       <td>2018/07/17</td>
+      <td>5</td>
+      <td>3</td>
     </tr>
     <tr>
       <td>03</td>
@@ -67,6 +71,8 @@ function guest() {
       <td>+947670536805</td>
       <td>2018/08/15</td>
       <td>2018/08/17</td>
+      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>04</td>
@@ -76,6 +82,8 @@ function guest() {
       <td>+94767663705</td>
       <td>2018/07/15</td>
       <td>2018/07/17</td>
+      <td>6</td>
+      <td>3</td>
     </tr>
     <tr>
       <td>05</td>
@@ -85,6 +93,8 @@ function guest() {
       <td>+90767663222</td>
       <td>2021/07/15</td>
       <td>2021/07/17</td>
+      <td>10</td>
+      <td>4</td>
     </tr>
   </tbody>
 </Table>
