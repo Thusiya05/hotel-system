@@ -8,7 +8,7 @@ export const StewSidebar = [
     {
         title: "Task",
         icon: <FaIcons.FaTasks />,
-        link:'/receptionist/customers/',
+        link:'/steward/assignedRooms/',
     },
 
     {
