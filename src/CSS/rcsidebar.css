@@ -1,44 +1,44 @@
-.manager{
+/* .manager{
     margin-left: 250px;
-    padding: 0px 10px;
+    padding: 0px 10px; */
     /* width: 100vw;
     height: 100vh;
     display: table; */
     
-}
+/* }
 
 .reports {
     margin-left: 250px;
-    padding: 0px 10px;
+    padding: 0px 10px; */
     /* width: 100vw;
     height: 100vh;
     display: table; */
     
-}
+/* }
 
 .hrmanagement {
     margin-left: 250px;
-    padding: 0px 10px;
+    padding: 0px 10px; */
     /* width: 100vw;
     height: 100vh;
     display: table; */
-}
+/* }
 
 .customers{
     margin-left: 250px;
     padding: 0px 10px;
-}
+} */
 
-.statistics{
+/* .statistics{ */
 
     /* width: 100vw;
     height: 100vh;
     display: table; */
-    margin-left: 250px;
+    /* margin-left: 250px;
     padding: 0px 10px;  
-}
+} */
 
-.ManCalendar{
+/* .ManCalendar{
     margin-left: 250px;
     padding: 0px 10px;
 }
@@ -65,12 +65,16 @@
 .HotelConfig{
     margin-left: 250px;
     padding: 0px 10px;
-}
+} */
 
-.guest{
+/* .guest{
     margin-left: 250px;
     padding: 0px 10px;
-}
+} */
+.AssignGuids{
+    margin-left: 250px;
+    padding: 0px 10px;
+} 
 
 body {
     margin: 0;
