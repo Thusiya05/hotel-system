@@ -45,6 +45,7 @@ export default class Login extends Component {
           telephoneNumber: "",
           password: "",
           confirmPassword: "",
+          usertype: "",
 
           loginPassword:"",
           loginEmail:"",
@@ -264,7 +265,8 @@ export default class Login extends Component {
                     "dobYear": this.state.Byear,
                     "nic": this.state.nic,
                     "teleNumber": this.state.telephoneNumber,
-                    "password": this.state.password
+                    "password": this.state.password,
+                    "usertype": "Customer"
                 })
                 
                 
@@ -301,7 +303,16 @@ export default class Login extends Component {
 
                 if(response.data.userType=="Admin"){
                   this.props.history.push('/manager');
+                }else if(response.data.userType=="Steward"){
+                  this.props.history.push('/stewarad/assignedRoom');
+                }else if(response.data.userType=="Kitchen Staff"){
+                  this.props.history.push('/kitchen/order');
+                }else if(response.data.userType=="Customer"){
+                  this.props.history.push('/');
+                }else if(response.data.userType=="Guide"){
+                  this.props.history.push('/AssignGuide');
                 }
+
 
               })
               .catch((error) => {

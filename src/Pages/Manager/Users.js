@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 function AddUser(props) {
-    const url = "http://localhost:3030/api/v1/addEmployee"
+    const url = "http://localhost:3030/auth/registerEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
         f_name: "",
@@ -24,12 +24,12 @@ function AddUser(props) {
     function submit(e){
         e.preventDefault();
         axios.post(url,{
-            f_name: data.f_name,
-            l_name: data.l_name,
+            firstName: data.f_name,
+            lastName: data.l_name,
             email: data.email,
-            contact_no: data.contact_no,
+            teleNumber: data.contact_no,
             gender: data.gender,
-            type: data.type,
+            userType: data.type,
             password: data.password
         })
         .then(res=>{
