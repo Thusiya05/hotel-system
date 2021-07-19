@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container,Form,Col} from 'react-bootstrap'
+import {Container,Form,Col,Button} from 'react-bootstrap'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
 
@@ -96,6 +96,9 @@ const EditProfile=()=>{
                                     </Col>
                                </Form.Row>
                         </Form> 
+                        <div style={{textAlign:'center'}}>
+                            <Button variant="info" type="submit">Update</Button> <Button variant="danger" type="Cancel">Cancel</Button>
+                        </div>
             </Container>
             <br></br>
             <br></br>
