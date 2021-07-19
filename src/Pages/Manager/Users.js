@@ -194,12 +194,22 @@ function AddUser(props) {
     );
   }
 
+  function Update(id){
+    const [editemployees,setEditemployees]=useState([])
+
+    // console.log(id)
+    axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
+    .then((res)=>{
+        console.log(res.data);
+        setEditemployees(res.data)
+    })
+}
+
 const Users =()=>{
 
     const [show,setShow]=useState(false)
     const [editshow,setEditShow]=useState(false)
     const [employees,setEmployees]=useState([])
-    const [editemployees,setEditemployees]=useState([])
 
     useEffect(() => {
         axios.get('http://localhost:3030/api/v1/viewEmployees')
@@ -211,15 +221,7 @@ const Users =()=>{
         },[])
     })
 
-    function Update(id){
-        // console.log(id)
-        setEditShow(true)
-        axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
-        .then((res)=>{
-            console.log(res.data);
-            setEditemployees(res.data)
-        })
-    }
+ 
 
     return(
         <>
@@ -273,7 +275,7 @@ const Users =()=>{
                                 <Button type="delete"><FaTrash /></Button>
                             </Tippy>
                              <Tippy content="Edit">
-                                <Button onClick={()=>Update(employee.emp_id)} type="edit"><FaPen /></Button>
+                                <Button onClick={()=>Update(employee.emp_id),()=>setEditShow(true)} type="edit"><FaPen /></Button>
                              </Tippy>
                              </td>
                         </tr>
