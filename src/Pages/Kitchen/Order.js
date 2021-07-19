@@ -17,7 +17,7 @@ const Order=()=> {
                             <div className="col-md-6">
                                 <h5>Darshana Bandara</h5>
                                 <h5>Room No: 12</h5>
-                                <h5>Meals: Chicken Rice(f):01</h5>
+                                <h5>Meals: Chicken Rice(f) : 01</h5>
                                 
                             </div>
                             <div className="col-md-6">
