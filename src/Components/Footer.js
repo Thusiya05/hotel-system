@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from "../images/Capture5.png"
+import img1 from "../images/logo.png"
 import {Link} from 'react-router-dom'
 
 function Footer() {
