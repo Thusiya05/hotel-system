@@ -4,8 +4,37 @@ import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
+import axios from 'axios';
 
 function Addingr(props){
+
+    const url = "http://localhost:3030/addIngredient"
+    const [data, setData] = useState({
+        ingredient_name: "",
+        ingredient_qty: "",
+        reorder_level: ""
+    })
+
+    function submit(e){
+        e.preventDefault();
+        axios.post(url,{
+            ingredientName: data.ingredient_name,
+            qty: data.ingredient_qty,
+            reorderLevel: data.reorder_level
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+        // console.log(newdata)
+    }
+
+
     return(
         <Modal
         {...props}
@@ -19,13 +48,13 @@ function Addingr(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submit(e)}>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="addDiscountName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Item Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.ingredient_name} id="ingredient_name" type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -34,24 +63,19 @@ function Addingr(props){
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="addDiscountValue">
                                 <Form.Label style={{textAlign:'center'}}><h6>In stock</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control  onChange={(e)=>handle(e)} value={data.ingredient_qty} id="ingredient_qty" type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        {/* <Row>
+                        <Row>
+                            <Col md={4}></Col> 
                             <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="AddDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
-                                <Row>
-                                    <Form.Control style={{height:'5rem'}} type="text" required/>
-                                </Row>
-                               
+                                <Form.Group as={Col} controlId="Re-Order Level">
+                                <Form.Label style={{textAlign:'center'}}><h6>Re-Order Level</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.reorder_level} id="reorder_level" type="text" required/>                            
                                 </Form.Group>
                             </Col>             
-                        </Row> */}
+                        </Row>
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
