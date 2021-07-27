@@ -253,7 +253,7 @@ const Users =()=>{
                             <th>Mobile No</th>
                             <th>Gender</th>
                             <th>User Type</th>
-                            <th>Password</th>
+                            {/* <th>Password</th> */}
                             <th style={{textAlign:'center'}}>Action</th>
                         </tr>
                     </thead>
@@ -269,7 +269,7 @@ const Users =()=>{
                             <td>{employee.contact_no}</td>
                             <td>{employee.gender}</td>
                             <td>{employee.type}</td>
-                            <td>{employee.password}</td>
+                            {/* <td>{employee.password}</td> */}
                             <td style={{textAlign:'center'}}>
                             <Tippy content="Delete">
                                 <Button type="delete"><FaTrash /></Button>
