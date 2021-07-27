@@ -107,7 +107,7 @@ const AssignGuides=()=> {
                             <div className="col-sm-4">
                                 <h5>Darshana Bandara</h5>
                                 <h5>NIC: 199732504553</h5>
-                                <h5>Room No: 12</h5>
+                                {/* <h5>Room No: 12</h5> */}
                             </div>
                             <div className="col-sm-4">
                             <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Guides</Button>
@@ -122,7 +122,7 @@ const AssignGuides=()=> {
                             <div className="col-sm-4">
                                 <h5>Lakith Kithsara</h5>
                                 <h5>NIC: 975624588V</h5>
-                                <h5>Room No: 14</h5>
+                                {/* <h5>Room No: 14</h5> */}
                             </div>
                             <div className="col-sm-4">
                             <Button variant="dark" onClick={()=>setView(true)} type="submit">Assign Guides</Button>
@@ -141,7 +141,7 @@ const AssignGuides=()=> {
                             <tr>
                                 <th>#</th>
                                 <th>Customer Name</th>
-                                <th>Room No</th>
+                                {/* <th>Room No</th> */}
                                 <th>Guide Name</th>
                                 <th>From</th>
                                 <th>To</th>
@@ -152,7 +152,7 @@ const AssignGuides=()=> {
                             <tr>
                                 <td>1</td>
                                 <td>Mark Otto</td>
-                                <td>12</td>
+                                {/* <td>12</td> */}
                                 <td>Kasun</td>
                                 <td>25/7/2021</td>
                                 <td>28/7/2021</td>
@@ -165,7 +165,7 @@ const AssignGuides=()=> {
                             <tr>
                                 <td>2</td>
                                 <td>Lakith Rathnayaka</td>
-                                <td>14</td>
+                                {/* <td>14</td> */}
                                 <td>Damith</td>
                                 <td>25/7/2021</td>
                                 <td>28/7/2021</td>
@@ -178,7 +178,7 @@ const AssignGuides=()=> {
                             <tr>
                                 <td>3</td>
                                 <td>Thusitha Rathnayaka</td>
-                                <td>15</td>
+                                {/* <td>15</td> */}
                                 <td>Kelum</td>
                                 <td>25/7/2021</td>
                                 <td>28/7/2021</td>
