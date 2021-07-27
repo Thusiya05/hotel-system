@@ -18,80 +18,8 @@ import img10 from '../images/Team-Building-1.jpg'
 import img11 from '../images/Team-Building-2.jpg'
 import img12 from '../images/Team-Building-3.jpg'
 
-function AddSchedule(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Schedule the day...
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <Form>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridFirstName">
-                        <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
-                        <Form.Control type="date" required/>
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridLastName">
-                        <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                        <Form.Control type="date" required/>
-                    </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label style={{textAlign:'center'}}><h6>Number of People</h6></Form.Label>
-                        <Form.Control type="number" placeholder="1" required/>
-                    </Form.Group>
-                    
-                    <Form.Group as={Col} controlId="formGridMobile">
-                        <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                        <Form.Control type="number" placeholder="1" required/>
-                    </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
-                            <div>
-                                <br></br>
-                                <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board
-                                <br></br>
-                                <input type="radio" name="meal" id="exampleRadios2" value="option2" />Half-Board
-                            </div>
-                        </Form.Label>
-                    </Form.Group>
-                    <Form.Group as={Col} controlId="formGridMobile" hidden>
-                    <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
-                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                <option value="1">Receptionist</option>
-                                <option value="2">Guide</option>
-                                <option value="3">Steward</option>
-                                <option value="3">Kitchen Staff</option>
-                        </Form.Control>
-                    </Form.Group>   
-                </Form.Row>
-                <div style={{textAlign:'center'}}>
-                    <Button type="submit" variant="info">Book Now</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
-                </div>
-                
-            </Form>
-        </Modal.Body>
-        <Modal.Footer>
-            Adventure Base Camp, Kitulgala.
-        </Modal.Footer>
-      </Modal>
-    );
-  }
 
 export default function Activities() {
-
-    const [schedule,setSchedule]=useState(false)
 
     return (
         <>
@@ -104,12 +32,6 @@ export default function Activities() {
         <Hero hero="activity-Hero">
             <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule the day" path="/activityschedule"></Banner>
         </Hero>
-        <div>
-            <Button className="schedule-btn" onClick={()=>setSchedule(true)} variant="info" size="lg">Schedule the day</Button>
-            <AddSchedule 
-            show={schedule} 
-            onHide={() => setSchedule(false)} />
-        </div>
         <div className="activity-info">
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
