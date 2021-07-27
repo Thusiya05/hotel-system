@@ -1,11 +1,34 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import Kcsidebar from '../../Components/kcsidebar'
 import { Button,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
+import axios from 'axios';
+
 
 function Addfood(props){
+
+
+    // const Ingredients =()=>{
+
+        // const [show,setShow]=useState(false)
+        // const [editshow,setEditShow]=useState(false)
+
+        const [Ingredients,setIngredients]=useState([])
+    
+        useEffect(() => {
+            axios.get('http://localhost:3030/ingredients')
+            .then(res => {
+                setIngredients(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            },[])
+        })
+
+
+
     return(
         <Modal
         {...props}
@@ -24,7 +47,7 @@ function Addfood(props){
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="addDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Item Name</h6></Form.Label>
+                                <Form.Label style={{textAlign:'center'}}><h6>Food Name</h6></Form.Label>
                                 <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
@@ -39,19 +62,39 @@ function Addfood(props){
                             </Col>             
                         </Row>
                         <Row>
+                            <Col md={4}></Col> 
                             <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="AddDiscountDescription">
+                                <Form.Group as={Col} controlId="AddDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
                                     <Form.Control style={{height:'5rem'}} type="text" required/>
-                                </Row>
-                               
+                                </Row>                               
                                 </Form.Group>
                             </Col>             
                         </Row>
+
+                        <Row>
+                            <Col md={4}></Col> 
+                            <Col md={4}>
+                                <Form.Group as={Col} controlId="Ingredients">
+                                <Form.Label style={{textAlign:'center'}}><h6>Ingredients</h6></Form.Label>
+                                    <Table striped bordered hover size="sm">
+                                        <tbody>
+                                        {
+                                             Ingredients.map(
+                                                ingredient =>
+                                                <tr key = {ingredient.ingredientId}>
+                                                    <td>{ingredient.ingredientName}</td>
+                                                </tr>
+                                             )
+                                        }
+                                        </tbody>
+                                    </Table>    
+                                {/* <Form.Control type="checkbox" required/> */}
+                                </Form.Group>
+                            </Col>             
+                        </Row>
+
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -63,6 +106,7 @@ function Addfood(props){
             </Modal>
     );
 }
+
 
 function Editfood(props){
     return(
@@ -130,6 +174,10 @@ function Menu() {
     // const[display,setDisplay]=useState(false);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
+
+  
+
+
     return (
         <>
         <div className="users">
@@ -162,7 +210,7 @@ function Menu() {
                          <th>#</th>
                          <th>Food Name</th>
                          <th>Price</th>
-                         <th>Description</th>
+                         <th>Ingredients</th>
                          <th>Availability</th>
                          <th>Number of Items</th>
                          <th> </th>
