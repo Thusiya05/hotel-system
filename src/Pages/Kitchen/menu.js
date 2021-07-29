@@ -84,7 +84,7 @@ function Addfood(props){
                                              Ingredients.map(
                                                 ingredient =>
                                                 <tr key = {ingredient.ingredientId}>
-                                                    <td>{ingredient.ingredientName}</td>
+                                                    <td><Form.Control  style={{height:'1rem'}} type="checkbox" required/>{ingredient.ingredientName}</td>
                                                 </tr>
                                              )
                                         }

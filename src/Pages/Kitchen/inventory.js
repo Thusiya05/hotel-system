@@ -22,7 +22,7 @@ function Addingr(props){
             qty: data.ingredient_qty,
             reorderLevel: data.reorder_level
         })
-        .then(res=>{
+        .then((res)=>{
             console.log(res.data)
         })
     }
@@ -52,7 +52,9 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountName">
+                                <Form.Group as={Col} 
+                                // controlId="addDiscountName"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Item Name</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.ingredient_name} id="ingredient_name" type="text" required/>
                                 </Form.Group>
@@ -61,7 +63,9 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountValue">
+                                <Form.Group as={Col}
+                                //  controlId="addDiscountValue"
+                                 >
                                 <Form.Label style={{textAlign:'center'}}><h6>In stock</h6></Form.Label>
                                 <Form.Control  onChange={(e)=>handle(e)} value={data.ingredient_qty} id="ingredient_qty" type="text" required/>
                                 </Form.Group>
@@ -70,7 +74,9 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="Re-Order Level">
+                                <Form.Group as={Col} 
+                                // controlId="Re-Order Level"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Re-Order Level</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.reorder_level} id="reorder_level" type="text" required/>                            
                                 </Form.Group>
