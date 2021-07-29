@@ -33,6 +33,7 @@ import inventory from "./Pages/Kitchen/inventory";
 import StewardsHistory from "./Pages/Stewards/StewardsHistory"
 import EditProfile from "./Pages/EditProfile"
 import GuideHistory from "./Pages/Guide/GuideHistory"
+import MyBookings from "./Pages/MyBookings"
 import "./App.css"
 
 
@@ -77,6 +78,7 @@ function App() {
         <Route exact path ="/kitchen/deliver" component={deliver} />
         <Route exact path ="/kitchen/menu" component={menu} />
         <Route exact path ="/kitchen/inventory" component={inventory} />
+        <Route exact path ="/MyBookings" component={MyBookings} />
         <Route component={Error} />
         
        
