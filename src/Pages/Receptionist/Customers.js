@@ -1,5 +1,4 @@
 import React,{ useState } from 'react';
-import Title from '../../Components/Title';
 import RcsideBar from '../../Components/rcsidebar'
 import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
@@ -61,7 +60,7 @@ function AddCustomer(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form style={{textAlign:'center'}}>
                         <Form.Row>
                             <Form.Group as={Col} controlId="customerFirstName">
                             <Form.Label><h6>First Name</h6></Form.Label>
@@ -101,16 +100,11 @@ function AddCustomer(props){
                             <Form.Control type="text" required/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="addRoom">
-                            <Form.Label><h6>Room</h6></Form.Label>
-                            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                        <option value="0">Choose..</option>
-                                        <option value="1">Single Room</option>
-                                        <option value="2">Double Room</option>
-                                        <option value="2">Family Room</option>
-                                        <option value="2">Camping</option>
-                                </Form.Control>
-                            </Form.Group>   
+                            <Form.Group as={Col} controlId="customerAge">
+                            <Form.Label><h6>Age</h6></Form.Label>
+                            <Form.Control type="text" required/>
+                            </Form.Group>
+
                         </Form.Row>
                         <Row>
                             <Col sm={6}>
@@ -138,6 +132,23 @@ function AddCustomer(props){
                             </Form.Group>   
                             </Col>
                         </Row>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="addRoom">
+                            <Form.Label><h6>Room Type</h6></Form.Label>
+                                <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                        <option value="0">Choose..</option>
+                                        <option value="1">Single Room</option>
+                                        <option value="2">Double Room</option>
+                                        <option value="2">Family Room</option>
+                                        <option value="2">Camping</option>
+                                </Form.Control>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="customerPswd">
+                            <Form.Label><h6>Password</h6></Form.Label>
+                            <Form.Control type="text" required/>
+                            </Form.Group>
+                        </Form.Row>
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
