@@ -19,11 +19,11 @@ const activityschedule = () => {
                 <br></br>
                 <br></br>
         </div>
-        <div style={{background:'linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%'}}>
+        <div style={{background:'linear-gradient(90deg, #5242e4 0%, #819dec 50%, #5242e4 100%)'}}>
         <br></br>
                     <br></br>
                     
-            <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'80rem',borderRadius:'2%',padding:'1rem'}}>
+            <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'80rem',borderRadius:'2%',padding:'1rem',backgroundColor:'white'}}>
                     
                         <h3 style={{textAlign:'center'}}>Outdoor Activities Scheduling</h3>
                         <br></br>
