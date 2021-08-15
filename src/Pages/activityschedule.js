@@ -19,7 +19,7 @@ const activityschedule = () => {
                 <br></br>
                 <br></br>
         </div>
-        <div style={{background:'linear-gradient(90deg, #5242e4 0%, #819dec 50%, #5242e4 100%)'}}>
+        <div>
         <br></br>
                     <br></br>
                     
