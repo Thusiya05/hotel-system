@@ -42,6 +42,7 @@ function AddDiscount(props){
                         <Row>
                             <Col md={4}>
                                 
+                                
                             </Col> 
                             <Col md={4}>
                             <Form.Group as={Col} controlId="AddDiscountDescription">
@@ -80,10 +81,12 @@ function AddRooms(props){
                 <Modal.Body>
                     <Form>
                         <Row>
-                            <Col md={4}></Col> 
+                            <Col md={4}>
+                                
+                            </Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
+                                <Form.Label style={{textAlign:'center'}}><h6>Room ID</h6></Form.Label>
                                 <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
@@ -92,14 +95,14 @@ function AddRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group controlId="formFileSm" className="mb-3">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
-                                    <Form.Control type="file" size="sm" />
+                                <Form.Group as={Col} controlId="editDiscountName">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
+                                <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <br></br>
-                        <Row>
+                        {/* <Row>
                             <Col md={4}>
                                 
                             </Col> 
@@ -112,7 +115,7 @@ function AddRooms(props){
                                
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -140,48 +143,57 @@ function AddRoomTypes(props){
                 <Modal.Body>
                     <Form>
                         <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
                                 <Form.Control type="text" required/>
                                 </Form.Group>
+                            </Col> 
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountValue">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
+                                    <Form.Control type="text" required/>
+                                    </Form.Group>
+                            </Col>             
+                        </Row>
+                        <br></br>
+                        <Row>
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
+                                <Form.Control type="text" required/>
+                                </Form.Group>
+                            </Col> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
+                                <Form.Control type="text" required/>
+                                </Form.Group>
+                            </Col>             
+                        </Row>
+                        
+                        <Row>
+                            <Col md={4}></Col> 
+                            <Col md={4}>
+                                 <Form.Group controlId="formFileSm" className="mb-3">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
+                                    <Form.Control type="file" size="sm" />
+                                </Form.Group> 
                             </Col>             
                         </Row>
                         <br></br>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountValue">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
+                                <Row>
+                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
+                                </Row>
+                               
                                 </Form.Group>
                             </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                            </Form.Group>
-                            </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                            </Form.Group>
-                            </Col>             
-                        </Row>
+                        </Row> 
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -351,48 +363,56 @@ function EditRoomTypes(props){
                 <Modal.Body>
                     <Form>
                         <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
                                 <Form.Control type="text" required/>
                                 </Form.Group>
+                            </Col> 
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountValue">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
+                                    <Form.Control type="text" required/>
+                                    </Form.Group>
+                            </Col>             
+                        </Row>
+                        
+                        <Row>
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
+                                <Form.Control type="text" required/>
+                                </Form.Group></Col> 
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
+                                <Form.Control type="text" required/>
+                                </Form.Group>
                             </Col>             
                         </Row>
                         <br></br>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountValue">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                 <Form.Group controlId="formFileSm" className="mb-3">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
+                                    <Form.Control type="file" size="sm" />
+                                </Form.Group> 
+                            </Col>             
+                        </Row>
+                        <br></br>
+                        <Row>
+                             <Col md={4}></Col> 
+                            <Col md={4}>
+                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
+                                <Row>
+                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
+                                </Row>
+                               
                                 </Form.Group>
                             </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                            </Form.Group>
-                            </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                            </Form.Group>
-                            </Col>             
-                        </Row>
+                        </Row> 
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -423,7 +443,7 @@ function EditRooms(props){
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
+                                <Form.Label style={{textAlign:'center'}}><h6>Room ID</h6></Form.Label>
                                 <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
@@ -432,15 +452,20 @@ function EditRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group controlId="formFileSm" className="mb-3">
+
+                                <Form.Group as={Col} controlId="editDiscountName">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
+                                <Form.Control type="text" required/>
+                                </Form.Group>
+                                {/* <Form.Group controlId="formFileSm" className="mb-3">
                                     <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
                                     <Form.Control type="file" size="sm" />
-                                </Form.Group>
+                                </Form.Group> */}
                             </Col>             
                         </Row>
                         <br></br>
-                        <Row>
-                            <Col md={4}>
+                         {/* <Row>
+                             <Col md={4}>
                                 
                             </Col> 
                             <Col md={4}>
@@ -452,7 +477,7 @@ function EditRooms(props){
                                
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row>  */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
