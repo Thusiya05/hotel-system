@@ -40,7 +40,7 @@ const MyBookings = ()=>{
                                     <h6>No Of Rooms: 2</h6>
                                     <h6>Full Board</h6>
                                     <hr></hr>
-                                </div> 6
+                                </div> 
                                 <div className="col-md-5" style={{justifyContent:'center',textAlign:'center'}}>
                                     <Button type="submit" variant="info" style={{width:'5rem'}}>Edit</Button> <Button type="submit" variant="danger">Remove</Button>
                                 </div>
