@@ -4,6 +4,8 @@ import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 function ShowBill(props){
@@ -47,6 +49,58 @@ function ShowBill(props){
     );
 }
 function AddCustomer(props){
+    const history = useHistory();
+    const url="http://localhost:3030/receptionist/getCustomer"
+    const [data,setData]=useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        age:"",
+        addressLineOne:"",
+        addressLineTwo:"",
+        addressLineThree:"",
+        dobYear:"",
+        dobMonth:"",
+        dobDate:"",
+        nic:"",
+        contactNo:"",
+        customerStatus:"",
+        checkInDate:"",
+        checkOutDate:"",
+        meal:"",
+        roomNo:""
+    })
+
+    function submit(e){
+        axios.post(url,{
+            firstName:data.firstName,
+            lastName:data.lastName,
+            email:data.email,
+            age:data.age,
+            addressLineOne:data.addressLineOne,
+            addressLineTwo:data.addressLineTwo,
+            addressLineThree:data.addressLineThree,
+            dobYear:data.dob,
+            dobMonth:data.dobMonth,
+            dobDate:data.dobDate,
+            nic:data.nic,
+            contactNo:data.contactNo,
+            customerStatus:data.customerStatus,
+            checkInDate:data.checkInDate,
+            checkOutDate:data.checkOutDate,
+            meal:data.meal,
+            roomNo:data.roomNo
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id]=e.target.value
+        setData(newdata)
+    }
     return (
         <Modal
           {...props}
@@ -60,33 +114,33 @@ function AddCustomer(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form style={{textAlign:'center'}}>
+                    <Form style={{textAlign:'center'}} onSubmit={(e)=>submit(e)}>
                         <Form.Row>
                             <Form.Group as={Col} controlId="customerFirstName">
                             <Form.Label><h6>First Name</h6></Form.Label>
-                            <Form.Control type="text" required/>
+                            <Form.Control onChange={(e)=>handle(e)} value={data.firstName} type="text" id="firstName" required />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="customerLastName">
                             <Form.Label><h6>Last Name</h6></Form.Label>
-                            <Form.Control type="text" required/>
+                            <Form.Control  onChange={(e)=>handle(e)} value={data.lastName} type="text" id="lastName" required/>
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
                             <Form.Group as={Col} controlId="customerEmail">
                             <Form.Label><h6>Email</h6></Form.Label>
-                            <Form.Control type="Email" placeholder="Enter Email" required/>
+                            <Form.Control onChange={(e)=>handle(e)} value={data.email} id="email" type="Email" placeholder="Enter Email" required/>
                             </Form.Group>
                             
                             <Form.Group as={Col} controlId="customerMobile">
                             <Form.Label><h6>Mobile No:</h6></Form.Label>
-                            <Form.Control type="text" placeholder="07x xxx xxx" required/>
+                            <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} id="contactNo"type="text" placeholder="07x xxx xxx" required/>
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="addCheckingDate">
+                            <Form.Group as={Col} controlId="addCheckinDate">
                             <Form.Label><h6>Check-in Date</h6></Form.Label>
-                            <Form.Control type="date" required/>
+                            <Form.Control onChange={(e)=>handle(e)} value={data.checkInDate} id="checkInDate" type="date" required/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="addCheckoutDate">
@@ -325,7 +379,7 @@ const Customers=()=>{
                             
                             <br></br>
                             <br></br>
-                            <Table striped bordered hover size="sm" responsive id="CheckInTable">
+                            <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -334,12 +388,13 @@ const Customers=()=>{
                                         <th>NIC</th>
                                         <th>Mobile No</th>
                                         <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Dob</th>
                                         <th>Checkin Date</th>
                                         <th>CheckOut Date</th>
                                         <th>Meal</th>
-                                        <th>Room</th>
                                         <th>Room No</th>
-                                        <th> </th>
+                                        <th style={{width:'10rem'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -350,10 +405,11 @@ const Customers=()=>{
                                         <td>199732504553</td>
                                         <td>0717365756</td>
                                         <td>darshana@gmail.com</td>
+                                        <td>Mathale Road,Kurunegala</td>
+                                        <td>1997-11-20</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
                                         <td>Full board</td>
-                                        <td>Single room</td>
                                         <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
@@ -368,7 +424,7 @@ const Customers=()=>{
                                         
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>2</td>
                                         <td>Lakith</td>
                                         <td>Rathnayaka</td>
@@ -417,7 +473,7 @@ const Customers=()=>{
                                         </Tippy>
                                         
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </Table>
                             <EditCustomer
@@ -450,7 +506,8 @@ const Customers=()=>{
                             </div>
                             <br></br>
                             <br></br>
-                            <Table striped bordered hover size="sm" responsive>
+                            <div  style={{overflowX:'auto',maxWidth:'100%'}}>
+                            <Table>
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -459,7 +516,7 @@ const Customers=()=>{
                                         <th>NIC</th>
                                         <th>Mobile No</th>
                                         <th>Email</th>
-                                        <th>Checkin Date</th>
+                                        <th style={{width:'10rem'}}>Checkin Date</th>
                                         <th>CheckOut Date</th>
                                         <th>Meal</th>
                                         <th>Room</th>
@@ -477,7 +534,7 @@ const Customers=()=>{
                                         <td>darshana@gmail.com</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>Full bord</td>
+                                        <td>Full bordddddddddddddddddddddddddddddddddddddddddddd</td>
                                         <td>Single room</td>
                                         <td>12</td>
                                         <td>
@@ -540,6 +597,7 @@ const Customers=()=>{
                                     </tr>
                                 </tbody>
                             </Table>
+                            </div>
                             <EditCustomer
                                 show={editshow}
                                 onHide={()=> setEditShow(false)} 
