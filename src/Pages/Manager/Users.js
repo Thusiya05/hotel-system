@@ -10,7 +10,7 @@ import {useHistory} from 'react-router-dom';
 
 
 function AddUser(props) {
-    const history = useHistory();
+    let history = useHistory();
     const url = "http://localhost:3030/api/v1/addEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
@@ -19,14 +19,10 @@ function AddUser(props) {
         email: "",
         contactNo: "",
         gender: "Male",
-        userType: "Receptionist",
+        userType: "RECEPTIONIST",
         password: ""
     })
 
-    function reload(){
-        history.push("/manager/HRManagement")
-    }
-    
     function submit(e){
         e.preventDefault();
         axios.post(url,{
@@ -39,7 +35,17 @@ function AddUser(props) {
             password: data.password
         })
         .then(res=>{
-            console.log(res.data)
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                contactNo: "",
+                gender: "Male",
+                userType: "RECEPTIONIST",
+                password: ""
+            })
         })
     }
 
@@ -111,7 +117,7 @@ function AddUser(props) {
                                     </Form.Group>
                                 </Form.Row>
                                 <div style={{textAlign:'center'}}>
-                                    <Button type="submit" onClick={reload} variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                                    <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                                 </div>
                                 
                             </Form>
@@ -216,6 +222,7 @@ const Users =()=>{
     const [show,setShow]=useState(false)
     const [editshow,setEditShow]=useState(false)
     const [employees,setEmployees]=useState([])
+    const [added, setadded] = useState(true);
 
     useEffect(() => {
         axios.get('http://localhost:3030/api/v1/viewEmployeess/CUSTOMER')
@@ -225,7 +232,7 @@ const Users =()=>{
         .catch(err => {
             console.log(err)
         })
-    },[])
+    },[added])
 
  
 
@@ -241,6 +248,8 @@ const Users =()=>{
                     <AddUser 
                         show={show}
                         onHide={() => setShow(false)}
+                        added={added} 
+                        setadded={setadded} 
                     />   
                     </div>
                     <div className="col-md-6" style={{textAlign:'right'}}>
