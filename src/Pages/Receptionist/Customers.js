@@ -100,9 +100,9 @@ function AddCustomer(props){
                             <Form.Control type="text" required/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="customerAge">
-                            <Form.Label><h6>Age</h6></Form.Label>
-                            <Form.Control type="text" required/>
+                            <Form.Group as={Col} controlId="customerBday">
+                            <Form.Label><h6>Birth Day</h6></Form.Label>
+                            <Form.Control type="date" required/>
                             </Form.Group>
 
                         </Form.Row>
@@ -437,13 +437,10 @@ const Customers=()=>{
                             <div>
                             <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Pending Customers</h4>
                             <div className="row">
-                                <div className="col-md-6">
-                                <Button variant="dark"  onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
-                                    <AddCustomer
-                                        show={display}
-                                        onHide={()=> setDisplay(false)} 
-                                    />
-                                </div>
+                            <div className="col-md-6">
+                               
+                               </div>
+                                
                                 <div className="col-md-6" style={{textAlign:'right'}}>
                                     <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                                 </div>

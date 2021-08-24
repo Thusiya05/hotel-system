@@ -1,11 +1,24 @@
 import React,{useState} from "react";
+import DatePicker from "react-datepicker";
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 //import { memo } from "react";
 import { Button,Form,Col, Row, Modal } from 'react-bootstrap';
+import 'react-datepicker/dist/react-datepicker.css';
 
-
+ function Datee(){
+ const [selectedDate, setSelectedDate] = useState(null)
+     return (
+          <div className='Datee'>
+            <DatePicker
+              selected={selectedDate}
+              onChange={date => setSelectedDate(date)}
+              dateFormat='dd/MM/yyyy'
+              minDate={new Date()}
+              />
+          </div>
+            )  }
 function AddCart(props) {
   return (
     <Modal
@@ -22,32 +35,32 @@ function AddCart(props) {
       <Modal.Body>
                           <Form>
                               <Form.Row>
-                                  <Form.Group as={Col} controlId="formGridFirstName">
+                                  <Form.Group as={Col} controlId="formGridCheckIn">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
-                                  <Form.Control type="date" required/>
+                                  <Form.Control type="date"  min={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
 
-                                  <Form.Group as={Col} controlId="formGridLastName">
+                                  <Form.Group as={Col} controlId="formGridCheckOut">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                                  <Form.Control type="date" required/>
+                                  <Form.Control type="date"  required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
-                                  <Form.Group as={Col} controlId="formGridEmail">
+                                  <Form.Group as={Col} controlId="formGridNuofPeople">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of People</h6></Form.Label>
                                   <Form.Control type="number" placeholder="1" required/>
                                   </Form.Group>
                                  
-                                  <Form.Group as={Col} controlId="formGridMobile">
+                                  <Form.Group as={Col} controlId="formGridNuofRooms">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
                                   <Form.Control type="number" placeholder="1" required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
-                                  <Form.Group as={Col} controlId="formGridEmail">
+                                  <Form.Group as={Col} controlId="formGridMeal">
                                   <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
                                   <div>
-                                            <br></br>
+                                            
                                             <input type="radio" name="meal" id="exampleRadios1" value="option1" checked /> Full-Board
                                             <br></br>
                                             <input type="radio" name="meal" id="exampleRadios2" value="option2" />Half-Board
@@ -55,15 +68,7 @@ function AddCart(props) {
                                     </div>
                                     </Form.Label>
                                   </Form.Group>
-                                  <Form.Group as={Col} controlId="formGridMobile" hidden>
-                                  <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
-                                  <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                              <option value="1">Receptionist</option>
-                                              <option value="2">Guide</option>
-                                              <option value="3">Steward</option>
-                                              <option value="3">Kitchen Staff</option>
-                                      </Form.Control>
-                                  </Form.Group>   
+                                  
                               </Form.Row>
                               <div style={{textAlign:'center'}}>
                                   <Button type="submit" variant="info">Book Now</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
