@@ -35,7 +35,7 @@ function AddDiscount(props){
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="addDiscountValue">
                                 <Form.Label style={{textAlign:'center'}}><h6>Value</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" max="100" min="0" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -152,7 +152,7 @@ function AddRoomTypes(props){
                             <Col md={6}>
                             <Form.Group as={Col} controlId="editDiscountValue">
                                     <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                    <Form.Control type="number" min="1" required/>
                                     </Form.Group>
                             </Col>             
                         </Row>
@@ -161,13 +161,13 @@ function AddRoomTypes(props){
                             <Col md={6}>
                             <Form.Group as={Col} controlId="editDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" min="1" required/>
                                 </Form.Group>
                             </Col> 
                             <Col md={6}>
                                 <Form.Group as={Col} controlId="editDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" min="1" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -235,16 +235,16 @@ function AddOutdoorActivities(props){
                             </Col> 
                             <Col md={4}>
                             <Row>
-                                <Col sm={6}>
+                                <Col sm={9}>
                                     <Form.Group as={Col} controlId="editActivityDateFrom">
                                         <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>
-                                <Col sm={6}>
+                                <Col sm={9}>
                                     <Form.Group as={Col} controlId="editActivityDateTo">
                                         <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>    
                             </Row>
@@ -306,16 +306,16 @@ function EditOutdoorActivities(props){
                             </Col> 
                             <Col md={4}>
                             <Row>
-                                <Col sm={6}>
+                                <Col sm={9}>
                                     <Form.Group as={Col} controlId="editActivityDateFrom">
                                         <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>
-                                <Col sm={6}>
+                                <Col sm={9}>
                                     <Form.Group as={Col} controlId="editActivityDateTo">
                                         <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>    
                             </Row>
@@ -372,7 +372,7 @@ function EditRoomTypes(props){
                             <Col md={6}>
                             <Form.Group as={Col} controlId="editDiscountValue">
                                     <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                    <Form.Control type="number" min="1" required/>
                                     </Form.Group>
                             </Col>             
                         </Row>
@@ -381,12 +381,12 @@ function EditRoomTypes(props){
                             <Col md={6}>
                             <Form.Group as={Col} controlId="editDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" min="1" required/>
                                 </Form.Group></Col> 
                             <Col md={6}>
                             <Form.Group as={Col} controlId="editDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" min="1" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -518,7 +518,7 @@ function EditDiscount(props){
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountValue">
                                 <Form.Label style={{textAlign:'center'}}><h6>Value</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="number" max="100" min="0" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>

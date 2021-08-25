@@ -140,7 +140,7 @@ function AddCustomer(props){
                         <Form.Row>
                             <Form.Group as={Col} controlId="addCheckinDate">
                             <Form.Label><h6>Check-in Date</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.checkInDate} id="checkInDate" type="date" required/>
+                            <Form.Control onChange={(e)=>handle(e)} value={data.checkInDate} id="checkInDate" type="date" min={new Date().toISOString().split("T")[0]} required/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="addCheckoutDate">
@@ -256,7 +256,7 @@ function EditCustomer(props) {
                         <Form.Row>
                             <Form.Group as={Col} controlId="editCheckinDate">
                             <Form.Label><h6>Check-in Date</h6></Form.Label>
-                            <Form.Control type="date" required/>
+                            <Form.Control type="date" min={new Date().toISOString().split("T")[0]} required/>
                             </Form.Group>
                             <Form.Group as={Col} controlId="editCheckoutDate">
                             <Form.Label><h6>Check-out Date</h6></Form.Label>
