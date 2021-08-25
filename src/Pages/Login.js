@@ -264,9 +264,9 @@ export default class Login extends Component {
                     "dobMonth": this.state.Bmonth,
                     "dobYear": this.state.Byear,
                     "nic": this.state.nic,
-                    "teleNumber": this.state.telephoneNumber,
+                    "contactNo": this.state.telephoneNumber,
                     "password": this.state.password,
-                    "usertype": "Customer"
+                    "userType": "CUSTOMER"
                 })
                 
               .then(function (response) {

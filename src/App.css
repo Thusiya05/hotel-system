@@ -28,37 +28,43 @@ nav img{
     align-items: center;
     justify-content: center;
 }
-.activityHero,
+.firstHero,
 .activity-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/waterBoat.jpg") center/ cover no-repeat; 
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
-.facilityHero,
+.secondHero,
 .facility-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/bbq-2.jpg") center/ cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 }
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
     min-height: 60vh;
+    background-attachment:fixed;
 }
 .activity-Hero{
   min-height: 60vh;
   background-image: url("./images/new1.jpg") ;
+  background-attachment:fixed;
  }
  .facility-Hero{
   min-height: 60vh;
   background-image: url("./images/Servise.jpg") ;
+  background-attachment:fixed;
  }
  .aboutus{
   min-height: 60vh;
   background-image: url("./images/cmposs.jpg") ;
+  background-attachment:fixed;
  }
 /* End of Hero */
 
@@ -138,6 +144,7 @@ nav img{
     background: url("./images/Empress-Falls-Abseil.jpg") center/ cover no-repeat;
     width: 100%;
     min-height: calc(120vh - 66px);
+    background-attachment:fixed;
 }
 .box-area {
     /* position:relative; */
@@ -286,7 +293,7 @@ hr.new1 {
   padding: 5rem 0;
 }
 .services {
-  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
+  background:linear-gradient(90deg, #5242e4 0%, #819dec 50%, #5242e4 100%);
   text-align: center;
 }
 .services-center {
@@ -400,9 +407,9 @@ hr.new1 {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
 }
-.roomCover{
+/* .roomCover{
   background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
-}
+} */
 .room:hover {
   box-shadow: var(--darkShadow);
 }
@@ -569,7 +576,7 @@ hr.new1 {
 }
 .activity-info{
   padding: 3rem;
-  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
+  /* background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%); */
 }
 .activity-info img{
     width: 20rem;
@@ -577,7 +584,6 @@ hr.new1 {
 }
 .activity-info img:hover{
   box-shadow:  0 6px 10px black;
-  width:20.5rem;
 
 }
 

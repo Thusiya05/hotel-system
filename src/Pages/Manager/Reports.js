@@ -21,7 +21,7 @@ function Reports() {
 
                                   <Form.Group as={Col} controlId="formGridLastName">
                                   <Form.Label style={{textAlign:'center',marginRight:"18rem"}}><h6>End Date</h6></Form.Label>
-                                  <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" required/>
+                                  <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
                               </Form.Row>
                 </Form>

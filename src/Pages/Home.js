@@ -34,7 +34,7 @@ export default function Home() {
         <div className="slider-row">
             <div className="row">
                 <div className="col-md-6">
-                    <h1>Overview of Adventure Base Camp</h1>
+                    <h1 style={{color:'whitesmoke'}}>Overview of Adventure Base Camp</h1>
                         <p>The most epic and wonderful place in Kithulgala is now available for guests with safety and disciplines. Are you boring of the busy lifestyle then come to see the nature with lot of adventure and facilities.</p>
 
                         <p>Luxury rooms, luxury Cabanas, Standard rooms, Camping Tents – all by the riverside to accommodate 150 adults comfortably
@@ -61,12 +61,12 @@ export default function Home() {
                     </Hero>              
                 </Carousel.Item>
                 <Carousel.Item interval={3000}>
-                    <Hero hero="activityHero">
+                    <Hero hero="firstHero">
                         <Banner title="Feel Adventure" subtitle="Choose your dream room with us." children="Our Activities" path="/activities"></Banner>
                     </Hero>    
                 </Carousel.Item>
                 <Carousel.Item interval={3000}>
-                    <Hero hero="facilityHero">
+                    <Hero hero="secondHero">
                         <Banner title="See our Facilities" subtitle="we make your day comfortable" children="Facilities" path="/facilities"></Banner>
                     </Hero>    
                 </Carousel.Item>

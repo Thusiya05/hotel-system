@@ -1,7 +1,17 @@
 import React from 'react'
 import NavBar from "../Components/NavBar"
 import Footer from '../Components/Footer'
-import { Container,Form,Col,Row,Table,Button } from 'react-bootstrap'
+import { Container,Form,Col,Row,Table,Button,Carousel } from 'react-bootstrap'
+import img1 from '../images/waterRafting.jpg'
+import img2 from '../images/abselling.jpg'
+import img3 from '../images/Canyoneering.jpg'
+import img4 from '../images/Cycling.jpg'
+import img5 from '../images/rope.jpeg'
+import img6 from '../images/Nature-Trails.jpg'
+import img7 from '../images/Confidence-Jump.jpg'
+import img8 from '../images/Rock-Sliding.jpg'
+import img9 from '../images/zip-lining.jpg'
+import InfoCard from '../Components/InfoCard'
 
 const activityschedule = () => {
     return (
@@ -19,11 +29,80 @@ const activityschedule = () => {
                 <br></br>
                 <br></br>
         </div>
-        <div style={{background:'linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%'}}>
+        <div className="activity-row" style={{height:'28rem'}}>
+           <Carousel>
+                <Carousel.Item interval={3000} style={{height:'27rem'}}>
+                    <Container >
+                        <div className="row">
+                            <div className="col-md-4 col-sm-4" >
+                                <InfoCard img={img1} 
+                                title="White Water Rafting" 
+                                ></InfoCard>
+                            </div>
+                            <div className="col-md-4 col-sm-4" >
+                                <InfoCard img={img2} 
+                                title="Waterfall Abseiling" 
+                                ></InfoCard>
+                            </div>
+                            <div className="col-md-4 col-sm-4" >
+                            <InfoCard img={img3} 
+                            title="Canyoning"
+                            ></InfoCard>
+                            </div>
+                        </div>
+                    </Container>
+                    </Carousel.Item>
+
+                    <Carousel.Item interval={3000} style={{height:'27rem'}}>
+                        <Container>
+                            <div className="row">
+                                <div className="col-md-4 col-sm-4">
+                                    <InfoCard img={img4} 
+                                    title="Cycling" 
+                                    ></InfoCard>
+                                </div>
+                                <div className="col-md-4 col-sm-4">
+                                    <InfoCard img={img5} 
+                                    title="Rope Adventures" 
+                                    ></InfoCard>
+                                </div>
+                                <div className="col-md-4 col-sm-4">
+                                <InfoCard img={img6} 
+                                title="Nature trails with bird watching & jungle trekking"
+                                ></InfoCard>
+                                </div>
+                            </div>
+                        </Container>
+                    </Carousel.Item>
+
+                    <Carousel.Item interval={3000} style={{height:'27rem'}}>
+                        <Container>
+                            <div className="row" >
+                                <div className="col-md-4 col-sm-4" >
+                                    <InfoCard img={img7} 
+                                    title="Confidence Jumping" 
+                                    ></InfoCard>
+                                </div>
+                                <div className="col-md-4 col-sm-4">
+                                    <InfoCard img={img8} 
+                                    title="Rock sliding & Rock pool bath" 
+                                    ></InfoCard>
+                                </div>
+                                <div className="col-md-4 col-sm-4">
+                                <InfoCard img={img9} 
+                                title="Zip Lining"
+                                ></InfoCard>
+                                </div>
+                            </div>
+                        </Container>
+                    </Carousel.Item>
+            </Carousel>
+        </div>
+        <div>
         <br></br>
                     <br></br>
                     
-            <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'80rem',borderRadius:'2%',padding:'1rem'}}>
+            <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'80rem',borderRadius:'2%',padding:'1rem',backgroundColor:'white'}}>
                     
                         <h3 style={{textAlign:'center'}}>Outdoor Activities Scheduling</h3>
                         <br></br>
@@ -32,7 +111,7 @@ const activityschedule = () => {
                                     <Col sm={6}>
                                         <Form.Group as={Col} controlId="formGridFirstName">
                                         <Form.Label style={{textAlign:'center'}}><h6>Select the Date</h6></Form.Label>
-                                        <Form.Control type="date" required/>
+                                        <Form.Control type="date" min={new Date().toISOString().split("T")[0]} required/>
                                         </Form.Group>
                                     </Col>
                                </Form.Row>

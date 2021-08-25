@@ -6,34 +6,46 @@ import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 
 function AddUser(props) {
-    const url = "http://localhost:3030/auth/registerEmployee"
+    let history = useHistory();
+    const url = "http://localhost:3030/api/v1/addEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
-        f_name: "",
-        l_name: "",
+        firstName: "",
+        lastName: "",
         email: "",
-        contact_no: "",
+        contactNo: "",
         gender: "Male",
-        type: "Receptionist",
+        userType: "RECEPTIONIST",
         password: ""
     })
 
     function submit(e){
         e.preventDefault();
         axios.post(url,{
-            firstName: data.f_name,
-            lastName: data.l_name,
+            firstName: data.firstName,
+            lastName: data.lastName,
             email: data.email,
-            teleNumber: data.contact_no,
+            contactNo: data.contactNo,
             gender: data.gender,
-            userType: data.type,
+            userType: data.userType,
             password: data.password
         })
         .then(res=>{
-            console.log(res.data)
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                contactNo: "",
+                gender: "Male",
+                userType: "RECEPTIONIST",
+                password: ""
+            })
         })
     }
 
@@ -59,14 +71,14 @@ function AddUser(props) {
         <Modal.Body>
                             <Form onSubmit={(e) => submit(e)}>
                                 <Form.Row>
-                                    <Form.Group as={Col} controlId="f_name">
+                                    <Form.Group as={Col} controlId="firstName">
                                     <Form.Label style={{textAlign:'center'}}><h6>First Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.f_name} id="f_name" type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName} id="firstName" type="text" required/>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="l_name">
+                                    <Form.Group as={Col} controlId="lastName">
                                     <Form.Label style={{textAlign:'center'}}><h6>Last Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.l_name} type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} type="text" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -75,9 +87,9 @@ function AddUser(props) {
                                     <Form.Control onChange={(e)=>handle(e)} value={data.email} type="Email" placeholder="Enter Email" required/>
                                     </Form.Group>
                                    
-                                    <Form.Group as={Col} controlId="contact_no">
+                                    <Form.Group as={Col} controlId="contactNo">
                                     <Form.Label style={{textAlign:'center'}}><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.contact_no} type="text" placeholder="07x xxx xxx" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} type="text" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -88,13 +100,13 @@ function AddUser(props) {
                                                 <option value="Female">Female</option>
                                         </Form.Control>
                                     </Form.Group>
-                                    <Form.Group as={Col} controlId="type">
+                                    <Form.Group as={Col} controlId="userType">
                                     <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
                                     <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
-                                                <option value="Receptionist">Receptionist</option>
-                                                <option value="Guide">Guide</option>
-                                                <option value="Steward">Steward</option>
-                                                <option value="Kitchen Staff">Kitchen Staff</option>
+                                                <option value="RECEPTIONIST">RECEPTIONIST</option>
+                                                <option value="STEWARD">STEWARD</option>
+                                                <option value="GUIDE">GUIDE</option>
+                                                <option value="KITCHEN_STAFF">KITCHEN_STAFF</option>
                                         </Form.Control>
                                     </Form.Group>   
                                 </Form.Row>
@@ -210,16 +222,17 @@ const Users =()=>{
     const [show,setShow]=useState(false)
     const [editshow,setEditShow]=useState(false)
     const [employees,setEmployees]=useState([])
+    const [added, setadded] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3030/api/v1/viewEmployees')
+        axios.get('http://localhost:3030/api/v1/viewEmployeess/CUSTOMER')
         .then(res => {
             setEmployees(res.data)
         })
         .catch(err => {
             console.log(err)
-        },[])
-    },[])
+        })
+    },[added])
 
  
 
@@ -235,6 +248,8 @@ const Users =()=>{
                     <AddUser 
                         show={show}
                         onHide={() => setShow(false)}
+                        added={added} 
+                        setadded={setadded} 
                     />   
                     </div>
                     <div className="col-md-6" style={{textAlign:'right'}}>
@@ -260,22 +275,22 @@ const Users =()=>{
                     <tbody>
                         {
                             employees.map(
-                                employee =>
-                        <tr key = {employee.emp_id}>  
-                            <td>{employee.emp_id}</td>
-                            <td>{employee.f_name}</td>
-                            <td>{employee.l_name}</td>
-                            <td>{employee.email}</td>
-                            <td>{employee.contact_no}</td>
-                            <td>{employee.gender}</td>
-                            <td>{employee.type}</td>
+                                test =>
+                        <tr key = {test.id}>  
+                            <td>{test.id}</td>
+                            <td>{test.firstName}</td>
+                            <td>{test.lastName}</td>
+                            <td>{test.email}</td>
+                            <td>{test.contactNo}</td>
+                            <td>{test.gender}</td>
+                            <td>{test.userType}</td>
                             {/* <td>{employee.password}</td> */}
                             <td style={{textAlign:'center'}}>
                             <Tippy content="Delete">
                                 <Button type="delete"><FaTrash /></Button>
                             </Tippy>
                              <Tippy content="Edit">
-                                <Button onClick={()=>Update(employee.emp_id),()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                                <Button onClick={()=>Update(test.id),()=>setEditShow(true)} type="edit"><FaPen /></Button>
                              </Tippy>
                              </td>
                         </tr>
