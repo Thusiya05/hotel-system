@@ -32,7 +32,7 @@ const activityschedule = () => {
                                     <Col sm={6}>
                                         <Form.Group as={Col} controlId="formGridFirstName">
                                         <Form.Label style={{textAlign:'center'}}><h6>Select the Date</h6></Form.Label>
-                                        <Form.Control type="date" required/>
+                                        <Form.Control type="date" min={new Date().toISOString().split("T")[0]} required/>
                                         </Form.Group>
                                     </Col>
                                </Form.Row>
