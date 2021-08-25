@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import DatePicker from "react-datepicker";
+import DatePicker, {addDays} from "react-datepicker";
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
@@ -42,18 +42,18 @@ function AddCart(props) {
 
                                   <Form.Group as={Col} controlId="formGridCheckOut">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                                  <Form.Control type="date"  required/>
+                                  <Form.Control type="date"   required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridNuofPeople">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of People</h6></Form.Label>
-                                  <Form.Control type="number" placeholder="1" required/>
+                                  <Form.Control type="number" placeholder="1" min="1" required/>
                                   </Form.Group>
                                  
                                   <Form.Group as={Col} controlId="formGridNuofRooms">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                  <Form.Control type="number" placeholder="1" required/>
+                                  <Form.Control type="number" placeholder="1" min="1" required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
