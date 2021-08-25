@@ -22,6 +22,10 @@ function Addingr(props){
             qty: data.ingredient_qty,
             reorderLevel: data.reorder_level
         })
+
+        // console.log(this.ingredient_name)
+
+        
         .then((res)=>{
             console.log(res.data)
         })

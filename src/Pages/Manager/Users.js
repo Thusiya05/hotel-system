@@ -219,7 +219,7 @@ const Users =()=>{
         .catch(err => {
             console.log(err)
         },[])
-    })
+    },[])
 
  
 

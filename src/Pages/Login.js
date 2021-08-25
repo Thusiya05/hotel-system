@@ -269,9 +269,7 @@ export default class Login extends Component {
                     "usertype": "Customer"
                 })
                 
-                
-                
-                .then(function (response) {
+              .then(function (response) {
                   // handle success
                   console.log(response);
                   alert(response.data);
