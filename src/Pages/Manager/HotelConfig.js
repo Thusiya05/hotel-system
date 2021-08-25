@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
 import Sidebar from '../../Components/Sidebar';
 import { Button,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
@@ -146,6 +146,8 @@ function AddRoomTypes(props){
         e.preventDefault();
         axios.post(url,data)
         .then(res=>{
+            props.setadded(!props.added);
+            props.onHide();
             setData({
                 roomTypeID:"",
                 roomTypes:"",
@@ -595,7 +597,19 @@ function HotelConfig() {
     const[display,setDisplay]=useState(false);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
-    const [added, setadded] = useState(true);
+    const[added, setadded] = useState(true);
+    const[roomTypes,setRoomTypes]=useState([]);
+
+    useEffect(() => {
+            axios.get('http://localhost:3030/manager/viewRoomTypes')
+            .then(res=>{
+                setRoomTypes(res.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    },[added])
+
     return (
         <>
             <div className="users">
@@ -778,21 +792,28 @@ function HotelConfig() {
                     <Table striped bordered hover size="sm" responsive id="CheckInTable">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Room Type</th>
-                                <th>Number Of Rooms</th>
-                                <th>Number of Persons</th>
-                                <th>Price</th>
-                                <th> </th>
+                                <th style={{width:'5rem',paddingBottom:'.5rem'}}>RoomType ID</th>
+                                <th style={{width:'9rem',paddingBottom:'2rem'}}>Room Type</th>
+                                <th style={{width:'5rem'}}>Number Of Rooms</th>
+                                <th style={{width:'5rem'}}>Number of Persons</th>
+                                <th style={{paddingBottom:'2rem'}}>Description</th>
+                                <th style={{paddingBottom:'2rem'}}>Image</th>
+                                <th style={{paddingBottom:'2rem'}}>Price</th>
+                                <th style={{width:'7rem',textAlign:'center'}}> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Single Rooms</td>
-                                <td>5</td>
-                                <td>1</td>
-                                <td>100$</td>
+                        {
+                            roomTypes.map(
+                                test =>
+                                <tr key={test.roomTypeID}>
+                                <td>{test.roomTypeID}</td>
+                                <td>{test.roomTypes}</td>
+                                <td>{test.no_of_rooms}</td>
+                                <td>{test.no_of_persons}</td>
+                                <td>{test.description}</td>
+                                <td>{test.image}</td>
+                                <td>{test.price}</td>
                                 <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
                                     <Button type="delete"><FaTrash /></Button>
@@ -803,21 +824,8 @@ function HotelConfig() {
                                 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Double Rooms</td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>200$</td>
-                                <td style={{textAlign:'center'}}>
-                                <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
-                                </Tippy>
-                                    <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                    </Tippy>
-                                </td>
-                            </tr>
+                            )
+                        }
                         </tbody>
                     </Table>
                     <EditRoomTypes

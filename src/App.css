@@ -679,3 +679,9 @@ hr.new1 {
   bottom: 40px;
   z-index: 10;
 }
+
+Table th,td{
+  text-align: center;
+}
+
+
