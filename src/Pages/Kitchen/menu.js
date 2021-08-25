@@ -8,25 +8,107 @@ import axios from 'axios';
 
 
 function Addfood(props){
-
-
     // const Ingredients =()=>{
-
         // const [show,setShow]=useState(false)
         // const [editshow,setEditShow]=useState(false)
-
         const [Ingredients,setIngredients]=useState([])
     
         useEffect(() => {
             axios.get('http://localhost:3030/ingredients')
             .then(res => {
-                setIngredients(res.data)
+                // setIngredients(res.data)
+                let IngredientList = res.data;
+                setIngredients(
+                    IngredientList.map(d => {
+                      return {
+                        select: false,
+                        id: d.ingredientId,
+                        name: d.ingredientName
+                      };
+                    })
+                  );
             })
-            .catch(err => {
-                console.log(err)
-            },[])
+            .catch(err => alert(err));
+ 
+        },[])
+
+        const url = "http://localhost:3030/addFood";
+        const urlingre = "http://localhost:3030/addFoodIngredients";
+        const [data, setData] = useState({
+            food_name: "",
+            food_price: "",
+            food_description: "",
+            ingredients: ""
         })
 
+        
+    
+        function submit(e){
+            e.preventDefault();
+
+            let ingredientListArray = [];
+            Ingredients.forEach(ingredient => {
+            if (ingredient.select) {
+                ingredientListArray.push(ingredient.id);
+            }
+            });
+
+            axios.post(url,{
+                foodName: data.food_name,
+                foodPrice: data.food_price,
+                foodDescription: data.food_description
+            })
+
+            // axios.post(urlingre,{
+            //     foodName: data.food_name,
+            //     foodIngredients: ingredientListArray
+
+            //     // Object.keys(ingredientListArray).reduce((array, key) => {
+            //     //     return [...array, {key: data[key]}]
+            //     // }, [])
+            // })
+    
+            .then(function (response) {
+
+                axios.post(urlingre,{
+                    foodName: data.food_name,
+                    foodIngredients: ingredientListArray
+    
+                    // Object.keys(ingredientListArray).reduce((array, key) => {
+                    //     return [...array, {key: data[key]}]
+                    // }, [])
+                })
+
+                // handle success
+                console.log(response);
+                alert(response.data);
+
+            })
+            .catch(function (error) {
+                // handle error
+                // toast.error('❌ ' + error.response.data);
+                alert(error.response.data);
+            })
+
+            // console.log(typeof(ingredientListArray))
+
+            
+    
+            
+            // .then((res)=>{
+            //     console.log(res.data)
+            // })
+        }
+    
+        function handle(e){
+            const newdata={...data}
+            newdata[e.target.id] = e.target.value
+            setData(newdata)
+            // console.log(newdata)
+        }
+
+
+        
 
 
     return(
@@ -35,39 +117,45 @@ function Addfood(props){
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-      >
+        >
         <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
             Add New Food Item
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submit(e)}>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountName">
+                                <Form.Group as={Col} 
+                                // controlId="addDiscountName"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Food Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.food_name} id="food_name" type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountValue">
+                                <Form.Group as={Col} 
+                                // controlId="addDiscountValue"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.food_price} id="food_price" type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="AddDiscountDescription">
+                                <Form.Group as={Col} 
+                                // controlId="AddDiscountDescription"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
-                                    <Form.Control style={{height:'5rem'}} type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.food_description} id="food_description" style={{height:'5rem'}} type="text" required/>
                                 </Row>                               
                                 </Form.Group>
                             </Col>             
@@ -76,15 +164,35 @@ function Addfood(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="Ingredients">
+                                <Form.Group as={Col} 
+                                // controlId="Ingredients"
+                                >
                                 <Form.Label style={{textAlign:'center'}}><h6>Ingredients</h6></Form.Label>
                                     <Table striped bordered hover size="sm">
                                         <tbody>
                                         {
                                              Ingredients.map(
                                                 ingredient =>
-                                                <tr key = {ingredient.ingredientId}>
-                                                    <td><Form.Control  style={{height:'1rem'}} type="checkbox" required/>{ingredient.ingredientName}</td>
+                                                <tr key = {ingredient.id}>
+                                                    <td>
+                                                        <Form.Control 
+                                                        type="checkbox"
+                                                        checked={ingredient.select}
+                                                        value={ingredient.id}
+                                                        onChange={e=>{                                                        
+                                                            let value = e.target.checked;
+                                                            setIngredients(
+                                                                Ingredients.map(sd => {
+                                                                  if (sd.id == e.target.value) {
+                                                                    sd.select = value;
+                                                                  }
+                                                                  return sd;
+                                                                })
+                                                              );
+                                                        }} 
+                                                        // value={data.ingredients} id="ingredients"  
+                                                        style={{height:'1rem'}} />{ingredient.name}
+                                                    </td>
                                                 </tr>
                                              )
                                         }
@@ -96,7 +204,8 @@ function Addfood(props){
                         </Row>
 
                         <div style={{textAlign:'center'}}>
-                            <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                            <Button type="submit" variant="info">Add</Button> 
+                            <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
                     </Form>
                 </Modal.Body>
