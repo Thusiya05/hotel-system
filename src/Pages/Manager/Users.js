@@ -25,15 +25,7 @@ function AddUser(props) {
 
     function submit(e){
         e.preventDefault();
-        axios.post(url,{
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            contactNo: data.contactNo,
-            gender: data.gender,
-            userType: data.userType,
-            password: data.password
-        })
+        axios.post(url,data)
         .then(res=>{
             props.setadded(!props.added);
             props.onHide();
@@ -143,7 +135,6 @@ function AddUser(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                editemployees.map(
                             <Form>
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridFirstName">
@@ -197,7 +188,6 @@ function AddUser(props) {
                                 </div>
                                 
                             </Form>
-                )
         </Modal.Body>
         <Modal.Footer>
             Adventure Base Camp, Kitulgala.
@@ -206,16 +196,17 @@ function AddUser(props) {
     );
   }
 
-  function Update(id){
-    const [editemployees,setEditemployees]=useState([])
 
-    // console.log(id)
-    axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
-    .then((res)=>{
-        console.log(res.data);
-        setEditemployees(res.data)
-    })
-}
+ function Update(asd){
+        // const [editemployees,setEditemployees]=useState([])
+    
+        console.log(asd)
+        // axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
+        // .then((res)=>{
+        //     console.log(res.data);
+        //     setEditemployees(res.data)
+        // })
+    }
 
 const Users =()=>{
 
@@ -223,6 +214,18 @@ const Users =()=>{
     const [editshow,setEditShow]=useState(false)
     const [employees,setEmployees]=useState([])
     const [added, setadded] = useState(true);
+
+    function Update(id){
+        // const [editemployees,setEditemployees]=useState([])
+    
+        console.log(id)
+        setEditShow(true)
+        // axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
+        // .then((res)=>{
+        //     console.log(res.data);
+        //     setEditemployees(res.data)
+        // })
+    }
 
     useEffect(() => {
         axios.get('http://localhost:3030/api/v1/viewEmployeess/CUSTOMER')
@@ -290,7 +293,7 @@ const Users =()=>{
                                 <Button type="delete"><FaTrash /></Button>
                             </Tippy>
                              <Tippy content="Edit">
-                                <Button onClick={()=>Update(test.id),()=>setEditShow(true)} type="edit"><FaPen /></Button>
+                                <Button onClick={()=>Update(test.id)} type="edit"><FaPen /></Button>
                              </Tippy>
                              </td>
                         </tr>
