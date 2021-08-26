@@ -68,6 +68,31 @@ function AddDiscount(props){
     );
 }
 function AddRooms(props){
+    const history = useHistory;
+    const url = "http://localhost:3030/manager/addRooms"
+    const [data,setData]=useState({
+        roomNo:"",
+        roomTypeID:""
+    })
+
+    function submit(e){
+        e.preventDefault();
+        axios.post(url,data)
+        .then(res=>{
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+                roomNo:"",
+                roomTypeID:""
+            })
+        })
+    }
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
     return(
         <Modal
         {...props}
@@ -81,15 +106,15 @@ function AddRooms(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e)=>submit(e)}>
                         <Row>
                             <Col md={4}>
                                 
                             </Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room ID</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Group as={Col} controlId="roomNo">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room No</h6></Form.Label>
+                                <Form.Control  onChange={(e)=>handle(e)} value={data.roomNo} type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -97,27 +122,13 @@ function AddRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
+                                <Form.Group as={Col} controlId="roomTypeID">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control  onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <br></br>
-                        {/* <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
-                                <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row>
-                               
-                                </Form.Group>
-                            </Col>             
-                        </Row> */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -599,6 +610,7 @@ function HotelConfig() {
     const[addView,setAddView]=useState(false);
     const[added, setadded] = useState(true);
     const[roomTypes,setRoomTypes]=useState([]);
+    const[rooms,setRooms]= useState([]);
 
     useEffect(() => {
             axios.get('http://localhost:3030/manager/viewRoomTypes')
@@ -610,6 +622,15 @@ function HotelConfig() {
             })
     },[added])
 
+    useEffect(() => {
+        axios.get('http://localhost:3030/manager/viewRooms')
+        .then(res=>{
+            setRooms(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [added])
     return (
         <>
             <div className="users">
@@ -712,6 +733,8 @@ function HotelConfig() {
                             <AddRooms 
                                 show={addView}
                                 onHide={()=>setAddView(false)}
+                                added={added} 
+                                setadded={setadded}
                             /> 
                         </div>
                         <div className="col-md-6" style={{textAlign:'right'}}>
@@ -724,42 +747,31 @@ function HotelConfig() {
                         <thead>
                             <tr>
                                 <th>Room Number</th>
+                                <th>Room Type ID</th>
                                 <th>Room Type</th>
-                                <th>Description</th>
-                                <th>image</th>
                                 <th> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Single Rooms</td>
-                                <td>For One Person</td>
-                                <td>image1</td>
-                                <td style={{textAlign:'center'}}>
-                                <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
-                                </Tippy>
-                                    <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                    </Tippy>
-                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Double Rooms</td>
-                                <td>For 2 Person</td>
-                                <td>image2</td>
-                                <td style={{textAlign:'center'}}>
-                                <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
-                                </Tippy>
-                                    <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                    </Tippy>
-                                </td>
-                            </tr>
+                            {
+                                rooms.map( 
+                                    test=>
+                                        <tr key= {test.roomNo}>
+                                            <td>{test.roomNo}</td>
+                                            <td>{test.roomTypeID}</td>
+                                            <td>{test.roomTypes}</td>
+                                            <td style={{textAlign:'center'}}>
+                                            <Tippy content="Delete">
+                                                <Button type="delete"><FaTrash /></Button>
+                                            </Tippy>
+                                                <Tippy content="Edit">
+                                                <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                                </Tippy>
+                                            
+                                            </td>
+                                        </tr>
+                                )
+                            }
                         </tbody>
                     </Table>
                     <EditRooms
@@ -807,14 +819,14 @@ function HotelConfig() {
                             roomTypes.map(
                                 test =>
                                 <tr key={test.roomTypeID}>
-                                <td>{test.roomTypeID}</td>
-                                <td>{test.roomTypes}</td>
-                                <td>{test.no_of_rooms}</td>
-                                <td>{test.no_of_persons}</td>
-                                <td>{test.description}</td>
-                                <td>{test.image}</td>
-                                <td>{test.price}</td>
-                                <td style={{textAlign:'center'}}>
+                                    <td>{test.roomTypeID}</td>
+                                    <td>{test.roomTypes}</td>
+                                    <td>{test.no_of_rooms}</td>
+                                    <td>{test.no_of_persons}</td>
+                                    <td>{test.description}</td>
+                                    <td>{test.image}</td>
+                                    <td>{test.price}</td>
+                                    <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
                                     <Button type="delete"><FaTrash /></Button>
                                 </Tippy>
