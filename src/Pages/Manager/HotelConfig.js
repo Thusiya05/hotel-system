@@ -9,6 +9,38 @@ import axios from 'axios';
 
 
 function AddDiscount(props){
+    const history = useHistory;
+    const url = "http://localhost:3030/manager/addDiscounts"
+    const [data,setData]=useState({
+       discountName:"",
+       description:"",
+       value:"",
+       fromDate:"",
+       toDate:"",
+       roomTypeID:""
+    })
+
+    function submit(e){
+        e.preventDefault();
+        axios.post(url,data)
+        .then(res=>{
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+                discountName:"",
+                description:"",
+                value:"",
+                fromDate:"",
+                toDate:"",
+                roomTypeID:""
+            })
+        })
+    }
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
     return(
         <Modal
         {...props}
@@ -22,22 +54,49 @@ function AddDiscount(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountName">
+                    <Form onSubmit={(e)=>submit(e)}>
+                        <Row> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="discountName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Discount Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.discountName} type="text" required/>
+                                </Form.Group>
+                            </Col>             
+                       
+                            
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="value">
+                                <Form.Label style={{textAlign:'center'}}><h6>Value</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.value} type="text" required/>
+                                </Form.Group>
+                            </Col>             
+                        </Row>
+                        <Row> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="fromDate">
+                                <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.fromDate}type="date" required/>
+                                </Form.Group>
+                            </Col>             
+                       
+                            
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="toDate">
+                                <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.toDate} type="date" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <Row>
-                            <Col md={4}></Col> 
+                            <Col md={4}>    
+                            </Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="addDiscountValue">
-                                <Form.Label style={{textAlign:'center'}}><h6>Value</h6></Form.Label>
-                                <Form.Control type="number" max="100" min="0" required/>
+                            <Form.Group as={Col} controlId="roomTypeID">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
+                                <Row>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
+                                </Row>
+                               
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -47,10 +106,10 @@ function AddDiscount(props){
                                 
                             </Col> 
                             <Col md={4}>
-                            <Form.Group as={Col} controlId="AddDiscountDescription">
+                            <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
-                                    <Form.Control style={{height:'5rem'}} type="text" required/>
+                                    <Form.Control style={{height:'5rem'}} onChange={(e)=>handle(e)} value={data.description} type="text" required/>
                                 </Row>
                                
                                 </Form.Group>
@@ -664,6 +723,8 @@ function HotelConfig() {
                             <AddDiscount
                                 show={addView}
                                 onHide={()=> setAddView(false)} 
+                                added={added} 
+                                setadded={setadded}
                             />  
                         </div>
                         <div className="col-md-6" style={{textAlign:'right'}}>
