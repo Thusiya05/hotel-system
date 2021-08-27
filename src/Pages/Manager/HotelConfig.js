@@ -351,13 +351,13 @@ function AddOutdoorActivities(props){
                                 <Col sm={6}>
                                     <Form.Group as={Col} controlId="editActivityDateFrom">
                                         <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>
                                 <Col sm={6}>
                                     <Form.Group as={Col} controlId="editActivityDateTo">
                                         <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>    
                             </Row>
@@ -422,13 +422,13 @@ function EditOutdoorActivities(props){
                                 <Col sm={6}>
                                     <Form.Group as={Col} controlId="editActivityDateFrom">
                                         <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>
                                 <Col sm={6}>
                                     <Form.Group as={Col} controlId="editActivityDateTo">
                                         <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
-                                        <Form.Control type="text" required/>
+                                        <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>    
                             </Row>
