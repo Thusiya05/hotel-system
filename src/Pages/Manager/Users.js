@@ -10,7 +10,6 @@ import {useHistory} from 'react-router-dom';
 
 
 function AddUser(props) {
-    let history = useHistory();
     const url = "http://localhost:3030/api/v1/addEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
@@ -38,6 +37,7 @@ function AddUser(props) {
                 userType: "RECEPTIONIST",
                 password: ""
             })
+            alert("Employee Added Successfully");
         })
     }
 
@@ -81,7 +81,7 @@ function AddUser(props) {
                                    
                                     <Form.Group as={Col} controlId="contactNo">
                                     <Form.Label style={{textAlign:'center'}}><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} type="text" placeholder="07x xxx xxx" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} type="text" pattern="\d{10}" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -122,6 +122,44 @@ function AddUser(props) {
   }
 
   function EditUser(props) {
+    const [data, setData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        contactNo: "",
+        gender: "",
+        userType: "",
+    })
+
+    function submitt(e){
+        e.preventDefault();
+        // console.log(data);
+        axios.put(`http://localhost:3030/api/v1/updateEmployee/${props.editemployees}`,data)
+        .then(res=>{
+             props.setadded(!props.added);
+             props.onHide();
+             alert(res.data);
+        })
+        .catch(err => {
+            alert(err.response.data);
+            props.onHide();
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+        // console.log(newdata)
+    }
+
+    useEffect(() => {
+        axios.get(`http://localhost:3030/api/v1/viewEmployee/${props.editemployees}`)
+        .then((res)=>{
+            // console.log(res.data);  
+            setData(res.data);
+        })
+    }, [props.added])
     return (
       <Modal
         {...props}
@@ -135,54 +173,48 @@ function AddUser(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                            <Form>
-                                <Form.Row>
-                                    <Form.Group as={Col} controlId="formGridFirstName">
+                        <Form onSubmit={(e) => submitt(e)}>
+                                <Form.Row >
+                                    <Form.Group as={Col} controlId="firstName">
                                     <Form.Label style={{textAlign:'center'}}><h6>First Name</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName}  id="firstName" type="text" required/>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="formGridLastName">
+                                    <Form.Group as={Col} controlId="lastName">
                                     <Form.Label style={{textAlign:'center'}}><h6>Last Name</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} type="text" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
-                                    <Form.Group as={Col} controlId="formGridEmail">
+                                    <Form.Group as={Col} controlId="email">
                                     <Form.Label style={{textAlign:'center'}}><h6>Email</h6></Form.Label>
-                                    <Form.Control type="Email" placeholder="Enter Email" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.email} type="Email" placeholder="Enter Email" required/>
                                     </Form.Group>
                                    
-                                    <Form.Group as={Col} controlId="formGridMobile">
+                                    <Form.Group as={Col} controlId="contactNo">
                                     <Form.Label style={{textAlign:'center'}}><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control type="text" placeholder="07x xxx xxx" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} pattern="\d{10}" title="asdas" type="text" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
-                                <Row>
-                                    <Col sm={6}>
-                                    <Form.Group controlId="formGridEmail">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6>
-                                    <div>
-                                            <br></br>
-                                            <input type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Male &nbsp; &nbsp; &nbsp; 
-                                            <input type="radio" name="gender" id="exampleRadios2" value="option2" />Female
-
-                                    </div>
-                                    </Form.Label>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="gender">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Gender</h6></Form.Label>
+                                    <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" value={data.gender} custom>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                        </Form.Control>
                                     </Form.Group>
-                                    </Col>
-                                    <Col sm={6}>
-                                    <Form.Group controlId="formGridMobile">
+                                    <Form.Group as={Col} controlId="userType">
                                     <Form.Label style={{textAlign:'center'}}><h6>User Role</h6></Form.Label>
-                                    <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                                <option value="1">Receptionist</option>
-                                                <option value="2">Guide</option>
-                                                <option value="3">Steward</option>
-                                                <option value="3">Kitchen Staff</option>
+                                    <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" value={data.userType} custom>
+                                                <option value="RECEPTIONIST">RECEPTIONIST</option>
+                                                <option value="STEWARD">STEWARD</option>
+                                                <option value="GUIDE">GUIDE</option>
+                                                <option value="KITCHEN_STAFF">KITCHEN_STAFF</option>
                                         </Form.Control>
                                     </Form.Group>   
-                                    </Col>
-                                </Row>
+                                </Form.Row>
+                                
                                 <div style={{textAlign:'center'}}>
                                     <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                                 </div>
@@ -197,16 +229,6 @@ function AddUser(props) {
   }
 
 
- function Update(asd){
-        // const [editemployees,setEditemployees]=useState([])
-    
-        console.log(asd)
-        // axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
-        // .then((res)=>{
-        //     console.log(res.data);
-        //     setEditemployees(res.data)
-        // })
-    }
 
 const Users =()=>{
 
@@ -214,19 +236,22 @@ const Users =()=>{
     const [editshow,setEditShow]=useState(false)
     const [employees,setEmployees]=useState([])
     const [added, setadded] = useState(true);
+    const [editemployees,setEditemployees]=useState()
 
     function Update(id){
-        // const [editemployees,setEditemployees]=useState([])
-    
-        console.log(id)
-        setEditShow(true)
-        // axios.get(`http://localhost:3030/api/v1/viewEmployee/${id}`)
-        // .then((res)=>{
-        //     console.log(res.data);
-        //     setEditemployees(res.data)
-        // })
+        // console.log(id)
+        setadded(!added);
+        setEditShow(true);
+        setEditemployees(id);
     }
 
+    function Delete(id){
+            axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
+            .then(res =>{
+                alert(res.data)
+            })
+    }
+    
     useEffect(() => {
         axios.get('http://localhost:3030/api/v1/viewEmployeess/CUSTOMER')
         .then(res => {
@@ -290,7 +315,7 @@ const Users =()=>{
                             {/* <td>{employee.password}</td> */}
                             <td style={{textAlign:'center'}}>
                             <Tippy content="Delete">
-                                <Button type="delete"><FaTrash /></Button>
+                                <Button onClick={()=>Delete(test.id)} type="delete"><FaTrash /></Button>
                             </Tippy>
                              <Tippy content="Edit">
                                 <Button onClick={()=>Update(test.id)} type="edit"><FaPen /></Button>
@@ -304,6 +329,10 @@ const Users =()=>{
                     <EditUser
                         show={editshow}
                         onHide={()=> setEditShow(false)} 
+                        editemployees={editemployees}
+                        setEditemployees={setEditemployees}
+                        added={added} 
+                        setadded={setadded} 
                     />
                 </div>
             </div>
