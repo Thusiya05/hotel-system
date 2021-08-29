@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 function AddDiscount(props){
-    const history = useHistory;
+    const history = useHistory();
     const url = "http://localhost:3030/manager/addDiscounts"
     const [data,setData]=useState({
        discountName:"",
@@ -34,6 +34,10 @@ function AddDiscount(props){
                 toDate:"",
                 roomTypeID:""
             })
+            alert(res.data);
+        })
+        .catch(err=>{
+            alert(err.response.data);
         })
     }
     function handle(e){
@@ -670,6 +674,7 @@ function HotelConfig() {
     const[added, setadded] = useState(true);
     const[roomTypes,setRoomTypes]=useState([]);
     const[rooms,setRooms]= useState([]);
+    const[discounts,setDiscounts]=useState([]);
 
     useEffect(() => {
             axios.get('http://localhost:3030/manager/viewRoomTypes')
@@ -690,6 +695,17 @@ function HotelConfig() {
             console.log(err)
         })
     }, [added])
+
+    useEffect(() => {
+        axios.get('http://localhost:3030/manager/viewDiscounts')
+        .then(res=>{
+            setDiscounts(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [added])
+
     return (
         <>
             <div className="users">
@@ -740,17 +756,26 @@ function HotelConfig() {
                             <tr>
                                 <th>#</th>
                                 <th>Discount Name</th>
+                                <th>From</th>
+                                <th>To</th>
                                 <th>Value</th>
                                 <th>Description</th>
+                                <th>Room Type</th>
                                 <th> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Family Discount</td>
-                                <td>30%</td>
-                                <td>Enjoy with Your family</td>
+                        {
+                            discounts.map(
+                                test =>
+                            <tr key={test.discountID}>
+                                <td>{test.discountID}</td>
+                                <td>{test.discountName}</td>
+                                <td>{test.fromDate}</td>
+                                <td>{test.toDate}</td>
+                                <td>{test.value}</td>
+                                <td>{test.description}</td>
+                                <td>{test.roomTypes}</td>
                                 <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
                                     <Button type="delete"><FaTrash /></Button>
@@ -761,26 +786,13 @@ function HotelConfig() {
                                 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mega Discount</td>
-                                <td>40%</td>
-                                <td>Enjoy with our Packages</td>
-                                <td style={{textAlign:'center'}}>
-                                <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
-                                </Tippy>
-                                    <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                    </Tippy>
-                                
-                                </td>
-                            </tr>
+                            )
+                        }
                         </tbody>
                     </Table>
                     <EditDiscount
                                 show={editView}
-                                onHide={()=> setEditView(false)} 
+                                onHide={()=> setEditView(false)}
                             />
                    </div> :null
                 }
