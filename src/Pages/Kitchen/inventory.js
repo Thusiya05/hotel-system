@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import Kcsidebar from '../../Components/kcsidebar'
 import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
@@ -23,12 +23,15 @@ function Addingr(props){
             reorderLevel: data.reorder_level
         })
 
-        // console.log(this.ingredient_name)
-
-        
-        .then((res)=>{
-            console.log(res.data)
+        .catch((error) => {
+            // handle error
+            // toast.error('❌ ' + error.response.data);
+            alert(error.response.data);
+            
         })
+        .then(function () {
+            // always executed
+        });
     }
 
     function handle(e){
@@ -56,9 +59,7 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="addDiscountName"
-                                >
+                                <Form.Group as={Col} controlId="ingredientName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Item Name</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.ingredient_name} id="ingredient_name" type="text" required/>
                                 </Form.Group>
@@ -67,9 +68,7 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col}
-                                //  controlId="addDiscountValue"
-                                 >
+                                <Form.Group as={Col} controlId="aingredient">
                                 <Form.Label style={{textAlign:'center'}}><h6>In stock</h6></Form.Label>
                                 <Form.Control  onChange={(e)=>handle(e)} value={data.ingredient_qty} id="ingredient_qty" type="text" required/>
                                 </Form.Group>
@@ -78,9 +77,7 @@ function Addingr(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="Re-Order Level"
-                                >
+                                <Form.Group as={Col} controlId="ingredientReorderLevel">
                                 <Form.Label style={{textAlign:'center'}}><h6>Re-Order Level</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.reorder_level} id="reorder_level" type="text" required/>                            
                                 </Form.Group>
@@ -160,10 +157,37 @@ function Editingr(props){
 function Inventory() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
-    // const[view,setView]=useState(false);
+    const[ingredients,setIngredient]=useState([]);
     // const[display,setDisplay]=useState(false);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
+
+    // function Update(id){
+    //     // console.log(id)
+    //     setadded(!added);
+    //     setEditShow(true);
+    //     setEditemployees(id);
+    // }
+
+    // function Delete(id){
+    //         axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
+    //         .then(res =>{
+    //             alert(res.data)
+    //         })
+    // }
+    
+    useEffect(() => {
+        axios.get('http://localhost:3030/ingredients')
+        .then(res => {
+            setIngredient(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[])
+
+
+
     return (
         <>
         <div className="users">
@@ -203,74 +227,27 @@ function Inventory() {
                      </tr>
                  </thead>
                  <tbody>
-                     <tr>
-                         <td>1</td>
-                         <td>Basmathi Rice</td>
-                         <td>30Kg</td>
-                         {/* <td>Chicken + Cheese + burger</td>
-                         <td>Available</td>
-                         <td>5</td> */}
-                         <td style={{textAlign:'center'}}>
+                     {
+                         ingredients.map(
+                             test=>
+                             <tr key = {test.ingredientId}>
+                                 <td>{test.ingredientId}</td>
+                                 <td>{test.ingredientName}</td>
+                                 <td>{test.qty}</td>
+                                 <td style={{textAlign:'center'}}>
                          <Tippy content="Delete">
                              <Button type="delete"><FaTrash /></Button>
                          </Tippy>
                              <Tippy content="Edit">
                              <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
+                             </Tippy>                         
                          </td>
-                     </tr>
-                     <tr>
-                         <td>2</td>
-                         <td>Sugar</td>
-                         <td>10Kg</td>
-                         {/* <td>For two person</td>
-                         <td>Unavailable</td>
-                         <td>0</td> */}
-                         <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>3</td>
-                         <td>Samba Rice</td>
-                         <td>10Kg</td>
-                         {/* <td>For two person</td>
-                         <td>Unavailable</td>
-                         <td>0</td> */}
-                         <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>4</td>
-                         <td>Salt</td>
-                         <td>1Kg</td>
-                         {/* <td>For two person</td>
-                         <td>Unavailable</td>
-                         <td>0</td> */}
-                         <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
-                         </td>
-                     </tr>
+                             </tr>
+                         )
+                     }
+
+  
+                                        
                  </tbody>
              </Table>
              <Editingr
