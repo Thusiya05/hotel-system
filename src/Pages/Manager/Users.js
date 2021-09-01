@@ -6,6 +6,7 @@ import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import {useHistory} from 'react-router-dom';
 
 
@@ -37,7 +38,11 @@ function AddUser(props) {
                 userType: "RECEPTIONIST",
                 password: ""
             })
-            alert("Employee Added Successfully");
+            // alert("Employee Added Successfully");
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err => {
+            toast.error('❌ '+' '+ err.response.data);
         })
     }
 
@@ -48,7 +53,7 @@ function AddUser(props) {
         // console.log(newdata)
     }
 
-    return (
+    return ( 
       <Modal
         {...props}
         size="lg"
@@ -65,12 +70,12 @@ function AddUser(props) {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="firstName">
                                     <Form.Label style={{textAlign:'center'}}><h6>First Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName} id="firstName" type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName} pattern="([a-zA-Z]{3,30}\s*)+" title="First name should include 3-30 charactors and no symbols" id="firstName" type="text" required/>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="lastName">
                                     <Form.Label style={{textAlign:'center'}}><h6>Last Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} pattern="([a-zA-Z]{3,30}\s*)+" title="Last name should include 3-30 charactors and no symbols" type="text" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -81,7 +86,7 @@ function AddUser(props) {
                                    
                                     <Form.Group as={Col} controlId="contactNo">
                                     <Form.Label style={{textAlign:'center'}}><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} type="text" pattern="\d{10}" placeholder="07x xxx xxx" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} type="text" pattern="\d{10}" title="Contact Number Must Contain 10 digits" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -118,7 +123,9 @@ function AddUser(props) {
             Adventure Base Camp, Kitulgala.
         </Modal.Footer>
       </Modal>
+      
     );
+
   }
 
   function EditUser(props) {
@@ -138,11 +145,11 @@ function AddUser(props) {
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
-             alert(res.data);
+             toast.success('✅ '+' '+ res.data);
         })
         .catch(err => {
-            alert(err.response.data);
-            props.onHide();
+            toast.error('❌ '+' '+ err.response.data);
+            // props.onHide();
         })
     }
 
@@ -177,12 +184,12 @@ function AddUser(props) {
                                 <Form.Row >
                                     <Form.Group as={Col} controlId="firstName">
                                     <Form.Label style={{textAlign:'center'}}><h6>First Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName}  id="firstName" type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.firstName} pattern="([a-zA-Z]{3,30}\s*)+" title="First name should include 3-30 charactors and no symbols"  id="firstName" type="text" required/>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="lastName">
                                     <Form.Label style={{textAlign:'center'}}><h6>Last Name</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.lastName} pattern="([a-zA-Z]{3,30}\s*)+" title="Last name should include 3-30 charactors and no symbols" type="text" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -193,7 +200,7 @@ function AddUser(props) {
                                    
                                     <Form.Group as={Col} controlId="contactNo">
                                     <Form.Label style={{textAlign:'center'}}><h6>Mobile No:</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} pattern="\d{10}" title="asdas" type="text" placeholder="07x xxx xxx" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} pattern="\d{10}" title="Contact Number Must Contain 10 digits" type="text" placeholder="07x xxx xxx" required/>
                                     </Form.Group>
                                 </Form.Row>
                                 <Form.Row>
@@ -228,7 +235,15 @@ function AddUser(props) {
     );
   }
 
-
+// function DeleteUser(props) {
+//     // useEffect(() => {
+//     //     axios.put(`http://localhost:3030/api/v1/deleteEmployee/${props.editemployees}`)
+//     //     .then(res =>{
+//     //         alert(res.data);
+//     //         props.setadded(!props.added);
+//     //     })
+//     // }, [(!props.added)])
+// }
 
 const Users =()=>{
 
@@ -246,10 +261,11 @@ const Users =()=>{
     }
 
     function Delete(id){
-            axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
-            .then(res =>{
-                alert(res.data)
-            })
+        axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
+        .then(res =>{
+            toast.success('✅ '+' '+ res.data);
+            setadded(!added);
+        })
     }
     
     useEffect(() => {
@@ -266,6 +282,17 @@ const Users =()=>{
 
     return(
         <>
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
             <div className="users" >
                 <Sidebar></Sidebar>
                 <Title title="U S E R S"></Title>
@@ -336,7 +363,6 @@ const Users =()=>{
                     />
                 </div>
             </div>
-            
         </>
     )
 }

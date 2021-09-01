@@ -294,7 +294,7 @@ export default class Login extends Component {
                   "email": this.state.loginEmail,
                   "password": this.state.loginPassword
               })
-              .then((response) => {
+              .then((response) => { 
                 // handle success
                 console.log(response.data.userType);
                 // alert(response.data.token);

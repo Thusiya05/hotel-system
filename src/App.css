@@ -679,6 +679,18 @@ hr.new1 {
   bottom: 40px;
   z-index: 10;
 }
+.Toastify__toast--success {
+  background: #000;
+}
+.Toastify__progress-bar--success {
+  background: rgb(0, 255, 0);
+}
+.Toastify__toast--error {
+  background: #000;
+}
+.Toastify__progress-bar--error {
+  background: rgb(255, 0, 0);
+}
 
 Table th,td{
   text-align: center;
