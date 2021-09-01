@@ -299,16 +299,18 @@ export default class Login extends Component {
                 console.log(response.data.userType);
                 // alert(response.data.token);
 
-                if(response.data.userType=="Admin"){
+                if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
-                }else if(response.data.userType=="Steward"){
+                }else if(response.data.userType=="STEWARD"){
                   this.props.history.push('/stewarad/assignedRoom');
-                }else if(response.data.userType=="Kitchen Staff"){
+                }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
                 }else if(response.data.userType=="CUSTOMER"){
                   this.props.history.push('/');
-                }else if(response.data.userType=="Guide"){
+                }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
+                }else if(response.data.userType=="RECEPTIONIST"){
+                  this.props.history.push('/receptionist/customers/');
                 }
 
 
