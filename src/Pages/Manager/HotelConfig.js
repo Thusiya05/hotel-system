@@ -6,6 +6,7 @@ import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function AddDiscount(props){
@@ -34,10 +35,12 @@ function AddDiscount(props){
                 toDate:"",
                 roomTypeID:""
             })
-            alert(res.data);
+            // alert(res.data);
+            toast.success('✅ '+' '+ res.data);
         })
         .catch(err=>{
-            alert(err.response.data);
+            // alert(err.response.data);
+            toast.error('❌ '+' '+ err.response.data)
         })
     }
     function handle(e){
@@ -148,8 +151,13 @@ function AddRooms(props){
                 roomNo:"",
                 roomTypeID:""
             })
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err =>{
+            toast.error('❌ '+' '+ err.response.data)
         })
     }
+
     function handle(e){
         const newdata={...data}
         newdata[e.target.id] = e.target.value
@@ -230,6 +238,10 @@ function AddRoomTypes(props){
                 no_of_persons:"",
                 price:""
             })
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err =>{
+            toast.error('❌ '+' '+ err.response.data)
         })
     }
 
@@ -760,6 +772,17 @@ function HotelConfig() {
 
     return (
         <>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="users">
                 <Sidebar />
                 <br></br>
