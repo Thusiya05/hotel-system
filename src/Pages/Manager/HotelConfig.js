@@ -204,7 +204,6 @@ function AddRooms(props){
     );
 }
 function AddRoomTypes(props){
-    const history = useHistory();
     const url = "http://localhost:3030/manager/addRoomType"
     const [data,setData]= useState({
         roomTypeID:"",
@@ -465,6 +464,44 @@ function EditOutdoorActivities(props){
     );
 }
 function EditRoomTypes(props){
+    const[data,setData] = useState({
+        roomTypeID:"",
+        roomTypes:"",
+        description:"",
+        image:"",
+        no_of_rooms:"",
+        no_of_persons:"",
+        price:""
+    })
+
+    function submitt(e){
+        e.preventDefault();
+        // console.log(data);
+        axios.put(`http://localhost:3030/manager/updateRoomType/${props.editRoomType}`,data)
+        .then(res=>{
+             props.setadded(!props.added);
+             props.onHide();
+             alert(res.data);
+        })
+        .catch(err => {
+            alert(err.response.data);
+            props.onHide();
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
+    useEffect(() =>{
+        axios.get(`http://localhost:3030/manager/viewUpdateRoomTypeDetails/${props.editRoomType}`)
+        .then((res)=>{
+            setData(res.data);
+        })
+    },[props.added])
+
     return(
         <Modal
         {...props}
@@ -478,32 +515,49 @@ function EditRoomTypes(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                <Form onSubmit={(e) => submitt(e)}>
                         <Row>
                             <Col md={6}>
-                            <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                            <Form.Group as={Col} controlId="roomTypeID">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" disabled/>
                                 </Form.Group>
                             </Col> 
                             <Col md={6}>
-                            <Form.Group as={Col} controlId="editDiscountValue">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                    <Form.Control type="text" required/>
+                            <Form.Group as={Col} controlId="roomTypes">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.roomTypes} type="text" required/>
                                     </Form.Group>
+                            </Col>             
+                        </Row>
+                        <br></br>
+                        <Row>
+                            <Col md={6}>
+                            <Form.Group as={Col} controlId="no_of_rooms">
+                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Rooms</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.no_of_rooms} type="text" required/>
+                                </Form.Group>
+                            </Col> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="no_of_persons">
+                                <Form.Label style={{textAlign:'center'}}><h6>No Of Persons</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.no_of_persons} type="text" required/>
+                                </Form.Group>
                             </Col>             
                         </Row>
                         
                         <Row>
                             <Col md={6}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Persons</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                                </Form.Group></Col> 
+                                 <Form.Group controlId="image" className="mb-3">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.image} type="file" size="sm" />
+                                    {/* <Form.Control type="text" required/> */}
+                                </Form.Group> 
+                            </Col> 
                             <Col md={6}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Group as={Col} controlId="price">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.price} type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -511,20 +565,10 @@ function EditRoomTypes(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                 <Form.Group controlId="formFileSm" className="mb-3">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
-                                    <Form.Control type="file" size="sm" />
-                                </Form.Group> 
-                            </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                             <Col md={4}></Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
+                                <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
+                                    <Form.Control style={{height:'5rem'}} onChange={(e)=>handle(e)} value={data.description} type="text" required/>
                                 </Row>
                                
                                 </Form.Group>
@@ -675,6 +719,14 @@ function HotelConfig() {
     const[roomTypes,setRoomTypes]=useState([]);
     const[rooms,setRooms]= useState([]);
     const[discounts,setDiscounts]=useState([]);
+    const[editRoomType,setEditRoomType]=useState([]);
+
+    function Update(id){
+        // console.log(id);
+        setadded(!added);
+        setEditView(true);
+        setEditRoomType(id);    
+    }
 
     useEffect(() => {
             axios.get('http://localhost:3030/manager/viewRoomTypes')
@@ -904,7 +956,7 @@ function HotelConfig() {
                                     <Button type="delete"><FaTrash /></Button>
                                 </Tippy>
                                     <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                    <Button onClick={()=>Update(test.roomTypeID)} type="edit"><FaPen /></Button>
                                     </Tippy>
                                 
                                 </td>
@@ -916,6 +968,10 @@ function HotelConfig() {
                     <EditRoomTypes
                         show={editView}
                         onHide={()=> setEditView(false)} 
+                        editRoomType={editRoomType}
+                        setEditRoomType = {setEditRoomType}
+                        added = {added}
+                        setadded = {setadded}
                     />
                    </div> :null 
                 }
