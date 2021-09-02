@@ -493,10 +493,10 @@ function EditRoomTypes(props){
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
-             alert(res.data);
+             toast.success('✅ '+' '+ res.data);
         })
         .catch(err => {
-            alert(err.response.data);
+            toast.error('❌ '+' '+ err.response.data)
             props.onHide();
         })
     }
@@ -740,6 +740,14 @@ function HotelConfig() {
         setEditRoomType(id);    
     }
 
+    function DeleteRoomType(roomTypeID){
+        axios.delete(`http://localhost:3030/manager/deleteRoomType/${roomTypeID}`)
+        .then(res =>{
+            toast.success('✅ '+' '+ res.data);
+            setadded(!added);
+        })
+    }
+
     useEffect(() => {
             axios.get('http://localhost:3030/manager/viewRoomTypes')
             .then(res=>{
@@ -976,7 +984,7 @@ function HotelConfig() {
                                     <td>{test.price}</td>
                                     <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
+                                    <Button onClick={()=>DeleteRoomType(test.roomTypeID)} type="delete"><FaTrash /></Button>
                                 </Tippy>
                                     <Tippy content="Edit">
                                     <Button onClick={()=>Update(test.roomTypeID)} type="edit"><FaPen /></Button>
