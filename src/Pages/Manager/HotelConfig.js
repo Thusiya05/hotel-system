@@ -598,6 +598,25 @@ function EditRoomTypes(props){
     );
 }
 function EditRooms(props){
+
+    const[data,setData] = useState({
+        roomNo:"",
+        roomTypeID:""
+    })
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
+    useEffect(() =>{
+        axios.get(`http://localhost:3030/manager/viewUpdateRoomDetails/${props.editRoom}`)
+        .then((res)=>{
+            setData(res.data);
+        })
+    },[props.added])
+
     return(
         <Modal
         {...props}
@@ -615,9 +634,9 @@ function EditRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room ID</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Group as={Col} controlId="editRoomNo">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room No</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.roomNo} type="text" disabled/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -625,32 +644,13 @@ function EditRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-
-                                <Form.Group as={Col} controlId="editDiscountName">
+                                <Form.Group as={Col} controlId="editRooms_RoomTypeID">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
                                 </Form.Group>
-                                {/* <Form.Group controlId="formFileSm" className="mb-3">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
-                                    <Form.Control type="file" size="sm" />
-                                </Form.Group> */}
                             </Col>             
                         </Row>
                         <br></br>
-                         {/* <Row>
-                             <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
-                                <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row>
-                               
-                                </Form.Group>
-                            </Col>             
-                        </Row>  */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -732,12 +732,19 @@ function HotelConfig() {
     const[rooms,setRooms]= useState([]);
     const[discounts,setDiscounts]=useState([]);
     const[editRoomType,setEditRoomType]=useState([]);
+    const[editRoom,setEditRoom]=useState([]);
 
-    function Update(id){
+    function UpdateRoomType(id){
         // console.log(id);
         setadded(!added);
         setEditView(true);
         setEditRoomType(id);    
+    }
+
+    function UpdateRoom(id){
+        setadded(!added);
+        setEditView(true);
+        setEditRoom(id);
     }
 
     function DeleteRoomType(roomTypeID){
@@ -921,7 +928,7 @@ function HotelConfig() {
                                                 <Button type="delete"><FaTrash /></Button>
                                             </Tippy>
                                                 <Tippy content="Edit">
-                                                <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                                <Button onClick={()=>UpdateRoom(test.roomNo)} type="edit"><FaPen /></Button>
                                                 </Tippy>
                                             
                                             </td>
@@ -933,6 +940,10 @@ function HotelConfig() {
                     <EditRooms
                         show={editView}
                         onHide={()=> setEditView(false)} 
+                        editRoom = {editRoom}
+                        setEditRoom = {setEditRoom}
+                        added = {added}
+                        setadded = {setadded}
                     />
                    </div> :null 
                 }
@@ -987,7 +998,7 @@ function HotelConfig() {
                                     <Button onClick={()=>DeleteRoomType(test.roomTypeID)} type="delete"><FaTrash /></Button>
                                 </Tippy>
                                     <Tippy content="Edit">
-                                    <Button onClick={()=>Update(test.roomTypeID)} type="edit"><FaPen /></Button>
+                                    <Button onClick={()=>UpdateRoomType(test.roomTypeID)} type="edit"><FaPen /></Button>
                                     </Tippy>
                                 
                                 </td>
