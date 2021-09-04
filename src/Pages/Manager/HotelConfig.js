@@ -604,6 +604,18 @@ function EditRooms(props){
         roomTypeID:""
     })
 
+
+    function submitt(e){
+        e.preventDefault();
+        // console.log(data);
+        axios.put(`http://localhost:3030/manager/updateRooms/${props.editRoom}`,data)
+        .then(res=>{
+             props.setadded(!props.added);
+             props.onHide();
+             toast.success('✅ '+' '+ res.data);
+        })
+    }
+
     function handle(e){
         const newdata={...data}
         newdata[e.target.id] = e.target.value
@@ -630,13 +642,13 @@ function EditRooms(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submitt(e)}>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editRoomNo">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room No</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.roomNo} type="text" disabled/>
+                                <Form.Control value={data.roomNo} type="text" disabled/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -644,7 +656,7 @@ function EditRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editRooms_RoomTypeID">
+                                <Form.Group as={Col} controlId="roomTypeID">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
                                 </Form.Group>
