@@ -5,8 +5,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import axios from 'axios';
-import { Tab } from 'bootstrap';
-import { data } from 'jquery';
+//import { Tab } from 'bootstrap';
+//import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
 
 
