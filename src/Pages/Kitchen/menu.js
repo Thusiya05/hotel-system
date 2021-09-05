@@ -40,9 +40,7 @@ function Addfood(props){
             food_description: "",
             ingredients: ""
         })
-
         
-    
         function submit(e){
             e.preventDefault();
 
@@ -106,10 +104,6 @@ function Addfood(props){
             setData(newdata)
             // console.log(newdata)
         }
-
-
-        
-
 
     return(
         <Modal
@@ -194,7 +188,7 @@ function Addfood(props){
                                                         style={{height:'1rem'}} />{ingredient.name}
                                                     </td>
                                                 </tr>
-                                             )
+                                              )
                                         }
                                         </tbody>
                                     </Table>    
@@ -280,11 +274,20 @@ function Menu() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
     // const[view,setView]=useState(false);
+    const[foods,setFood]=useState([]);
     // const[display,setDisplay]=useState(false);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
 
-  
+    useEffect(() => {
+        axios.get('http://localhost:3030/foods')
+        .then(res => {
+            setFood(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[])
 
 
     return (
@@ -319,47 +322,32 @@ function Menu() {
                          <th>#</th>
                          <th>Food Name</th>
                          <th>Price</th>
-                         <th>Ingredients</th>
                          <th>Availability</th>
-                         <th>Number of Items</th>
+                         <th>Number of Remaining Items</th>
                          <th> </th>
                      </tr>
                  </thead>
                  <tbody>
-                     <tr>
-                         <td>1</td>
-                         <td>Chicken Burger</td>
-                         <td>350LKR</td>
-                         <td>Chicken + Cheese + burger</td>
-                         <td>Available</td>
-                         <td>5</td>
-                         <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>2</td>
-                         <td>Chicken Koththu-F</td>
-                         <td>600LKR</td>
-                         <td>For two person</td>
-                         <td>Unavailable</td>
-                         <td>0</td>
-                         <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                         
-                         </td>
-                     </tr>
+                     {
+                         foods.map(
+                             test=>
+                             <tr key = {test.foodId}>
+                                 <td>{test.foodId}</td>
+                                 <td>{test.foodName}</td>
+                                 <td>{test.price}</td>
+                                 <td>Unavailable</td>
+                                 <td>{test.availableQty}</td>
+                                 <td style={{textAlign:'center'}}>
+                                    <Tippy content="Delete">
+                                        <Button type="delete"><FaTrash /></Button>
+                                    </Tippy>
+                                        <Tippy content="Edit">
+                                        <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                    </Tippy>
+                                </td>
+                             </tr>
+                         )
+                     }
                  </tbody>
              </Table>
              <Editfood
