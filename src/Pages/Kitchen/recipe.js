@@ -49,7 +49,7 @@ function Editfood(props){
             if(test.value!=null){
                 ingredientQtyArray.push(test.value);
                 fiIdArray.push(test.fiId);
-            }
+            } 
         });
 
         console.log(ingredientQtyArray);
