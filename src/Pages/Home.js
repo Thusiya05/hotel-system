@@ -4,6 +4,7 @@ import Banner from "../Components/Banner"
 import Background from "../Components/Background"
 import Services from "../Components/Services"
 import Slider from "../Components/Slider"
+import Footer from '../Components/Footer'
 import hotel from "../images/hotel.jpg"
 import room1 from "../images/Double-Room.jpg"
 import room2 from "../images/hotel-room.jpg"
@@ -15,6 +16,7 @@ import NavBar from "../Components/NavBar"
 export default function Home() {
     return(
         <>
+        
         <NavBar
             path1="/" name1="Home"
             path2="/rooms/" name2="Rooms" 
@@ -23,13 +25,16 @@ export default function Home() {
             path5="/aboutUs" name5="About Us" 
             pathSign="/signIn" LogName="Log In">    
         </NavBar>
+        <br></br>
+        <br></br>
+        <br></br>
         <div>
           <Background className="area"></Background>
         </div>
         <div className="slider-row">
             <div className="row">
                 <div className="col-md-6">
-                    <h1>Overview of Adventure Base Camp</h1>
+                    <h1 style={{color:'black'}}>Overview of Adventure Base Camp</h1>
                         <p>The most epic and wonderful place in Kithulgala is now available for guests with safety and disciplines. Are you boring of the busy lifestyle then come to see the nature with lot of adventure and facilities.</p>
 
                         <p>Luxury rooms, luxury Cabanas, Standard rooms, Camping Tents – all by the riverside to accommodate 150 adults comfortably
@@ -56,17 +61,21 @@ export default function Home() {
                     </Hero>              
                 </Carousel.Item>
                 <Carousel.Item interval={3000}>
-                    <Hero hero="activityHero">
+                    <Hero hero="firstHero">
                         <Banner title="Feel Adventure" subtitle="Choose your dream room with us." children="Our Activities" path="/activities"></Banner>
                     </Hero>    
                 </Carousel.Item>
                 <Carousel.Item interval={3000}>
-                    <Hero hero="facilityHero">
+                    <Hero hero="secondHero">
                         <Banner title="See our Facilities" subtitle="we make your day comfortable" children="Facilities" path="/facilities"></Banner>
                     </Hero>    
                 </Carousel.Item>
             </Carousel>
         </div>
+        <div>
+            <Footer />
+        </div>
+
 
         </>   
 

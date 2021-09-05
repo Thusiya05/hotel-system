@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from "../images/Capture5.png"
+import img1 from "../images/logo.png"
 import {Link} from 'react-router-dom'
 
 function Footer() {
@@ -31,9 +31,9 @@ function Footer() {
                         <div className="col-md-3 col-sm-6">
                             <h4>Contact Us On</h4>
                             <ul className="list-unstyled">
-                                <li>lakithkithsara@gmail.com</li>
-                                <li>Fax: 011569874</li>
-                                <li>0717365756</li>
+                                <li>info@abckitulgala.com</li>
+                                <li>+94 77 306 9903 , +94 77 603 7136</li>
+                                <li>Kitulgala , Sri Lanka</li>
                             </ul>
                         </div>
                     </div>    

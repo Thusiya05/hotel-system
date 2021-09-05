@@ -40,7 +40,7 @@ const RoomFilter = ({ rooms }) => {
   ));
   return (
     <section className="filter-container">
-      <Title title="search rooms" />
+      <Title title="Search Rooms" />
       <form className="filter-form">
         {/* select type */}
         <div className="form-group">
@@ -87,7 +87,7 @@ const RoomFilter = ({ rooms }) => {
         {/* end of room price*/}
      
         {/* extras */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <div className="single-extra">
             <input
               type="checkbox"
@@ -107,7 +107,7 @@ const RoomFilter = ({ rooms }) => {
             />
             <label htmlFor="breakfast">pets</label>
           </div>
-        </div>
+        </div> */}
         {/* end of extras type */}
       </form>
     </section>

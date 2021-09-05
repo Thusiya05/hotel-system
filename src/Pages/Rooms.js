@@ -4,8 +4,14 @@ import Banner from "../Components/Banner"
 import FeaturedRooms from '../Components/FeaturedRooms'
 import RoomContainer from '../Components/RoomContainer'
 import NavBar from "../Components/NavBar"
+import Footer from '../Components/Footer'
+
 
 const Rooms = () => {
+
+    
+  
+    
     return (
         <>
 
@@ -17,14 +23,21 @@ const Rooms = () => {
                 path5="/aboutUs" name5="About Us" 
                 pathSign="/signIn" LogName="Log In">    
             </NavBar>
+            <br></br>
+            <br></br>
+            <br></br>        
             <Hero hero="roomsHero">
                 <Banner title="Featured Rooms" subtitle="Enjoy the day and feel the real freedom." children="return Home" path="/"></Banner>
             </Hero>
-            <div style={{backgroundColor:'#e3f2fd'}}>
+            <div className="roomCover">
 
             <FeaturedRooms />
             <RoomContainer />
+           
 
+            </div>
+            <div>
+                <Footer />
             </div>
            
 

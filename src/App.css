@@ -4,12 +4,16 @@ nav img{
     width: 120px;
     
 }
+.new3{
+    background-image: linear-gradient(-90deg, rgb(0, 0, 0), rgb(77, 77, 77));
+}
  .nav-link{
     font-family: sans-serif;
     font-size:large;
     font-weight: bold; 
-    text-align: right; 
     margin: 0 1rem;
+    display: block;
+    text-align: center;
  }
  
 /* End of NavBar */
@@ -24,37 +28,43 @@ nav img{
     align-items: center;
     justify-content: center;
 }
-.activityHero,
+.firstHero,
 .activity-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/waterBoat.jpg") center/ cover no-repeat; 
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
-.facilityHero,
+.secondHero,
 .facility-Hero{ 
   min-height: calc(90vh - 66px);
   background: url("./images/bbq-2.jpg") center/ cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 }
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
     min-height: 60vh;
+    background-attachment:fixed;
 }
 .activity-Hero{
   min-height: 60vh;
   background-image: url("./images/new1.jpg") ;
+  background-attachment:fixed;
  }
  .facility-Hero{
   min-height: 60vh;
   background-image: url("./images/Servise.jpg") ;
+  background-attachment:fixed;
  }
  .aboutus{
   min-height: 60vh;
   background-image: url("./images/cmposs.jpg") ;
+  background-attachment:fixed;
  }
 /* End of Hero */
 
@@ -91,6 +101,7 @@ nav img{
 
 .jumbotron h2{
     font-size: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     font-family:monospace;
     color:ghostwhite;
@@ -133,6 +144,7 @@ nav img{
     background: url("./images/Empress-Falls-Abseil.jpg") center/ cover no-repeat;
     width: 100%;
     min-height: calc(120vh - 66px);
+    background-attachment:fixed;
 }
 .box-area {
     /* position:relative; */
@@ -151,6 +163,7 @@ nav img{
     background: rgba(255, 255, 255, 0.8);
     animation: animate 20s linear infinite;
     bottom: -150px;
+    border-radius: 30%;
 }
 .box-area li:nth-child(1) {
     left: 86%;
@@ -209,8 +222,8 @@ nav img{
 
 .slider-row{
   display: flex;
-  background-color: black;
-  color: blanchedalmond;
+  /* background-color: black; */
+  color: black;
   flex-flow: row wrap;
   /* height: 25rem; */
 }
@@ -230,30 +243,36 @@ nav img{
   }
   .jumbotron{
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 80%;
+    height: 220px;
   }
   .jumbotron h1{
     font-size: 28px;
     position: absolute;
-    left: 30px;
+    left: 0%;
+    right: 0%;
   }
   .jumbotron div{
-    margin-top: 35px;
+    top: 25%;
     position: absolute;
-    width: 50px;
+    left: 0;
+    right: 0;
+    width: 70px;
     height: 2px;
   }
   .jumbotron h2{
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    top: 35%;
     left: 0;
+    right: 0;
     position: absolute;
     font-size: 16px;
   }
   .jumbotron p{
-    margin-top: 100px;
+    bottom: -5%;
     position: absolute;
-    left: 60px;
+    left:10%;
+    right: 10%;
     padding: 10px 15px;
   }
   .jumbotron h2:hover{
@@ -274,10 +293,26 @@ hr.new1 {
   padding: 5rem 0;
 }
 .services {
-  background:#e3f2fd;
+  /* background:linear-gradient(90deg, #5242e4 0%, #819dec 50%, #5242e4 100%); */
+  background-color:blanchedalmond;
   text-align: center;
 }
 .services-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 50px;
+}
+.servicess {
+  padding: 0.75rem 0;
+}
+.servicess {
+  /* background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%); */
+  text-align: center;
+}
+.servicess-center {
   width: 90vw;
   margin: 0 auto;
   display: grid;
@@ -373,6 +408,9 @@ hr.new1 {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
 }
+/* .roomCover{
+  background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%);
+} */
 .room:hover {
   box-shadow: var(--darkShadow);
 }
@@ -539,7 +577,7 @@ hr.new1 {
 }
 .activity-info{
   padding: 3rem;
-  background-color:#e3f2fd ;
+  /* background:linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%); */
 }
 .activity-info img{
     width: 20rem;
@@ -547,7 +585,6 @@ hr.new1 {
 }
 .activity-info img:hover{
   box-shadow:  0 6px 10px black;
-  width:20.5rem;
 
 }
 
@@ -636,3 +673,27 @@ hr.new1 {
   background: transparent;
   color: var(--primaryColor);
 }
+.schedule-btn{
+  position: fixed;
+  right: 0;
+  bottom: 40px;
+  z-index: 10;
+}
+.Toastify__toast--success {
+  background: #000;
+}
+.Toastify__progress-bar--success {
+  background: rgb(0, 255, 0);
+}
+.Toastify__toast--error {
+  background: #000;
+}
+.Toastify__progress-bar--error {
+  background: rgb(255, 0, 0);
+}
+
+Table th,td{
+  text-align: center;
+}
+
+

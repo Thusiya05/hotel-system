@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Banner from "../Components/Banner"
 import Hero from '../Components/Hero'
-import {Container,Carousel} from 'react-bootstrap'
+import { Container,Carousel,Button,Form,Col, Modal } from 'react-bootstrap'
 import NavBar from "../Components/NavBar"
 import InfoCard from '../Components/InfoCard'
+import Footer from '../Components/Footer'
 import img1 from '../images/waterRafting.jpg'
 import img2 from '../images/abselling.jpg'
 import img3 from '../images/Canyoneering.jpg'
@@ -17,16 +18,20 @@ import img10 from '../images/Team-Building-1.jpg'
 import img11 from '../images/Team-Building-2.jpg'
 import img12 from '../images/Team-Building-3.jpg'
 
+
 export default function Activities() {
+
     return (
         <>
          <div>
              <NavBar path1="/" name1="Home" path2="/rooms/" name2="Rooms" path3="/activities" name3="Activities" path4="/facilities" name4="Facilities" path5="/aboutUs" name5="About Us" pathSign="/signIn" LogName="Log In"></NavBar>
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
         <Hero hero="activity-Hero">
-            <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule The Day" path="/"></Banner>
+            <Banner title="Feel Real Adventure" subtitle="Manage Your Day With Our Activities." children="Schedule the day" path="/activityschedule"></Banner>
         </Hero>
-
         <div className="activity-info">
             <containerFluid>
                 <h3>Team building activities several training activities</h3>
@@ -168,6 +173,9 @@ export default function Activities() {
                         </Container>
                     </Carousel.Item>
             </Carousel>
+        </div>
+        <div>
+            <Footer />
         </div> 
             
     </>
