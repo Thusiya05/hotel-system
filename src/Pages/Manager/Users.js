@@ -161,9 +161,10 @@ function AddUser(props) {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3030/api/v1/viewEmployee/${props.editemployees}`)
+        axios.get(`http://localhost:3030/api/v1/viewEmployees`)
+        // /${props.editemployees}
         .then((res)=>{
-            // console.log(res.data);  
+            console.log(res.data);  
             setData(res.data);
         })
     }, [props.added])
