@@ -229,19 +229,19 @@ function Inventory() {
                  <tbody>
                      {
                          ingredients.map(
-                             test=>
+                             test=>                              
                              <tr key = {test.ingredientId}>
                                  <td>{test.ingredientId}</td>
                                  <td>{test.ingredientName}</td>
                                  <td>{test.qty}</td>
                                  <td style={{textAlign:'center'}}>
-                         <Tippy content="Delete">
-                             <Button type="delete"><FaTrash /></Button>
-                         </Tippy>
-                             <Tippy content="Edit">
-                             <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                             </Tippy>                         
-                         </td>
+                                 <Tippy content="Delete">
+                                     <Button type="delete"><FaTrash /></Button>
+                                 </Tippy>
+                                     <Tippy content="Edit">
+                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                 </Tippy>                         
+                                 </td>
                              </tr>
                          )
                      }

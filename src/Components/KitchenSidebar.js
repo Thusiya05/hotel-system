@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa'
 import * as RiIcons from 'react-icons/ri'
 // import * as IoIcons from 'react-icons/io'
 import * as BiIcons from 'react-icons/bi'
+// import * as FaIcons from 'react-icons/fa'
 import "../CSS/rcsidebar.css";
 
 export const KitchenSideBar = [
@@ -31,6 +32,12 @@ export const KitchenSideBar = [
         title: "Inventory",
         icon: <FaIcons.FaShoppingCart />,
         link:'/Kitchen/inventory/',
+    },
+
+    {
+        title: "Recipe",
+        icon: <BiIcons.BiFoodMenu />,
+        link:'/Kitchen/recipe/',
     },
 
     {
