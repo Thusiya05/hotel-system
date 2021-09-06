@@ -321,7 +321,7 @@ const Users =()=>{
                     />   
                     </div>
                     <div className="col-md-6" style={{textAlign:'right'}}>
-                     <Button><FaSearch /></Button> <input type="text" id="nmae" onChange={(e)=>getByName(e)} name="" placeholder="Search by Name/Contact Number" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                     <Button><FaSearch /></Button> <input type="text" id="nmae" onChange={(e)=>getByName(e)} name="" placeholder="Search by Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                     </div>
                 </div>
                 <br></br><br></br>
