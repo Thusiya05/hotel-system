@@ -625,7 +625,7 @@ function EditRooms(props){
     useEffect(() =>{
         axios.get(`http://localhost:3030/manager/viewUpdateRoomDetails/${props.editRoom}`)
         .then((res)=>{
-            setData(res.data);
+            setData(res.editRoom);
         })
     },[props.added])
 
@@ -675,6 +675,41 @@ function EditRooms(props){
     );
 }
 function EditDiscount(props){
+
+    const[data,setData] = useState({
+        discountName:"",
+        value:"",
+        fromDate:"",
+        toDate:"",
+        roomTypeID:"",
+        description:""
+    })
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
+    function submit(e){
+        e.preventDefault();
+        // console.log(data);
+        axios.put(`http://localhost:3030/manager/updateDiscounts/${props.editDiscount}`,data)
+        .then(res=>{
+             props.setadded(!props.added);
+             props.onHide();
+             toast.success('✅ '+' '+ res.data);
+        })
+    }
+
+    useEffect(() =>{
+        axios.get(`http://localhost:3030/manager/viewDiscountUpdateDetails/${props.editDiscount}`)
+        .then((res)=>{
+            setData(res.data);
+            console.log(res.data);
+        })
+    },[props.editDiscount])
+
     return(
         <Modal
         {...props}
@@ -688,36 +723,56 @@ function EditDiscount(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
+                <Form onSubmit={(e) => submit(e)}>
+                        <Row> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="discountName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Discount Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.discountName} type="text" required/>
                                 </Form.Group>
                             </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountValue">
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="value">
                                 <Form.Label style={{textAlign:'center'}}><h6>Value</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.value} type="text" required/>
+                                </Form.Group>
+                            </Col>             
+                        </Row>
+                        <Row> 
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="fromDate">
+                                <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.fromDate} type="date" required/>
+                                </Form.Group>
+                            </Col>             
+                            <Col md={6}>
+                                <Form.Group as={Col} controlId="toDate">
+                                <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.toDate} type="date" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
                         <Row>
-                            <Col md={4}>
-                                
+                            <Col md={4}>    
                             </Col> 
                             <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
+                            <Form.Group as={Col} controlId="roomTypeID">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
+                                <Row>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
+                                </Row>
+                                </Form.Group>
+                            </Col>             
+                        </Row>
+                        <Row>
+                            <Col md={4}>    
+                            </Col> 
+                            <Col md={4}>
+                            <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
+                                    <Form.Control style={{height:'5rem'}} onChange={(e)=>handle(e)} value={data.description} type="text" required/>
                                 </Row>
-                               
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -745,6 +800,7 @@ function HotelConfig() {
     const[discounts,setDiscounts]=useState([]);
     const[editRoomType,setEditRoomType]=useState([]);
     const[editRoom,setEditRoom]=useState([]);
+    const[editDiscount,setEditDiscounts]=useState([]);
 
     function UpdateRoomType(id){
         // console.log(id);
@@ -759,8 +815,22 @@ function HotelConfig() {
         setEditRoom(id);
     }
 
+    function UpdateDiscounts(id){
+        setadded(!added);
+        setEditView(true);
+        setEditDiscounts(id);
+    }
+
     function DeleteRoomType(roomTypeID){
         axios.delete(`http://localhost:3030/manager/deleteRoomType/${roomTypeID}`)
+        .then(res =>{
+            toast.success('✅ '+' '+ res.data);
+            setadded(!added);
+        })
+    }
+
+    function DeleteRoom(roomNo){
+        axios.delete(`http://localhost:3030/manager/deleteRoom/${roomNo}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -883,7 +953,7 @@ function HotelConfig() {
                                     <Button type="delete"><FaTrash /></Button>
                                 </Tippy>
                                     <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                    <Button onClick={()=>UpdateDiscounts(test.discountID)} type="edit"><FaPen /></Button>
                                     </Tippy>
                                 
                                 </td>
@@ -895,6 +965,10 @@ function HotelConfig() {
                     <EditDiscount
                                 show={editView}
                                 onHide={()=> setEditView(false)}
+                                added = {added}
+                                setadded = {setadded}
+                                editDiscount = {editDiscount}
+                                setEditDiscounts = {setEditDiscounts}
                             />
                    </div> :null
                 }
@@ -937,7 +1011,7 @@ function HotelConfig() {
                                             <td>{test.roomTypes}</td>
                                             <td style={{textAlign:'center'}}>
                                             <Tippy content="Delete">
-                                                <Button type="delete"><FaTrash /></Button>
+                                                <Button onClick={()=>DeleteRoom(test.roomNo)} type="delete"><FaTrash /></Button>
                                             </Tippy>
                                                 <Tippy content="Edit">
                                                 <Button onClick={()=>UpdateRoom(test.roomNo)} type="edit"><FaPen /></Button>
