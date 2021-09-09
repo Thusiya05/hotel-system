@@ -37,10 +37,7 @@ export default class Login extends Component {
           age: "",
           no: "",
           lane: "",
-          street: "",
-          Bdate: "",
-          Bmonth: "",
-          Byear: "",
+          dob:"",
           nic: "",
           telephoneNumber: "",
           password: "",
@@ -63,9 +60,7 @@ export default class Login extends Component {
             no: "",
             lane: "",
             street: "",
-            Bdate: "",
-            Bmonth: "",
-            Byear: "",
+            dob:"",
             nic: '',
             telephoneNumber: '',
             password: '',
@@ -104,16 +99,6 @@ export default class Login extends Component {
                 ? ''
                 : 'Email is not valid!';
                 this.setState({email: event.target.value});
-                   
-            break;
-
-          case 'age': 
-          var letters = /^[0-9]+$/;
-            errors.age = 
-            !value.match(letters)
-                ? 'Invalid Age!'
-                : '';
-                this.setState({age: event.target.value});
                    
             break;
 
@@ -260,9 +245,7 @@ export default class Login extends Component {
                     "addressLineOne": this.state.no,
                     "addressLineTwo": this.state.lane,
                     "addressLineThree": this.state.street,
-                    "dobDate": this.state.Bdate,
-                    "dobMonth": this.state.Bmonth,
-                    "dobYear": this.state.Byear,
+                    "dob":this.state.dob,
                     "nic": this.state.nic,
                     "contactNo": this.state.telephoneNumber,
                     "password": this.state.password,
@@ -425,12 +408,17 @@ export default class Login extends Component {
                                 
                                 </label>
                                 <label>
-                                    <span>Age</span>
+                                    {/* <span>Age</span>
                                     <input class="Login-Signin-inputs" type="text" name="age" maxLength={2} value={this.state.age} onChange={this.handleChange}  required/>
                                 
                                 {errors.age.length > 0 && 
                                                      <span  id="popup"  className='error'>{errors.age}</span>}
+                                 */}
+                                 <span>Date of Birth</span>
+                                    <input class="Login-Signin-inputs" type="date" name="dob" value={this.state.dob} onChange={this.handleChange} required/>
                                 
+                                {errors.dob.length > 0 && 
+                                                     <span  id="popup"  className='error'>{errors.dob}</span>}
                                 </label>
                                 <label>
                                     <span>Address</span>
@@ -449,7 +437,7 @@ export default class Login extends Component {
                                 </label>
 
                                 <label>
-                                    <span>Date of Birth</span>
+                                    {/* <span>Date of Birth</span>
                                     <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange}   required/>                                   
                                     {errors.Bdate.length > 0 && 
                                                         <span  id="popup"  className='error'>{errors.Bdate}</span>}
@@ -460,26 +448,24 @@ export default class Login extends Component {
 
                                     <input class="Login-Signin-inputs" type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange}   required/>                                    
                                     {errors.Byear.length > 0 && 
-                                                        <span  id="popup"  className='error'>{errors.Byear}</span>}
+                                                        <span  id="popup"  className='error'>{errors.Byear}</span>} */}
+                                  <label>
+                                        <span>NIC</span>
+                                        <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange}   required/>
                                     
-                                </label>
-
-
-                                <label>
-                                    <span>NIC</span>
-                                    <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange}   required/>
-                                
-                                {errors.nic.length > 0 && 
-                                                     <span  id="popup"  className='error'>{errors.nic}</span>}
-                                
-                                </label>
-                                <label>
-                                    <span>Telephone Number</span>
-                                    <input class="Login-Signin-inputs" type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange}   required/>
-                                
-                                {errors.telephoneNumber.length > 0 && 
-                                                     <span  id="popup"  className='error'>{errors.telephoneNumber}</span>}
-                                
+                                    {errors.nic.length > 0 && 
+                                                        <span  id="popup"  className='error'>{errors.nic}</span>}
+                                    
+                                  </label>
+                                  
+                                  <label>
+                                      <span>Telephone Number</span>
+                                      <input class="Login-Signin-inputs" type="text" name="telephoneNumber" maxLength={10} value={this.state.telephoneNumber} onChange={this.handleChange}   required/>
+                                  
+                                  {errors.telephoneNumber.length > 0 && 
+                                                      <span  id="popup"  className='error'>{errors.telephoneNumber}</span>}
+                                  
+                                  </label>
                                 </label>
                                 <label>
                                     <span>Password</span>
