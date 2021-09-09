@@ -163,7 +163,7 @@ function AddUser(props) {
     useEffect(() => {
         axios.get(`http://localhost:3030/api/v1/viewEmployee/${props.editemployees}`)
         .then((res)=>{
-            // console.log(res.data);  
+            console.log(res.data);  
             setData(res.data);
         })
     }, [props.added])
@@ -278,7 +278,20 @@ const Users =()=>{
         })
     },[added])
 
- 
+    function getByName(e){
+        if(e.target.value == ""){
+            setadded(!added);
+        }
+        else{
+            axios.get(`http://localhost:3030/api/v1/viewEmployeeByName/CUSTOMER/${e.target.value}`)
+            .then(res => {
+                setEmployees(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    }
 
     return(
         <>
@@ -308,7 +321,7 @@ const Users =()=>{
                     />   
                     </div>
                     <div className="col-md-6" style={{textAlign:'right'}}>
-                     <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Mobile_No/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                     <Button><FaSearch /></Button> <input type="text" id="nmae" onChange={(e)=>getByName(e)} name="" placeholder="Search by Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                     </div>
                 </div>
                 <br></br><br></br>
