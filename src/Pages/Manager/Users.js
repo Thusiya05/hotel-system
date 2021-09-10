@@ -19,8 +19,8 @@ function AddUser(props) {
         email: "",
         contactNo: "",
         gender: "Male",
-        userType: "RECEPTIONIST",
-        password: ""
+        userType: "RECEPTIONIST"
+        // password: ""
     })
 
     function submit(e){
@@ -35,8 +35,8 @@ function AddUser(props) {
                 email: "",
                 contactNo: "",
                 gender: "Male",
-                userType: "RECEPTIONIST",
-                password: ""
+                userType: "RECEPTIONIST"
+                // password: ""
             })
             // alert("Employee Added Successfully");
             toast.success('✅ '+' '+ res.data);
@@ -107,12 +107,12 @@ function AddUser(props) {
                                         </Form.Control>
                                     </Form.Group>   
                                 </Form.Row>
-                                <Form.Row>
+                                {/* <Form.Row>
                                     <Form.Group as={Col} controlId="password">
                                     <Form.Label style={{textAlign:'center'}}><h6>Password</h6></Form.Label>
                                     <Form.Control type="password" onChange={(e)=>handle(e)} value={data.password} placeholder="Password" required/>
                                     </Form.Group>
-                                </Form.Row>
+                                </Form.Row> */}
                                 <div style={{textAlign:'center'}}>
                                     <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                                 </div>
