@@ -54,7 +54,7 @@ function Editfood(props){
 
         console.log(ingredientQtyArray);
         console.log(fiIdArray);
-        axios.put(`http://localhost:3030/updateRecipe/${props.editFood}`,
+        axios.post(`http://localhost:3030/updateRecipe/${props.editFood}`,
          {
             fiIdList: fiIdArray,
             ingredientsQtyList: ingredientQtyArray
