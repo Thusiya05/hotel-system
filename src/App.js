@@ -35,6 +35,7 @@ import EditProfile from "./Pages/EditProfile"
 import GuideHistory from "./Pages/Guide/GuideHistory"
 import MyBookings from "./Pages/MyBookings"
 import Recipe from "./Pages/Kitchen/recipe"
+import Cusfoodmenu from "./Pages/Customer/cusfoodmenu"
 import "./App.css"
 
 
@@ -81,6 +82,7 @@ function App() {
         <Route exact path ="/kitchen/recipe" component={Recipe} />
         <Route exact path ="/kitchen/inventory" component={inventory} />
         <Route exact path ="/MyBookings" component={MyBookings} />
+        <Route exact path ="/Customer/cusfoodmenu" component={Cusfoodmenu} />
         <Route component={Error} />
         
        
