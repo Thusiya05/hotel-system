@@ -437,18 +437,6 @@ export default class Login extends Component {
                                 </label>
 
                                 <label>
-                                    {/* <span>Date of Birth</span>
-                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Date :" name="Bdate" value={this.state.Bdate} onChange={this.handleChange}   required/>                                   
-                                    {errors.Bdate.length > 0 && 
-                                                        <span  id="popup"  className='error'>{errors.Bdate}</span>}
-                                    
-                                    <input class="Login-Signin-inputs" type="text" maxLength={2} placeholder="Month :" name="Bmonth" value={this.state.Bmonth} onChange={this.handleChange}  required />                                    
-                                    {errors.Bmonth.length > 0 && 
-                                                        <span  id="popup"  className='error'>{errors.Bmonth}</span>}
-
-                                    <input class="Login-Signin-inputs" type="text" maxLength={4} placeholder="Year :" name="Byear" value={this.state.Byear} onChange={this.handleChange}   required/>                                    
-                                    {errors.Byear.length > 0 && 
-                                                        <span  id="popup"  className='error'>{errors.Byear}</span>} */}
                                   <label>
                                         <span>NIC</span>
                                         <input class="Login-Signin-inputs" type="text" name="nic" maxLength={10} value={this.state.nic} onChange={this.handleChange}   required/>
