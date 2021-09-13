@@ -51,7 +51,7 @@ function ShowBill(props){
 }
 function AddCustomer(props){
     const history = useHistory();
-    const url="http://localhost:3000/receptionist/getCustomer"
+    const url="http://localhost:3000/receptionist/addCustomer"
     const [data,setData]=useState({
         firstName:"",
         lastName:"",
