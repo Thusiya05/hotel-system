@@ -1,12 +1,12 @@
 import React,{ useState, useEffect } from 'react';
-import Kcsidebar from '../../Components/kcsidebar'
+// import Kcsidebar from '../../Components/kcsidebar'
 import { Button,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import axios from 'axios';
-import { Tab } from 'bootstrap';
-import { data } from 'jquery';
+// import { Tab } from 'bootstrap';
+// import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -26,7 +26,7 @@ const Cusfoodmenu =()=> {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3030/foods')
+        axios.get('http://localhost:3030/cusfoodmenu')
         .then(res => {
             setFood(res.data)
         })
@@ -37,20 +37,12 @@ const Cusfoodmenu =()=> {
 
 
     return (
-        <>
-        <div className="users">
-                <Kcsidebar />
-                <br></br>
-                
+        <>      
                 
         {
              <div>
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
-             <div className="row">
-                 <div className="col-md-6" style={{textAlign:'right'}}>
-                 <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Food Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
-                 </div>
-             </div>
+
              
            
              <br></br>
@@ -91,7 +83,6 @@ const Cusfoodmenu =()=> {
             </div> 
             // :null
          }
-         </div>
         </>
     )
  }
