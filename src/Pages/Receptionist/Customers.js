@@ -50,8 +50,7 @@ function ShowBill(props){
     );
 }
 function AddCustomer(props){
-    const history = useHistory();
-    const url="http://localhost:3000/receptionist/addCustomer"
+    const url="http://localhost:3030/receptionist/addCustomer"
     const [data,setData]=useState({
         firstName:"",
         lastName:"",
@@ -63,7 +62,6 @@ function AddCustomer(props){
         dob:"",
         nic:"",
         contactNo:"",
-        customerStatus:"",
         checkInDate:"",
         checkOutDate:"",
         // meal:"",
@@ -71,6 +69,7 @@ function AddCustomer(props){
     })
 
     function submit(e){
+        e.preventDefault();
         axios.post(url,data)
         .then(res=>{
             props.setadded(!props.added);
@@ -86,7 +85,6 @@ function AddCustomer(props){
                 dob:"",
                 nic:"",
                 contactNo:"",
-                customerStatus:"",
                 checkInDate:"",
                 checkOutDate:"",
                 // meal:"",
@@ -203,7 +201,7 @@ function AddCustomer(props){
                             <Col sm={6}>
                             <Form.Group controlId="roomNo">
                             <Form.Label><h6>Room No</h6></Form.Label>
-                            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                            <Form.Control as="select" onChange={(e)=>handle(e)} value={data.roomNo}  className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                         <option value="0">Choose..</option>
                                         <option value="2">1</option>
                                         <option value="3">2</option>
