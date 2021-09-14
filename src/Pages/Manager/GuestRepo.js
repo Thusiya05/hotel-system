@@ -1,6 +1,9 @@
 import React from 'react';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { Button, Form, Col } from 'react-bootstrap';
+import Title from '../../Components/Title';
+import Sidebar from '../../Components/Sidebar';
 // import './App.css';
 
 class GuestRepo extends React.Component {
@@ -46,8 +49,33 @@ class GuestRepo extends React.Component {
   render() {
       
     return (
-      <div>
-        <button onClick={() => this.exportPDF()}>Generate Report</button>
+        <div className= 'reports'>
+            <Sidebar/>
+            <Title title="Guest Details"></Title>
+        <div class="text-center">
+          <Form>
+                              <Form.Row>
+                                  <Form.Group as={Col} controlId="formGridFirstName">
+                                  <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
+                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} type="date" required/>
+                                  </Form.Group>
+
+                                  <Form.Group as={Col} controlId="formGridLastName">
+                                  <Form.Label style={{textAlign:'center',marginRight:"18rem"}}><h6>End Date</h6></Form.Label>
+                                  <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
+                                  </Form.Group>
+                              </Form.Row>
+                </Form>
+        <Button variant="secondary" 
+            style={{
+                minHeight: "5rem",
+                minWidth: "10rem",
+                padding: "0rem 0rem 0rem 0rem",
+                marginTop: "6rem",
+                textAlign: "center",
+                }} 
+                onClick={() => this.exportPDF()}>Download Report</Button>
+      </div>
       </div>
     );
   }

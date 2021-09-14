@@ -13,7 +13,7 @@ function Reports() {
             <Sidebar/>
             <Title title="R E P O R T S"></Title>
             <div class="text-center">
-                <Form>
+                {/* <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
@@ -25,7 +25,7 @@ function Reports() {
                                   <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
                               </Form.Row>
-                </Form>
+                </Form> */}
             <Button size="lg" href="./income" variant="secondary" 
             style={{
                 minHeight: "10rem",
