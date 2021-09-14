@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import Home from "./Pages/Home";
 import Rooms from "./Pages/Rooms";
 import AboutUs from "./Pages/AboutUs";
@@ -40,64 +40,90 @@ import GuestRepo from "./Pages/Manager/GuestRepo";
 import IncomeRepo from "./Pages/Manager/IncomeRepo";
 import InventoryRepo from "./Pages/Manager/InventoryRepo";
 import "./App.css"
+import axios from "axios";
 
 
 
 
 
-function App() {
-  return (
+export default class App extends Component {
 
-    <div>
-      <Switch>
-        <Route exact path ="/" component={Home} />
-        <Route exact path ="/rooms/" component={Rooms} />
-        <Route exact path="/aboutUs" component={AboutUs} />
-        <Route exact path ="/rooms/:slug" component={SingleRooms} />
-        <Route exact path ="/activities" component={Activities} />
-        <Route exact path ="/facilities" component={Facilities} />
-        <Route exact path ="/signIn" component={Login} />
-        <Route exact path ="/admin/" component={AdminLogin} />
-        <Route exact path = "/manager/reports/" component={Reports} />
-        <Route exact path = "/admin/bookedrooms/" component={BookedRooms} />
-        <Route exact path = "/statistics/" component={Statistics} />
-        <Route exact path = "/manager/HRManagement/" component={Users} />
-        <Route exact path = "/receptionist/customers/" component={Customers} />
-        <Route exact path ="/receptionist/AssignStewards/" component={AssignStewards} />
-        <Route exact path ="/AssignGuide/" component={AssignGuide} />
-        <Route exact path ="/GuideHistory/" component={GuideHistory} />
-        <Route exact path ="/receptionist/AssignGuides/" component={AssignGuides} />
-        <Route exact path = "/manager/" component={Statistics} />
-        <Route exact path ="/manager/ManCalendar" component={ManCalendar} />
-        <Route exact path = "/manager/" component={manager} />
-        <Route exact path ="/manager/guest/" component={guest} />
-        <Route exact path ="/manager/HotelConfig" component={HotelConfig} />
-        <Route exact path ="/Administrative" component={Administrative} />
-        <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
-        <Route exact path ="/activityschedule" component={Activityschedule} />
-        <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
-        <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
-        <Route exact path ="/foodmenu" component={Foodmenu} />
-        <Route exact path ="/EditProfile" component={EditProfile} />
-        <Route exact path ="/kitchen/order" component={Order} />
-        <Route exact path ="/kitchen/deliver" component={deliver} />
-        <Route exact path ="/kitchen/menu" component={menu} />
-        <Route exact path ="/kitchen/recipe" component={Recipe} />
-        <Route exact path ="/kitchen/inventory" component={inventory} />
-        <Route exact path ="/MyBookings" component={MyBookings} />
-        <Route exact path ="/Customer/cusfoodmenu" component={Cusfoodmenu} />
-        <Route exact path ="/manager/guestrepo" component={GuestRepo} />
-        <Route exact path ="/manager/incomerepo" component={IncomeRepo} />
-        <Route exact path ="/manager/inventoryrepo" component={InventoryRepo} />
-        <Route component={Error} />
+//   state = {};
+
+//   componentDidMount = () =>{
+
+//     // const config = {
+//     //     headers: {
+//     //         Authorization: 'Bearer ' + localStorage.getItem('userId')
+//     //     }
+//     // };
+
+//     axios.get(`http://localhost:3030/user/${localStorage.getItem('userId')}`)
+//         .then(
+//             res => {
+//                 this.setState({
+//                     cus: res.data
+//                 });
+//                 console.log(this.state.cus.lastName); 
+//             },
+//             err => {
+//                 console.log(err);
+//             } 
+//         )
+// };
+
+  render(){
+      return (
+
+        <div>
+          <Switch>
+            <Route exact path ="/" component={Home} />
+            {/* <Route exact path ="/Home" component={Home} /> */}
+            <Route exact path ="/rooms/" component={Rooms} />
+            <Route exact path="/aboutUs" component={AboutUs} />
+            <Route exact path ="/rooms/:slug" component={SingleRooms} />
+            <Route exact path ="/activities" component={Activities} />
+            <Route exact path ="/facilities" component={Facilities} />
+            <Route exact path ="/signIn" component={Login} />
+            <Route exact path ="/admin/" component={AdminLogin} />
+            <Route exact path = "/manager/reports/" component={Reports} />
+            <Route exact path = "/admin/bookedrooms/" component={BookedRooms} />
+            <Route exact path = "/statistics/" component={Statistics} />
+            <Route exact path = "/manager/HRManagement/" component={Users} />
+            <Route exact path = "/receptionist/customers/" component={Customers} />
+            <Route exact path ="/receptionist/AssignStewards/" component={AssignStewards} />
+            <Route exact path ="/AssignGuide/" component={AssignGuide} />
+            <Route exact path ="/GuideHistory/" component={GuideHistory} />
+            <Route exact path ="/receptionist/AssignGuides/" component={AssignGuides} />
+            <Route exact path = "/manager/" component={Statistics} />
+            <Route exact path ="/manager/ManCalendar" component={ManCalendar} />
+            <Route exact path = "/manager/" component={manager} />
+            <Route exact path ="/manager/guest/" component={guest} />
+            <Route exact path ="/manager/HotelConfig" component={HotelConfig} />
+            <Route exact path ="/Administrative" component={Administrative} />
+            <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
+            <Route exact path ="/activityschedule" component={Activityschedule} />
+            <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
+            <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} />
+            <Route exact path ="/foodmenu" component={Foodmenu} />
+            <Route exact path ="/EditProfile" component={EditProfile} />
+            <Route exact path ="/kitchen/order" component={Order} />
+            <Route exact path ="/kitchen/deliver" component={deliver} />
+            <Route exact path ="/kitchen/menu" component={menu} />
+            <Route exact path ="/kitchen/recipe" component={Recipe} />
+            <Route exact path ="/kitchen/inventory" component={inventory} />
+            <Route exact path ="/MyBookings" component={MyBookings} />
+            <Route exact path ="/Customer/cusfoodmenu" component={Cusfoodmenu} />
+            <Route component={Error} />
+            
+          
+          </Switch> 
+        </div>
+
         
-       
-      </Switch> 
-    </div>
-
-    
-   
-  );
+      
+      );
+  }
 }
 
-export default App;
+// export default App;
