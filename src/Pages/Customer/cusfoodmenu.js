@@ -68,7 +68,7 @@ const Cusfoodmenu =()=> {
                                         <Button onClick={()=>Update(test.foodId)} type="minus"><FaMinus /></Button>
                                     </Tippy> */}
                                     <input type="number" min="0" id={test.foodId}
-                                        // onChange={e=>{
+                                        // onChange={e=>{ 
                                         //     let value=e.target.value;
                                         //     setFood(
                                         //         foods.map(sd=>{
