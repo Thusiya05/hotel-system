@@ -26,7 +26,7 @@ function Reports() {
                                   </Form.Group>
                               </Form.Row>
                 </Form> */}
-            <Button size="lg" href="./income" variant="secondary" 
+            <Button size="lg" href="./IncomeRepo" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
@@ -35,7 +35,7 @@ function Reports() {
                 textAlign: "center",
                 }}>
             Income Report 
-            </Button> <Button size="lg" href="./inventory" variant="secondary" 
+            </Button> <Button size="lg" href="./InventoryRepo" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
