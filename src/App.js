@@ -36,6 +36,9 @@ import GuideHistory from "./Pages/Guide/GuideHistory"
 import MyBookings from "./Pages/MyBookings"
 import Recipe from "./Pages/Kitchen/recipe"
 import Cusfoodmenu from "./Pages/Customer/cusfoodmenu"
+import GuestRepo from "./Pages/Manager/GuestRepo";
+import IncomeRepo from "./Pages/Manager/IncomeRepo";
+import InventoryRepo from "./Pages/Manager/InventoryRepo";
 import "./App.css"
 import axios from "axios";
 
@@ -54,7 +57,6 @@ export default class App extends Component {
 //     //         Authorization: 'Bearer ' + localStorage.getItem('userId')
 //     //     }
 //     // };
-
 
 //     axios.get(`http://localhost:3030/user/${localStorage.getItem('userId')}`)
 //         .then(
