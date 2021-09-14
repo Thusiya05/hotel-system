@@ -7,16 +7,16 @@ import { FaFileDownload } from 'react-icons/fa';
 import Sidebar from '../../Components/Sidebar';
 // import './App.css';
 
-class GuestRepo extends React.Component {
+class InventoryRepo extends React.Component {
 
   constructor() {
     super();
     this.state = {
       people: [
-        { name: "Keanu Reeves", address: "USA", checkin: "2020/02/12", checkout: "2020/02/13"},
-        { name: "Lionel Messi", address: "UK", checkin: "2020/02/12", checkout: "2020/02/13" },
-        { name: "Cristiano Ronaldo", address: "Japan", checkin: "2020/02/12", checkout: "2020/02/13" },
-        { name: "Jack Nicklaus", address: "China", checkin: "2020/02/12", checkout: "2020/02/13" },
+        { id: "1001", name: "sugar", amount: "20Kg" },
+        { id: "1002", name: "Dhal", amount: "10Kg" },
+        { id: "1003", name: "KeeriSamba", amount: "50Kg" },
+        { id: "1004", name: "KakuluSamba", amount: "100Kg" },
       ]
     }
   }
@@ -32,9 +32,9 @@ class GuestRepo extends React.Component {
     doc.setFontSize(15);
 
     const title = "Guest Details";
-    const headers = [["NAME", "ADDRESS", "CHECK_IN_DATE", "CHECK_OUT_DATE"]];
+    const headers = [["ID", "NAME", "AMOUNT"]];
 
-    const data = this.state.people.map(elt=> [elt.name, elt.address, elt.checkin, elt.checkout]);
+    const data = this.state.people.map(elt=> [elt.id, elt.name, elt.amount]);
 
     let content = {
       startY: 50,
@@ -44,7 +44,7 @@ class GuestRepo extends React.Component {
 
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
-    doc.save("Guest Report.pdf")
+    doc.save("Inventory Report.pdf")
   }
 
   render() {
@@ -52,9 +52,9 @@ class GuestRepo extends React.Component {
     return (
         <div className= 'reports'>
             <Sidebar/>
-            <Title title="Guest Details"></Title>
+            <Title title="Inventory Report"></Title>
         <div class="text-center">
-          <Form>
+          {/* <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
@@ -66,7 +66,7 @@ class GuestRepo extends React.Component {
                                   <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
                               </Form.Row>
-                </Form>
+                </Form> */}
         <Button variant="secondary" 
             style={{
                 minHeight: "5rem",
@@ -83,4 +83,4 @@ class GuestRepo extends React.Component {
   }
 }
 
-export default GuestRepo;
+export default InventoryRepo;

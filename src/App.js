@@ -37,6 +37,8 @@ import MyBookings from "./Pages/MyBookings"
 import Recipe from "./Pages/Kitchen/recipe"
 import Cusfoodmenu from "./Pages/Customer/cusfoodmenu"
 import GuestRepo from "./Pages/Manager/GuestRepo";
+import IncomeRepo from "./Pages/Manager/IncomeRepo";
+import InventoryRepo from "./Pages/Manager/InventoryRepo";
 import "./App.css"
 
 
@@ -85,6 +87,8 @@ function App() {
         <Route exact path ="/MyBookings" component={MyBookings} />
         <Route exact path ="/Customer/cusfoodmenu" component={Cusfoodmenu} />
         <Route exact path ="/manager/guestrepo" component={GuestRepo} />
+        <Route exact path ="/manager/incomerepo" component={IncomeRepo} />
+        <Route exact path ="/manager/inventoryrepo" component={InventoryRepo} />
         <Route component={Error} />
         
        

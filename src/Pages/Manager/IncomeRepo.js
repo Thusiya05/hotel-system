@@ -7,16 +7,16 @@ import { FaFileDownload } from 'react-icons/fa';
 import Sidebar from '../../Components/Sidebar';
 // import './App.css';
 
-class GuestRepo extends React.Component {
+class IncomeRepo extends React.Component {
 
   constructor() {
     super();
     this.state = {
       people: [
-        { name: "Keanu Reeves", address: "USA", checkin: "2020/02/12", checkout: "2020/02/13"},
-        { name: "Lionel Messi", address: "UK", checkin: "2020/02/12", checkout: "2020/02/13" },
-        { name: "Cristiano Ronaldo", address: "Japan", checkin: "2020/02/12", checkout: "2020/02/13" },
-        { name: "Jack Nicklaus", address: "China", checkin: "2020/02/12", checkout: "2020/02/13" },
+        { date: "2021/05/03", customerid: "8154", amount: "5800LKR" },
+        { date: "2021/05/03", customerid: "8155", amount: "5800LKR" },
+        { date: "2021/05/03", customerid: "8156", amount: "5800LKR" },
+        { date: "2021/05/03", customerid: "8157", amount: "5800LKR" },
       ]
     }
   }
@@ -32,9 +32,9 @@ class GuestRepo extends React.Component {
     doc.setFontSize(15);
 
     const title = "Guest Details";
-    const headers = [["NAME", "ADDRESS", "CHECK_IN_DATE", "CHECK_OUT_DATE"]];
+    const headers = [["DATE", "CUSTOMERID", "AMOUNT"]];
 
-    const data = this.state.people.map(elt=> [elt.name, elt.address, elt.checkin, elt.checkout]);
+    const data = this.state.people.map(elt=> [elt.date, elt.customerid, elt.amount]);
 
     let content = {
       startY: 50,
@@ -44,7 +44,7 @@ class GuestRepo extends React.Component {
 
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
-    doc.save("Guest Report.pdf")
+    doc.save("Income Report.pdf")
   }
 
   render() {
@@ -52,7 +52,7 @@ class GuestRepo extends React.Component {
     return (
         <div className= 'reports'>
             <Sidebar/>
-            <Title title="Guest Details"></Title>
+            <Title title="Income Report"></Title>
         <div class="text-center">
           <Form>
                               <Form.Row>
@@ -83,4 +83,4 @@ class GuestRepo extends React.Component {
   }
 }
 
-export default GuestRepo;
+export default IncomeRepo;
