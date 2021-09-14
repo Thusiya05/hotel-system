@@ -6,6 +6,7 @@ import { Button,Form,Col } from 'react-bootstrap';
 
 
 
+
 function Reports() {
     return (
         <div className= 'reports'>
@@ -34,7 +35,7 @@ function Reports() {
                 textAlign: "center",
                 }}>
             Income Report 
-            </Button> <Button size="lg" href="./expenses" variant="secondary" 
+            </Button> <Button size="lg" href="./inventory" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
@@ -42,7 +43,7 @@ function Reports() {
                 marginTop: "5rem",
                 textAlign: "center",
                 }}
-                >Inventory Report</Button> <Button size="lg" href="./guestreport" variant="secondary" 
+                >Inventory Report</Button> <Button size="lg" href="./GuestRepo" variant="secondary" 
                 style={{
                     minHeight: "10rem",
                     minWidth: "10rem",
