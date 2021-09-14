@@ -64,7 +64,7 @@ function AddCustomer(props){
         contactNo:"",
         checkInDate:"",
         checkOutDate:"",
-        // meal:"",
+        meal:"",
         roomNo:""
     })
 
@@ -87,7 +87,7 @@ function AddCustomer(props){
                 contactNo:"",
                 checkInDate:"",
                 checkOutDate:"",
-                // meal:"",
+                meal:"",
                 roomNo:""
             })
             toast.success('✅ '+' '+ res.data);
@@ -214,16 +214,13 @@ function AddCustomer(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                            {/* <Form.Group as={Col} controlId="addMeal">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
-                                    <div>
-                                            <br></br>
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Full bord &nbsp; &nbsp; &nbsp; 
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios2" value="option2" />half bord
-
-                                    </div>
-                                    </Form.Label>
-                                </Form.Group> */}
+                            <Form.Group as={Col} controlId="meal">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
+                                    <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
+                                                <option value="Full Board">Full Board</option>
+                                                <option value="Half Board">Half Board</option>
+                                        </Form.Control>
+                                    </Form.Group>
                             </Col>             
                         </Row>
                        
