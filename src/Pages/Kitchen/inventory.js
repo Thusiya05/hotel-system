@@ -141,7 +141,8 @@ function Editingr(props){
                                
                                 {/* </Form.Group>
                             </Col>             
-                        </Row> */} */}
+                        </Row> */}
+                         
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -158,6 +159,7 @@ function Inventory() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
     const[ingredients,setIngredient]=useState([]);
+    const[ingredients2,setIngredient2]=useState([]);
     // const[display,setDisplay]=useState(false);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
@@ -177,9 +179,19 @@ function Inventory() {
     // }
     
     useEffect(() => {
-        axios.get('http://localhost:3030/ingredients')
+        axios.get('http://localhost:3030/ingredientsHaveToReFill')
         .then(res => {
             setIngredient(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[])
+
+    useEffect(() => {
+        axios.get('http://localhost:3030/ingredientsStillNotHaveToReFill')
+        .then(res => {
+            setIngredient2(res.data)
         })
         .catch(err => {
             console.log(err)
@@ -220,20 +232,23 @@ function Inventory() {
                          <th>#</th>
                          <th>Ingredient Name</th>
                          <th>In stock</th>
-                         {/* <th>Description</th>
+                         <th>Re-Order Level</th>
+                         {/* 
                          <th>Availability</th>
                          <th>Number of Items</th> */}
                          <th> </th>
                      </tr>
                  </thead>
                  <tbody>
+                     {/* Refillable Ingregients */}
                      {
                          ingredients.map(
                              test=>                              
-                             <tr key = {test.ingredientId}>
+                             <tr key = {test.ingredientId} style={{backgroundColor:'red'}}>
                                  <td>{test.ingredientId}</td>
                                  <td>{test.ingredientName}</td>
                                  <td>{test.qty}</td>
+                                 <td>{test.reorderLevel}</td>
                                  <td style={{textAlign:'center'}}>
                                  <Tippy content="Delete">
                                      <Button type="delete"><FaTrash /></Button>
@@ -243,9 +258,29 @@ function Inventory() {
                                  </Tippy>                         
                                  </td>
                              </tr>
-                         )
+                         )                         
                      }
 
+                     {/* Enough Ingredient QTY */}
+                     {
+                         ingredients2.map(
+                             test=>                              
+                             <tr key = {test.ingredientId}>
+                                 <td>{test.ingredientId}</td>
+                                 <td>{test.ingredientName}</td>
+                                 <td>{test.qty}</td>
+                                 <td>{test.reorderLevel}</td>
+                                 <td style={{textAlign:'center'}}>
+                                 <Tippy content="Delete">
+                                     <Button type="delete"><FaTrash /></Button>
+                                 </Tippy>
+                                     <Tippy content="Edit">
+                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                 </Tippy>                         
+                                 </td>
+                             </tr>
+                         )                         
+                     }
   
                                         
                  </tbody>
