@@ -47,7 +47,7 @@ import { Redirect } from 'react-router'
 // }
 
 
-const renderError = () => {
+const DisplyaText = () => {
   if (localStorage.getItem('userId') != null)
       return ( "Logout");
   else 
@@ -93,7 +93,7 @@ export default class NavBar extends Component{
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
 
 
-                    <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {renderError()} </NavDropdown.Item>
+                    <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
