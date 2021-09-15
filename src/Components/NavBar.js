@@ -54,12 +54,21 @@ import { Redirect } from 'react-router'
           return ( "logIn");
     }
 
+
     const RedirectTo = () => {
       if (localStorage.getItem('userId') != null)
           return("/");
       else 
           return ( "/SignIn");
     }
+
+    const DisplyaText = () => {
+      if (localStorage.getItem('userId') != null)
+         return ( "Logout");
+    else 
+         return ( "logIn");
+    }
+
 
     const Action = () => {
       localStorage.removeItem("firstName");
