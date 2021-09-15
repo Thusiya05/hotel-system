@@ -39,7 +39,9 @@ import Cusfoodmenu from "./Pages/Customer/cusfoodmenu"
 import GuestRepo from "./Pages/Manager/GuestRepo";
 import IncomeRepo from "./Pages/Manager/IncomeRepo";
 import InventoryRepo from "./Pages/Manager/InventoryRepo";
+import payment from "./Pages/Payment";
 import "./App.css"
+import Payment from "./Pages/Payment";
 
 
 
@@ -89,6 +91,7 @@ function App() {
         <Route exact path ="/manager/guestrepo" component={GuestRepo} />
         <Route exact path ="/manager/incomerepo" component={IncomeRepo} />
         <Route exact path ="/manager/inventoryrepo" component={InventoryRepo} />
+        <Route exact path ="/customer/mybookings/payment" component={Payment} />
         <Route component={Error} />
         
        
