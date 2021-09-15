@@ -9,12 +9,9 @@ import axios from 'axios';
 // import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
 import "../../CSS/Cusfoodmenu.css";
+import { Redirect } from 'react-router';
 
 function ConfirmOrder(props){
-    console.log(props.IdOfOrderedFoods);
-    console.log(props.QtyOfOrderedFoods);
-    console.log(props.NameOfOrderedFoods);
-
     const foodName = props.NameOfOrderedFoods;
     const food_name = foodName.map((x) => 
         <p>{x}</p>
@@ -24,7 +21,25 @@ function ConfirmOrder(props){
     const food_qty = qty.map((y) => 
         <p>{y}</p>
     );
-    // console.log(QtyArray);
+
+
+    // const url = "http://localhost:3030/createOrderId";
+
+
+    function submit(e){
+        e.preventDefault();
+        axios.post("http://localhost:3030/createOrderId", {
+            customerId: localStorage.getItem('userId')
+        })
+        .then(function(res){
+            <Redirect to="/" />
+            alert(res.data);
+        })
+        .catch(function(err){
+            alert(err.data);
+        })
+    }
+
     return(
         <Modal
         {...props}
@@ -38,16 +53,7 @@ function ConfirmOrder(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-
-                        {/* <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'left'}}><h6 >{food_name} {food_qty}</h6></Form.Label>
-                                </Form.Group>
-                            </Col>             
-                        </Row> */}
+                    <Form onSubmit={(e) => submit(e)}>
 
                         <Table striped bordered hover size="sxm">
                             <thead>
@@ -78,13 +84,10 @@ function ConfirmOrder(props){
 }
 
 
-
-
-
-
 const Cusfoodmenu =()=> {
     const [IdOfOrderedFoods, setIdOfOrderedFoods]=useState([])
     const [QtyOfOrderedFoods, setQtyOfOrderedFoods]=useState([])
+    const [PriceofAllFoods, setPriceofAllFoods]=useState([])
     const [NameOfOrderedFoods, setNameOfOrderedFoods]=useState([])
     
     const [editshow,setEditShow]=useState(false)
@@ -92,13 +95,6 @@ const Cusfoodmenu =()=> {
     const[editView,setEditView]=useState(false);    
     const [added, setadded] = useState(true);
     const[editFood,setEditFood]=useState(1);
-
-    // function Update(foodId){
-    //     // console.log(foodId)
-    //     setadded(!added);
-    //     setEditView(true);
-    //     setEditFood(foodId);
-    // }
 
     useEffect(() => {
         axios.get('http://localhost:3030/cusfoodmenu')
@@ -114,33 +110,53 @@ const Cusfoodmenu =()=> {
         let foodIdArray = [];
         let foodNameArray = [];
         let QtyArray = [];
+        let PriceArray = [];
         foods.forEach(test => {
             if(test.value>0){
                 foodIdArray.push(test.foodId);
                 foodNameArray.push(test.foodName);
                 QtyArray.push(test.value);
+                PriceArray.push(test.Total_Price);                
             }
-
                 setIdOfOrderedFoods(foodIdArray);
                 setQtyOfOrderedFoods(QtyArray);
                 setNameOfOrderedFoods(foodNameArray);
+                setPriceofAllFoods((PriceArray.reduce((a,v) =>  a = a + v , 0 )));
             })
-        // console.log(foodIdArray);
-        // console.log(QtyArray);
-        setEditView(true);
+        if(foodIdArray.length<=0){
+            alert("Please Select Foods");
+        }else{
+            setEditView(true);
+        }
     }
 
+    function DisplayPrice(){
+        if(PriceofAllFoods!=null){
+            return(PriceofAllFoods);
+        }
+
+    }
+    function DisplayPriceStyle(){
+        if(PriceofAllFoods==0){
+            return({display:'none'});
+        }
+    }    
     return (
         <>      
         {/* {...props}   */}
         {
              <div>
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
+             
 
              <div style={{textAlign:'center'}}>
-                        <Button type="button" onClick={() => submit()} variant="info">Place Order</Button> 
-                        {/* <Button onClick={props.onHide} variant="danger">Cancel</Button> */}
+                        <Button type="button" onClick={() => submit()} variant="info">Place Order <h3 style={DisplayPriceStyle()}> $ {DisplayPrice()} </h3>  </Button>
+
              </div>
+
+             
+
+
 
              <br></br>
              <br></br>
@@ -167,10 +183,12 @@ const Cusfoodmenu =()=> {
                                     <input type="number" min="0" id={test.foodId}
                                         onChange={e=>{
                                             let value=e.target.value;
+                                            let Total_Price=0;
                                             setFood(
                                                 foods.map(sd=>{
                                                     if(sd.foodId==e.target.id){
                                                         sd.value=value;
+                                                        sd.Total_Price=Total_Price+(sd.value*test.price);
                                                     }
                                                     return sd;
 
@@ -198,6 +216,9 @@ const Cusfoodmenu =()=> {
 
                          NameOfOrderedFoods={NameOfOrderedFoods}
                          setNameOfOrderedFoods={setNameOfOrderedFoods}
+
+                         PriceofAllFoods={PriceofAllFoods}
+                         setPriceofAllFoodss={setPriceofAllFoods}
 
                          added={added}
                          setadded={setadded}
