@@ -9,9 +9,22 @@ import axios from 'axios';
 // import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
 import "../../CSS/Cusfoodmenu.css";
-import { Redirect } from 'react-router';
 
 function ConfirmOrder(props){
+
+    // const[date,setDate] = useState(new Date());
+
+    var [date,setDate] = useState(new Date());
+    
+    useEffect(() => {
+        var timer = setInterval(()=>setDate(new Date()), 1000 )
+        return function cleanup() {
+            clearInterval(timer)
+        }
+    
+    });
+
+    
     const foodName = props.NameOfOrderedFoods;
     const food_name = foodName.map((x) => 
         <p>{x}</p>
@@ -23,20 +36,31 @@ function ConfirmOrder(props){
     );
 
 
-    // const url = "http://localhost:3030/createOrderId";
+    const url = "http://localhost:3030/placeOrder";
 
 
     function submit(e){
         e.preventDefault();
-        axios.post("http://localhost:3030/createOrderId", {
-            customerId: localStorage.getItem('userId')
+        axios.post("http://localhost:3030/order/createOrderId", {
+            customerId: localStorage.getItem('userId'),
+            roomId: "",
+            orderDate: date.toLocaleDateString(),
+            orderTime: date.toLocaleTimeString()
         })
         .then(function(res){
-            <Redirect to="/" />
-            alert(res.data);
+            console.log(res.data);
+                
+            axios.post(`http://localhost:3030/order/placeOrder/${date.toLocaleTimeString()}`,{
+                customerId: localStorage.getItem('userId'),
+                foIdList: props.IdOfOrderedFoods,
+                qtyList: props.QtyOfOrderedFoods
+                // fiIdList: fiIdArray,
+                // ingredientsQtyList: ingredientQtyArray
+            })            
         })
         .catch(function(err){
-            alert(err.data);
+            console.log(err.data);
+
         })
     }
 
@@ -66,6 +90,8 @@ function ConfirmOrder(props){
                                 <tr>
                                     <td>{food_name}</td>
                                     <td>{food_qty}</td>
+                                    {/* <p> Time : {date.toLocaleTimeString()}</p>
+                                     <p> Date : {date.toLocaleDateString()}</p> */}
                                 </tr>
                             </tbody>
                         </Table>
