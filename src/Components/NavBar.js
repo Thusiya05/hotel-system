@@ -46,27 +46,44 @@ import { Redirect } from 'react-router'
 //     );
 // }
 
+//Details of currently logged in user
+    const DisplyaText = () => {
+      if (localStorage.getItem('userId') != null)
+          return ( "Logout");
+      else 
+          return ( "logIn");
+    }
 
-const DisplyaText = () => {
-  if (localStorage.getItem('userId') != null)
-      return ( "Logout");
-  else 
-      return ( "logIn");
-}
 
-const RedirectTo = () => {
-  if (localStorage.getItem('userId') != null)
-      return("/");
-  else 
-      return ( "/SignIn");
-}
+    const RedirectTo = () => {
+      if (localStorage.getItem('userId') != null)
+          return("/");
+      else 
+          return ( "/SignIn");
+    }
 
-const Action = () => {
-  localStorage.removeItem("firstName");
-  localStorage.removeItem("lastName");
-  localStorage.removeItem("userId");
-}
+    const Action = () => {
+      localStorage.removeItem("firstName");
+      localStorage.removeItem("lastName");
+      localStorage.removeItem("userId");
+    }
 
+//FoodTab Visibility
+
+    const FoodTabRedirectTo = () => {
+      if (localStorage.getItem('userId') != null)
+          return("/Customer/cusfoodmenu");
+    }
+
+    const DisplyaFoodTabText = () => {
+      if (localStorage.getItem('userId') != null)
+          return ("Foods");
+    }
+
+    const FoodTabStyle = () => {
+      if (localStorage.getItem('userId') == null)
+          return ({display:'none'});
+    }
 
 export default class NavBar extends Component{
 
@@ -84,6 +101,7 @@ export default class NavBar extends Component{
 
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/rooms/">Rooms</Nav.Link>
+                  <Nav.Link style={FoodTabStyle()} href={FoodTabRedirectTo()}> {DisplyaFoodTabText()} </Nav.Link>
                   <Nav.Link href="/activities">Activities</Nav.Link>
                   <Nav.Link href="/facilities">Facilities</Nav.Link>
                   <Nav.Link href="/aboutUs">About Us</Nav.Link>
