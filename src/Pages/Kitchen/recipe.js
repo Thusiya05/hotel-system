@@ -51,7 +51,6 @@ function Editfood(props){
                 fiIdArray.push(test.fiId);
             }
         });
-
         console.log(ingredientQtyArray);
         console.log(fiIdArray);
         axios.post(`http://localhost:3030/updateRecipe/${props.editFood}`,
