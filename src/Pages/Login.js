@@ -277,10 +277,16 @@ export default class Login extends Component {
                   "email": this.state.loginEmail,
                   "password": this.state.loginPassword
               })
-              .then((response) => { 
+              .then((response) => {                   
                 // handle success
-                console.log(response.data.userType);
+                console.log(response.data);   
                 // alert(response.data.token);
+
+                localStorage.setItem('userId', response.data.userId);
+                localStorage.setItem('firstName', response.data.fName);
+                localStorage.setItem('lastName', response.data.lName);
+
+                // localStorage.removeItem("firstName");
 
                 if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
@@ -337,6 +343,9 @@ export default class Login extends Component {
                     <div id="loginform" className="login-form login-sign-in">
                         <h2 style={{ color:"black" }}><b>Sign In</b></h2>
                           <div class="loginFormContainer">
+
+
+
                             <label>
                                 <span>Email Address</span>
                                 <input class="Login-Signin-inputs" type="email" name="loginEmail"  value={this.state.loginEmail} onChange={this.handleChange}  required></input>
@@ -354,6 +363,11 @@ export default class Login extends Component {
                               <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.login} >Log In</Button>
                             {/* </Link> */}
                             </div>
+
+
+
+
+
                             <p className="forgot-pass">Forgot Password ?</p>
                             <div className="social-media">
                                 <ul>

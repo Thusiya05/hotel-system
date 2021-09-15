@@ -1,7 +1,10 @@
-import React,{ useState } from 'react'
+import React,{ Component } from 'react'
 import logo from "../images/logo.png"
 import { Navbar,Nav,Modal,Container,Row,Col,NavDropdown } from 'react-bootstrap'
 import {FaUserCircle} from 'react-icons/fa'
+import axios from 'axios'
+import { MdSystemUpdate } from 'react-icons/md'
+import { Redirect } from 'react-router'
 
 // function MyBooking(props){
 //     return(
@@ -42,7 +45,34 @@ import {FaUserCircle} from 'react-icons/fa'
 //     </Modal>
 //     );
 // }
-export default function NavBar({path1,name1,path2,name2,path3,name3,path4,name4,path5,name5,pathSign,LogName}){
+
+
+const DisplyaText = () => {
+  if (localStorage.getItem('userId') != null)
+      return ( "Logout");
+  else 
+      return ( "logIn");
+}
+
+const RedirectTo = () => {
+  if (localStorage.getItem('userId') != null)
+      return("/");
+  else 
+      return ( "/SignIn");
+}
+
+const Action = () => {
+  localStorage.removeItem("firstName");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("userId");
+}
+
+
+export default class NavBar extends Component{
+
+
+  render(){
+
        return(
          <>
            <Navbar className="new3" collapseOnSelect expand="lg" bg="light" variant="dark" fixed="top">
@@ -50,21 +80,26 @@ export default function NavBar({path1,name1,path2,name2,path3,name3,path4,name4,
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href={path1}>{name1}</Nav.Link>
-                  <Nav.Link href={path2}>{name2}</Nav.Link>
-                  <Nav.Link href={path3}>{name3}</Nav.Link>
-                  <Nav.Link href={path4}>{name4}</Nav.Link>
-                  <Nav.Link href={path5}>{name5}</Nav.Link>
+                  
+
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/rooms/">Rooms</Nav.Link>
+                  <Nav.Link href="/activities">Activities</Nav.Link>
+                  <Nav.Link href="/facilities">Facilities</Nav.Link>
+                  <Nav.Link href="/aboutUs">About Us</Nav.Link>
                 </Nav>
                 <Nav>
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/signIn"> {LogName}</NavDropdown.Item>
+
+
+                    <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
-                    </NavDropdown>
-                  </Nav>
+                  </NavDropdown>
+                  <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link>
+                </Nav>
                   <Nav>
                     <Nav.Link href="#"></Nav.Link>
                   </Nav>
@@ -80,5 +115,7 @@ export default function NavBar({path1,name1,path2,name2,path3,name3,path4,name4,
          </>
            
        )
-      }
+    }
+
+}
    
