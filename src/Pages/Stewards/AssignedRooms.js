@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container,Button } from 'react-bootstrap'
+import { Container,Button, Table } from 'react-bootstrap'
 import Stesidebar from '../../Components/stesidebar';
 import Title from '../../Components/Title';
 
@@ -11,43 +11,46 @@ const AssignedRooms=()=> {
                 <br></br>
                 <Title title="Today Jobs"></Title>
                 <div className="row">
-                    <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'44rem',borderRadius:'2%'}}>
-                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
-                            <div className="col-md-6">
-                                <h5>Darshana Bandara</h5>
-                                <h5>Room arrangement</h5>
-                                <h5>Assigned by: Receptionist</h5>
-                                <h5>Room No: 12</h5>
-                                <h5>8.00am</h5>
-                            </div>
-                            <div className="col-md-6">
-                            <Button variant="dark"  type="submit">Finished</Button>
-                            </div>
-                        </div>
-                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
-                            <div className="col-md-6">
-                                <h5>Lakith Kithsara</h5>
-                                <h5>Cleaning</h5>
-                                <h5>Assigned by: Receptionist</h5>
-                                <h5>Room No: 14</h5>
-                                <h5>9.00am</h5>
-                            </div>
-                            <div className="col-md-6">
-                            <Button variant="dark"  type="submit">Finished</Button>
-                            </div>
-                        </div> 
-                        <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
-                            <div className="col-md-6">
-                                <h5>Thusitha Karunthilaka</h5>
-                                <h5>Food Order</h5>
-                                <h5>Assigned by: Kitchen Staff</h5>
-                                <h5>Room No: 12</h5>
-                                <h5>10.00am</h5>
-                            </div>
-                            <div className="col-md-6">
-                            <Button variant="dark"  type="submit">Finished</Button>
-                            </div>
-                        </div> 
+                    <Container style={{width:'44rem',borderRadius:'2%'}}>
+                       
+                    <Table striped hover size="sm" responsive id="CheckInTable">
+                            <thead>
+                                <tr style={{backgroundColor:'red'}}>
+                                    <th>NEW</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Room Number</th>
+                                    <th>Customer Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* {
+                                    pendingOrders.map(
+                                        test=>
+                                        <tr key = {test.orderId}>
+                                            <td>{test.orderId}</td>
+                                            <td>{test.roomId}</td>
+                                            <td>{test.orderTime}</td>
+                                            <td style={{textAlign:'center'}}>
+                                                <Tippy content="View">
+                                                    <Button onClick={()=>SelectOrder(test.orderId)} type="view"><FaPrint /></Button>
+                                                </Tippy>
+                                                <Tippy content="Prepare">
+                                                    <Button onClick={()=>PrepareOrder(test.orderId)} type="view"><FaClipboardCheck /></Button>
+                                                </Tippy>
+                                            </td>
+                                        </tr>
+                                    )
+                                } */}
+                            </tbody>
+                        </Table>
+
+                       
                     </Container>
                 </div>
             </div>
