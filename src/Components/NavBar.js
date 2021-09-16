@@ -47,13 +47,23 @@ import { Redirect } from 'react-router'
 // }
 
 //Details of currently logged in user
+
+    const text1 = () => {
+      if (localStorage.getItem('userId') != null)
+      return("Hi")
+    }
+
+    const text2 = () => {
+      if (localStorage.getItem('userId') != null)
+      return("👋")
+    }
+
     const DisplyaText = () => {
       if (localStorage.getItem('userId') != null)
           return ( "Logout");
       else 
           return ( "logIn");
     }
-
 
     const RedirectTo = () => {
       if (localStorage.getItem('userId') != null)
@@ -107,23 +117,22 @@ export default class NavBar extends Component{
                   <Nav.Link href="/aboutUs">About Us</Nav.Link>
                 </Nav>
                 <Nav>
+                <Navbar.Text><h6>{text1()} {localStorage.getItem('firstName')} {text2()}</h6></Navbar.Text>
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
-
-
                     <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
                     {/* <NavDropdown.Divider /> */}
                     <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link>
+                  {/* <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link> */}
                 </Nav>
                   {/* <Nav>
                     <Nav.Link href="#"></Nav.Link>
-                  </Nav>
+                  </Nav> */}
                   <Nav>
                     <Nav.Link href="#"></Nav.Link>
-                  </Nav> */}
+                  </Nav>
               </Navbar.Collapse>
             </Navbar>
             {/* <MyBooking 
