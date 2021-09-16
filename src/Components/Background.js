@@ -7,8 +7,8 @@ export default function Background() {
              <div className="animation-area">  
              <div className="default-Hero">   
                     <div className="jumbotron">
-                        <h3>Welcome to Adventure Base Camp,</h3>
-                        <h3>Kitulgala</h3>
+                        <h3>Welcome to Adventure Base Camp, Kitulgala</h3>
+                        {/* <h3>Kitulgala</h3> */}
                         <div></div>
                         <h2>Enjoy the best comforts of an outdoor leisure activity center with a touch of luxury close to nature.
                                     With amazing food, great accommodation and a breath taking location which is one of the largest and best of its kind in South Asia. We have a 
