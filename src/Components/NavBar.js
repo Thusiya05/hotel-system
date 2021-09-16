@@ -1,4 +1,4 @@
-import React,{useState,Component } from 'react'
+import React,{ Component } from 'react'
 import logo from "../images/logo.png"
 import { Navbar,Nav,Modal,Container,Row,Col,NavDropdown } from 'react-bootstrap'
 import {FaUserCircle} from 'react-icons/fa'
