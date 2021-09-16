@@ -279,12 +279,13 @@ export default class Login extends Component {
               })
               .then((response) => {                   
                 // handle success
-                console.log(response.data);   
+                // console.log(response.data);   
                 // alert(response.data.token);
-
-                localStorage.setItem('userId', response.data.userId);
-                localStorage.setItem('firstName', response.data.fName);
-                localStorage.setItem('lastName', response.data.lName);
+                if(response.data.userType=="CUSTOMER"){
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
+                }
 
                 // localStorage.removeItem("firstName");
 
