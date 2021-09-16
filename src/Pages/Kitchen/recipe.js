@@ -51,7 +51,6 @@ function Editfood(props){
                 fiIdArray.push(test.fiId);
             }
         });
-
         console.log(ingredientQtyArray);
         console.log(fiIdArray);
         axios.post(`http://localhost:3030/updateRecipe/${props.editFood}`,
@@ -84,63 +83,63 @@ function Editfood(props){
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-      >
-        <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Edit Food
-          </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    
-                    <Form onSubmit={(e) => submit(e)}>   
-                        
-                        <Row>
-                            <Col md={4}></Col> 
-                                <Col md={4}>
-                                    <Form.Group as={Col} >
-                                    <Form.Label style={{textAlign:'center'}}><h6>Update Food Recipe</h6></Form.Label>
-                                   
-                                    <Table>
-                                        <tbody>
-                                            {
-                                               Ingredients.map(
-                                                test =>
-                                                <tr key = {test.fiId}>
-                                                    <td style={{ display:'inline-flex'}}>
-                                                        {test.ingredientId} 
-                                                        <Form.Control 
-                                                            type="text" id={test.fiId} style={{width:'15rem', padding:'0.5rem', marginLeft:'2rem'}}
-                                                            onChange={e=>{
-                                                                let value=e.target.value;
-                                                                setIngredients(
-                                                                    Ingredients.map(sd=>{
-                                                                        if(sd.fiId == e.target.id){
-                                                                            sd.value=value;
-                                                                        }
-                                                                        return sd;
-                                                                    })
-                                                                    );
-                                                            }} 
-                                                        required/>    
-                                                    </td> 
-                                                </tr>
-                                               ) 
-                                            }
-                                        </tbody>
-                                    </Table>                             
-                                    </Form.Group>
-                                </Col>             
-                        </Row>
-                                    
-                        <div style={{textAlign:'center'}}>
-                            <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
-                        </div>
+        >
+            <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
+            <Modal.Title id="contained-modal-title-vcenter">
+                Edit Food
+                </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            
+                            <Form onSubmit={(e) => submit(e)}>   
+                                
+                                <Row>
+                                    <Col md={4}></Col> 
+                                        <Col md={4}>
+                                            <Form.Group as={Col} >
+                                            <Form.Label style={{textAlign:'center'}}><h6>Update Food Recipe</h6></Form.Label>
+                                        
+                                            <Table>
+                                                <tbody>
+                                                    {
+                                                    Ingredients.map(
+                                                        test =>
+                                                        <tr key = {test.fiId}>
+                                                            <td style={{ display:'inline-flex'}}>
+                                                                {test.ingredientId} 
+                                                                <Form.Control 
+                                                                    type="text" id={test.fiId} style={{width:'15rem', padding:'0.5rem', marginLeft:'2rem'}}
+                                                                    onChange={e=>{
+                                                                        let value=e.target.value;
+                                                                        setIngredients(
+                                                                            Ingredients.map(sd=>{
+                                                                                if(sd.fiId == e.target.id){
+                                                                                    sd.value=value;
+                                                                                }
+                                                                                return sd;
+                                                                            })
+                                                                            );
+                                                                    }} 
+                                                                required/>    
+                                                            </td> 
+                                                        </tr>
+                                                    ) 
+                                                    }
+                                                </tbody>
+                                            </Table>                             
+                                            </Form.Group>
+                                        </Col>             
+                                </Row>
+                                            
+                                <div style={{textAlign:'center'}}>
+                                    <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                                </div>
 
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer style={{backgroundColor:'lightgray'}}>
-                    Adventure Base Camp, Kitulgala.
-                </Modal.Footer>
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer style={{backgroundColor:'lightgray'}}>
+                        Adventure Base Camp, Kitulgala.
+                    </Modal.Footer>
             </Modal>
     );
 }
