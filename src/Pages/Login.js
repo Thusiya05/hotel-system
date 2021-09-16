@@ -286,6 +286,8 @@ export default class Login extends Component {
                 localStorage.setItem('firstName', response.data.fName);
                 localStorage.setItem('lastName', response.data.lName);
 
+                // console.log("Hiiiii")
+
                 // localStorage.removeItem("firstName");
 
                 if(response.data.userType=="MANAGER"){
@@ -294,8 +296,8 @@ export default class Login extends Component {
                   this.props.history.push('/stewarad/assignedRoom');
                 }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
-                }else if(response.data.userType=="CUSTOMER"){
-                  this.props.history.push('/');
+                }else if(response.data.userType=="CUSTOMER"){ 
+                  this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
                 }else if(response.data.userType=="RECEPTIONIST"){
@@ -307,7 +309,9 @@ export default class Login extends Component {
               .catch((error) => {
                   // handle error
                   // toast.error('❌ ' + error.response.data);
-                  alert(error.response.data.message);
+                  // alert(error.response.data);
+                  console.log(error.response.data);
+                  // alert("fuck");
                   
               })
               .then(function () {
@@ -343,9 +347,6 @@ export default class Login extends Component {
                     <div id="loginform" className="login-form login-sign-in">
                         <h2 style={{ color:"black" }}><b>Sign In</b></h2>
                           <div class="loginFormContainer">
-
-
-
                             <label>
                                 <span>Email Address</span>
                                 <input class="Login-Signin-inputs" type="email" name="loginEmail"  value={this.state.loginEmail} onChange={this.handleChange}  required></input>
@@ -363,11 +364,6 @@ export default class Login extends Component {
                               <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.login} >Log In</Button>
                             {/* </Link> */}
                             </div>
-
-
-
-
-
                             <p className="forgot-pass">Forgot Password ?</p>
                             <div className="social-media">
                                 <ul>

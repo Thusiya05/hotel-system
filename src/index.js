@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom"
+import "react-datepicker/dist/react-datepicker.css"
+import 'react-datepicker/dist/react-datepicker-cssmodules.min.css'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 // import "./App.css"
 import {RoomProvider} from './context'
