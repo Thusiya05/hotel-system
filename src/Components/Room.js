@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 //import { memo } from "react";
 import { Button,Form,Col, Row, Modal } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
+import { ToastContainer, toast } from 'react-toastify';
 
  function Datee(){
  const [selectedDate, setSelectedDate] = useState(null)
@@ -92,10 +93,22 @@ export default function Room({ room }){
       if (localStorage.getItem('userId') != null)
           setCart(true);
       else 
-        alert("please login");
+      toast.error('❌ '+' '+ "please login");
     }
   // console.log(name);
-  return (   
+  return (  
+    <>
+    <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+    /> 
   
     <article className="room">
       <div className="img-container">
@@ -121,7 +134,7 @@ export default function Room({ room }){
       <p className="room-info">{name}</p>
     </article>
   
-    
+    </>
   );
 }
 
