@@ -23,7 +23,6 @@ function ConfirmOrder(props){
         }
     
     });
-
     
     const foodName = props.NameOfOrderedFoods;
     const food_name = foodName.map((x) => 
@@ -45,7 +44,8 @@ function ConfirmOrder(props){
             customerId: localStorage.getItem('userId'),
             roomId: "",
             orderDate: date.toLocaleDateString(),
-            orderTime: date.toLocaleTimeString()
+            orderTime: date.toLocaleTimeString(),
+            status: "PENDING"
         })
         .then(function(res){
             console.log(res.data);
