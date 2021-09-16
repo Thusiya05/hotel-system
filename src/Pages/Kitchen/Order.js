@@ -1,18 +1,18 @@
 import React,{ useState, useEffect } from 'react'
 import { Button,Container,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
-import { FaCheck, FaPrint } from "react-icons/fa";
+import { FaCheck, FaPrint, FaClipboardCheck } from "react-icons/fa";
 import 'tippy.js/dist/tippy.css';
 import Kcsidebar from '../../Components/kcsidebar'
 import Title from '../../Components/Title';
 import axios from 'axios';
 
 function ViewOrderDerails(props){
-    console.log(props.ordersDetails)
+    // console.log(props.ordersDetails)
     const[foods,setFoods]=useState([])
 
     useEffect(() => {    
-        console.log("hello");
+        // console.log("hello");
         axios.get(`http://localhost:3030/order/findByoderNumber/${props.ordersDetails}`)
         .then(res => {
             // console.log(res.data); 
@@ -67,12 +67,27 @@ function ViewOrderDerails(props){
 }
 
 
-const Order =() =>{
 
-    const[orders,setOrder] = useState([]);
+function Order() {
+    
+    const[pendingOrders,setPendingOrder] = useState([]);
+    const[inProgressOrders,setInProgressOrder] = useState([]);
     const[ordersDetails,setOrderDetails] = useState(1);
+    const [added, setadded] = useState(true);
     const[openView,setOpenView]=useState(false);
+    const [status1, setStatus1]=useState(false);
+    const [status2, setStatus2]=useState(false);
+    
+    function FinishOrder(orderId){
+        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`);
+        setStatus1(!status1);
+    }
+    
+    function PrepareOrder(orderId){
+        axios.post(`http://localhost:3030/order/prepareOrder/${orderId}`);
+        setStatus2(!status2);
 
+    }
 
     function SelectOrder(orderId){
         setOpenView(true);
@@ -80,17 +95,28 @@ const Order =() =>{
         // viewOrder();
     }
 
+
     useEffect(() => {
-        axios.get('http://localhost:3030/order/allOrders')
+        axios.get('http://localhost:3030/order/pendingOrders')
         .then(res => {
-            setOrder(res.data)
-            // console.log(orders )
+            setPendingOrder(res.data)
+            // console.log(orders)
         })
         .catch(err => {
             console.log(err)
         })
-    },[])
+    },[status1, status2])
 
+    useEffect(() => {
+        axios.get('http://localhost:3030/order/inprogressOrders')
+        .then(res => {
+            setInProgressOrder(res.data)
+            // console.log(orders)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[status1, status2])
 
     return (
         <>
@@ -104,31 +130,35 @@ const Order =() =>{
                     <Container style={{boxShadow:'1px 2px 6px 1px gray',width:'44rem'}}>
                         
                         <div className="row" style={{justifyContent:'center',alignItems:'center',borderBottomStyle:'solid',borderWidth:'1px',padding:'0.5rem'}} >
-                        <Table striped bordered hover size="sm" responsive id="CheckInTable">
+                        <Table striped hover size="sm" responsive id="CheckInTable">
                             <thead>
+                                <tr style={{backgroundColor:'red'}}>
+                                    <th>PENDING ORDERS</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Order ID</th>
                                     <th>Room Number</th>
                                     <th>Ordered Time</th>
-                                    <th>Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    orders.map(
+                                    pendingOrders.map(
                                         test=>
                                         <tr key = {test.orderId}>
                                             <td>{test.orderId}</td>
                                             <td>{test.roomId}</td>
                                             <td>{test.orderTime}</td>
-                                            <td>{test.status}</td>                                            
                                             <td style={{textAlign:'center'}}>
                                                 <Tippy content="View">
-                                                    <Button  onClick={()=>SelectOrder(test.orderId)} type="edit"><FaPrint /></Button>
+                                                    <Button onClick={()=>SelectOrder(test.orderId)} type="view"><FaPrint /></Button>
                                                 </Tippy>
-                                                <Tippy content="Finished">
-                                                    <Button type="edit"><FaCheck /></Button>
+                                                <Tippy content="Prepare">
+                                                    <Button onClick={()=>PrepareOrder(test.orderId)} type="view"><FaClipboardCheck /></Button>
                                                 </Tippy>
                                             </td>
                                         </tr>
@@ -136,6 +166,42 @@ const Order =() =>{
                                 }
                             </tbody>
                         </Table>
+
+
+                        <Table striped hover size="sm" responsive id="CheckInTable">
+                            <thead>
+                                <tr style={{backgroundColor:'aqua'}}>
+                                    <th>IN PROGRESS</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Room Number</th>
+                                    <th>Ordered Time</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    inProgressOrders.map(
+                                        test=>
+                                        <tr key = {test.orderId}>
+                                            <td>{test.orderId}</td>
+                                            <td>{test.roomId}</td>
+                                            <td>{test.orderTime}</td>
+                                            <td style={{textAlign:'center'}}>
+                                                <Tippy content="Finished">
+                                                    <Button onClick={()=>FinishOrder(test.orderId)} type="finish"><FaCheck /></Button>
+                                                </Tippy>
+                                            </td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+
                         <ViewOrderDerails 
                             show={openView}
                             onHide={() => setOpenView(false)}
