@@ -11,12 +11,12 @@ export const StewSidebar = [
         link:'/steward/assignedRooms/',
     },
 
-    {
-        title: "History",
-        icon: <FaIcons.FaHistory />,
-        link:'/steward/StewardsHistory/',
+    // {
+    //     title: "History",
+    //     icon: <FaIcons.FaHistory />,
+    //     link:'/steward/StewardsHistory/',
 
-    },
+    // },
 
    
     {

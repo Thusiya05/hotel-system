@@ -1,13 +1,72 @@
 import React,{ useState, useEffect } from 'react'
 import { Button,Container,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
-import { FaCheck, FaPrint, FaClipboardCheck } from "react-icons/fa";
+import { FaCheck, FaPrint, FaClipboardCheck, FaMale } from "react-icons/fa";
 import 'tippy.js/dist/tippy.css';
 import Kcsidebar from '../../Components/kcsidebar'
 import Title from '../../Components/Title';
 import axios from 'axios';
 
 function ViewOrderDerails(props){
+    // console.log(props.ordersDetails)
+    const[foods,setFoods]=useState([])
+
+    useEffect(() => {    
+        // console.log("hello");
+        axios.get(`http://localhost:3030/order/findByoderNumber/${props.ordersDetails}`)
+        .then(res => {
+            // console.log(res.data); 
+            // let order = res.data;
+            setFoods(res.data)              
+        })
+        .catch(err => alert(err));
+    },[props.ordersDetails])    
+
+    return(
+        <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Order Number : {props.ordersDetails}
+          </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                        <Table striped bordered hover size="sxm">
+                            {/* <thead>
+                                <tr>
+                                    <th>Food Name</th>
+                                    <th>Qty</th>
+                                </tr>
+                            </thead> */}
+                            <tbody>
+                                {
+                                    foods.map(
+                                        test =>
+                                        <tr>
+                                            <td>{test.foodName}</td>
+                                            <td>{test.qty}</td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+
+                        <div style={{textAlign:'center'}}>
+                            <Button onClick={props.onHide} variant="danger">Back</Button>
+                        </div> 
+                </Modal.Body>
+                <Modal.Footer style={{backgroundColor:'lightgray'}}>
+                    Adventure Base Camp, Kitulgala.
+                </Modal.Footer>
+            </Modal>
+    );
+}
+
+function AssignStewardToOrder(props){
     // console.log(props.ordersDetails)
     const[foods,setFoods]=useState([])
 
@@ -95,6 +154,11 @@ function Order() {
         // viewOrder();
     }
 
+    function AssignSteward(orderId){
+        setOpenView(true);
+        setOrderDetails(orderId);
+        // viewOrder();
+    }
 
     useEffect(() => {
         axios.get('http://localhost:3030/order/pendingOrders')
@@ -192,6 +256,9 @@ function Order() {
                                             <td>{test.roomId}</td>
                                             <td>{test.orderTime}</td>
                                             <td style={{textAlign:'center'}}>
+                                                <Tippy content="Assign Steward">
+                                                    <Button onClick={()=>AssignSteward(test.orderId)} type="finish"><FaMale /></Button>
+                                                </Tippy>
                                                 <Tippy content="Finished">
                                                     <Button onClick={()=>FinishOrder(test.orderId)} type="finish"><FaCheck /></Button>
                                                 </Tippy>
@@ -203,6 +270,13 @@ function Order() {
                         </Table>
 
                         <ViewOrderDerails 
+                            show={openView}
+                            onHide={() => setOpenView(false)}
+                            ordersDetails={ordersDetails}
+                            setOrderDetails={setOrderDetails}
+                        />
+
+                        <AssignStewardToOrder 
                             show={openView}
                             onHide={() => setOpenView(false)}
                             ordersDetails={ordersDetails}
