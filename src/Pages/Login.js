@@ -294,8 +294,8 @@ export default class Login extends Component {
                   this.props.history.push('/stewarad/assignedRoom');
                 }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
-                }else if(response.data.userType=="CUSTOMER"){
-                  this.props.history.push('/');
+                }else if(response.data.userType=="CUSTOMER"){ 
+                  this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
                 }else if(response.data.userType=="RECEPTIONIST"){
@@ -307,7 +307,9 @@ export default class Login extends Component {
               .catch((error) => {
                   // handle error
                   // toast.error('❌ ' + error.response.data);
-                  alert(error.response.data.message);
+                  // alert(error.response.data);
+                  console.log(error.response.data);
+                  // alert("fuck");
                   
               })
               .then(function () {
