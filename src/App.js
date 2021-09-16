@@ -76,12 +76,13 @@ export default class App extends Component {
 // };
 
   render(){
-      return (
 
+    // if(localStorage.getItem('userId')!=null){
+    //   console.log("hello");
+      return (
         <div>
           <Switch>
             <Route exact path ="/" component={Home} />
-            {/* <Route exact path ="/Home" component={Home} /> */}
             <Route exact path ="/rooms/" component={Rooms} />
             <Route exact path="/aboutUs" component={AboutUs} />
             <Route exact path ="/rooms/:slug" component={SingleRooms} />
@@ -124,13 +125,22 @@ export default class App extends Component {
             <Route exact path ="/customer/mybookings/payment" component={Payment} />
             <Route component={Error} />
             
-          
           </Switch> 
         </div>
-
-        
-      
       );
+    // }else{
+    //   return(
+    //     <div>
+    //       <Route exact path ="/" component={Home} />
+    //         <Route exact path ="/rooms/" component={Rooms} />
+    //         <Route exact path="/aboutUs" component={AboutUs} />
+    //         <Route exact path ="/rooms/:slug" component={SingleRooms} />
+    //         <Route exact path ="/activities" component={Activities} />
+    //         <Route exact path ="/facilities" component={Facilities} />
+    //         <Route exact path ="/signIn" component={Login} />
+    //     </div>
+    //   )
+    // }
   }
 }
 

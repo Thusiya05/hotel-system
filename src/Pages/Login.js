@@ -286,6 +286,8 @@ export default class Login extends Component {
                 localStorage.setItem('firstName', response.data.fName);
                 localStorage.setItem('lastName', response.data.lName);
 
+                // console.log("Hiiiii")
+
                 // localStorage.removeItem("firstName");
 
                 if(response.data.userType=="MANAGER"){
