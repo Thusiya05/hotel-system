@@ -62,13 +62,6 @@ function AddCustomer(props){
             setRoomNo(res.data);
         })
     }
-    // useEffect(() => {
-    //     axios.get(`http://localhost:3030/manager/getRoomsByRoomTypes/${}`,data)
-    //     .then((res)=>{
-    //         setData(res.data);
-    //         console.log(res.data);
-    //     })
-    // }, [])
 
     const url="http://localhost:3030/receptionist/addCustomer"
     const [data,setData]=useState({
