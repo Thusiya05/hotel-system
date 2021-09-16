@@ -95,17 +95,17 @@ export default class NavBar extends Component{
 
                     <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
-                    <NavDropdown.Divider />
+                    {/* <NavDropdown.Divider /> */}
                     <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link>
                 </Nav>
-                  <Nav>
+                  {/* <Nav>
                     <Nav.Link href="#"></Nav.Link>
                   </Nav>
                   <Nav>
                     <Nav.Link href="#"></Nav.Link>
-                  </Nav>
+                  </Nav> */}
               </Navbar.Collapse>
             </Navbar>
             {/* <MyBooking 
