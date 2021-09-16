@@ -9,6 +9,7 @@ import axios from 'axios';
 // import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
 import "../../CSS/Cusfoodmenu.css";
+import NavBar from '../../Components/NavBar';
 
 function ConfirmOrder(props){
 
@@ -171,7 +172,14 @@ const Cusfoodmenu =()=> {
         <>      
         {/* {...props}   */}
         {
+            
              <div>
+             <NavBar> </NavBar>
+             <br></br>
+             <br></br>
+             <br></br>
+             <br></br>
+            
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
              
 
