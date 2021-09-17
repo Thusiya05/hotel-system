@@ -11,13 +11,16 @@ const AssignedRooms=()=> {
     const[tasks,setTasks] = useState([]);
     const[added,setAdded] = useState(false);
     const[finish,setFinish] = useState(false);
+
     console.log(localStorage.getItem('userId')) 
+
+    // console.log("howw")
 
     useEffect(() => {
         axios.get(`http://localhost:3030/api/v1/assignedTasks/${localStorage.getItem('userId')}`)
         .then(res => {
             setTasks(res.data); 
-            console.log(tasks);
+            // console.log(tasks);
             setAdded(true);
         })
         .catch(err => {
@@ -67,7 +70,9 @@ const AssignedRooms=()=> {
                             </Tippy>
                         </h1>
 
-                        <Table striped hover size="sm" responsive id="CheckInTable" style={tableVisibility()}>
+                        <Table striped hover size="sm" responsive id="CheckInTable" 
+                        style={tableVisibility()}
+                        >
                             <thead>
                                 <tr style={{backgroundColor:'red'}}>
                                     <th>NEW</th>
