@@ -226,7 +226,7 @@ function Editfood(props){
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Row>
+                        {/* <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountName">
@@ -234,7 +234,7 @@ function Editfood(props){
                                 <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
@@ -244,20 +244,20 @@ function Editfood(props){
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <Col md={4}>
                                 
                             </Col> 
                             <Col md={4}>
                             <Form.Group as={Col} controlId="editDiscountDescription">
                                 <Form.Label style={{textAlign:'center'}}><h6>Availability</h6></Form.Label>
-                                {/* <Row>
+                                <Row>
                                     <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row> */}
+                                </Row>
                                
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -322,8 +322,8 @@ function Menu() {
                          <th>#</th>
                          <th>Food Name</th>
                          <th>Price</th>
-                         <th>Availability</th>
-                         <th>Number of Remaining Items</th>
+                         {/* <th>Availability</th> */}
+                         {/* <th>Number of Remaining Items</th> */}
                          <th> </th>
                      </tr>
                  </thead>
@@ -335,8 +335,8 @@ function Menu() {
                                  <td>{test.foodId}</td>
                                  <td>{test.foodName}</td>
                                  <td>{test.price}</td>
-                                 <td>Unavailable</td>
-                                 <td>{test.availableQty}</td>
+                                 {/* <td>Unavailable</td> */}
+                                 {/* <td>{test.availableQty}</td> */}
                                  <td style={{textAlign:'center'}}>
                                     <Tippy content="Delete">
                                         <Button type="delete"><FaTrash /></Button>

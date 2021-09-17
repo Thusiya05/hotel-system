@@ -113,6 +113,34 @@ function Addingr(props){
 }
 
 function Editingr(props){
+    console.log(props.updateIngredient);
+    const [data, setData] = useState({
+        id: "",
+        qty: ""       
+    })
+
+    function submit(e){
+        e.preventDefault();
+        console.log(data.qty);
+        axios.post("http://localhost:3030/updateIngredientQty",{
+            ingredientId: props.updateIngredient,
+            qty: data.qty
+        })
+        .then(res=>{
+            props.onHide(true);
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
     return(
         <Modal
         {...props}
@@ -126,40 +154,18 @@ function Editingr(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submit(e)}>
+
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6 >Ingredient Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                                </Form.Group>
-                            </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountValue">
+                                <Form.Group as={Col} >
                                 <Form.Label style={{textAlign:'center'}}><h6>In stock</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.qty} id="qty" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        {/* <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Availability</h6></Form.Label>
-                                {/* <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row> */}
-                               
-                                {/* </Form.Group>
-                            </Col>             
-                        </Row> */}
-                         
+                                             
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -175,18 +181,21 @@ function Editingr(props){
 function Inventory() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
+    const[updateIngredient, setUpdateIngredient]=useState([]);
     const[ingredients,setIngredient]=useState([]);
     const[ingredients2,setIngredient2]=useState([]);
     const[added, setadded] = useState(true);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
 
-    // function Update(id){
-    //     // console.log(id)
-    //     setadded(!added);
-    //     setEditShow(true);
-    //     setEditemployees(id);
-    // }
+    function Update(ingredientId){
+        // console.log(id)
+        setEditView(true)
+        setadded(!added);
+        // setEditShow(true);
+        setUpdateIngredient(ingredientId);
+        // console.log(ingredientId);
+    }
 
     // function Delete(id){
     //         axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
@@ -215,8 +224,6 @@ function Inventory() {
         })
     },[])
 
-
-
     return (
         <>
 
@@ -234,9 +241,7 @@ function Inventory() {
 
         <div className="users">
                 <Kcsidebar />
-                <br></br>
-                
-                
+                <br></br>     
         {
              <div>
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Inventory</h4>
@@ -263,9 +268,6 @@ function Inventory() {
                          <th>Ingredient Name</th>
                          <th>In stock</th>
                          <th>Re-Order Level</th>
-                         {/* 
-                         <th>Availability</th>
-                         <th>Number of Items</th> */}
                          <th> </th>
                      </tr>
                  </thead>
@@ -284,7 +286,7 @@ function Inventory() {
                                      <Button type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
-                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                     <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
                                  </Tippy>                         
                                  </td>
                              </tr>
@@ -305,7 +307,7 @@ function Inventory() {
                                      <Button type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
-                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                     <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
                                  </Tippy>                         
                                  </td>
                              </tr>
@@ -320,6 +322,8 @@ function Inventory() {
                          onHide={()=> setEditView(false)} 
                          added={added} 
                          setadded={setadded} 
+                         updateIngredient={updateIngredient}
+                         setUpdateIngredient={setUpdateIngredient}
                      />
             </div> 
             // :null
