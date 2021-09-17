@@ -117,7 +117,11 @@ export default class NavBar extends Component{
                   <Nav.Link href="/aboutUs">About Us</Nav.Link>
                 </Nav>
                 <Nav>
-                <Navbar.Text><h6>{text1()} {localStorage.getItem('firstName')} {text2()}</h6></Navbar.Text>
+                <Navbar.Text>
+                  {/* <div style={{backgroundColor:"white",color:"black",height:"2rem",width:"10rem",textAlign:"center", padding:".3rem 0 0 0",borderRadius:"1.2rem"}}> */}
+                    <h6>{text1()} {localStorage.getItem('firstName')} {text2()}</h6>
+                  {/* </div> */}
+                </Navbar.Text>
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
                     <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
