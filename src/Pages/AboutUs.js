@@ -10,7 +10,8 @@ import img2 from '../images/base-camp-2.jpg'
 import img3 from '../images/functions-3.jpg'
 import img4 from '../images/group.jpg'
 import {FaPhoneAlt,FaEnvelope,FaMapMarkerAlt,FaStar} from 'react-icons/fa'
-import { Button,Form,Modal } from 'react-bootstrap';
+import { Col,Row,Button,Form,Modal } from 'react-bootstrap';
+import Title from '../Components/Title'
 
 const colors = {
     orange: "#FFBA5A",
@@ -158,11 +159,7 @@ const AboutUs = () => {
                                 </div>    
                         </div>
                         <div>
-                    <Button variant="dark" onClick={()=>setCart(true)}>Review Us</Button>
-                    <Review 
-                        show={cart}
-                        onHide={() => setCart(false)}
-                    ></Review>
+                   
       </div>
                         <br></br>
                         <div className="row">
@@ -203,9 +200,48 @@ const AboutUs = () => {
                             </div>
                         </div>
                     </div>
-                       
+                    <Button variant="dark" onClick={()=>setCart(true)}>Review Us</Button>
+                    <Review 
+                        show={cart}
+                        onHide={() => setCart(false)}
+                    ></Review>   
                 </containerFluid>
             </div>
+            <section className="services">
+        <Title title="Customer Feedbacks" />
+        <br/>
+        <br/>
+        <div className="services-center">
+              <article className="service">
+                 <Row>
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col> 
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col> 
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col> 
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col>
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col>  
+                            <Col md={2}>
+                            <h6>Adithya Bandara</h6>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
+                            </Col>             
+                        </Row>
+              </article>  
+        </div>
+      </section>
             <div>
                 <Footer />
             </div>
