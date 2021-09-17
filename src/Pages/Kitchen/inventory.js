@@ -5,6 +5,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function Addingr(props){
 
@@ -22,16 +24,31 @@ function Addingr(props){
             qty: data.ingredient_qty,
             reorderLevel: data.reorder_level
         })
-
-        .catch((error) => {
-            // handle error
-            // toast.error('❌ ' + error.response.data);
-            alert(error.response.data);
-            
+        .then(res=>{
+            // props.setadded(!props.added);
+            props.onHide();
+            // setData({
+            //     ingredient_name: "",
+            //     lastName: "",
+            //     reorder_level: ""                
+            // })
+            // alert(res.data);
+            toast.success('✅ '+' '+ res.data);
         })
-        .then(function () {
-            // always executed
-        });
+        .catch(err => {
+            // toast.error('❌ '+' '+ err.response.data);
+            console.log(err)
+        })
+
+        // .catch((error) => {
+        //     // handle error
+        //     // toast.error('❌ ' + error.response.data);
+        //     alert(error.response.data);
+            
+        // })
+        // .then(function () {
+        //     // always executed
+        // });
     }
 
     function handle(e){
@@ -160,7 +177,7 @@ function Inventory() {
     // const[show,setShow]=useState(false);
     const[ingredients,setIngredient]=useState([]);
     const[ingredients2,setIngredient2]=useState([]);
-    // const[display,setDisplay]=useState(false);
+    const[added, setadded] = useState(true);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
 
@@ -186,7 +203,7 @@ function Inventory() {
         .catch(err => {
             console.log(err)
         })
-    },[])
+    },[added])
 
     useEffect(() => {
         axios.get('http://localhost:3030/ingredientsStillNotHaveToReFill')
@@ -202,6 +219,19 @@ function Inventory() {
 
     return (
         <>
+
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+
         <div className="users">
                 <Kcsidebar />
                 <br></br>
@@ -288,6 +318,8 @@ function Inventory() {
              <Editingr
                          show={editView}
                          onHide={()=> setEditView(false)} 
+                         added={added} 
+                         setadded={setadded} 
                      />
             </div> 
             // :null

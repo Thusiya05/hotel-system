@@ -175,28 +175,36 @@ const AboutUs = () => {
                     </Container>
                     <br></br>
                     <br></br>
+                    <br></br>
                     <div className="row">
-                        <div className="col-md-6 col-sm-6">
-                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'27rem',alignItems:'center'}}>
+                        <div className="col-md-6 col-sm-6"style={{padding:"2rem 6rem 0 2rem"}}>
+                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'30rem',alignItems:'center'}}>
+                              <div style={{backgroundColor:"lightBlue"}}>
                                 <h3 style={{textAlign:'center',padding:'2rem 0 2rem 0'}}>Get touch with us</h3>
+                              </div>  
                                 <br></br>
-                                    <Container>
-                                        <div className="contacts" style={{alignItems:'center'}}>          
-                                            <p style={{textAlign:'center',fontSize:'1.5rem'}}><FaPhoneAlt size={50} color={'goldenrod'}/><br></br> <br></br>071 736 5756</p>
+                                        <div className="contacts" style={{alignItems:'center',backgroundColor:"white"}}> 
+                                        <br></br>         
+                                            <p style={{textAlign:'center',fontSize:'1.2rem'}}><FaPhoneAlt size={45} color={'goldenrod'}/><br></br> <br></br>+94 77 306 9903<br></br>+94 77 603 7136</p>
                                             <br></br>
-                                            <p style={{textAlign:'center',fontSize:'1.5rem'}}><FaEnvelope size={50} color={'goldenrod'}/> <br></br>darshanaravindu9196@gmail.com</p>
+                                            <p style={{textAlign:'center',fontSize:'1.5rem',fontFamily:"sans-serif"}}><FaEnvelope size={45} color={'goldenrod'}/> <br></br>info@abckitulgala.com</p>
                                             <br></br>
                                             <p></p>
                                         </div>
-                                    </Container>   
                             </div>
                         </div>
-                        <div className="col-md-6 col-sm-6">
-                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'27rem',alignItems:'center'}}>
+                        <div className="col-md-6 col-sm-6" style={{padding:"2rem 0 0 13rem"}}>
+                            <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'30rem',alignItems:'center'}}>
+                            <div style={{backgroundColor:"lightBlue"}}>
                                 <h3 style={{textAlign:'center',padding:'2rem 0 2rem 0'}}>Our Location</h3>
-                                <p style={{textAlign:'center'}}><FaMapMarkerAlt size={35} color={'goldenrod'}/></p>
+                            </div>    
                                 <br></br>
-                                <Map />
+                                <div style={{backgroundColor:"white"}}>
+                                {/* <br></br> */}
+                                  <p style={{textAlign:'center',position:"static"}}><FaMapMarkerAlt size={45} color={'goldenrod'}/></p>
+                                    <Map />
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
