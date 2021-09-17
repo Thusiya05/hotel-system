@@ -237,6 +237,28 @@ function AddCustomer(props){
                                     </Form.Group>
                             </Col>             
                         </Row>
+                        <Row>
+                        <Container>
+                            <Table striped bordered hover size="sm" responsive="lg">
+                                <thead>
+                                    <tr>
+                                       <td>Room Type</td>
+                                       <td>No of Rooms</td> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SINGLE_ROOMS</td>
+                                        <td>
+                                            <Form.Group style={{textAlign:'center'}} as={Col} controlId="no_of_rooms">
+                                            <Form.Control style={{width:"6rem",textAlign:"center",borderStyle:"none"}} type="number" placeholder="0" min="0" />
+                                            </Form.Group>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                            </Container>
+                        </Row>
                        
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
@@ -347,6 +369,7 @@ function EditCustomer(props) {
                                 </Form.Group>
                             </Col>
                             <Col sm={6}>
+
                             <Form.Group controlId="editStatus">
                             <Form.Label><h6>Status</h6></Form.Label>
                             <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
