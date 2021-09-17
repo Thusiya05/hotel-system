@@ -99,6 +99,7 @@ export default function Room({ room }){
   // console.log(name);
   return (  
     <>
+    <div>
     <ToastContainer
             position="top-center"
             autoClose={5000}
@@ -134,7 +135,7 @@ export default function Room({ room }){
       </div>
       <p className="room-info">{name}</p>
     </article>
-  
+    </div>
     </>
   );
 }
