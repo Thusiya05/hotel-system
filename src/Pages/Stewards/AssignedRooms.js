@@ -1,9 +1,50 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container,Button, Table } from 'react-bootstrap'
+import 'tippy.js/dist/tippy.css';
+import Tippy from '@tippyjs/react';
+import { FaCheck, FaEarlybirds} from "react-icons/fa";
 import Stesidebar from '../../Components/stesidebar';
 import Title from '../../Components/Title';
+import axios from 'axios';
 
 const AssignedRooms=()=> {
+    const[tasks,setTasks] = useState([]);
+    const[added,setAdded] = useState(false);
+    const[finish,setFinish] = useState(false);
+    console.log(localStorage.getItem('userId')) 
+
+    useEffect(() => {
+        axios.get(`http://localhost:3030/api/v1/assignedTasks/${localStorage.getItem('userId')}`)
+        .then(res => {
+            setTasks(res.data); 
+            console.log(tasks);
+            setAdded(true);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[added])
+
+    function Done(orderId){
+        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`);
+        setFinish(true);
+        // setFinish(!finish);
+    }
+    
+    function tableVisibility(){
+        if(tasks.orderId==0){
+            return({display:'none'});
+        }
+    }
+
+    function textVisibility(){
+        if(tasks.orderId!=0){
+            return({display:'none'});
+        }
+    }
+    
+
+
     return (
         <>
             <div className="users">
@@ -11,9 +52,22 @@ const AssignedRooms=()=> {
                 <br></br>
                 <Title title="Today Jobs"></Title>
                 <div className="row">
-                    <Container style={{width:'44rem',borderRadius:'2%'}}>
-                       
-                    <Table striped hover size="sm" responsive id="CheckInTable">
+                    <Container style={{width:'44rem',borderRadius:'2%'}}>      
+
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+
+                        <h2 style={textVisibility()}>You do not have any assignments yet...!</h2>
+                        <h1 style={{color:'red'}}>
+                            <Tippy content="Completed">
+                                <FaEarlybirds />
+                            </Tippy>
+                        </h1>
+
+                        <Table striped hover size="sm" responsive id="CheckInTable" style={tableVisibility()}>
                             <thead>
                                 <tr style={{backgroundColor:'red'}}>
                                     <th>NEW</th>
@@ -29,29 +83,20 @@ const AssignedRooms=()=> {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {
-                                    pendingOrders.map(
-                                        test=>
-                                        <tr key = {test.orderId}>
-                                            <td>{test.orderId}</td>
-                                            <td>{test.roomId}</td>
-                                            <td>{test.orderTime}</td>
+                                    <tr key = {tasks.orderId}>
+                                            <td>{tasks.orderId}</td>
+                                            <td>{tasks.roomId}</td>
+                                            <td>{tasks.customerName}</td>
                                             <td style={{textAlign:'center'}}>
-                                                <Tippy content="View">
-                                                    <Button onClick={()=>SelectOrder(test.orderId)} type="view"><FaPrint /></Button>
-                                                </Tippy>
-                                                <Tippy content="Prepare">
-                                                    <Button onClick={()=>PrepareOrder(test.orderId)} type="view"><FaClipboardCheck /></Button>
-                                                </Tippy>
+                                                <Tippy content="Completed">
+                                                    <Button onClick={()=>Done(tasks.orderId)} type="done"><FaCheck /></Button>
+                                                </Tippy>                                        
                                             </td>
-                                        </tr>
-                                    )
-                                } */}
+                                    </tr>
                             </tbody>
                         </Table>
-
-                       
                     </Container>
+                    
                 </div>
             </div>
             <br></br>

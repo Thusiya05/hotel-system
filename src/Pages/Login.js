@@ -294,7 +294,7 @@ export default class Login extends Component {
                 if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
                 }else if(response.data.userType=="STEWARD"){
-                  this.props.history.push('/stewarad/assignedRoom');
+                  this.props.history.push('/steward/assignedRooms');
                 }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
                 }else if(response.data.userType=="CUSTOMER"){ 

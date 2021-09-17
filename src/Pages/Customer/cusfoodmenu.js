@@ -188,10 +188,6 @@ const Cusfoodmenu =()=> {
 
              </div>
 
-             
-
-
-
              <br></br>
              <br></br>
 
@@ -214,7 +210,7 @@ const Cusfoodmenu =()=> {
                                     {/* <Tippy content="Minus">
                                         <Button onClick={()=>Update(test.foodId)} type="minus"><FaMinus /></Button>
                                     </Tippy> */}
-                                    <input type="number" min="0" id={test.foodId}
+                                    <input class="number_increment_decrement_box" type="number" min="0" id={test.foodId}
                                         onChange={e=>{
                                             let value=e.target.value;
                                             let Total_Price=0;

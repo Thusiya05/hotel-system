@@ -1,4 +1,4 @@
-input[type=number] {
+.number_increment_decrement_box {
   /* -webkit-appearance: none; */
   margin: 0;
   background-color:red;
