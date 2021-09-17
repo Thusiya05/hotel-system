@@ -127,7 +127,7 @@ function Editingr(props){
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Row>
+                        {/* <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountName">
@@ -135,7 +135,7 @@ function Editingr(props){
                                 <Form.Control type="text" required/>
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
