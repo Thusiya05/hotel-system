@@ -68,18 +68,38 @@ function ViewOrderDerails(props){
 
 function AssignStewardToOrder(props){
     // console.log(props.ordersDetails)
-    const[foods,setFoods]=useState([])
+    const[stewards,setStewards]=useState([]);
+    const [status3, setStatus3]=useState(false);
+
 
     useEffect(() => {    
         // console.log("hello");
-        axios.get(`http://localhost:3030/order/findByoderNumber/${props.ordersDetails}`)
+        axios.get(`http://localhost:3030/api/v1/avaialableStewards`)
         .then(res => {
-            // console.log(res.data); 
             // let order = res.data;
-            setFoods(res.data)              
+            setStewards(res.data)              
+            console.log(stewards);
         })
         .catch(err => alert(err));
-    },[props.ordersDetails])    
+    },[props.ordersDetails])  
+    
+    function AssignSteward(empId){
+        console.log(empId);
+        console.log(props.ordersDetails);
+        const url = "http://localhost:3030/order/assignSteward";
+        setStatus3(!status3);
+
+        axios.post(url,{
+            empId: empId,
+            orderId: props.ordersDetails
+        })
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     return(
         <Modal
@@ -91,23 +111,24 @@ function AssignStewardToOrder(props){
         <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
             Order Number : {props.ordersDetails}
-          </Modal.Title>
+          </Modal.Title> 
                 </Modal.Header>
                 <Modal.Body>
                         <Table striped bordered hover size="sxm">
-                            {/* <thead>
-                                <tr>
-                                    <th>Food Name</th>
-                                    <th>Qty</th>
+                            <thead>
+                                <tr style={{backgroundColor:'red'}}>
+                                    <th>AVAILABLE STEWARDS</th>                                    
                                 </tr>
-                            </thead> */}
+                            </thead>
                             <tbody>
                                 {
-                                    foods.map(
+                                    stewards.map(
                                         test =>
-                                        <tr>
-                                            <td>{test.foodName}</td>
-                                            <td>{test.qty}</td>
+                                        <tr key = {test.empId}>
+                                            <td>{test.fName} {test.lName}</td>
+                                            <td>
+                                                <Button onClick={()=>AssignSteward(test.empId)} variant="danger">Assign</Button>
+                                            </td>
                                         </tr>
                                     )
                                 }
@@ -134,6 +155,7 @@ function Order() {
     const[ordersDetails,setOrderDetails] = useState(1);
     const [added, setadded] = useState(true);
     const[openView,setOpenView]=useState(false);
+    const[openView2,setOpenView2]=useState(false);
     const [status1, setStatus1]=useState(false);
     const [status2, setStatus2]=useState(false);
     
@@ -154,8 +176,8 @@ function Order() {
         // viewOrder();
     }
 
-    function AssignSteward(orderId){
-        setOpenView(true);
+    function ViewAvailableStewardList(orderId){
+        setOpenView2(true);
         setOrderDetails(orderId);
         // viewOrder();
     }
@@ -229,6 +251,12 @@ function Order() {
                                     )
                                 }
                             </tbody>
+                        <ViewOrderDerails 
+                            show={openView}
+                            onHide={() => setOpenView(false)}
+                            ordersDetails={ordersDetails}
+                            setOrderDetails={setOrderDetails}
+                        />
                         </Table>
 
 
@@ -257,31 +285,24 @@ function Order() {
                                             <td>{test.orderTime}</td>
                                             <td style={{textAlign:'center'}}>
                                                 <Tippy content="Assign Steward">
-                                                    <Button onClick={()=>AssignSteward(test.orderId)} type="finish"><FaMale /></Button>
+                                                    <Button onClick={()=>ViewAvailableStewardList(test.orderId)} type="finish"><FaMale /></Button>
                                                 </Tippy>
-                                                <Tippy content="Finished">
+                                                {/* <Tippy content="Finished">
                                                     <Button onClick={()=>FinishOrder(test.orderId)} type="finish"><FaCheck /></Button>
-                                                </Tippy>
+                                                </Tippy> */}
                                             </td>
                                         </tr>
                                     )
                                 }
                             </tbody>
-                        </Table>
-
-                        <ViewOrderDerails 
-                            show={openView}
-                            onHide={() => setOpenView(false)}
-                            ordersDetails={ordersDetails}
-                            setOrderDetails={setOrderDetails}
-                        />
 
                         <AssignStewardToOrder 
-                            show={openView}
-                            onHide={() => setOpenView(false)}
+                            show={openView2}
+                            onHide={() => setOpenView2(false)}
                             ordersDetails={ordersDetails}
                             setOrderDetails={setOrderDetails}
                         />
+                        </Table>
                         </div> 
                         
                     </Container>
