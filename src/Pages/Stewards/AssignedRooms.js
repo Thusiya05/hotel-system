@@ -11,6 +11,7 @@ const AssignedRooms=()=> {
     const[tasks,setTasks] = useState([]);
     const[added,setAdded] = useState(false);
     const[finish,setFinish] = useState(false);
+    const[userDetails,setUserDetails] = useState([]);
 
     console.log(localStorage.getItem('userId')) 
 
@@ -29,7 +30,11 @@ const AssignedRooms=()=> {
     },[added])
 
     function Done(orderId){
-        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`);
+        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`,
+        {
+            userId: localStorage.getItem('userId'),
+            orderId: orderId
+        });
         setFinish(true);
         // setFinish(!finish);
     }
