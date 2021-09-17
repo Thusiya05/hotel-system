@@ -107,7 +107,7 @@ export default class App extends Component {
             <Route exact path ="/Administrative" component={Administrative} />
             <Route exact path ="/manager/ArchivedBookings" component={ArchivedBookings} />
             <Route exact path ="/activityschedule" component={Activityschedule} />
-            <Route exact path ="/steward/assignedRooms/" component={AssignedRooms} />
+            <Route exact path ="/steward/assignedRooms" component={AssignedRooms} />
             {/* <Route exact path ="/steward/StewardsHistory/" component={StewardsHistory} /> */}
             <Route exact path ="/foodmenu" component={Foodmenu} />
             <Route exact path ="/EditProfile" component={EditProfile} />

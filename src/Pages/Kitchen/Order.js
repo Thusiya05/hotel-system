@@ -89,17 +89,19 @@ function AssignStewardToOrder(props){
         const url = "http://localhost:3030/order/assignSteward";
         setStatus3(!status3);
 
-        axios.post(url,{
-            empId: empId,
-            orderId: props.ordersDetails
-        })
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+        // useEffect(() => {
+            axios.post(url,{
+                empId: empId,
+                orderId: props.ordersDetails
+            })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        // },[status3])
+}
 
     return(
         <Modal
@@ -159,15 +161,10 @@ function Order() {
     const [status1, setStatus1]=useState(false);
     const [status2, setStatus2]=useState(false);
     
-    function FinishOrder(orderId){
-        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`);
-        setStatus1(!status1);
-    }
-    
+
     function PrepareOrder(orderId){
         axios.post(`http://localhost:3030/order/prepareOrder/${orderId}`);
         setStatus2(!status2);
-
     }
 
     function SelectOrder(orderId){
@@ -287,9 +284,6 @@ function Order() {
                                                 <Tippy content="Assign Steward">
                                                     <Button onClick={()=>ViewAvailableStewardList(test.orderId)} type="finish"><FaMale /></Button>
                                                 </Tippy>
-                                                {/* <Tippy content="Finished">
-                                                    <Button onClick={()=>FinishOrder(test.orderId)} type="finish"><FaCheck /></Button>
-                                                </Tippy> */}
                                             </td>
                                         </tr>
                                     )
