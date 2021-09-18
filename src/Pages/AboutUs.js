@@ -195,12 +195,11 @@ const AboutUs = () => {
                         </div>
                         <div className="col-md-6 col-sm-6" style={{padding:"2rem 0 0 13rem"}}>
                             <div style={{boxShadow:'1px 2px 6px 1px gray', width:'30rem',height:'30rem',alignItems:'center'}}>
-                            <div style={{backgroundColor:"lightBlue"}}>
-                                <h3 style={{textAlign:'center',padding:'2rem 0 2rem 0'}}>Our Location</h3>
-                            </div>    
+                              <div style={{backgroundColor:"lightBlue"}}>
+                                  <h3 style={{textAlign:'center',padding:'2rem 0 2rem 0'}}>Our Location</h3>
+                              </div>    
                                 <br></br>
                                 <div style={{backgroundColor:"white"}}>
-                                {/* <br></br> */}
                                   <p style={{textAlign:'center',position:"static"}}><FaMapMarkerAlt size={45} color={'goldenrod'}/></p>
                                     <Map />
                                 </div>

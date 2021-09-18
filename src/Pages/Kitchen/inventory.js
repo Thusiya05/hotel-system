@@ -4,17 +4,23 @@ import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+import date from 'date-and-time';
+
 
 
 function Addingr(props){
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM/DD/YYYY');
 
     const url = "http://localhost:3030/addIngredient"
     const [data, setData] = useState({
         ingredient_name: "",
         ingredient_qty: "",
-        reorder_level: ""
+        reorder_level: "",
+        currentDate: "",
     })
 
     function submit(e){
@@ -22,7 +28,8 @@ function Addingr(props){
         axios.post(url,{
             ingredientName: data.ingredient_name,
             qty: data.ingredient_qty,
-            reorderLevel: data.reorder_level
+            reorderLevel: data.reorder_level,
+            currentDate: currentDate
         })
         .then(res=>{
             // props.setadded(!props.added);
@@ -113,6 +120,39 @@ function Addingr(props){
 }
 
 function Editingr(props){
+    console.log(props.updateIngredient);
+    const [data, setData] = useState({
+        id: "",
+        qty: "",     
+        currentDate: ""  
+    })
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM/DD/YYYY');
+
+    function submit(e){
+        e.preventDefault();
+        console.log(data.qty);
+        axios.post("http://localhost:3030/updateIngredientQty",{
+            ingredientId: props.updateIngredient,
+            qty: data.qty,
+            currentDate: currentDate
+        })
+        .then(res=>{
+            props.onHide(true);
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
+
     return(
         <Modal
         {...props}
@@ -126,40 +166,18 @@ function Editingr(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submit(e)}>
+
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountName">
-                                <Form.Label style={{textAlign:'center'}}><h6 >Ingredient Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
-                                </Form.Group>
-                            </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} controlId="editDiscountValue">
+                                <Form.Group as={Col} >
                                 <Form.Label style={{textAlign:'center'}}><h6>In stock</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.qty} id="qty" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        {/* <Row>
-                            <Col md={4}>
-                                
-                            </Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="editDiscountDescription">
-                                <Form.Label style={{textAlign:'center'}}><h6>Availability</h6></Form.Label>
-                                {/* <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row> */}
-                               
-                                {/* </Form.Group>
-                            </Col>             
-                        </Row> */}
-                         
+                                             
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -175,25 +193,39 @@ function Editingr(props){
 function Inventory() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
+    const[updateIngredient, setUpdateIngredient]=useState([]);
     const[ingredients,setIngredient]=useState([]);
     const[ingredients2,setIngredient2]=useState([]);
     const[added, setadded] = useState(true);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
 
-    // function Update(id){
-    //     // console.log(id)
-    //     setadded(!added);
-    //     setEditShow(true);
-    //     setEditemployees(id);
-    // }
+    function Update(ingredientId){
+        // console.log(id)
+        setEditView(true)
+        setadded(!added);
+        // setEditShow(true);
+        setUpdateIngredient(ingredientId);
+        // console.log(ingredientId);
+    } 
 
-    // function Delete(id){
-    //         axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
-    //         .then(res =>{
-    //             alert(res.data)
-    //         })
-    // }
+    function Delete(ingredientId){
+        const now = new Date();
+        const currentDate = date.format(now,'MM/DD/YYYY');
+        console.log(currentDate)
+
+            axios.delete(`http://localhost:3030/deleteIngredient/${ingredientId}`)
+            .then(res=>{
+                toast.success('✅ '+' '+ res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+            axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
+                currentDate: currentDate
+            })
+    }
     
     useEffect(() => {
         axios.get('http://localhost:3030/ingredientsHaveToReFill')
@@ -215,8 +247,6 @@ function Inventory() {
         })
     },[])
 
-
-
     return (
         <>
 
@@ -234,9 +264,7 @@ function Inventory() {
 
         <div className="users">
                 <Kcsidebar />
-                <br></br>
-                
-                
+                <br></br>     
         {
              <div>
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Inventory</h4>
@@ -263,9 +291,6 @@ function Inventory() {
                          <th>Ingredient Name</th>
                          <th>In stock</th>
                          <th>Re-Order Level</th>
-                         {/* 
-                         <th>Availability</th>
-                         <th>Number of Items</th> */}
                          <th> </th>
                      </tr>
                  </thead>
@@ -281,10 +306,10 @@ function Inventory() {
                                  <td>{test.reorderLevel}</td>
                                  <td style={{textAlign:'center'}}>
                                  <Tippy content="Delete">
-                                     <Button type="delete"><FaTrash /></Button>
+                                     <Button onClick={()=>Delete(test.ingredientId)} type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
-                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                     <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
                                  </Tippy>                         
                                  </td>
                              </tr>
@@ -302,10 +327,10 @@ function Inventory() {
                                  <td>{test.reorderLevel}</td>
                                  <td style={{textAlign:'center'}}>
                                  <Tippy content="Delete">
-                                     <Button type="delete"><FaTrash /></Button>
+                                     <Button onClick={()=>Delete(test.ingredientId)} type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
-                                     <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                     <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
                                  </Tippy>                         
                                  </td>
                              </tr>
@@ -320,6 +345,8 @@ function Inventory() {
                          onHide={()=> setEditView(false)} 
                          added={added} 
                          setadded={setadded} 
+                         updateIngredient={updateIngredient}
+                         setUpdateIngredient={setUpdateIngredient}
                      />
             </div> 
             // :null

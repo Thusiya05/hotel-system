@@ -89,7 +89,8 @@ export default function Room({ room }){
   const { name, slug, images, price } = room;
   const [cart,setCart]=useState(false);
 
-    function isLogged(){
+    function isLogged(id){
+      console.log(id);
       if (localStorage.getItem('userId') != null)
           setCart(true);
       else 
@@ -98,6 +99,7 @@ export default function Room({ room }){
   // console.log(name);
   return (  
     <>
+    <div>
     <ToastContainer
             position="top-center"
             autoClose={5000}
@@ -123,7 +125,7 @@ export default function Room({ room }){
 
       </div>
       <div>
-                    <Button variant="dark" onClick={()=>isLogged()}
+                    <Button variant="dark" onClick={()=>isLogged(name)}
                     // ={()=>setCart(true)}
                     >Book Now</Button>
                     <AddCart 
@@ -133,7 +135,7 @@ export default function Room({ room }){
       </div>
       <p className="room-info">{name}</p>
     </article>
-  
+    </div>
     </>
   );
 }

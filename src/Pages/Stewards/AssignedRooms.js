@@ -11,13 +11,17 @@ const AssignedRooms=()=> {
     const[tasks,setTasks] = useState([]);
     const[added,setAdded] = useState(false);
     const[finish,setFinish] = useState(false);
+    const[userDetails,setUserDetails] = useState([]);
+
     console.log(localStorage.getItem('userId')) 
+
+    // console.log("howw")
 
     useEffect(() => {
         axios.get(`http://localhost:3030/api/v1/assignedTasks/${localStorage.getItem('userId')}`)
         .then(res => {
             setTasks(res.data); 
-            console.log(tasks);
+            // console.log(tasks);
             setAdded(true);
         })
         .catch(err => {
@@ -26,7 +30,11 @@ const AssignedRooms=()=> {
     },[added])
 
     function Done(orderId){
-        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`);
+        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`,
+        {
+            userId: localStorage.getItem('userId'),
+            orderId: orderId
+        });
         setFinish(true);
         // setFinish(!finish);
     }
@@ -67,7 +75,9 @@ const AssignedRooms=()=> {
                             </Tippy>
                         </h1>
 
-                        <Table striped hover size="sm" responsive id="CheckInTable" style={tableVisibility()}>
+                        <Table striped hover size="sm" responsive id="CheckInTable" 
+                        style={tableVisibility()}
+                        >
                             <thead>
                                 <tr style={{backgroundColor:'red'}}>
                                     <th>NEW</th>

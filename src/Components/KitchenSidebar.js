@@ -15,12 +15,12 @@ export const KitchenSideBar = [
         link:'/Kitchen/order/',
     },
 
-    {
-        title: "Assign Steward",
-        icon: <MdIcons.MdAssignmentInd />,
-        link:'/Kitchen/deliver/',
+    // {
+    //     title: "Assign Steward",
+    //     icon: <MdIcons.MdAssignmentInd />,
+    //     link:'/Kitchen/deliver/',
 
-    },
+    // },
 
     {
         title: "Food Menu",
