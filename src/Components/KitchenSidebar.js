@@ -15,35 +15,36 @@ export const KitchenSideBar = [
         link:'/Kitchen/order/',
     },
 
-    // {
-    //     title: "Assign Steward",
-    //     icon: <MdIcons.MdAssignmentInd />,
-    //     link:'/Kitchen/deliver/',
-
-    // },
-
+    
     {
         title: "Food Menu",
         icon: <BiIcons.BiFoodMenu />,
         link:'/Kitchen/menu/',
     },
-
+    
     {
         title: "Inventory",
         icon: <FaIcons.FaShoppingCart />,
         link:'/Kitchen/inventory/',
     },
-
+    
     {
         title: "Recipe",
         icon: <BiIcons.BiFoodMenu />,
         link:'/Kitchen/recipe/',
     },
-
+    
+    {
+        title: "Reports",
+        icon: <MdIcons.MdAssignmentInd />,
+        link:'/Kitchen/deliver/',
+    
+    },
+    
     {
         title: "Logout",
         icon: <RiIcons.RiLogoutBoxFill />,
         link:'/Signin',
     },
-
+    
 ] ;

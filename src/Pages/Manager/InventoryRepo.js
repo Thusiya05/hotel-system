@@ -54,7 +54,7 @@ class InventoryRepo extends React.Component {
             <Sidebar/>
             <Title title="Inventory Report"></Title>
         <div class="text-center">
-          {/* <Form>
+          <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
@@ -66,7 +66,7 @@ class InventoryRepo extends React.Component {
                                   <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
                               </Form.Row>
-                </Form> */}
+                </Form>
         <Button variant="secondary" 
             style={{
                 minHeight: "5rem",
