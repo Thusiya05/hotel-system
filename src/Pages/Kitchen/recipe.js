@@ -8,6 +8,7 @@ import axios from 'axios';
 //import { Tab } from 'bootstrap';
 //import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
+import date from 'date-and-time';
 
 
 
@@ -155,6 +156,11 @@ const Recipe =()=> {
     const [added, setadded] = useState(true);
     const[editFood,setEditFood]=useState(1);
 
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM-DD-YYYY');
+    console.log(currentDate);
+
     function Update(foodId){
         // console.log(foodId)
         setadded(!added);
@@ -175,6 +181,19 @@ const Recipe =()=> {
 
     return (
         <>
+
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+
         <div className="users">
                 <Kcsidebar />
                 <br></br>

@@ -4,6 +4,7 @@ import Tippy from '@tippyjs/react';
 import { FaCheck, FaPrint, FaClipboardCheck, FaMale } from "react-icons/fa";
 import 'tippy.js/dist/tippy.css';
 import Kcsidebar from '../../Components/kcsidebar'
+import { ToastContainer, toast } from 'react-toastify';
 import Title from '../../Components/Title';
 import axios from 'axios';
 
@@ -96,9 +97,14 @@ function AssignStewardToOrder(props){
             })
             .then(res => {
                 console.log(res.data)
+            toast.success('✅ '+' '+ res.data);
+
+
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err.response.data)
+            toast.error('❌ '+' '+ err.response.data);
+
             })
         // },[status3])
 }
@@ -165,6 +171,7 @@ function Order() {
     function PrepareOrder(orderId){
         axios.post(`http://localhost:3030/order/prepareOrder/${orderId}`);
         setStatus2(!status2);
+        toast.success('✅ '+' '+ "Order is added to the progress list");
     }
 
     function SelectOrder(orderId){
@@ -203,6 +210,19 @@ function Order() {
 
     return (
         <>
+        
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+
             <div className="users">
                 <Kcsidebar/>
                 <br></br>
