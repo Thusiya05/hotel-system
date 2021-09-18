@@ -10,6 +10,8 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "../../CSS/Cusfoodmenu.css";
 import NavBar from '../../Components/NavBar';
+import Hero from '../../Components/Hero'
+import Banner from '../../Components/Banner'
 
 function ConfirmOrder(props){
 
@@ -193,7 +195,10 @@ const Cusfoodmenu =()=> {
              <br></br>
              <br></br>
              <br></br>
-             <br></br>
+             
+             <Hero hero="foodhero">
+            <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="Schedule your Meal" path="/activityschedule"></Banner>
+        </Hero>
             
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
              
