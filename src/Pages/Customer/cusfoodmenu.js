@@ -49,8 +49,7 @@ function ConfirmOrder(props){
             status: "PENDING"
         })
         .then(function(res){
-            console.log(res.data);
-                
+            // console.log(res.data);
             axios.post(`http://localhost:3030/order/placeOrder/${date.toLocaleTimeString()}`,{
                 customerId: localStorage.getItem('userId'),
                 foIdList: props.IdOfOrderedFoods,
@@ -58,10 +57,12 @@ function ConfirmOrder(props){
                 // fiIdList: fiIdArray,
                 // ingredientsQtyList: ingredientQtyArray
             })            
+            props.onHide();
+            toast.success('✅ '+' '+ res.data);
         })
         .catch(function(err){
             console.log(err.data);
-
+            toast.error('❌ ' + err.res.data);
         })
     }
 
@@ -171,6 +172,20 @@ const Cusfoodmenu =()=> {
     return (
         <>      
         {/* {...props}   */}
+
+        
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+        
         {
             
              <div>

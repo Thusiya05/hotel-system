@@ -4,6 +4,7 @@ import { Button,Form,Col,Table,Modal,Row,Nav } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 
@@ -78,14 +79,16 @@ function Addfood(props){
                 })
 
                 // handle success
-                console.log(response);
-                alert(response.data);
+                // console.log(response);
+                // alert(response.data);
+                props.onHide();
+                toast.success('✅ '+' '+ response.data);
 
             })
             .catch(function (error) {
                 // handle error
-                // toast.error('❌ ' + error.response.data);
-                alert(error.response.data);
+                toast.error('❌ ' + error.response.data);
+                // alert(error.response.data);
             })
 
             // console.log(typeof(ingredientListArray))
@@ -212,6 +215,33 @@ function Addfood(props){
 
 
 function Editfood(props){
+    console.log(props.updateFood);
+    const [data, setData] = useState({
+        id: "",
+        price: ""       
+    })
+
+    function submit(e){
+        e.preventDefault();
+        console.log(data.qty);
+        axios.post("http://localhost:3030/updateFoodPrice",{
+            foodId: props.updateFood,
+            price: data.price
+        })
+        .then(res=>{
+            props.onHide(true);
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
     return(
         <Modal
         {...props}
@@ -225,7 +255,7 @@ function Editfood(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={(e) => submit(e)}>
                         {/* <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
@@ -240,7 +270,7 @@ function Editfood(props){
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountValue">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.price} id="price" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -274,8 +304,10 @@ function Menu() {
     // const[open,setOpen]=useState(true);
     // const[show,setShow]=useState(false);
     // const[view,setView]=useState(false);
-    const[foods,setFood]=useState([]);
     // const[display,setDisplay]=useState(false);
+    const[added, setadded] = useState(true);
+    const[foods,setFood]=useState([]);
+    const[updateFood, setUpdateFood]=useState([]);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
 
@@ -289,9 +321,44 @@ function Menu() {
         })
     },[])
 
+    function Update(foodId){
+        // console.log(id)
+        setEditView(true)
+        setadded(!added);
+        // setEditShow(true);
+        setUpdateFood(foodId);
+        // console.log(ingredientId);
+    } 
+
+    function Delete(foodId){
+        console.log("hello")
+            axios.delete(`http://localhost:3030/deleteFood/${foodId}`)
+            .then(res=>{
+                toast.success('✅ '+' '+ res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    
+
 
     return (
         <>
+
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
+
+
         <div className="users">
                 <Kcsidebar />
                 <br></br>
@@ -339,10 +406,10 @@ function Menu() {
                                  {/* <td>{test.availableQty}</td> */}
                                  <td style={{textAlign:'center'}}>
                                     <Tippy content="Delete">
-                                        <Button type="delete"><FaTrash /></Button>
+                                        <Button onClick={()=>Delete(test.foodId)} type="delete"><FaTrash /></Button>
                                     </Tippy>
                                         <Tippy content="Edit">
-                                        <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
+                                        <Button onClick={()=>Update(test.foodId)} type="edit"><FaPen /></Button>
                                     </Tippy>
                                 </td>
                              </tr>
@@ -353,6 +420,10 @@ function Menu() {
              <Editfood
                          show={editView}
                          onHide={()=> setEditView(false)} 
+                         added={added} 
+                         setadded={setadded} 
+                         updateFood={updateFood}
+                         setUpdateFood={setUpdateFood}
                      />
             </div> 
             // :null

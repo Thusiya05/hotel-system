@@ -4,8 +4,8 @@ import { Button,Form,Col,Table,Modal,Row } from 'react-bootstrap';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 
 function Addingr(props){
@@ -195,14 +195,18 @@ function Inventory() {
         // setEditShow(true);
         setUpdateIngredient(ingredientId);
         // console.log(ingredientId);
-    }
+    } 
 
-    // function Delete(id){
-    //         axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
-    //         .then(res =>{
-    //             alert(res.data)
-    //         })
-    // }
+    function Delete(ingredientId){
+        console.log("hello")
+            axios.delete(`http://localhost:3030/deleteIngredient/${ingredientId}`)
+            .then(res=>{
+                toast.success('✅ '+' '+ res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     
     useEffect(() => {
         axios.get('http://localhost:3030/ingredientsHaveToReFill')
@@ -283,7 +287,7 @@ function Inventory() {
                                  <td>{test.reorderLevel}</td>
                                  <td style={{textAlign:'center'}}>
                                  <Tippy content="Delete">
-                                     <Button type="delete"><FaTrash /></Button>
+                                     <Button onClick={()=>Delete(test.ingredientId)} type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
                                      <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
@@ -304,7 +308,7 @@ function Inventory() {
                                  <td>{test.reorderLevel}</td>
                                  <td style={{textAlign:'center'}}>
                                  <Tippy content="Delete">
-                                     <Button type="delete"><FaTrash /></Button>
+                                     <Button onClick={()=>Delete(test.ingredientId)} type="delete"><FaTrash /></Button>
                                  </Tippy>
                                      <Tippy content="Edit">
                                      <Button onClick={()=>Update(test.ingredientId)} type="edit"><FaPen /></Button>
