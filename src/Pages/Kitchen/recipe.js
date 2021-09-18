@@ -8,6 +8,7 @@ import axios from 'axios';
 //import { Tab } from 'bootstrap';
 //import { data } from 'jquery';
 import { ToastContainer, toast } from 'react-toastify';
+import date from 'date-and-time';
 
 
 
@@ -154,6 +155,11 @@ const Recipe =()=> {
     const[editView,setEditView]=useState(false);    
     const [added, setadded] = useState(true);
     const[editFood,setEditFood]=useState(1);
+
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM-DD-YYYY');
+    console.log(currentDate);
 
     function Update(foodId){
         // console.log(foodId)

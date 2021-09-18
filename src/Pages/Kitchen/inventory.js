@@ -6,15 +6,21 @@ import 'tippy.js/dist/tippy.css';
 import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import date from 'date-and-time';
+
 
 
 function Addingr(props){
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM/DD/YYYY');
 
     const url = "http://localhost:3030/addIngredient"
     const [data, setData] = useState({
         ingredient_name: "",
         ingredient_qty: "",
-        reorder_level: ""
+        reorder_level: "",
+        currentDate: "",
     })
 
     function submit(e){
@@ -22,7 +28,8 @@ function Addingr(props){
         axios.post(url,{
             ingredientName: data.ingredient_name,
             qty: data.ingredient_qty,
-            reorderLevel: data.reorder_level
+            reorderLevel: data.reorder_level,
+            currentDate: currentDate
         })
         .then(res=>{
             // props.setadded(!props.added);
@@ -116,15 +123,20 @@ function Editingr(props){
     console.log(props.updateIngredient);
     const [data, setData] = useState({
         id: "",
-        qty: ""       
+        qty: "",     
+        currentDate: ""  
     })
+
+    const now = new Date();
+    const currentDate = date.format(now,'MM/DD/YYYY');
 
     function submit(e){
         e.preventDefault();
         console.log(data.qty);
         axios.post("http://localhost:3030/updateIngredientQty",{
             ingredientId: props.updateIngredient,
-            qty: data.qty
+            qty: data.qty,
+            currentDate: currentDate
         })
         .then(res=>{
             props.onHide(true);
@@ -198,13 +210,20 @@ function Inventory() {
     } 
 
     function Delete(ingredientId){
-        console.log("hello")
+        const now = new Date();
+        const currentDate = date.format(now,'MM/DD/YYYY');
+        console.log(currentDate)
+
             axios.delete(`http://localhost:3030/deleteIngredient/${ingredientId}`)
             .then(res=>{
                 toast.success('✅ '+' '+ res.data);
             })
             .catch(err => {
                 console.log(err)
+            })
+
+            axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
+                currentDate: currentDate
             })
     }
     
