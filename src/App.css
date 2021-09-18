@@ -44,8 +44,16 @@ nav img{
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
+.thiredHero,
+.foodhero{
+  min-height: calc(90vh - 66px);
+  background: url("./images/food.jpg") center/ cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .roomsHero{
     background-image: url("./images/hotel-room.jpg");
     min-height: 60vh;
@@ -64,6 +72,11 @@ nav img{
  .aboutus{
   min-height: 60vh;
   background-image: url("./images/cmposs.jpg") ;
+  background-attachment:fixed;
+ }
+ .foodhero{
+  min-height: 60vh;
+  background-image: url("./images/food.jpg") ;
   background-attachment:fixed;
  }
 /* End of Hero */
