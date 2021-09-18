@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import NavBar from "../Components/NavBar"
 import Hero from "../Components/Hero"
 import Banner from '../Components/Banner'
@@ -12,7 +12,8 @@ import img4 from '../images/group.jpg'
 import {FaPhoneAlt,FaEnvelope,FaMapMarkerAlt,FaStar} from 'react-icons/fa'
 import { Col,Row,Button,Form,Modal } from 'react-bootstrap';
 import Title from '../Components/Title'
-
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 const colors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9"
@@ -43,6 +44,39 @@ const styles = {
 
 function Review(props) {
 
+    const url = "http://localhost:3030/customer/review/addReviewFeedback"
+    const [data, setData] = useState({
+    
+        feedback: ""
+        
+    })
+
+    function submit(e){
+        e.preventDefault();
+        axios.post(url,data)
+        .then(res=>{
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+            
+                feedback: ""
+            
+            })
+            // alert(" FeedBack Added Successfully");
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err => {
+            toast.error('❌ '+' '+ err.response.data);
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+        // console.log(newdata)
+    }
+
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const stars = Array(5).fill(0)
@@ -72,7 +106,7 @@ function Review(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-         <Form>
+         <Form onSubmit={(e) => submit(e)}>
         <div style={styles.container}>
             <br/>
       <h2> Rate Us </h2>
@@ -94,10 +128,23 @@ function Review(props) {
           )
         })}
       </div>
-      <textarea
-        placeholder="What's your experience?"
-        style={styles.textarea}
-      />
+      
+      <Form.Group as={Col} controlId="AddDiscountDescription">
+                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
+                                
+                                <Row>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.feedback} style={{height:'5rem'}} type="text"   required/>
+                                </Row>
+                               
+     </Form.Group>
+                                
+                                    
+                                {/* <Row>
+                                    <Form.Control style={{height:'5rem'}} type="text" required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.feedback} type="text" placeholder="Enter Your FeedBack" required/>
+                                </Row> 
+                               
+        </Form.Group> */}
 
        
         <div style={{textAlign:'center'}}>
@@ -120,6 +167,18 @@ function Review(props) {
 
 const AboutUs = () => {
     const [cart,setCart]=useState(false);
+    const [employees,setEmployees]=useState([])
+    const [added, setadded] = useState(true);
+
+    useEffect(() => {
+        axios.get('http://localhost:3030/customer/review/reviewFeedback')
+        .then(res => {
+            setEmployees(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[added])
    
     return (
         <>
@@ -211,6 +270,8 @@ const AboutUs = () => {
                     <Review 
                         show={cart}
                         onHide={() => setCart(false)}
+                        added={added} 
+                        setadded={setadded}
                     ></Review>   
                 </containerFluid>
             </div>
@@ -220,32 +281,35 @@ const AboutUs = () => {
         <br/>
         <div className="services-center">
               <article className="service">
-                 <Row>
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col> 
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col> 
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col> 
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col>
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col>  
-                            <Col md={2}>
-                            <h6>Adithya Bandara</h6>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?</p>
-                            </Col>             
-                        </Row>
+                 <div>
+
+                            
+                        <tbody>
+                        {  
+                            employees.map(
+                               
+                        test =>
+                                
+                        <tr key = {test.id}>  
+                        <br/>
+                            <td>{test.feedback}</td>
+                           
+                            {/* <td>{employee.password}</td> */}
+                            {/* <td style={{textAlign:'center'}}>
+                            <Tippy content="Delete">
+                                <Button onClick={()=>Delete(test.id)} type="delete"><FaTrash /></Button>
+                            </Tippy>
+                             <Tippy content="Edit">
+                                <Button onClick={()=>Update(test.id)} type="edit"><FaPen /></Button>
+                             </Tippy>
+                             </td> */}
+                        </tr>
+                            )
+                        }
+                    </tbody>
+                         
+                                     
+                        </div>
               </article>  
         </div>
       </section>
