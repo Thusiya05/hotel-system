@@ -96,14 +96,14 @@ function AssignStewardToOrder(props){
                 orderId: props.ordersDetails
             })
             .then(res => {
-                // console.log(res.data)
-            toast.success('✅ '+' '+ "Assigned Steward to the Order");
+                console.log(res.data)
+            toast.success('✅ '+' '+ res.data);
 
 
             })
             .catch(err => {
-                console.log(err)
-            toast.error('❌ '+' '+ err.res.data);
+                // console.log(err.response.data)
+            toast.error('❌ '+' '+ err.response.data);
 
             })
         // },[status3])

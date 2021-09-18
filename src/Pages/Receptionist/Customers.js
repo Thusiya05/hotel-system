@@ -210,7 +210,7 @@ function AddCustomer(props){
                             <Form.Control onChange={(e)=>handle(e)} value={data.checkOutDate} type="date" required/>
                             </Form.Group>
                         </Form.Row>
-                        <Row>
+                        {/* <Row>
                             <Col sm={6}>
                             <Form.Group as={Col} controlId="roomTypes">
                             <Form.Label><h6>Room Type</h6></Form.Label>
@@ -223,8 +223,8 @@ function AddCustomer(props){
                                 </Form.Control>
                             </Form.Group>
                             </Col>
-                            <Col sm={6}>
-                            <Form.Group controlId="roomNo">
+                            <Col sm={6}> */}
+                            {/* <Form.Group controlId="roomNo">
                             <Form.Label><h6>Room No</h6></Form.Label>
                             <Form.Control as="select" onChange={(e)=>handle(e)} value={data.roomNo}  className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                         {
@@ -234,9 +234,16 @@ function AddCustomer(props){
                                             )
                                         }
                                 </Form.Control>
-                            </Form.Group>   
+                            </Form.Group>    */}
+                            {/* <Form.Group as={Col} controlId="meal">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
+                                        <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
+                                                <option value="Full Board">Full Board</option>
+                                                <option value="Half Board">Half Board</option>
+                                        </Form.Control>
+                                    </Form.Group>
                             </Col>
-                        </Row>
+                        </Row> */}
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>

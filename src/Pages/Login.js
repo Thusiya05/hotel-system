@@ -281,23 +281,23 @@ export default class Login extends Component {
                 // handle success
                 // console.log(response.data);   
                 // alert(response.data.token);
-                if(response.data.userType=="CUSTOMER"){
-                  localStorage.setItem('userId', response.data.userId);
-                  localStorage.setItem('firstName', response.data.fName);
-                  localStorage.setItem('lastName', response.data.lName);
-                }
 
-                // console.log("Hiiiii")
-
+                
                 // localStorage.removeItem("firstName");
-
+                
                 if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
                 }else if(response.data.userType=="STEWARD"){
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
                   this.props.history.push('/steward/assignedRooms');
                 }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
                 }else if(response.data.userType=="CUSTOMER"){ 
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
                   this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
