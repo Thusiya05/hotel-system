@@ -281,8 +281,7 @@ export default class Login extends Component {
                 // handle success
                 // console.log(response.data);   
                 // alert(response.data.token);
-                
-                // console.log("Hiiiii")
+
                 
                 // localStorage.removeItem("firstName");
                 

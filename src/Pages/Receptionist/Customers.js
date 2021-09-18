@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState ,useEffect} from 'react';
 import RcsideBar from '../../Components/rcsidebar'
 import { Button,Form,Col,Table,Modal,Row,Nav,Container } from 'react-bootstrap'
 import { FaTrash,FaPen,FaPrint,FaSearch } from "react-icons/fa";
@@ -50,6 +50,31 @@ function ShowBill(props){
     );
 }
 function AddCustomer(props){
+    // const[added,setadded]=useState(true)
+    const[roomNo,setRoomNo]=useState([])
+    const[roomType,setRoomType]=useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:3030/manager/getRoomTypes`)
+        .then(res=>{
+            setRoomType(res.data)
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[props.added])
+
+    function Select(e){
+        // setadded(!added);
+        // setRoomTypes(roomTypes);
+        axios.get(`http://localhost:3030/manager/getRoomsByRoomTypes/${e.target.value}`)
+        .then((res)=>{
+            console.log(res.data);
+            setRoomNo(res.data);
+        })
+    }
+
     const url="http://localhost:3030/receptionist/addCustomer"
     const [data,setData]=useState({
         firstName:"",
@@ -64,7 +89,7 @@ function AddCustomer(props){
         contactNo:"",
         checkInDate:"",
         checkOutDate:"",
-        // meal:"",
+        meal:"",
         roomNo:""
     })
 
@@ -87,7 +112,7 @@ function AddCustomer(props){
                 contactNo:"",
                 checkInDate:"",
                 checkOutDate:"",
-                // meal:"",
+                meal:"",
                 roomNo:""
             })
             toast.success('✅ '+' '+ res.data);
@@ -187,26 +212,27 @@ function AddCustomer(props){
                         </Form.Row>
                         <Row>
                             <Col sm={6}>
-                            {/* <Form.Group as={Col} controlId="addRoom">
+                            <Form.Group as={Col} controlId="roomTypes">
                             <Form.Label><h6>Room Type</h6></Form.Label>
-                                <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
+                                <Form.Control as="select" onChange={(e)=>Select(e)} className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
                                         <option value="0">Choose..</option>
-                                        <option value="1">Single Room</option>
-                                        <option value="2">Double Room</option>
-                                        <option value="2">Family Room</option>
-                                        <option value="2">Camping</option>
+                                        <option value="SINGLE_ROOMS">SINGLE_ROOMS</option>
+                                        <option value="DOUBLE_ROOMS">DOUBLE_ROOMS</option>
+                                        <option value="3">Family Room</option>
+                                        <option value="4">Camping</option>
                                 </Form.Control>
-                            </Form.Group> */}
+                            </Form.Group>
                             </Col>
                             <Col sm={6}>
                             <Form.Group controlId="roomNo">
                             <Form.Label><h6>Room No</h6></Form.Label>
                             <Form.Control as="select" onChange={(e)=>handle(e)} value={data.roomNo}  className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                        <option value="0">Choose..</option>
-                                        <option value="2">1</option>
-                                        <option value="3">2</option>
-                                        <option value="2">3</option>
-                                        <option value="3">4</option>
+                                        {
+                                            roomNo.map(
+                                                test=> 
+                                                <option>{test.roomNo}</option>
+                                            )
+                                        }
                                 </Form.Control>
                             </Form.Group>   
                             </Col>
@@ -214,17 +240,44 @@ function AddCustomer(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                            {/* <Form.Group as={Col} controlId="addMeal">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6>
-                                    <div>
-                                            <br></br>
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios1" value="option1" checked /> Full bord &nbsp; &nbsp; &nbsp; 
-                                            <input class="add-User-Gender-Button" type="radio" name="gender" id="exampleRadios2" value="option2" />half bord
-
-                                    </div>
-                                    </Form.Label>
-                                </Form.Group> */}
+                            <Form.Group as={Col} controlId="meal">
+                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
+                                    <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
+                                                <option value="Full Board">Full Board</option>
+                                                <option value="Half Board">Half Board</option>
+                                        </Form.Control>
+                                    </Form.Group>
                             </Col>             
+                        </Row>
+                        <Row>
+                        <Container>
+                            <Table striped bordered hover size="sm" responsive="lg">
+                                <thead>
+                                    <tr>
+                                       <th>Room Type</th>
+                                       <td>No of Rooms</td> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {
+                                     roomType.map(
+                                         test=>
+                                         <tr key={test.roomTypeID}>
+                                            <td>{test.roomTypes}</td>
+                                            <td>
+                                            <Form.Group style={{textAlign:'center'}} as={Col} controlId="no_of_rooms">
+                                            <Form.Control style={{width:"6rem",textAlign:"center",borderStyle:"none"}} type="number" placeholder="0" min="0" />
+                                            </Form.Group>
+                                        </td>
+                                        </tr>    
+                                         
+                                     )   
+                                    } 
+                                       
+                                </tbody>
+                            </Table>
+                            </Container>
                         </Row>
                        
                         <div style={{textAlign:'center'}}>
@@ -336,6 +389,7 @@ function EditCustomer(props) {
                                 </Form.Group>
                             </Col>
                             <Col sm={6}>
+
                             <Form.Group controlId="editStatus">
                             <Form.Label><h6>Status</h6></Form.Label>
                             <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
@@ -407,7 +461,7 @@ const Customers=()=>{
                                     <AddCustomer
                                         show={display}
                                         onHide={()=> setDisplay(false)}
-                                        added={added} 
+                                        added={!added} 
                                         setadded={setadded} 
                                     />
                                 </div>

@@ -100,19 +100,20 @@ nav img{
 }
 
 .jumbotron h2{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    font-family:monospace;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     color:ghostwhite;
 }
 .jumbotron h3{
-    font-size: 3rem;
+    font-size: 2.5rem;
     color:mediumturquoise;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-.jumbotron h2:hover{
-  font-size: 1.6rem;
-}
+/* .jumbotron h2:hover{
+  font-size: 1.55rem;
+} */
 /* End of Banner */
 
 /* Section title */
