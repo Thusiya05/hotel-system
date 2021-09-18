@@ -129,7 +129,7 @@ function Review(props) {
         })}
       </div>
       
-      <Form.Group as={Col} controlId="AddDiscountDescription">
+      <Form.Group as={Col} controlId="feedback">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 
                                 <Row>
