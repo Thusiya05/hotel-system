@@ -1,0 +1,17 @@
+.features-boxed .item .description {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 1em;
+}
+
+.fas.fa-shopping-basket {
+    font-size: 1.5em;
+}
+
+span {
+    margin-left: 10px;
+}
