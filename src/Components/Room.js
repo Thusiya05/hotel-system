@@ -27,8 +27,8 @@ function AddCart(props) {
  const [added, setAdded] = useState(false);
 
   const [data, setData] = useState({
-    checkInDate: "1997-05-21",
-    checkOutDate: "1997-05-22",
+    checkInDate: "",
+    checkOutDate: "",
     meal: "Full-Board",
     customerID: localStorage.getItem('userId'),
     numberOfRooms: 1,
@@ -36,11 +36,18 @@ function AddCart(props) {
 useEffect(() => {
   axios.get(`http://localhost:3030/customer/booking/getroomnumbers/${props.roomName}/${data.checkInDate}/${data.checkOutDate}`)
   .then((res)=>{
-      setMaxroom(res.data);
+      // setMaxroom(res.data);
+      // console.log(res.data)
+      if (res.data==0) {
+        setMaxroom(1);
+      }else{
+        setMaxroom(res.data);
+      }
   })
 }, [added])
 
   function checkInDate(e){
+    e.preventDefault();
     const newdata={...data}
     newdata[e.target.id] = e.target.value
     setData(newdata)
@@ -53,14 +60,15 @@ useEffect(() => {
         .then(res=>{
           props.onHide();
           setData({
-            checkInDate: "1997-05-21",
-            checkOutDate: "1997-05-22",
+            checkInDate: "",
+            checkOutDate: "",
             meal: "Full-Board",
             customerID: localStorage.getItem('userId'),
             numberOfRooms: 1,
           })
           // alert("Employee Added Successfully");
           toast.success('✅ '+' '+ res.data);
+          console.log(res.data)
       })
       .catch(err => {
           toast.error('❌ '+' '+ err.response.data);
@@ -86,12 +94,12 @@ useEffect(() => {
                               <Form.Row>
                                   <Form.Group as={Col} controlId="checkInDate">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
-                                  <Form.Control onChange={(e)=>checkInDate(e)} type="date"  min={new Date().toISOString().split("T")[0]} required/>
+                                  <Form.Control value={data.checkInDate} onChange={(e)=>checkInDate(e)} type="date"  min={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="checkOutDate">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                                  <Form.Control onChange={(e)=>checkInDate(e)} type="date"   required/>
+                                  <Form.Control value={data.checkOutDate} onChange={(e)=>checkInDate(e)} type="date"   required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>
@@ -102,11 +110,11 @@ useEffect(() => {
                                  
                                   <Form.Group as={Col} controlId="numberOfRooms">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                  <Form.Control onChange={(e)=>checkInDate(e)} type="number" placeholder="1" min="1" max={maxroom} required/>
+                                  <Form.Control value={data.numberOfRooms} onChange={(e)=>checkInDate(e)} type="number" placeholder="1" min="1" max={maxroom} />
                                   </Form.Group>
                                   <Form.Group as={Col} controlId="meal">
                                     <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>checkInDate(e)} as="select" className="my-1 mr-sm-2" value="" custom>
+                                    <Form.Control value={data.meal} onChange={(e)=>checkInDate(e)} as="select" className="my-1 mr-sm-2" value="" custom>
                                                 <option value="Full-Board">Full-Board</option>
                                                 <option value="Half-Board">Half-Board</option>
                                     </Form.Control>
