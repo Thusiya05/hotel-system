@@ -41,19 +41,27 @@ const InventoryRepo=()=> {
 
     doc.setFontSize(15);
 
-    const title = "Guest Details";
+    const title = "INVENTORY REPORT";
+    const Description = "Use for Orders";
+    const dateStart = "From : " + dateFrom.toString();
+    const dateEnds = "To    : " + dateTo.toString();
+
     const headers = [["Ingredient ID", "Ingredient Name", "Available Qty", "Used Qty"]];
 
     const data = InventoryData.map(elt=> [elt.ingredientId, elt.ingredientName, elt.availableQty, elt.usedQty]);
 
     let content = {
-      startY: 50,
+      startY: 120,
       head: headers,
       body: data
     };
 
     doc.text(title, marginLeft, 40);
+    doc.text(Description, marginLeft, 60);
+    doc.text(dateStart, marginLeft, 80);
+    doc.text(dateEnds, marginLeft, 100);
     doc.autoTable(content);
+    
     doc.save("Inventory Report.pdf")
   }
 
