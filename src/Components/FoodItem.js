@@ -1,9 +1,6 @@
 import React from 'react'
 import food from "../images/food.jpg"
 
-import '../CSS/basket.css'
-import '../CSS/foodstyle.css'
-
 const FoodItem = () => {
     return (
         
@@ -11,7 +8,7 @@ const FoodItem = () => {
             <div className="box">
             <br/>
                 <img className="rounded img-fluid pizza-img" src={food}/>
-                <h3 className="name">BBQ</h3>
+                <h3>BBQ</h3>
             
                 <div className="d-flex justify-content-around align-items-center">
                     <button className="btn btn-success" >
