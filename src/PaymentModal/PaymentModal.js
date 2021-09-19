@@ -50,7 +50,15 @@ const PaymentModal = ({ orderId, name, amount }) => {
     window.payhere.startPayment(payment);
   }
 
-  return <button onClick={pay}>Pay with Payhere</button>;
+  return (<button variant="secondary" 
+  style={{
+      minHeight: "5rem",
+      minWidth: "10rem",
+      padding: "0rem 0rem 0rem 38rem",
+      marginTop: "6rem",
+      textAlign: "center",
+      color: "red",
+      }} onClick={pay}>Pay with Payhere</button> )
 };
 
 export default PaymentModal;
