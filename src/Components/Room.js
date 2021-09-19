@@ -27,8 +27,8 @@ function AddCart(props) {
  const [added, setAdded] = useState(false);
 
   const [data, setData] = useState({
-    checkInDate: "1997-05-21",
-    checkOutDate: "1997-05-22",
+    checkInDate: "",
+    checkOutDate: "",
     meal: "Full-Board",
     customerID: localStorage.getItem('userId'),
     numberOfRooms: 1,
@@ -36,11 +36,18 @@ function AddCart(props) {
 useEffect(() => {
   axios.get(`http://localhost:3030/customer/booking/getroomnumbers/${props.roomName}/${data.checkInDate}/${data.checkOutDate}`)
   .then((res)=>{
-      setMaxroom(res.data);
+      // setMaxroom(res.data);
+      // console.log(res.data)
+      if (res.data==0) {
+        setMaxroom(1);
+      }else{
+        setMaxroom(res.data);
+      }
   })
 }, [added])
 
   function checkInDate(e){
+    e.preventDefault();
     const newdata={...data}
     newdata[e.target.id] = e.target.value
     setData(newdata)
@@ -53,8 +60,8 @@ useEffect(() => {
         .then(res=>{
           props.onHide();
           setData({
-            checkInDate: "1997-05-21",
-            checkOutDate: "1997-05-22",
+            checkInDate: "",
+            checkOutDate: "",
             meal: "Full-Board",
             customerID: localStorage.getItem('userId'),
             numberOfRooms: 1,
@@ -103,7 +110,7 @@ useEffect(() => {
                                  
                                   <Form.Group as={Col} controlId="numberOfRooms">
                                   <Form.Label style={{textAlign:'center'}}><h6>Number of Rooms</h6></Form.Label>
-                                  <Form.Control value={data.numberOfRooms} onChange={(e)=>checkInDate(e)} type="number" placeholder="1" min="0" max={maxroom} required/>
+                                  <Form.Control value={data.numberOfRooms} onChange={(e)=>checkInDate(e)} type="number" placeholder="1" min="1" max={maxroom} />
                                   </Form.Group>
                                   <Form.Group as={Col} controlId="meal">
                                     <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
