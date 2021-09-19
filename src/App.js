@@ -122,7 +122,7 @@ export default class App extends Component {
             <Route exact path ="/manager/guestrepo" component={GuestRepo} />
             <Route exact path ="/manager/incomerepo" component={IncomeRepo} />
             <Route exact path ="/manager/inventoryrepo" component={InventoryRepo} />
-            <Route exact path ="/customer/mybookings/payment" component={Payment} />
+            <Route exact path ="/payment" component={Payment} />
             <Route component={Error} />
             
           </Switch> 

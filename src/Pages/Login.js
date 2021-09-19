@@ -282,9 +282,6 @@ export default class Login extends Component {
                 // console.log(response.data);   
                 // alert(response.data.token);
 
-                
-                // localStorage.removeItem("firstName");
-                
                 if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
                 }else if(response.data.userType=="STEWARD"){
@@ -298,6 +295,7 @@ export default class Login extends Component {
                   localStorage.setItem('userId', response.data.userId);
                   localStorage.setItem('firstName', response.data.fName);
                   localStorage.setItem('lastName', response.data.lName);
+                  localStorage.setItem('type', response.data.userType);
                   this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
