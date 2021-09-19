@@ -357,13 +357,18 @@ function AddOutdoorActivities(props){
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        <Row>
-                            <Col md={4}>
+                        {/* <Row>
+                            <Col >
                                
-                            </Col> 
-                            <Col md={4}>
-                            <Row>
-                                <Col sm={6}>
+                            </Col>  */}
+                            {/* <Col md={4}> */}
+                            <Row style={{textAlign:'center', justifyContent: 'center', alignItems: 'center'}}>
+                            <tr><td >
+                                    <Button variant="dark" type='submit'>8.00am-10.00am</Button> <Button variant="dark" type='submit'>10.00am-12.00pm</Button> <Button variant="dark" type='submit'>2.00pm-4.00pm</Button> <Button variant="dark" type='submit' >4.00pm-6.00pm</Button>
+                                </td> 
+                            </tr>
+                            </Row>
+                                {/* <Col sm={6}>
                                     <Form.Group as={Col} controlId="editActivityDateFrom">
                                         <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
                                         <Form.Control type="time" required/>
@@ -374,10 +379,10 @@ function AddOutdoorActivities(props){
                                         <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
                                         <Form.Control type="time" required/>
                                     </Form.Group>
-                                </Col>    
-                            </Row>
-                        </Col>
-                        </Row>
+                                </Col>     */}
+                           
+                        {/* </Col> */}
+                        {/* </Row> */}
                         <br></br>
                         <Row>
                             <Col md={4}>
@@ -394,7 +399,7 @@ function AddOutdoorActivities(props){
                             </Col>             
                         </Row>
                         <div style={{textAlign:'center'}}>
-                            <Button type="submit" variant="info">add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                            <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
                     </Form>
                 </Modal.Body>
@@ -428,7 +433,13 @@ function EditOutdoorActivities(props){
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        <Row>
+                        <Row style={{textAlign:'center', justifyContent: 'center', alignItems: 'center'}}>
+                            <tr><td >
+                                    <Button variant="dark" type='submit'>8.00am-10.00am</Button> <Button variant="dark" type='submit'>10.00am-12.00pm</Button> <Button variant="dark" type='submit'>2.00pm-4.00pm</Button> <Button variant="dark" type='submit' >4.00pm-6.00pm</Button>
+                                </td> 
+                            </tr>
+                            </Row>
+                        {/* <Row>
                             <Col md={4}>
                                
                             </Col> 
@@ -446,9 +457,9 @@ function EditOutdoorActivities(props){
                                         <Form.Control type="time" required/>
                                     </Form.Group>
                                 </Col>    
-                            </Row>
-                        </Col>
-                        </Row>
+                            </Row> */}
+                        {/* </Col>
+                        </Row> */}
                         <br></br>
                         <Row>
                             <Col md={4}>
