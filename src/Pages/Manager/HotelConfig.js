@@ -334,6 +334,40 @@ function AddRoomTypes(props){
     );
 }
 function AddOutdoorActivities(props){
+
+    const url = "http://localhost:3030/manager/activity/addActivity"
+    const [data,setData]= useState({
+        activityName:"",
+        checkInTime:"",
+        checkOutTime:"",
+        description:""
+        
+    })
+
+    function submit(e){
+        e.preventDefault();
+        axios.post(url,data)
+        .then(res=>{
+            props.setadded(!props.added);
+            props.onHide();
+            setData({
+                activityName:"",
+                checkInTime:"",
+                checkOutTime:"",
+                description:""
+            })
+            toast.success('✅ '+' '+ res.data);
+        })
+        .catch(err =>{
+            toast.error('❌ '+' '+ err.response.data)
+        })
+    }
+
+    function handle(e){
+        const newdata={...data}
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+    }
     return(
         <Modal
         {...props}
@@ -347,53 +381,44 @@ function AddOutdoorActivities(props){
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form  onSubmit={(e) => submit(e)}>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="editActivityName">
+                                <Form.Group as={Col} controlId="activityName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Outdoor Activity Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.activityName} type="text" required/>
+                            
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        {/* <Row>
-                            <Col >
-                               
-                            </Col>  */}
-                            {/* <Col md={4}> */}
-                            <Row style={{textAlign:'center', justifyContent: 'center', alignItems: 'center'}}>
-                            <tr><td >
-                                    <Button variant="dark" type='submit'>8.00am-10.00am</Button> <Button variant="dark" type='submit'>10.00am-12.00pm</Button> <Button variant="dark" type='submit'>2.00pm-4.00pm</Button> <Button variant="dark" type='submit' >4.00pm-6.00pm</Button>
-                                </td> 
-                            </tr>
-                            </Row>
-                                {/* <Col sm={6}>
-                                    <Form.Group as={Col} controlId="editActivityDateFrom">
-                                        <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
-                                        <Form.Control type="time" required/>
-                                    </Form.Group>
-                                </Col>
-                                <Col sm={6}>
-                                    <Form.Group as={Col} controlId="editActivityDateTo">
-                                        <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
-                                        <Form.Control type="time" required/>
-                                    </Form.Group>
-                                </Col>     */}
-                           
-                        {/* </Col> */}
-                        {/* </Row> */}
+                        <Row>
+                            <Col md={3}></Col> 
+                            <Col md={3}>
+                                <Form.Group as={Col} controlId="checkInTime">
+                                <Form.Label style={{textAlign:'center'}}><h6>From</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.checkInTime} type="text" required/>
+                                </Form.Group>
+                            </Col> 
+                            
+                            <Col md={3}>
+                                <Form.Group as={Col} controlId="checkOutTime">
+                                <Form.Label style={{textAlign:'center'}}><h6>To</h6></Form.Label>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.checkOutTime} type="text" required/>
+                                </Form.Group>
+                            </Col>
+                            <Col md={3}></Col>                 
+                        </Row>
+                       
                         <br></br>
                         <Row>
                             <Col md={4}>
                                 
                             </Col> 
                             <Col md={4}>
-                            <Form.Group as={Col} controlId="editActivityDescription">
+                            <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
-                                <Row>
-                                    <Form.Control style={{height:'5rem'}} type="Email" required/>
-                                </Row>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.description} type="text" required/>
                                
                                 </Form.Group>
                             </Col>             
@@ -812,6 +837,7 @@ function HotelConfig() {
     const[editRoomType,setEditRoomType]=useState([]);
     const[editRoom,setEditRoom]=useState([]);
     const[editDiscount,setEditDiscounts]=useState([]);
+    const[addActivity,setaddActivity]=useState([]);
 
     function UpdateRoomType(id){
         // console.log(id);
@@ -872,6 +898,16 @@ function HotelConfig() {
         axios.get('http://localhost:3030/manager/viewDiscounts')
         .then(res=>{
             setDiscounts(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [added])
+
+    useEffect(() => {
+        axios.get('http://localhost:3030/manager/activity/viewActivity')
+        .then(res=>{
+            setaddActivity(res.data)
         })
         .catch(err=>{
             console.log(err)
@@ -1124,6 +1160,8 @@ function HotelConfig() {
                             <AddOutdoorActivities 
                                 show={addView}
                                 onHide={()=>setAddView(false)}
+                                added={added} 
+                                setadded={setadded}
                             />
                         </div>
                         <div className="col-md-6" style={{textAlign:'right'}}>
@@ -1145,37 +1183,27 @@ function HotelConfig() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Water Rafting</td>
-                                <td>10am</td>
-                                <td>1pm</td>
-                                <td>get adventure here</td>
-                                <td style={{textAlign:'center'}}>
+                        {
+                            addActivity.map(
+                                test =>
+                                <tr key={test.id}>
+                                    <td>{test.activityId}</td>
+                                    <td>{test.activityName}</td>
+                                    <td>{test.checkInTime}</td>
+                                    <td>{test.checkOutTime}</td>
+                                    <td>{test.description}</td>
+                                    <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
+                                    <Button onClick={()=>DeleteRoomType(test.roomTypeID)} type="delete"><FaTrash /></Button>
                                 </Tippy>
-                                <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                </Tippy>
+                                    <Tippy content="Edit">
+                                    <Button onClick={()=>UpdateRoomType(test.roomTypeID)} type="edit"><FaPen /></Button>
+                                    </Tippy>
                                 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Cycling</td>
-                                <td>4pm</td>
-                                <td>6.30pm</td>
-                                <td>Good Exercise</td>
-                                <td style={{textAlign:'center'}}>
-                                <Tippy content="Delete">
-                                    <Button type="delete"><FaTrash /></Button>
-                                </Tippy>
-                                <Tippy content="Edit">
-                                    <Button onClick={()=>setEditView(true)} type="edit"><FaPen /></Button>
-                                </Tippy>
-                                </td>
-                            </tr>
+                            )
+                        }
                         </tbody>
                     </Table>
                     <EditOutdoorActivities
