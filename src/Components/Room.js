@@ -114,11 +114,11 @@ useEffect(() => {
                                   </Form.Group>
                                   <Form.Group as={Col} controlId="meal">
                                     <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
-                                    <Form.Control value={data.meal} onChange={(e)=>checkInDate(e)} as="select" className="my-1 mr-sm-2" value="" custom>
+                                    <Form.Control onChange={(e)=>checkInDate(e)} as="select" className="my-1 mr-sm-2" custom>
                                                 <option value="Full-Board">Full-Board</option>
                                                 <option value="Half-Board">Half-Board</option>
-                                    </Form.Control>
-                                  </Form.Group>
+                                        </Form.Control>
+                                    </Form.Group>
                               </Form.Row>
                               {/* <Form.Row>
                                   <Form.Group as={Col} controlId="formGridMeal">
