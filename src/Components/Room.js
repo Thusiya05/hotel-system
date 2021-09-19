@@ -154,6 +154,7 @@ export default function Room({ room }){
   const [roomName, setRoomName]=useState();
 
     function isLogged(id){
+      console.log(id);
       setRoomName(id);
       if (localStorage.getItem('userId') != null)
           setCart(true);
@@ -189,7 +190,7 @@ export default function Room({ room }){
 
       </div>
       <div>
-                    <Button variant="dark" onClick={()=>isLogged(name)}
+                    <Button variant="dark" onClick={()=>isLogged(slug)}
                     // ={()=>setCart(true)}
                     >Book Now</Button>
                     <AddCart 
