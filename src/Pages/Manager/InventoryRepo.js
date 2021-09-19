@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState ,useEffect}  from 'react';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { Button, Form, Col } from 'react-bootstrap';
@@ -6,22 +6,32 @@ import Title from '../../Components/Title';
 import { FaFileDownload } from 'react-icons/fa';
 import Sidebar from '../../Components/Sidebar';
 // import './App.css';
+import axios from 'axios';
 
-class InventoryRepo extends React.Component {
+const InventoryRepo=()=> {
+  const[InventoryData,setInventoryData]=useState([]);
+  var[dateFrom,setDateFrom]=useState(new Date());
+  var[dateTo,setDateTo]=useState(new Date());
+  
+  function exportPDF(){
+    
+    var from = dateFrom.toString();
+    var to = dateTo.toString();
+    console.log(from)
+    // console.log(typeof(from))
+    
+    axios.post('http://localhost:3030/report/generateInventoryReport',{
+        dateFrom: from,
+        dateTo: to
+    })
+    .then(res => {
+      setInventoryData(res.data)
+      console.log(InventoryData)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 
-  constructor() {
-    super();
-    this.state = {
-      people: [
-        { id: "1001", name: "sugar", amount: "20Kg" },
-        { id: "1002", name: "Dhal", amount: "10Kg" },
-        { id: "1003", name: "KeeriSamba", amount: "50Kg" },
-        { id: "1004", name: "KakuluSamba", amount: "100Kg" },
-      ]
-    }
-  }
-
-  exportPDF = () => {
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
     const orientation = "portrait"; // portrait or landscape
@@ -32,9 +42,9 @@ class InventoryRepo extends React.Component {
     doc.setFontSize(15);
 
     const title = "Guest Details";
-    const headers = [["ID", "NAME", "AMOUNT"]];
+    const headers = [["Ingredient ID", "Ingredient Name", "Available Qty", "Used Qty"]];
 
-    const data = this.state.people.map(elt=> [elt.id, elt.name, elt.amount]);
+    const data = InventoryData.map(elt=> [elt.ingredientId, elt.ingredientName, elt.availableQty, elt.usedQty]);
 
     let content = {
       startY: 50,
@@ -47,26 +57,28 @@ class InventoryRepo extends React.Component {
     doc.save("Inventory Report.pdf")
   }
 
-  render() {
-      
     return (
         <div className= 'reports'>
             <Sidebar/>
             <Title title="Inventory Report"></Title>
         <div class="text-center">
-          {/* <Form>
+          <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
-                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} type="date" required/>
+                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} 
+                                     selected={dateFrom} onChange={(date) => setDateFrom(date.target.value.toString())}
+                                    type="date" required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="formGridLastName">
                                   <Form.Label style={{textAlign:'center',marginRight:"18rem"}}><h6>End Date</h6></Form.Label>
-                                  <Form.Control style={{textAlign:'center', width:"15rem"  }} type="date" max={new Date().toISOString().split("T")[0]} required/>
+                                  <Form.Control style={{textAlign:'center', width:"15rem"  }}
+                                    selected={dateTo} onChange={(date) => setDateTo(date.target.value.toString())}
+                                    type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
                               </Form.Row>
-                </Form> */}
+                </Form>
         <Button variant="secondary" 
             style={{
                 minHeight: "5rem",
@@ -76,11 +88,10 @@ class InventoryRepo extends React.Component {
                 textAlign: "center",
                 // color: "red",
                 }} 
-                onClick={() => this.exportPDF()}>Download Report  <FaFileDownload /></Button>
+                onClick={() => exportPDF()}>Download Report  <FaFileDownload /></Button>
       </div>
       </div>
     );
   }
-}
 
 export default InventoryRepo;

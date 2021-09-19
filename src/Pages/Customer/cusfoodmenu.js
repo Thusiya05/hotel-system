@@ -12,15 +12,20 @@ import "../../CSS/Cusfoodmenu.css";
 import NavBar from '../../Components/NavBar';
 import Hero from '../../Components/Hero'
 import Banner from '../../Components/Banner'
+import date from 'date-and-time';
+
 
 function ConfirmOrder(props){
 
     // const[date,setDate] = useState(new Date());
 
-    var [date,setDate] = useState(new Date());
+    const now = new Date();
+    const currentDate = date.format(now,'YYYY-MM-DD');
+
+    var [time,setTime] = useState(new Date());
     
     useEffect(() => {
-        var timer = setInterval(()=>setDate(new Date()), 1000 )
+        var timer = setInterval(()=>setTime(new Date()), 1000 )
         return function cleanup() {
             clearInterval(timer)
         }
@@ -46,13 +51,13 @@ function ConfirmOrder(props){
         axios.post("http://localhost:3030/order/createOrderId", {
             customerId: localStorage.getItem('userId'),
             roomId: "",
-            orderDate: date.toLocaleDateString(),
-            orderTime: date.toLocaleTimeString(),
+            orderDate: currentDate,
+            orderTime: time.toLocaleTimeString(),
             status: "PENDING"
         })
         .then(function(res){
             // console.log(res.data);
-            axios.post(`http://localhost:3030/order/placeOrder/${date.toLocaleTimeString()}`,{
+            axios.post(`http://localhost:3030/order/placeOrder/${time.toLocaleTimeString()}`,{
                 customerId: localStorage.getItem('userId'),
                 foIdList: props.IdOfOrderedFoods,
                 qtyList: props.QtyOfOrderedFoods

@@ -479,22 +479,22 @@ const Customers=()=>{
                             
                             <br></br>
                             <br></br>
-                            <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable">
+                            <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable" style = {{tableLayout:'fixed', width:'200%'}} >
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>NIC</th>
-                                        <th>Mobile No</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Dob</th>
-                                        <th>Checkin Date</th>
-                                        <th>CheckOut Date</th>
-                                        <th>Meal</th>
-                                        <th>Room No</th>
-                                        <th style={{width:'10rem'}}> </th>
+                                        <th style={{width:'100%'}}>#</th>
+                                        <th style={{width:'100%'}}>First Name</th>
+                                        <th style={{width:'100%'}}>Last Name</th>
+                                        <th style={{width:'100%'}}>NIC</th>
+                                        <th style={{width:'100%'}}>Mobile No</th>
+                                        <th style={{width:'100%'}}>Email</th>
+                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'100%'}}>Dob</th>
+                                        <th style={{width:'100%'}}>Checkin Date</th>
+                                        <th style={{width:'100%'}}>CheckOut Date</th>
+                                        <th style={{width:'100%'}}>Meal</th>
+                                        <th style={{width:'100%'}}>Room No</th>
+                                        <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
