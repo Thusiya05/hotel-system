@@ -78,8 +78,8 @@ export default[
       id: "2"
     },
     fields: {
-      name: "single basic",
-      slug: "single-basic",
+      name: "SINGLE_ROOMS",
+      slug: "SINGLE_ROOMS",
       type: "single",
       price: 150,
       size: 250,

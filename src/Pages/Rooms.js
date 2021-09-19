@@ -33,6 +33,7 @@ const Rooms = () => {
 
             <FeaturedRooms />
             <RoomContainer />
+    
            
 
             </div>

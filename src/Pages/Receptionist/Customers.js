@@ -40,6 +40,14 @@ function ShowBill(props){
                         <h6>19500</h6>
                     </Col>
                   </Row>
+                  <div className="center" 
+                            style={{justifyContent:'center',textAlign:'center'}}>
+                                    <Button href="./Payment" 
+                                    type="submit" 
+                                    variant="info" 
+                                    style={{width:'10rem'} }>
+                                        Print</Button> 
+                  </div>
                 </Container>
               </Modal.Body>
               <Modal.Footer style={{backgroundColor:'lightgray'}}>
