@@ -281,7 +281,7 @@ const AboutUs = () => {
         <br/>
         <div className="services-center">
               <article className="service">
-                 <div>
+                 <div >
 
                             
                         <tbody>
