@@ -133,7 +133,7 @@ function Review(props) {
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 
                                 <Row>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.feedback} style={{height:'5rem'}} type="text"   required/>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.feedback} style={{height:'5rem'}} type="longtext"   required/>
                                 </Row>
                                
      </Form.Group>
@@ -266,6 +266,9 @@ const AboutUs = () => {
                             </div>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
+                    <h3>Customer Feedbacks</h3>
                     <Button variant="dark" onClick={()=>setCart(true)}>Review Us</Button>
                     <Review 
                         show={cart}
@@ -275,44 +278,35 @@ const AboutUs = () => {
                     ></Review>   
                 </containerFluid>
             </div>
+            
             <section className="services">
-        <Title title="Customer Feedbacks" />
-        <br/>
-        <br/>
-        <div className="services-center">
-              <article className="service">
-                 <div>
-
+        
+            <div className="services-center">
+                
                             
                         <tbody>
+                        <div className="services-center">
                         {  
                             employees.map(
                                
                         test =>
-                                
+                    
                         <tr key = {test.id}>  
                         <br/>
+                       
                             <td>{test.feedback}</td>
                            
-                            {/* <td>{employee.password}</td> */}
-                            {/* <td style={{textAlign:'center'}}>
-                            <Tippy content="Delete">
-                                <Button onClick={()=>Delete(test.id)} type="delete"><FaTrash /></Button>
-                            </Tippy>
-                             <Tippy content="Edit">
-                                <Button onClick={()=>Update(test.id)} type="edit"><FaPen /></Button>
-                             </Tippy>
-                             </td> */}
+                         
                         </tr>
                             )
                         }
+                          </div>
                     </tbody>
                          
-                                     
-                        </div>
-              </article>  
-        </div>
+                    </div>
+        
       </section>
+    
             <div>
                 <Footer />
             </div>

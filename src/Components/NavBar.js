@@ -62,7 +62,7 @@ import { Redirect } from 'react-router'
       if (localStorage.getItem('userId') != null)
           return ( "Logout");
       else 
-          return ( "logIn");
+          return ( "LogIn / Sign-Up");
     }
 
     const RedirectTo = () => {
@@ -131,10 +131,11 @@ export default class NavBar extends Component{
                 </Navbar.Text>
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
-                    <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
+                    
                     <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
                     {/* <NavDropdown.Divider /> */}
                     <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
+                    <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                   </NavDropdown>
                   {/* <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link> */}
                 </Nav>
