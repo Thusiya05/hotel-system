@@ -57,256 +57,6 @@ function ShowBill(props){
 
     );
 }
-function AddCustomer(props){
-    // const[added,setadded]=useState(true)
-    const[roomNo,setRoomNo]=useState([])
-    const[roomType,setRoomType]=useState([])
-
-    useEffect(()=>{
-        axios.get(`http://localhost:3030/manager/getRoomTypes`)
-        .then(res=>{
-            setRoomType(res.data)
-            console.log(res.data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    },[props.added])
-
-    function Select(e){
-        // setadded(!added);
-        // setRoomTypes(roomTypes);
-        axios.get(`http://localhost:3030/manager/getRoomsByRoomTypes/${e.target.value}`)
-        .then((res)=>{
-            console.log(res.data);
-            setRoomNo(res.data);
-        })
-    }
-
-    const url="http://localhost:3030/receptionist/addCustomer"
-    const [data,setData]=useState({
-        firstName:"",
-        lastName:"",
-        email:"",
-        age:"",
-        addressLineOne:"",
-        addressLineTwo:"",
-        addressLineThree:"",
-        dob:"",
-        nic:"",
-        contactNo:"",
-        checkInDate:"",
-        checkOutDate:"",
-        meal:"",
-        roomNo:""
-    })
-
-    function submit(e){
-        e.preventDefault();
-        axios.post(url,data)
-        .then(res=>{
-            props.setadded(!props.added);
-            props.onHide();
-            setData({
-                firstName:"",
-                lastName:"",
-                email:"",
-                age:"",
-                addressLineOne:"",
-                addressLineTwo:"",
-                addressLineThree:"",
-                dob:"",
-                nic:"",
-                contactNo:"",
-                checkInDate:"",
-                checkOutDate:"",
-                meal:"",
-                roomNo:""
-            })
-            toast.success('✅ '+' '+ res.data);
-        })
-        .catch(err =>{
-            toast.error('❌ '+' '+ err.response.data)
-        })    
-    }
-
-    function handle(e){
-        const newdata={...data}
-        newdata[e.target.id]=e.target.value
-        setData(newdata)
-    }
-    return (
-        <Modal
-          {...props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-        <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add New Customer Details
-          </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form style={{textAlign:'center'}} onSubmit={(e)=>submit(e)}>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="firstName">
-                            <Form.Label><h6>First Name</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.firstName} type="text" id="firstName" required />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="lastName">
-                            <Form.Label><h6>Last Name</h6></Form.Label>
-                            <Form.Control  onChange={(e)=>handle(e)} value={data.lastName} type="text" id="lastName" required/>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="email">
-                            <Form.Label><h6>Email</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.email} id="email" type="Email" placeholder="Enter Email" required/>
-                            </Form.Group>
-                            
-                            <Form.Group as={Col} controlId="contactNo">
-                            <Form.Label><h6>Mobile No:</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.contactNo} id="contactNo"type="text" placeholder="07x xxx xxx" required/>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="nic">
-                            <Form.Label><h6>NIC</h6></Form.Label>
-                            <Form.Control type="text" onChange={(e)=>handle(e)} value={data.nic}required/>
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="dob">
-                            <Form.Label><h6>Birth Day</h6></Form.Label>
-                            <Form.Control type="date" onChange={(e)=>handle(e)} value={data.dob} required/>
-                            </Form.Group>
-                        </Form.Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Label style={{textAlign:'center'}}><h6>Address</h6></Form.Label>
-                            </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}>
-                                <Form.Group controlId="addressLineOne">
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.addressLineOne}type="text" placeholder="Line One " required/>
-                                </Form.Group>        
-                            </Col>
-                            <Col md={4}>
-                                <Form.Group controlId="addressLineTwo">
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.addressLineTwo} type="text" placeholder="Line Two " required/>
-                                </Form.Group>   
-                            </Col> 
-                            <Col md={4}>
-                                <Form.Group controlId="addressLineThree">
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.addressLineThree} type="text" placeholder="Line Three" required/>
-                                </Form.Group>   
-                            </Col>  
-                        </Row> 
-                        <br></br>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="checkInDate">
-                            <Form.Label><h6>Check-in Date</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.checkInDate} id="checkInDate" type="date" required/>
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="checkOutDate">
-                            <Form.Label><h6>Check-out Date</h6></Form.Label>
-                            <Form.Control onChange={(e)=>handle(e)} value={data.checkOutDate} type="date" required/>
-                            </Form.Group>
-                        </Form.Row>
-                        {/* <Row>
-                            <Col sm={6}>
-                            <Form.Group as={Col} controlId="roomTypes">
-                            <Form.Label><h6>Room Type</h6></Form.Label>
-                                <Form.Control as="select" onChange={(e)=>Select(e)} className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                        <option value="0">Choose..</option>
-                                        <option value="SINGLE_ROOMS">SINGLE_ROOMS</option>
-                                        <option value="DOUBLE_ROOMS">DOUBLE_ROOMS</option>
-                                        <option value="3">Family Room</option>
-                                        <option value="4">Camping</option>
-                                </Form.Control>
-                            </Form.Group>
-                            </Col>
-                            <Col sm={6}> */}
-                            {/* <Form.Group controlId="roomNo">
-                            <Form.Label><h6>Room No</h6></Form.Label>
-                            <Form.Control as="select" onChange={(e)=>handle(e)} value={data.roomNo}  className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom>
-                                        {
-                                            roomNo.map(
-                                                test=> 
-                                                <option>{test.roomNo}</option>
-                                            )
-                                        }
-                                </Form.Control>
-                            </Form.Group>    */}
-                            {/* <Form.Group as={Col} controlId="meal">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
-                                        <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
-                                                <option value="Full Board">Full Board</option>
-                                                <option value="Half Board">Half Board</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                            </Col>
-                        </Row> */}
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                            <Form.Group as={Col} controlId="meal">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Meal</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} as="select" className="my-1 mr-sm-2" custom>
-                                                <option value="Full Board">Full Board</option>
-                                                <option value="Half Board">Half Board</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                            </Col>             
-                        </Row>
-                        <Row>
-                        <Container>
-                            <Table striped bordered hover size="sm" responsive="lg">
-                                <thead>
-                                    <tr>
-                                       <th>Room Type</th>
-                                       <td>No of Rooms</td> 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    {
-                                     roomType.map(
-                                         test=>
-                                         <tr key={test.roomTypeID}>
-                                            <td>{test.roomTypes}</td>
-                                            <td>
-                                            <Form.Group style={{textAlign:'center'}} as={Col} controlId="no_of_rooms">
-                                            <Form.Control style={{width:"6rem",textAlign:"center",borderStyle:"none"}} type="number" placeholder="0" min="0" />
-                                            </Form.Group>
-                                        </td>
-                                        </tr>    
-                                         
-                                     )   
-                                    } 
-                                       
-                                </tbody>
-                            </Table>
-                            </Container>
-                        </Row>
-                       
-                        <div style={{textAlign:'center'}}>
-                            <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
-                        </div>
-                        
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer style={{backgroundColor:'lightgray'}}>
-                    Adventure Base Camp, Kitulgala.
-                </Modal.Footer>
-        </Modal>
-      );
-    }
 
 function EditCustomer(props) {
     return (
@@ -454,7 +204,7 @@ const Customers=()=>{
                 <RcsideBar />
                 <br></br>
                 <div>
-                <Nav fill variant="tabs" defaultActiveKey="/home">
+                <Nav fill variant="tabs" defaultActiveKey="/home" style={{position:"fixed",width:"80%"}}>
                     <Nav.Item>
                         <Nav.Link  onClick={()=>setOpen(!open)&setShow(false)&setView(false)}>Pending Customers</Nav.Link>
                     </Nav.Item>
@@ -466,28 +216,32 @@ const Customers=()=>{
                     </Nav.Item>
                 </Nav>
                     <br></br>
+                    <br></br>
+                    <br></br>
+
                         {
                             show?
                             <div>
-                            <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Check In Customers.</h4>
-                            <div className="row">
-                                <div className="col-md-6">
-                                <Button variant="dark"  onClick={()=>setDisplay(true)} type="submit">+ Add New Customer</Button>
-                                    <AddCustomer
-                                        show={display}
-                                        onHide={()=> setDisplay(false)}
-                                        added={!added} 
-                                        setadded={setadded} 
-                                    />
-                                </div>
-                                <div className="col-md-6" style={{textAlign:'right'}}>
-                                    <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                            <div>
+                                <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Check In Customers.</h4>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                    </div>
+                                    <div className="col-md-6" style={{textAlign:'right'}}>
+                                    <Button><FaSearch /></Button><input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
+                                    </div>
                                 </div>
                             </div>
-                            
+                            {/* <br></br>
                             <br></br>
                             <br></br>
-                            <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable">
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br> */}
+                            {/* <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -532,18 +286,42 @@ const Customers=()=>{
                                         
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>2</td>
-                                        <td>Lakith</td>
-                                        <td>Rathnayaka</td>
-                                        <td>973254553V</td>
-                                        <td>0779685478</td>
-                                        <td>lakith@gmail.com</td>
+                                   
+                                </tbody> */}
+                                <div  style={{overflowX:'auto',maxWidth:'100%'}}>
+
+                                <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable" style = {{tableLayout:'fixed', width:'200%'}} >
+                                <thead>
+                                    <tr>
+                                        <th style={{width:'100%'}}>#</th>
+                                        <th style={{width:'100%'}}>First Name</th>
+                                        <th style={{width:'100%'}}>Last Name</th>
+                                        <th style={{width:'100%'}}>NIC</th>
+                                        <th style={{width:'100%'}}>Mobile No</th>
+                                        <th style={{width:'100%'}}>Email</th>
+                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'100%'}}>Dob</th>
+                                        <th style={{width:'100%'}}>Checkin Date</th>
+                                        <th style={{width:'100%'}}>CheckOut Date</th>
+                                        <th style={{width:'100%'}}>Meal</th>
+                                        <th style={{width:'100%'}}>Room No</th>
+                                        <th style={{width:'100%'}}> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>199732504553</td>
+                                        <td>0717365756</td>
+                                        <td>darshana@gmail.com</td>
+                                        <td>Mathale Road,Kurunegala, pilas</td>
+                                        <td>1997-11-20</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>half board</td>
-                                        <td>Double</td>
-                                        <td>15</td>
+                                        <td>Full board</td>
+                                        <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
@@ -551,39 +329,16 @@ const Customers=()=>{
                                         <Tippy content="Delete">
                                             <Button type="delete"><FaTrash /></Button>
                                         </Tippy>
-                                        <Tippy content="Edit">
+                                         <Tippy content="Edit">
                                             <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                        </Tippy>
+                                         </Tippy>
                                         
                                         </td>
                                     </tr>
-                                    <tr>
-                                    <td>3</td>
-                                        <td>Thusitha</td>
-                                        <td>Rathnayaka</td>
-                                        <td>0779685478</td>
-                                        <td>123654789</td>
-                                        <td>lakith@gmail.com</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>half bord</td>
-                                        <td>Double</td>
-                                        <td>14</td>
-                                        <td style={{textAlign:'center'}}>
-                                        <Tippy content="View Bill">
-                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy>
-                                        <Tippy content="Delete">
-                                            <Button type="delete"><FaTrash /></Button>
-                                        </Tippy> 
-                                        <Tippy content="Edit">
-                                        <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                        </Tippy>
-                                        
-                                        </td>
-                                    </tr> */}
-                                </tbody>
+                                   
+                                </tbody> 
                             </Table>
+                                </div>
                             <EditCustomer
                                 show={editshow}
                                 onHide={()=> setEditShow(false)} 
@@ -609,43 +364,42 @@ const Customers=()=>{
                                     <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by NIC/Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>
                                 </div>
                             </div>
-                            <br></br>
-                            <br></br>
                             <div  style={{overflowX:'auto',maxWidth:'100%'}}>
-                            <Table>
+                            <Table striped bordered hover size="sm" responsive="lg" id="pendingTable" style = {{tableLayout:'fixed', width:'200%'}} >
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>NIC</th>
-                                        <th>Mobile No</th>
-                                        <th>Email</th>
-                                        <th style={{width:'10rem'}}>Checkin Date</th>
-                                        <th>CheckOut Date</th>
-                                        <th>Meal</th>
-                                        <th>Room</th>
-                                        <th> </th>
+                                        <th style={{width:'100%'}}>#</th>
+                                        <th style={{width:'100%'}}>First Name</th>
+                                        <th style={{width:'100%'}}>Last Name</th>
+                                        <th style={{width:'100%'}}>NIC</th>
+                                        <th style={{width:'100%'}}>Mobile No</th>
+                                        <th style={{width:'100%'}}>Email</th>
+                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'100%'}}>Dob</th>
+                                        <th style={{width:'100%'}}>Checkin Date</th>
+                                        <th style={{width:'100%'}}>CheckOut Date</th>
+                                        <th style={{width:'100%'}}>Meal</th>
+                                        <th style={{width:'100%'}}>Room No</th>
+                                        <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Lakith</td>
-                                        <td>Rathnayaka</td>
-                                        <td>973254553V</td>
-                                        <td>0779685478</td>
-                                        <td>lakith@gmail.com</td>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>199732504553</td>
+                                        <td>0717365756</td>
+                                        <td>darshana@gmail.com</td>
+                                        <td>Mathale Road,Kurunegala, pilas</td>
+                                        <td>1997-11-20</td>
                                         <td>2021-07-23</td>
                                         <td>2021-07-25</td>
-                                        <td>half bord</td>
-                                        <td>Double</td>
+                                        <td>Full board</td>
+                                        <td>12</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy>
-                                        <Tippy content="Delete">
-                                            <Button type="delete"><FaTrash /></Button>
                                         </Tippy>
                                          <Tippy content="Edit">
                                             <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
@@ -714,44 +468,6 @@ const Customers=()=>{
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Lakith</td>
-                                        <td>Rathnayaka</td>
-                                        <td>973254553V</td>
-                                        <td>0779685478</td>
-                                        <td>lakith@gmail.com</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>half bord</td>
-                                        <td>Double</td>
-                                        <td>14</td>
-                                        <td style={{textAlign:'center'}}>
-                                        <Tippy content="View Bill">
-                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy>
-                                    </td>
-                                        
-                                    </tr>
-                                    <tr>
-                                    <td>3</td>
-                                        <td>Thusitha</td>
-                                        <td>Rathnayaka</td>
-                                        <td>0779685478</td>
-                                        <td>123654789</td>
-                                        <td>lakith@gmail.com</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>half bord</td>
-                                        <td>Double</td>
-                                        <td>15</td>
-                                        <td style={{textAlign:'center'}}>
-                                        <Tippy content="View Bill">
-                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy>
-                                    </td>
-                                        
                                     </tr>
                                 </tbody>
                             </Table>
