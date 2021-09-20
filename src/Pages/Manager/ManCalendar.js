@@ -2,6 +2,7 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
+import { Button, Form, Col } from 'react-bootstrap';
 import React, { useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -54,12 +55,13 @@ function ManCalendar() {
         <div className='mancalendar' >
             <Sidebar/>
             <Title title="Calendar"></Title>
-            <h4 style={{textAlign:'center'}}>Add New Event</h4>
-            <div >
+            <h5 >Add New Event</h5>
+            <div>
+                
                 <input 
                 type="text" 
                 placeholder="Add Title" 
-                style={{ width: "20%", marginRight: "10px" }} 
+                style={{ marginLeft: "-55px", textAlign:'center' }} 
                 value={newEvent.title} 
                 onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} 
                 />
@@ -68,18 +70,20 @@ function ManCalendar() {
                 style={{ marginRight: "10px", textAlign:'center' }} 
                 selected={newEvent.start} 
                 onChange={(start) => setNewEvent({ ...newEvent, start })} 
-                />
+                /> 
                 <DatePicker 
                 placeholderText="End Date" 
                 // style={{ marginRight: "10px" }} 
                 selected={newEvent.end} 
                 onChange={(end) => setNewEvent({ ...newEvent, end })} 
                 />
-                <button 
-                stlye={{ marginTop: "10px", textAlign:'center'}} 
+                
+                <Button variant="secondary"
+                stlye={{ marginRight: "10px", textAlign:'center'}} 
                 onClick={handleAddEvent}>
                     Add Event
-                </button>
+                </Button>
+                
             </div>
             <Calendar 
             localizer={localizer} 
