@@ -247,9 +247,14 @@ const MyBookings = ()=>{
                         </Container>
                        
                     </div>
-                    <div className="col-md-6 col-sm-6">
-                        <Container style={{textAlign:'center',background:'linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%',height:'25rem',boxShadow:'1px 2px 6px 1px gray',padding:'1rem'}}>
-                            <h5>Activity Bookings</h5>
+            {/* <div className="row"> */}
+                <div className="col-md-6 col-sm-6">
+                    <Container style={{textAlign:'center',background:'linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%',boxShadow:'1px 2px 6px 1px gray',padding:'1rem',borderRadius:'2%'}}>
+                    <div className="row" style={{justifyContent:'center'}}>
+                        <h5>Activity Bookings</h5>
+                    </div>
+                        <br></br>
+                          <div> 
                             {outdoorActivitySchedules.map((schedule,index)=>{
                                 return(
                                     <div key={index}>
@@ -270,8 +275,10 @@ const MyBookings = ()=>{
                                 </div>
                                 );
                             })}
+                            </div>
                         </Container>
-                    </div>
+                </div>
+            {/* </div> */}
                 </div>
             </Container>
                                 

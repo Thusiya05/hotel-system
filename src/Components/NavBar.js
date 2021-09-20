@@ -95,6 +95,38 @@ import { Redirect } from 'react-router'
           return ({display:'none'});
     }
 
+//mybookings visibility
+
+      const MyBookingsRedirectTo = () => {
+        if (localStorage.getItem('userId') != null)
+            return("/MyBookings");
+      }
+
+      const DisplayMyBookingsText = () => {
+        if (localStorage.getItem('userId') != null)
+            return ("My Bookings");
+      }
+
+      const MyBookingsStyle = () => {
+        if (localStorage.getItem('userId') == null)
+            return ({display:'none'});
+      }
+
+//editprofile visibility
+      const EditProfileRedirectTo = () => {
+        if (localStorage.getItem('userId') != null)
+            return("/EditProfile");
+      }
+
+      const DisplayEditProfileText = () => {
+        if (localStorage.getItem('userId') != null)
+            return ("Edit Profile");
+      }
+
+      const EditProfileStyle = () => {
+        if (localStorage.getItem('userId') == null)
+            return ({display:'none'});
+      }
     // const Allow = () => {
     //   if (localStorage.getItem("type") == "CUSTOMER"){
     //     return("/rooms/");
@@ -132,9 +164,11 @@ export default class NavBar extends Component{
                   {/* <Nav.Link href={pathSign} ><FaUserCircle size={30} /> {LogName}</Nav.Link> */}
                   <NavDropdown variant="dark" title={<FaUserCircle size={30} />} id="basic-nav-dropdown">
                     
-                    <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item>
+                    {/* <NavDropdown.Item href="/EditProfile">Edit Profile</NavDropdown.Item> */}
+                    <NavDropdown.Item style={EditProfileStyle()} href={EditProfileRedirectTo()}> {DisplayEditProfileText()} </NavDropdown.Item>
                     {/* <NavDropdown.Divider /> */}
-                    <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item>
+                    {/* <NavDropdown.Item href="/MyBookings">My Bookings</NavDropdown.Item> */}
+                    <NavDropdown.Item style={MyBookingsStyle()} href={MyBookingsRedirectTo()}> {DisplayMyBookingsText()} </NavDropdown.Item>
                     <NavDropdown.Item href={RedirectTo()} onClick={()=>Action()}> {DisplyaText()} </NavDropdown.Item>
                   </NavDropdown>
                   {/* <Nav.Link style={{color:"white", fontSize:'20px'}}>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</Nav.Link> */}
