@@ -186,6 +186,47 @@ const Customers=()=>{
     const[editshow,setEditShow]=useState(false)
     const[viewBill,setViewBill]=useState(false)
     const[added,setadded]=useState(true)
+    const[status,setStatus]=useState("ACTIVE")
+    const[customers,setCustomers]=useState([])
+
+    function pending(){
+    //    const stat = "PENDING";
+        setOpen(!open)
+        setShow(false);
+        setView(false);
+        setStatus("PENDING");
+        setadded(!added);
+
+    }
+    function active(){
+            setOpen(false)
+            setShow(!show);
+            setView(false);
+            setStatus("ACTIVE");
+            setadded(!added);
+    
+        }
+
+    function checkOut(){
+        //    const stat = "PENDING";
+            setOpen(false)
+            setShow(false);
+            setView(!view);
+            setStatus("CHECK_OUT");
+            setadded(!added);
+    
+        }
+
+    useEffect(()=>{
+        axios.get(`http://localhost:3030/receptionist/viewCustomers/${status}`)
+        .then(res=>{
+            console.log(res.data);
+            setCustomers(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    },[added])
     return(
         <>
 
@@ -206,13 +247,13 @@ const Customers=()=>{
                 <div>
                 <Nav fill variant="tabs" defaultActiveKey="/home" style={{position:"fixed",width:"80%"}}>
                     <Nav.Item>
-                        <Nav.Link  onClick={()=>setOpen(!open)&setShow(false)&setView(false)}>Pending Customers</Nav.Link>
+                        <Nav.Link onClick={()=>pending()}>Pending Customers</Nav.Link>  
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link  onClick={()=>setShow(!show)&setOpen(false)&setView(false)}>Check In customer</Nav.Link>
+                    <Nav.Link onClick={()=>active()}>Check In Customers</Nav.Link>  
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link  onClick={()=>setView(!view)&setShow(false)&setOpen(false)}>Check Out customer</Nav.Link>
+                    <Nav.Link onClick={()=>checkOut()}>Check Out Customers</Nav.Link>  
                     </Nav.Item>
                 </Nav>
                     <br></br>
@@ -232,62 +273,8 @@ const Customers=()=>{
                                     </div>
                                 </div>
                             </div>
-                            {/* <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br> */}
-                            {/* <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>NIC</th>
-                                        <th>Mobile No</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Dob</th>
-                                        <th>Checkin Date</th>
-                                        <th>CheckOut Date</th>
-                                        <th>Meal</th>
-                                        <th>Room No</th>
-                                        <th style={{width:'10rem'}}> </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>199732504553</td>
-                                        <td>0717365756</td>
-                                        <td>darshana@gmail.com</td>
-                                        <td>Mathale Road,Kurunegala</td>
-                                        <td>1997-11-20</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>Full board</td>
-                                        <td>12</td>
-                                        <td style={{textAlign:'center'}}>
-                                        <Tippy content="View Bill">
-                                            <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy>
-                                        <Tippy content="Delete">
-                                            <Button type="delete"><FaTrash /></Button>
-                                        </Tippy>
-                                         <Tippy content="Edit">
-                                            <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                         </Tippy>
-                                        
-                                        </td>
-                                    </tr>
-                                   
-                                </tbody> */}
+                           
+
                                 <div  style={{overflowX:'auto',maxWidth:'100%'}}>
 
                                 <Table striped bordered hover size="sm" responsive="lg" id="CheckInTable" style = {{tableLayout:'fixed', width:'200%'}} >
@@ -298,43 +285,36 @@ const Customers=()=>{
                                         <th style={{width:'100%'}}>Last Name</th>
                                         <th style={{width:'100%'}}>NIC</th>
                                         <th style={{width:'100%'}}>Mobile No</th>
-                                        <th style={{width:'100%'}}>Email</th>
-                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'200%'}}>Email</th>
+                                        <th style={{width:'200%'}}>Address</th>
                                         <th style={{width:'100%'}}>Dob</th>
-                                        <th style={{width:'100%'}}>Checkin Date</th>
-                                        <th style={{width:'100%'}}>CheckOut Date</th>
-                                        <th style={{width:'100%'}}>Meal</th>
-                                        <th style={{width:'100%'}}>Room No</th>
                                         <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>199732504553</td>
-                                        <td>0717365756</td>
-                                        <td>darshana@gmail.com</td>
-                                        <td>Mathale Road,Kurunegala, pilas</td>
-                                        <td>1997-11-20</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>Full board</td>
-                                        <td>12</td>
+                                {
+                                    customers.map(
+                                        test=>
+                                    <tr key={test.email}>
+                                        <td>{test.customerId}</td>
+                                        <td>{test.firstName}</td>
+                                        <td>{test.lastName}</td>
+                                        <td>{test.nic}</td>
+                                        <td>{test.contactNo}</td>
+                                        <td>{test.email}</td>
+                                        <td>{test.address}</td>
+                                        <td>{test.dob}</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
-                                        <Tippy content="Delete">
-                                            <Button type="delete"><FaTrash /></Button>
-                                        </Tippy>
-                                         <Tippy content="Edit">
+                                        <Tippy content="Edit">
                                             <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
                                          </Tippy>
-                                        
                                         </td>
                                     </tr>
+                                    )
+                                }
                                    
                                 </tbody> 
                             </Table>
@@ -373,38 +353,40 @@ const Customers=()=>{
                                         <th style={{width:'100%'}}>Last Name</th>
                                         <th style={{width:'100%'}}>NIC</th>
                                         <th style={{width:'100%'}}>Mobile No</th>
-                                        <th style={{width:'100%'}}>Email</th>
-                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'200%'}}>Email</th>
+                                        <th style={{width:'200%'}}>Address</th>
                                         <th style={{width:'100%'}}>Dob</th>
-                                        <th style={{width:'100%'}}>Checkin Date</th>
-                                        <th style={{width:'100%'}}>CheckOut Date</th>
-                                        <th style={{width:'100%'}}>Meal</th>
-                                        <th style={{width:'100%'}}>Room No</th>
                                         <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>199732504553</td>
-                                        <td>0717365756</td>
-                                        <td>darshana@gmail.com</td>
-                                        <td>Mathale Road,Kurunegala, pilas</td>
-                                        <td>1997-11-20</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>Full board</td>
-                                        <td>12</td>
+                                {
+                                    customers.map(
+                                        test=>
+                                    <tr key={test.email}>
+                                        <td>{test.customerId}</td>
+                                        <td>{test.firstName}</td>
+                                        <td>{test.lastName}</td>
+                                        <td>{test.nic}</td>
+                                        <td>{test.contactNo}</td>
+                                        <td>{test.email}</td>
+                                        <td>{test.address}</td>
+                                        <td>{test.dob}</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
                                         </Tippy>
+                                        <Tippy content="Delete">
+                                            <Button type="delete"><FaTrash /></Button>
+                                        </Tippy>
                                          <Tippy content="Edit">
                                             <Button onClick={()=>setEditShow(true)} type="edit"><FaPen /></Button>
-                                         </Tippy></td>  
+                                         </Tippy>
+                                        
+                                        </td>
                                     </tr>
+                                    )
+                                }
                                 </tbody>
                             </Table>
                             </div>
@@ -434,43 +416,46 @@ const Customers=()=>{
                             </div>
                             <br></br>
                             <br></br>
-                            <Table striped bordered hover size="sm" responsive>
+                            <div  style={{overflowX:'auto',maxWidth:'100%'}}>
+
+                            <Table striped bordered hover size="sm" responsive="lg" id="pendingTable" style = {{tableLayout:'fixed', width:'200%'}} >
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>NIC</th>
-                                        <th>Mobile No</th>
-                                        <th>Email</th>
-                                        <th>Checkin Date</th>
-                                        <th>CheckOut Date</th>
-                                        <th>Meal</th>
-                                        <th>Room</th>
-                                        <th>Room No</th>
-                                        <th> </th>
+                                        <th style={{width:'100%'}}>#</th>
+                                        <th style={{width:'100%'}}>First Name</th>
+                                        <th style={{width:'100%'}}>Last Name</th>
+                                        <th style={{width:'100%'}}>NIC</th>
+                                        <th style={{width:'100%'}}>Mobile No</th>
+                                        <th style={{width:'100%'}}>Email</th>
+                                        <th style={{width:'100%'}}>Address</th>
+                                        <th style={{width:'100%'}}>Dob</th>
+                                        <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>199732504553</td>
-                                        <td>0717365756</td>
-                                        <td>darshana@gmail.com</td>
-                                        <td>2021-07-23</td>
-                                        <td>2021-07-25</td>
-                                        <td>Full bord</td>
-                                        <td>Single room</td>
-                                        <td>12</td>
+                                {
+                                    customers.map(
+                                        test=>
+                                    <tr key={test.email}>
+                                        <td>{test.customerId}</td>
+                                        <td>{test.firstName}</td>
+                                        <td>{test.lastName}</td>
+                                        <td>{test.nic}</td>
+                                        <td>{test.contactNo}</td>
+                                        <td>{test.email}</td>
+                                        <td>{test.address}</td>
+                                        <td>{test.dob}</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
-                                        </Tippy></td>
+                                        </Tippy>
+                                        </td>
                                     </tr>
+                                    )
+                                }
                                 </tbody>
                             </Table>
+                            </div>
                             <ShowBill
                                 show={viewBill}
                                 onHide={()=>setViewBill(false)}

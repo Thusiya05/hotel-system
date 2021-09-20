@@ -160,7 +160,7 @@ export default class Login extends Component {
             break;
             
           case 'nic': 
-          var letters = /^[0-9Vv]+$/;
+          var letters = /^([0-9]{9}[x|X|v|V]|[0-9]{12})+$/;
             errors.nic = 
             !value.match(letters) 
                 ? "NIC don't match!"
