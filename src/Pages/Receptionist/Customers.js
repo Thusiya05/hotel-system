@@ -220,7 +220,7 @@ const Customers=()=>{
     useEffect(()=>{
         axios.get(`http://localhost:3030/receptionist/viewCustomers/${status}`)
         .then(res=>{
-            console.log(res.data);
+            console.log(res.data.roomNo);
             setCustomers(res.data)
         })
         .catch(err=>{
@@ -295,6 +295,7 @@ const Customers=()=>{
                                 {
                                     customers.map(
                                         test=>
+                                        
                                     <tr key={test.email}>
                                         <td>{test.customerId}</td>
                                         <td>{test.firstName}</td>
@@ -356,15 +357,16 @@ const Customers=()=>{
                                         <th style={{width:'200%'}}>Email</th>
                                         <th style={{width:'200%'}}>Address</th>
                                         <th style={{width:'100%'}}>Dob</th>
+                                        <th style={{width:'100%'}}>Room No</th>
                                         <th style={{width:'100%'}}> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {
                                     customers.map(
-                                        test=>
+                                        (test,index)=>
                                     <tr key={test.email}>
-                                        <td>{test.customerId}</td>
+                                        <td>{index+1}</td>
                                         <td>{test.firstName}</td>
                                         <td>{test.lastName}</td>
                                         <td>{test.nic}</td>
@@ -372,6 +374,7 @@ const Customers=()=>{
                                         <td>{test.email}</td>
                                         <td>{test.address}</td>
                                         <td>{test.dob}</td>
+                                        <td>{test.roomNo.map(e=>e+' , ')}</td>
                                         <td style={{textAlign:'center'}}>
                                         <Tippy content="View Bill">
                                             <Button  onClick={()=>setViewBill(true)} type="edit"><FaPrint /></Button>  
