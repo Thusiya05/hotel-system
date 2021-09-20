@@ -14,6 +14,7 @@ function Kcsidebar() {
                 className="SidebarRow"
                 id={window.location.pathname === val.link ? "active" : ""}
                 onClick={() => {
+                    if(val.onClick) val.onClick();
                     window.location.pathname = val.link;
                     }}
                     > 

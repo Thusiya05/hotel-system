@@ -44,6 +44,11 @@ export const KitchenSideBar = [
         title: "Logout",
         icon: <RiIcons.RiLogoutBoxFill />,
         link:'/Signin',
+        onClick: ()=>{
+            localStorage.removeItem("firstName");
+            localStorage.removeItem("lastName");
+            localStorage.removeItem("userId");
+        }
     },
 
 ] ;

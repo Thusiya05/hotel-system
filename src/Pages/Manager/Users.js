@@ -258,6 +258,7 @@ const Users =()=>{
         setadded(!added);
         setEditShow(true);
         setEditemployees(id);
+        console.log(localStorage.getItem('userId'))
     }
 
     function Delete(id){
