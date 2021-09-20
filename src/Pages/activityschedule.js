@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from "../Components/NavBar"
 import Footer from '../Components/Footer'
 import { Container,Form,Col,Row,Table,Button,Carousel } from 'react-bootstrap'
@@ -13,8 +13,42 @@ import img8 from '../images/Rock-Sliding.jpg'
 import img9 from '../images/zip-lining.jpg'
 import InfoCard from '../Components/InfoCard'
 import Tippy from '@tippyjs/react';
+import axios from 'axios'
 
-const activityschedule = () => {
+const Activityschedule = () => {
+
+    const [avilableSchedules, setAvailableSchedules] = useState(null);
+    const [loaded, setLoaded] = useState(false);
+    const url = "http://localhost:3030/outdoor-activity-schedules/available";
+
+    const getAvailableSchedules= ()=>{
+        // add a loader
+        let requestBody = {
+            "scheduledDate" : "2021-09-18"
+        }
+        let headers = {
+            "Content-Type" : "application/json"
+        }
+        axios.post(url, {
+            "scheduledDate" : "2021-09-18"
+        }, headers).then(response=>{
+            let schedules = response.data;
+            console.log(schedules);
+            setAvailableSchedules(schedules);
+            setLoaded(true);
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+
+    const createOutdoorActivitySchedule=()=>{
+        
+    }
+
+    useEffect(()=>{
+        getAvailableSchedules();
+    },[]);
+
     return (
         <>
             <div>
@@ -117,17 +151,39 @@ const activityschedule = () => {
                                     </Col>
                                </Form.Row>
                         </Form> 
-
-                        <Table striped bordered hover size="sm" responsive id="CheckInTable">
+                        {loaded && <Table striped bordered hover size="sm" responsive id="CheckInTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Activity Name</th>
-                                        <th  style={{textAlign:'center'}}>Time Slot</th>
+                                        <th style={{textAlign:'center'}}>8.00am-10.00am</th>
+                                        <th style={{textAlign:'center'}}>10.00am-12.00pm</th>
+                                        <th style={{textAlign:'center'}}>2.00pm-4.00pm</th>
+                                        <th style={{textAlign:'center'}}>4.00pm-6.00pm</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {avilableSchedules.map((item,index)=>{
+                                        return(
+                                            <tr key={index}>
+                                                <td>{index+1}</td>
+                                                <td>{item.outdoorActivity.outdoorActivityName}</td>
+                                                <td style={{textAlign:'center'}}>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.EIGHT_AM_TO_TEN_AM == 0}>Available {item.availableSlots.EIGHT_AM_TO_TEN_AM}</Button>   
+                                                </td>
+                                                <td style={{textAlign:'center'}}>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TWO_PM_TO_FOUR_PM == 0}>Available {item.availableSlots.TWO_PM_TO_FOUR_PM}</Button>
+                                                </td>
+                                                <td style={{textAlign:'center'}}>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.FOUR_PM_TO_SIX_PM == 0}>Available {item.availableSlots.FOUR_PM_TO_SIX_PM}</Button>
+                                                </td>
+                                                <td style={{textAlign:'center'}}>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TEN_AM_TO_TWELVE_PM == 0}>Available {item.availableSlots.TEN_AM_TO_TWELVE_PM}</Button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                    {/* <tr>
                                         <td>1</td>
                                         <td>Water Rafting</td>
                                         <td style={{textAlign:'center'}}>
@@ -175,9 +231,9 @@ const activityschedule = () => {
                                         <td style={{textAlign:'center'}}>
                                             <Button variant="dark" type='submit' >8.00am-10.00am</Button> <Button variant="dark" type='submit' disabled>10.00am-12.00pm</Button> <Button variant="dark" type='submit' disabled>2.00pm-4.00pm</Button> <Button variant="dark" type='submit'>4.00pm-6.00pm</Button>
                                         </td>  
-                                    </tr>  
+                                    </tr>   */}
                                 </tbody>
-                             </Table> 
+                             </Table> }
                              <br></br>
                             <div style={{textAlign:'center'}}>
                             <Tippy content="You must Log-in first">
@@ -198,4 +254,4 @@ const activityschedule = () => {
     )
 }
 
-export default activityschedule
+export default Activityschedule
