@@ -20,6 +20,11 @@ const Activityschedule = () => {
     const [scheduleDate,setScheduleDate] = useState(null);
     const [avilableSchedules, setAvailableSchedules] = useState(null);
     const [loaded, setLoaded] = useState(false);
+
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedTimeslot, setSelectedTimeSlot] = useState(null);
+    const [selcetdActivity, setSelectedActivity] = useState(null);
+
     const url = "http://localhost:3030/outdoor-activity-schedules/available";
 
     const getAvailableSchedules= (sDate)=>{
@@ -27,7 +32,6 @@ const Activityschedule = () => {
         if(sDate==null){
             const temp = new Date();
             sDate = temp.toISOString().split('T')[0]
-            console.log("Undefined xxxxxx"+sDate)
         }
         let requestBody = {
             "scheduledDate" : sDate
@@ -37,7 +41,6 @@ const Activityschedule = () => {
         }
         axios.post(url, requestBody, headers).then(response=>{
             let schedules = response.data;
-            console.log(schedules);
             setAvailableSchedules(schedules);
             setLoaded(true);
         }).catch((error)=>{
@@ -58,7 +61,7 @@ const Activityschedule = () => {
         }
     }
 
-    const createOutdoorActivitySchedule=(outdoorActivityId,timeString)=>{
+    const createOutdoorActivitySchedule=(outdoorActivityId, timeString)=>{
         let timeSlot = getTimeSlot(timeString);
         let url = "http://localhost:3030/outdoor-activity-schedules";
         let customerId = localStorage.getItem('userId');
@@ -66,17 +69,29 @@ const Activityschedule = () => {
             "customerId" : customerId,
             "outdoorActivityId": outdoorActivityId,
             "scheduleTimeSlot": timeSlot,
-            "scheduledDate": "2021-09-18"
+            "scheduledDate": scheduleDate
         }
         let headers = {
             "Content-Type" : "application/json"
         }
         axios.post(url,requestBody,headers).then((response)=>{
-            console.log(response.data);
-            setScheduleDate(null);
+
+            setSelectedActivity(outdoorActivityId);
+            setSelectedDate(scheduleDate);
+            setSelectedTimeSlot(timeSlot);
+
+            getAvailableSchedules(scheduleDate);
         }).catch((error)=>{
             console.log(error);
         });
+    }
+
+    function isTimeslotScheduled(currentActivityId,currentDate,currentTimeSlot){
+        let cts = getTimeSlot(currentTimeSlot);
+        if(currentActivityId == selcetdActivity && currentDate == selectedDate && cts == selectedTimeslot){
+            return true;
+        }
+        return false;
     }
 
 
@@ -181,7 +196,7 @@ const Activityschedule = () => {
                                     <Col sm={6}>
                                         <Form.Group as={Col} controlId="formGridFirstName">
                                         <Form.Label style={{textAlign:'center'}}><h6>Select the Date</h6></Form.Label>
-                                        <Form.Control value={scheduleDate} type="date" min={new Date().toISOString().split("T")[0]} required onChange={(e)=>getAvailableSchedules(e.target.value)}/>
+                                        <Form.Control value={scheduleDate} type="date" min={new Date().toISOString().split("T")[0]} required onChange={(e)=>setScheduleDate (e.target.value)}/>
                                         </Form.Group>
                                     </Col>
                                </Form.Row>
@@ -204,16 +219,16 @@ const Activityschedule = () => {
                                                 <td>{index+1}</td>
                                                 <td>{item.outdoorActivity.outdoorActivityName}</td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.EIGHT_AM_TO_TEN_AM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"EIGHT_AM_TO_TEN_AM")}>Available {item.availableSlots.EIGHT_AM_TO_TEN_AM}</Button>   
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.EIGHT_AM_TO_TEN_AM == 0 } onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"EIGHT_AM_TO_TEN_AM")}>Available {item.availableSlots.EIGHT_AM_TO_TEN_AM}</Button>   
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TEN_AM_TO_TWELVE_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TEN_AM_TO_TWELVE_PM")}>Available {item.availableSlots.TEN_AM_TO_TWELVE_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TEN_AM_TO_TWELVE_PM == 0 } onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TEN_AM_TO_TWELVE_PM")}>Available {item.availableSlots.TEN_AM_TO_TWELVE_PM}</Button>
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TWO_PM_TO_FOUR_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TWO_PM_TO_FOUR_PM")}>Available {item.availableSlots.TWO_PM_TO_FOUR_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TWO_PM_TO_FOUR_PM == 0 } onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TWO_PM_TO_FOUR_PM")}>Available {item.availableSlots.TWO_PM_TO_FOUR_PM}</Button>
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.FOUR_PM_TO_SIX_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"FOUR_PM_TO_SIX_PM")}>Available {item.availableSlots.FOUR_PM_TO_SIX_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.FOUR_PM_TO_SIX_PM == 0 } onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"FOUR_PM_TO_SIX_PM")}>Available {item.availableSlots.FOUR_PM_TO_SIX_PM}</Button>
                                                 </td>
                                             </tr>
                                         );

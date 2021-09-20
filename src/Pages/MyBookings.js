@@ -139,7 +139,7 @@ const MyBookings = ()=>{
     const getOutdoorActivitySchedules = () =>{
         let url = "http://localhost:3030/outdoor-activity-schedules/customer-schedules";
         let body = {
-            "customerId" : 3
+            "customerId" : localStorage.getItem("userId")
         }
         axios.post(url, body).then((response)=>{
             console.log(response.data);
@@ -149,10 +149,12 @@ const MyBookings = ()=>{
         })
     }
 
-    const deleteOutdoorActivitySchedule=(outdoorActivitySchedule)=>{
-        let userId = sessionStorage.getItem('userId');
-        let url = `http://localhost:3030/outdoor-activity-schedules/${userId}/${outdoorActivitySchedules}`;
+    const deleteOutdoorActivitySchedule=(outdoorActivityScheduleId)=>{
+        console.log(outdoorActivityScheduleId);
+        let userId = localStorage.getItem('userId');
+        let url = `http://localhost:3030/outdoor-activity-schedules/${userId}/${outdoorActivityScheduleId}`;
         axios.delete(url).then((res)=>{
+            console.log(res);
             getOutdoorActivitySchedules();
         }).catch((error)=>{
             console.log(error);
@@ -250,10 +252,10 @@ const MyBookings = ()=>{
                             <h5>Activity Bookings</h5>
                             {outdoorActivitySchedules.map((schedule,index)=>{
                                 return(
-                                    <div key="{test.bookingID}">
+                                    <div key={index}>
                                     <div style={{textAlign:'left'}} className="row">
                                         <div className="col-md-7">
-                                                    <h6>Activity Schedule ID : 1</h6>
+                                                    <h6>{index+1}</h6>
                                                     <h6>Activity Name : {schedule.outdoorActivity.outdoorActivityName}</h6>
                                                     <h6>Schedule Date : {schedule.scheduledDate}</h6>
                                                     {/* <h6>Room Type : {test.roomTypes}</h6> */}
