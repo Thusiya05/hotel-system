@@ -34,11 +34,11 @@ export const ManSideBar = [
         link:'/manager/HotelConfig',
     },
 
-    {
-        title: "Guests",
-        icon: <IoIcons.IoIosPeople />,
-        link:'/manager/guest/',
-    },
+    // {
+    //     title: "Guests",
+    //     icon: <IoIcons.IoIosPeople />,
+    //     link:'/manager/guest/',
+    // },
 
     {
         title: "Calendar",

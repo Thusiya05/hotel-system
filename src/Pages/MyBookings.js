@@ -1,8 +1,10 @@
 import React,{useState, useEffect} from 'react'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
-import {Container,Form,Col,Row,Button, Table, Modal} from 'react-bootstrap'
+import {Container,Form,Col,Button, Table, Modal, Row} from 'react-bootstrap'
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import { FaInfo } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 
 function EditBooking(props) {
@@ -211,7 +213,11 @@ const MyBookings = ()=>{
             </Container>
                                 
                                 <div className="center" style={{justifyContent:'center',textAlign:'center'}}>
-                                    <Button onClick={()=>setViewBill(true)} type="submit" variant="info" style={{width:'10rem'}}>View Bill</Button> 
+                                <Tippy content="You must check-out from the hotel">
+                                    <Button onClick={()=>setViewBill(true)} type="submit" variant="info" style={{width:'10rem'}}>View Bill
+                                    </Button> 
+                                </Tippy>
+                                    
                                 </div>
 
                                 <div><ShowBill

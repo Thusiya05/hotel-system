@@ -171,6 +171,7 @@ function Addfood(props){
                                              Ingredients.map(
                                                 ingredient =>
                                                 <tr key = {ingredient.id}>
+                                                    <td>{ingredient.name}</td>
                                                     <td>
                                                         <Form.Control 
                                                         type="checkbox"
@@ -188,7 +189,7 @@ function Addfood(props){
                                                               );
                                                         }} 
                                                         // value={data.ingredients} id="ingredients"  
-                                                        style={{height:'1rem'}} />{ingredient.name}
+                                                        style={{height:'1rem'}} />
                                                     </td>
                                                 </tr>
                                               )
@@ -218,14 +219,16 @@ function Editfood(props){
     console.log(props.updateFood);
     const [data, setData] = useState({
         id: "",
-        price: ""       
+        name: '',
+        price: 0       
     })
 
     function submit(e){
         e.preventDefault();
-        console.log(data.qty);
+        console.log(data);
         axios.post("http://localhost:3030/updateFoodPrice",{
             foodId: props.updateFood,
+            foodName: data.name,
             price: data.price
         })
         .then(res=>{
@@ -256,21 +259,21 @@ function Editfood(props){
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={(e) => submit(e)}>
-                        {/* <Row>
+                        <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountName">
                                 <Form.Label style={{textAlign:'center'}}><h6 >Food Name</h6></Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.name} id="name"/>
                                 </Form.Group>
                             </Col>             
-                        </Row> */}
+                        </Row>
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="editDiscountValue">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.price} id="price" required/>
+                                <Form.Control type="text" onChange={(e)=>handle(e)} value={data.price} id="price"/>
                                 </Form.Group>
                             </Col>             
                         </Row>

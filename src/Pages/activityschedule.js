@@ -12,6 +12,7 @@ import img7 from '../images/Confidence-Jump.jpg'
 import img8 from '../images/Rock-Sliding.jpg'
 import img9 from '../images/zip-lining.jpg'
 import InfoCard from '../Components/InfoCard'
+import Tippy from '@tippyjs/react';
 
 const activityschedule = () => {
     return (
@@ -177,8 +178,11 @@ const activityschedule = () => {
                                     </tr>  
                                 </tbody>
                              </Table> 
+                             <br></br>
                             <div style={{textAlign:'center'}}>
-                                <Button type="submit" variant="info">Submit</Button>  <Button type="cancel" variant="danger">Cancel</Button>
+                            <Tippy content="You must Log-in first">
+                                <Button type="submit" variant="info">Submit</Button></Tippy> <Button type="cancel" variant="danger">Cancel</Button>
+                            
                             </div>
                                         
                     
