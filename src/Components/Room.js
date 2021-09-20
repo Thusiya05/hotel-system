@@ -94,12 +94,12 @@ useEffect(() => {
                               <Form.Row>
                                   <Form.Group as={Col} controlId="checkInDate">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-in Date</h6></Form.Label>
-                                  <Form.Control value={data.checkInDate} onChange={(e)=>checkInDate(e)} type="date"  min={new Date().toISOString().split("T")[0]} required/>
+                                  <Form.Control value={data.checkInDate} onChange={(e)=>checkInDate(e)} type="date"  min={new Date().toISOString().split("T")[0]}  required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="checkOutDate">
                                   <Form.Label style={{textAlign:'center'}}><h6>Check-out Date</h6></Form.Label>
-                                  <Form.Control value={data.checkOutDate} onChange={(e)=>checkInDate(e)} type="date"   required/>
+                                  <Form.Control value={data.checkOutDate} onChange={(e)=>checkInDate(e)} type="date"  required/>
                                   </Form.Group>
                               </Form.Row>
                               <Form.Row>

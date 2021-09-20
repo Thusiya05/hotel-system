@@ -149,19 +149,27 @@ const MyBookings = ()=>{
         })
     }
 
+    const deleteOutdoorActivitySchedule=(outdoorActivitySchedule)=>{
+        let userId = sessionStorage.getItem('userId');
+        let url = `http://localhost:3030/outdoor-activity-schedules/${userId}/${outdoorActivitySchedules}`;
+        axios.delete(url).then((res)=>{
+            getOutdoorActivitySchedules();
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+
     function getTimeSlot(timeString){
-        console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            switch(timeString) {
-                case "EIGHT_AM_TO_TEN_AM":
-                    return '8.00AM - 10.00AM';
-                case "TEN_AM_TO_TWELVE_PM":
-                    
-                    return '10.00AM - 12.00PM';
-                case "TWO_PM_TO_FOUR_PM":
-                    return '2.00PM - 4.00PM';
-                default:
-                    return '4.00PM - 6.PM';
-            }
+        switch(timeString) {
+            case "EIGHT_AM_TO_TEN_AM":
+                return '8.00AM - 10.00AM';
+            case "TEN_AM_TO_TWELVE_PM":
+                return '10.00AM - 12.00PM';
+            case "TWO_PM_TO_FOUR_PM":
+                return '2.00PM - 4.00PM';
+            default:
+                return '4.00PM - 6.PM';
+        }
     }
 
     useEffect(() => {
@@ -254,7 +262,7 @@ const MyBookings = ()=>{
                                         </div> 
                                                     
                                         <div className="col-md-5" style={{justifyContent:'center',textAlign:'center'}}>
-                                            <Button onClick={()=>Update(test.bookingID)} type="submit" variant="info" style={{width:'5rem'}}>Edit</Button> <Button onClick={()=>Delete(test.bookingID)} type="submit" variant="danger">Remove</Button>
+                                            <Button onClick={()=>deleteOutdoorActivitySchedule(schedule.outdoorActivityScheduleId)} type="submit" variant="danger">Remove</Button>
                                         </div>
                                     </div>
                                 </div>
