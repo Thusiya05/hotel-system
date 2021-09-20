@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
-import {Container,Form,Col,Button, Table, Modal} from 'react-bootstrap'
+import {Container,Form,Col,Button, Table, Modal, Row} from 'react-bootstrap'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
