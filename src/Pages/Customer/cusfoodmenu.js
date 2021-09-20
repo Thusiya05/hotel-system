@@ -18,7 +18,7 @@ import '../../CSS/box.css'
 
 
 function ConfirmOrder(props){
-    console.log(props.PriceofAllFoods)
+    // console.log(props.PriceofAllFoods)
 
     // const[date,setDate] = useState(new Date());
 
@@ -132,18 +132,20 @@ const Cusfoodmenu =()=> {
     const[foods,setFood]=useState([]);
     const[editView,setEditView]=useState(false);    
     const [added, setadded] = useState(true);
+    const[used,setUsed] = useState(false);
     const[editFood,setEditFood]=useState(1);
 
     useEffect(() => {
         axios.get('http://localhost:3030/cusfoodmenu')
         .then(res => {
             setFood(res.data)
+            setUsed(true);
             // console.log(foods)
         })
         .catch(err => {
             console.log(err)
         })
-    },[])
+    },[used])
 
     function submit(){
         let foodIdArray = [];
@@ -163,7 +165,7 @@ const Cusfoodmenu =()=> {
                 setPriceofAllFoods((PriceArray.reduce((a,v) =>  a = a + v , 0 )));
             })
         if(foodIdArray.length<=0){
-            alert("Please Select Foods");
+            toast.error('❌ '+' '+ "Please Select Foods");
         }else{
             setEditView(true);
         }
@@ -206,7 +208,9 @@ const Cusfoodmenu =()=> {
              <br></br>
              
              <Hero hero="foodhero">
+
             <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="return Home" path="/"></Banner>
+
         </Hero>
         <br />
 

@@ -7,12 +7,22 @@ import { FaTrash,FaPen,FaSearch } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
+// function Addfoodingredients(props){
+
+// }
+
 
 function Addfood(props){
     // const Ingredients =()=>{
         // const [show,setShow]=useState(false)
         // const [editshow,setEditShow]=useState(false)
         const [Ingredients,setIngredients]=useState([])
+        const [picture, setPicture] = useState(null);
+
+        const onChangePicture = e => {
+            setPicture(URL.createObjectURL(e.target.files[0]) );
+            console.log(picture)
+        };
     
         useEffect(() => {
             axios.get('http://localhost:3030/ingredients')
@@ -53,6 +63,7 @@ function Addfood(props){
             });
 
             axios.post(url,{
+                foodImageUrl: picture,
                 foodName: data.food_name,
                 foodPrice: data.food_price,
                 foodDescription: data.food_description
@@ -122,85 +133,103 @@ function Addfood(props){
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={(e) => submit(e)}>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="addDiscountName"
-                                >
-                                <Form.Label style={{textAlign:'center'}}><h6>Food Name</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.food_name} id="food_name" type="text" required/>
-                                </Form.Group>
-                            </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="addDiscountValue"
-                                >
-                                <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.food_price} id="food_price" type="text" required/>
-                                </Form.Group>
-                            </Col>             
-                        </Row>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="AddDiscountDescription"
-                                >
-                                <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
-                                <Row>
+
+                    <Table  striped hover size="sm">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Food Name
+                                </td>
+                                <td>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.food_name} id="food_name" type="text" required/>
+                                </td>
+                                <td rowSpan="5">
+                                    <Row>
+                                        {/* <Col md={4}></Col>  */}
+                                        <Col md={4}>
+                                            <Form.Group as={Col} 
+                                            // controlId="Ingredients"
+                                            >
+
+                                                <div class="tableFixHead">
+                                                        <Table class="ingredientTable" striped bordered hover size="sm">
+                                                            <thead>
+                                                                        <th>Ingredients</th>
+                                                                        <th>Select</th>
+
+                                                            </thead>
+                                                            <tbody>
+                                                            {
+                                                                Ingredients.map(
+                                                                    ingredient =>
+                                                                    <tr key = {ingredient.id}>
+                                                                        <td>{ingredient.name}</td>
+                                                                        <td width="100%">
+                                                                            <Form.Control 
+                                                                            type="checkbox"
+                                                                            checked={ingredient.select}
+                                                                            value={ingredient.id}
+                                                                            onChange={e=>{                                                        
+                                                                                let value = e.target.checked;
+                                                                                setIngredients(
+                                                                                    Ingredients.map(sd => {
+                                                                                    if (sd.id == e.target.value) {
+                                                                                        sd.select = value;
+                                                                                    }
+                                                                                    return sd;
+                                                                                    })
+                                                                                );
+                                                                            }} 
+                                                                            style={{height:'1rem'}} />
+                                                                        </td>
+                                                                    </tr>
+                                                                )
+                                                            }
+                                                            </tbody>
+                                                        </Table>    
+                                                </div>
+                                            </Form.Group>
+                                        </Col>             
+                                    </Row>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td> 
+                                    Price
+                                </td>
+                                <td>
+                                    <Form.Control onChange={(e)=>handle(e)} value={data.food_price} id="food_price" type="text" required/>
+                                </td>    
+                            </tr>
+
+                            <tr>  
+                                <td>
+                                    Description
+                                </td>
+                                <td>
                                     <Form.Control onChange={(e)=>handle(e)} value={data.food_description} id="food_description" style={{height:'5rem'}} type="text" required/>
-                                </Row>                               
-                                </Form.Group>
-                            </Col>             
-                        </Row>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    Upload a picture
+                                </td>
+                                <td>
+                                    <Form.Control onChange={onChangePicture} id="food_image" type="file" required/>
+                                </td>
+                            </tr>
 
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
-                                <Form.Group as={Col} 
-                                // controlId="Ingredients"
-                                >
-                                <Form.Label style={{textAlign:'center'}}><h6>Ingredients</h6></Form.Label>
-                                    <Table striped bordered hover size="sm">
-                                        <tbody>
-                                        {
-                                             Ingredients.map(
-                                                ingredient =>
-                                                <tr key = {ingredient.id}>
-                                                    <td>{ingredient.name}</td>
-                                                    <td>
-                                                        <Form.Control 
-                                                        type="checkbox"
-                                                        checked={ingredient.select}
-                                                        value={ingredient.id}
-                                                        onChange={e=>{                                                        
-                                                            let value = e.target.checked;
-                                                            setIngredients(
-                                                                Ingredients.map(sd => {
-                                                                  if (sd.id == e.target.value) {
-                                                                    sd.select = value;
-                                                                  }
-                                                                  return sd;
-                                                                })
-                                                              );
-                                                        }} 
-                                                        // value={data.ingredients} id="ingredients"  
-                                                        style={{height:'1rem'}} />
-                                                    </td>
-                                                </tr>
-                                              )
-                                        }
-                                        </tbody>
-                                    </Table>    
-                                {/* <Form.Control type="checkbox" required/> */}
-                                </Form.Group>
-                            </Col>             
-                        </Row>
-
+                            <tr>
+                                 <td colSpan="2">
+                                    <img className="playerProfilePic_home_tile"  src={picture && picture}></img>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </Table>
+                        
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> 
                             <Button onClick={props.onHide} variant="danger">Cancel</Button>
@@ -313,6 +342,7 @@ function Menu() {
     const[updateFood, setUpdateFood]=useState([]);
     const[editView,setEditView]=useState(false);
     const[addView,setAddView]=useState(false);
+    const[addIngredientView, setAddIngredientView] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:3030/foods')
@@ -343,6 +373,11 @@ function Menu() {
                 console.log(err)
             })
     }
+
+    function Popup(){
+        setAddView(true);
+        // setAddIngredientView(true);
+    }
     
 
 
@@ -372,11 +407,15 @@ function Menu() {
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
              <div className="row">
                  <div className="col-md-6">
-                 <Button onClick={()=>setAddView(true)} variant="dark">+ Add New Item</Button>
+                 <Button onClick={()=>Popup()} variant="dark">+ Add New Item</Button>
                      <Addfood
                          show={addView}
                          onHide={()=> setAddView(false)} 
                      />  
+                      {/* <Addfoodingredients
+                         show={addIngredientView}
+                         onHide={()=> setAddIngredientView(false)} 
+                     />  */}
                  </div>
                  <div className="col-md-6" style={{textAlign:'right'}}>
                  <Button><FaSearch /></Button> <input type="text" id="myInput" name="" placeholder="Search by Food Name" style={{borderBottomStyle:'solid',borderWidth:'1px', width:'15rem'}}></input>

@@ -25,3 +25,20 @@ h1{
 .foodList ul{
     list-style: none;
 }
+
+.tableFixHead{
+     overflow: auto; 
+     height: 300px; 
+     width: 300px;
+    }
+
+.tableFixHead th {
+     position: sticky; 
+     top: 0;       
+     background:#eee; 
+    }
+.ingredientTable{
+    border-collapse: collapse; 
+    width: 100%; 
+}
+.ingredientTable th, td { padding: 8px 16px; }
