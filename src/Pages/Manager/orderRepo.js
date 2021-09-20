@@ -46,9 +46,9 @@ const OrderRepo=()=> {
     const dateStart = "From : " + dateFrom.toString();
     const dateEnds = "To    : " + dateTo.toString();
 
-    const headers = [["Order Date", "Order ID", "Room Id", "Customer Name", "Steward ID", "Steward Name",  "Ordered Foods", "QTY"]];
+    const headers = [["Order Date", "Order ID", "Total Price",  "Room Id", "Customer Name", "Steward ID", "Steward Name",  "Ordered Foods", "QTY"]];
 
-    const data = OrderData.map(elt=> [elt.orderDate, elt.orderId, elt.roomId, elt.customerName, elt.assignedStewardId, elt.assignedStewardName, elt.orderedFoods , elt.orderedFoodQty]);
+    const data = OrderData.map(elt=> [elt.orderDate, elt.orderId, elt.orderPrice, elt.roomId, elt.customerName, elt.assignedStewardId, elt.assignedStewardName, elt.orderedFoods , elt.orderedFoodQty]);
 
     let content = {
       startY: 120,
