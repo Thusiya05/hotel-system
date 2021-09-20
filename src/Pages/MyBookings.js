@@ -3,6 +3,8 @@ import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
 import {Container,Form,Col,Button, Table, Modal, Row} from 'react-bootstrap'
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import { FaInfo } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 
 function EditBooking(props) {
@@ -13,11 +15,12 @@ function EditBooking(props) {
         checkOutDate:"",
         roomTypes:"",
         custName:"",
+        realBookID:"",
     })
     
     function submitt(e){
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         axios.post(`http://localhost:3030/customer/booking/updatebooking/${props.bookingid}`,data)
         .then(res=>{
              props.setadded(!props.added);
@@ -59,9 +62,9 @@ function EditBooking(props) {
         <Modal.Body>
                         <Form onSubmit={(e) => submitt(e)}>
                                 <Form.Row >
-                                    <Form.Group as={Col} controlId="bookingID">
+                                    <Form.Group as={Col} controlId="realBookID">
                                     <Form.Label style={{textAlign:'center'}}><h6>Booking ID</h6></Form.Label>
-                                    <Form.Control value={data.bookingID} id="bookingID" type="text" readOnly/>
+                                    <Form.Control value={data.realBookID} id="realBookID" type="text" readOnly/>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="custName">
@@ -116,6 +119,8 @@ const MyBookings = ()=>{
     const [viewbooking,setViewbooking]=useState([])
     const[viewBill,setViewBill]=useState(false)
 
+    const[outdoorActivitySchedules, setOutdoorActivitySchedules] = useState([]);
+
     function Update(id){
         // console.log(id)
         setadded(!added);
@@ -131,7 +136,38 @@ const MyBookings = ()=>{
         })
     }
 
+    const getOutdoorActivitySchedules = () =>{
+        let url = "http://localhost:3030/outdoor-activity-schedules/customer-schedules";
+        let body = {
+            "customerId" : 3
+        }
+        axios.post(url, body).then((response)=>{
+            console.log(response.data);
+            setOutdoorActivitySchedules(response.data);
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+
+    function getTimeSlot(timeString){
+        console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            switch(timeString) {
+                case "EIGHT_AM_TO_TEN_AM":
+                    return '8.00AM - 10.00AM';
+                case "TEN_AM_TO_TWELVE_PM":
+                    
+                    return '10.00AM - 12.00PM';
+                case "TWO_PM_TO_FOUR_PM":
+                    return '2.00PM - 4.00PM';
+                default:
+                    return '4.00PM - 6.PM';
+            }
+    }
+
     useEffect(() => {
+
+        getOutdoorActivitySchedules();
+
         axios.get(`http://localhost:3030/customer/booking/viewbookings/${localStorage.getItem('userId')}`)
         .then(res => {
             setViewbooking(res.data)
@@ -183,7 +219,7 @@ const MyBookings = ()=>{
                                 <div key="{test.bookingID}">
                                     <div style={{textAlign:'left'}} className="row">
                                         <div className="col-md-7">
-                                                    <h6>Booking ID : {test.bookingID}</h6>
+                                                    <h6>Booking ID : {test.realBookID}</h6>
                                                     <h6>Customer Name : {test.custName}</h6>
                                                     {/* <h6>Room Type : {test.roomTypes}</h6> */}
                                                     <h6>Meal : {test.meal}</h6>
@@ -204,13 +240,37 @@ const MyBookings = ()=>{
                     <div className="col-md-6 col-sm-6">
                         <Container style={{textAlign:'center',background:'linear-gradient(90deg, #c7c4bd 0%, #e4e2dd 50%, #faf9f8 100%',height:'25rem',boxShadow:'1px 2px 6px 1px gray',padding:'1rem'}}>
                             <h5>Activity Bookings</h5>
+                            {outdoorActivitySchedules.map((schedule,index)=>{
+                                return(
+                                    <div key="{test.bookingID}">
+                                    <div style={{textAlign:'left'}} className="row">
+                                        <div className="col-md-7">
+                                                    <h6>Activity Schedule ID : 1</h6>
+                                                    <h6>Activity Name : {schedule.outdoorActivity.outdoorActivityName}</h6>
+                                                    <h6>Schedule Date : {schedule.scheduledDate}</h6>
+                                                    {/* <h6>Room Type : {test.roomTypes}</h6> */}
+                                                    <h6>Schedule Time : <Button variant="info">{getTimeSlot(schedule.scheduledTimeSlot)}</Button></h6>
+                                        <hr></hr>
+                                        </div> 
+                                                    
+                                        <div className="col-md-5" style={{justifyContent:'center',textAlign:'center'}}>
+                                            <Button onClick={()=>Update(test.bookingID)} type="submit" variant="info" style={{width:'5rem'}}>Edit</Button> <Button onClick={()=>Delete(test.bookingID)} type="submit" variant="danger">Remove</Button>
+                                        </div>
+                                    </div>
+                                </div>
+                                );
+                            })}
                         </Container>
                     </div>
                 </div>
             </Container>
                                 
                                 <div className="center" style={{justifyContent:'center',textAlign:'center'}}>
-                                    <Button onClick={()=>setViewBill(true)} type="submit" variant="info" style={{width:'10rem'}}>View Bill</Button> 
+                                <Tippy content="You must check-out from the hotel">
+                                    <Button onClick={()=>setViewBill(true)} type="submit" variant="info" style={{width:'10rem'}}>View Bill
+                                    </Button> 
+                                </Tippy>
+                                    
                                 </div>
 
                                 <div><ShowBill

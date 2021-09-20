@@ -218,7 +218,7 @@ function AddRoomTypes(props){
         roomTypes:"",
         description:"",
         image:"",
-        no_of_rooms:"",
+        // no_of_rooms:"",
         no_of_persons:"",
         price:""
     })
@@ -234,7 +234,7 @@ function AddRoomTypes(props){
                 roomTypes:"",
                 description:"",
                 image:"",
-                no_of_rooms:"",
+                // no_of_rooms:"",
                 no_of_persons:"",
                 price:""
             })
@@ -280,39 +280,37 @@ function AddRoomTypes(props){
                         </Row>
                         <br></br>
                         <Row>
-                            <Col md={6}>
+                            {/* <Col md={6}>
                             <Form.Group as={Col} controlId="no_of_rooms">
                                 <Form.Label style={{textAlign:'center'}}><h6>Number Of Rooms</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.no_of_rooms} type="text" required/>
                                 </Form.Group>
-                            </Col> 
+                            </Col>  */}
                             <Col md={6}>
                                 <Form.Group as={Col} controlId="no_of_persons">
                                 <Form.Label style={{textAlign:'center'}}><h6>No Of Persons</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.no_of_persons} type="text" required/>
                                 </Form.Group>
-                            </Col>             
-                        </Row>
-                        
-                        <Row>
+                            </Col>   
                             <Col md={6}>
                                  <Form.Group controlId="image" className="mb-3">
                                     <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
                                     <Form.Control onChange={(e)=>handle(e)} value={data.image} type="file" size="sm" />
                                     {/* <Form.Control type="text" required/> */}
                                 </Form.Group> 
-                            </Col> 
+                            </Col>           
+                        </Row>
+                        
+                        <Row>
+                            
                             <Col md={6}>
                                 <Form.Group as={Col} controlId="price">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.price} type="text" required/>
                                 </Form.Group>
-                            </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}></Col> 
-                            <Col md={4}>
+                            </Col>  
+                            
+                            <Col md={6}>
                                 <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
                                 <Row>
@@ -321,7 +319,11 @@ function AddRoomTypes(props){
                                
                                 </Form.Group>
                             </Col>             
-                        </Row> 
+                        </Row>
+                        {/* <br></br>
+                        <Row>
+                                       
+                        </Row>  */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -335,7 +337,8 @@ function AddRoomTypes(props){
 }
 function AddOutdoorActivities(props){
 
-    const url = "http://localhost:3030/manager/activity/addActivity"
+    // const url = "http://localhost:3030/manager/activity/addActivity"
+    const url = "http://localhost:3030/outdoor-activities";
     const [data,setData]= useState({
         activityName:"",
         checkInTime:"",
@@ -351,10 +354,10 @@ function AddOutdoorActivities(props){
             props.setadded(!props.added);
             props.onHide();
             setData({
-                activityName:"",
-                checkInTime:"",
-                checkOutTime:"",
-                description:""
+                outdoorActivityName:"",
+                // checkInTime:"",
+                // checkOutTime:"",
+                // description:""
             })
             toast.success('✅ '+' '+ res.data);
         })
@@ -385,14 +388,14 @@ function AddOutdoorActivities(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="activityName">
+                                <Form.Group as={Col} controlId="outdoorActivityName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Outdoor Activity Name</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.activityName} type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.outdoorActivityName} type="text" required/>
                             
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <Col md={3}></Col> 
                             <Col md={3}>
                                 <Form.Group as={Col} controlId="checkInTime">
@@ -408,9 +411,9 @@ function AddOutdoorActivities(props){
                                 </Form.Group>
                             </Col>
                             <Col md={3}></Col>                 
-                        </Row>
+                        </Row> */}
                        
-                        <br></br>
+                        {/* <br></br>
                         <Row>
                             <Col md={4}>
                                 
@@ -422,7 +425,7 @@ function AddOutdoorActivities(props){
                                
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -517,7 +520,7 @@ function EditRoomTypes(props){
         roomTypes:"",
         description:"",
         image:"",
-        no_of_rooms:"",
+        // no_of_rooms:"",
         no_of_persons:"",
         price:""
     })
@@ -580,38 +583,35 @@ function EditRoomTypes(props){
                         </Row>
                         <br></br>
                         <Row>
-                            <Col md={6}>
+                            {/* <Col md={6}>
                             <Form.Group as={Col} controlId="no_of_rooms">
                                 <Form.Label style={{textAlign:'center'}}><h6>Number Of Rooms</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.no_of_rooms} type="text" required/>
                                 </Form.Group>
-                            </Col> 
+                            </Col>  */}
                             <Col md={6}>
                                 <Form.Group as={Col} controlId="no_of_persons">
                                 <Form.Label style={{textAlign:'center'}}><h6>No Of Persons</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.no_of_persons} type="text" required/>
                                 </Form.Group>
-                            </Col>             
-                        </Row>
-                        
-                        <Row>
+                            </Col>
                             <Col md={6}>
                                  <Form.Group controlId="image" className="mb-3">
                                     <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
                                     <Form.Control onChange={(e)=>handle(e)} value={data.image} type="file" size="sm" />
                                     {/* <Form.Control type="text" required/> */}
                                 </Form.Group> 
-                            </Col> 
+                            </Col>              
+                        </Row>
+                        
+                        <Row>
+                            
                             <Col md={6}>
                                 <Form.Group as={Col} controlId="price">
                                 <Form.Label style={{textAlign:'center'}}><h6>Price</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.price} type="text" required/>
                                 </Form.Group>
-                            </Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            <Col md={4}></Col> 
+                            </Col>  
                             <Col md={4}>
                                 <Form.Group as={Col} controlId="description">
                                 <Form.Label style={{textAlign:'center'}}><h6>Description</h6></Form.Label>
@@ -620,8 +620,10 @@ function EditRoomTypes(props){
                                 </Row>
                                
                                 </Form.Group>
-                            </Col>             
-                        </Row> 
+                            </Col>              
+                        </Row>
+                        
+                        
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Update</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -905,7 +907,9 @@ function HotelConfig() {
     }, [added])
 
     useEffect(() => {
-        axios.get('http://localhost:3030/manager/activity/viewActivity')
+        //let url = 'http://localhost:3030/manager/activity/viewActivity';
+        let url = 'http://localhost:3030/outdoor-activities';
+        axios.get(url)
         .then(res=>{
             setaddActivity(res.data)
         })
@@ -1106,7 +1110,7 @@ function HotelConfig() {
                             <tr>
                                 <th style={{width:'5rem',paddingBottom:'.5rem'}}>RoomType ID</th>
                                 <th style={{width:'9rem',paddingBottom:'2rem'}}>Room Type</th>
-                                <th style={{width:'5rem'}}>Number Of Rooms</th>
+                                {/* <th style={{width:'5rem'}}>Number Of Rooms</th> */}
                                 <th style={{width:'5rem'}}>Number of Persons</th>
                                 <th style={{paddingBottom:'2rem'}}>Description</th>
                                 <th style={{paddingBottom:'2rem'}}>Image</th>
@@ -1121,7 +1125,7 @@ function HotelConfig() {
                                 <tr key={test.roomTypeID}>
                                     <td>{test.roomTypeID}</td>
                                     <td>{test.roomTypes}</td>
-                                    <td>{test.no_of_rooms}</td>
+                                    {/* <td>{test.no_of_rooms}</td> */}
                                     <td>{test.no_of_persons}</td>
                                     <td>{test.description}</td>
                                     <td>{test.image}</td>
@@ -1185,10 +1189,17 @@ function HotelConfig() {
                         <tbody>
                         {
                             addActivity.map(
-                                test =>
-                                <tr key={test.id}>
-                                    <td>{test.activityId}</td>
-                                    <td>{test.activityName}</td>
+                                (test,index) =>
+                                // <tr key={test.id}>
+                                //     <td>{test.activityId}</td>
+                                //     <td>{test.activityName}</td>
+                                //     <td>{test.checkInTime}</td>
+                                //     <td>{test.checkOutTime}</td>
+                                //     <td>{test.description}</td>
+                                //     <td style={{textAlign:'center'}}>
+                                <tr key={index}>
+                                    <td>{index+1}</td>
+                                    <td>{test.outdoorActivityName}</td>
                                     <td>{test.checkInTime}</td>
                                     <td>{test.checkOutTime}</td>
                                     <td>{test.description}</td>
