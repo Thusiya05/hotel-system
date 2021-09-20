@@ -282,6 +282,10 @@ export default class Login extends Component {
                 // alert(response.data.token);
 
                 if(response.data.userType=="MANAGER"){
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
+                  this.props.history.push('/steward/assignedRooms');
                   this.props.history.push('/manager');
                 }else if(response.data.userType=="STEWARD"){
                   localStorage.setItem('userId', response.data.userId);
@@ -297,8 +301,16 @@ export default class Login extends Component {
                   localStorage.setItem('type', response.data.userType);
                   this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
+                  this.props.history.push('/steward/assignedRooms');
                   this.props.history.push('/AssignGuide');
                 }else if(response.data.userType=="RECEPTIONIST"){
+                  localStorage.setItem('userId', response.data.userId);
+                  localStorage.setItem('firstName', response.data.fName);
+                  localStorage.setItem('lastName', response.data.lName);
+                  this.props.history.push('/steward/assignedRooms');
                   this.props.history.push('/receptionist/customers/');
                 }
 
