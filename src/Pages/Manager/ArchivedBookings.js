@@ -13,7 +13,7 @@ function ArchivedBookings() {
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
-                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} type="date" required/>
+                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="formGridLastName">
