@@ -1180,9 +1180,9 @@ function HotelConfig() {
                             <tr>
                                 <th>#</th>
                                 <th>Activity Name</th>
-                                <th>From</th>
+                                {/* <th>From</th>
                                 <th>To</th>
-                                <th>Description</th>
+                                <th>Description</th> */}
                                 <th> </th>
                             </tr>
                         </thead>
@@ -1200,16 +1200,16 @@ function HotelConfig() {
                                 <tr key={index}>
                                     <td>{index+1}</td>
                                     <td>{test.outdoorActivityName}</td>
-                                    <td>{test.checkInTime}</td>
+                                    {/* <td>{test.checkInTime}</td>
                                     <td>{test.checkOutTime}</td>
-                                    <td>{test.description}</td>
+                                    <td>{test.description}</td> */}
                                     <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
                                     <Button onClick={()=>DeleteRoomType(test.roomTypeID)} type="delete"><FaTrash /></Button>
                                 </Tippy>
-                                    <Tippy content="Edit">
+                                    {/* <Tippy content="Edit">
                                     <Button onClick={()=>UpdateRoomType(test.roomTypeID)} type="edit"><FaPen /></Button>
-                                    </Tippy>
+                                    </Tippy> */}
                                 
                                 </td>
                             </tr>

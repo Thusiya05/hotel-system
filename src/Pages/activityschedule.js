@@ -285,11 +285,11 @@ const Activityschedule = () => {
                                 </tbody>
                              </Table> }
                              <br></br>
-                            <div style={{textAlign:'center'}}>
+                            {/* <div style={{textAlign:'center'}}>
                             <Tippy content="You must Log-in first">
                                 <Button type="submit" variant="info">Submit</Button></Tippy> <Button type="cancel" variant="danger">Cancel</Button>
                             
-                            </div>
+                            </div> */}
                                         
                     
             </Container>
