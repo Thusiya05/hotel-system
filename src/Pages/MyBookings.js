@@ -139,7 +139,7 @@ const MyBookings = ()=>{
     const getOutdoorActivitySchedules = () =>{
         let url = "http://localhost:3030/outdoor-activity-schedules/customer-schedules";
         let body = {
-            "customerId" : 3
+            "customerId" : localStorage.getItem("userId")
         }
         axios.post(url, body).then((response)=>{
             console.log(response.data);
@@ -149,19 +149,29 @@ const MyBookings = ()=>{
         })
     }
 
+    const deleteOutdoorActivitySchedule=(outdoorActivityScheduleId)=>{
+        console.log(outdoorActivityScheduleId);
+        let userId = localStorage.getItem('userId');
+        let url = `http://localhost:3030/outdoor-activity-schedules/${userId}/${outdoorActivityScheduleId}`;
+        axios.delete(url).then((res)=>{
+            console.log(res);
+            getOutdoorActivitySchedules();
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+
     function getTimeSlot(timeString){
-        console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            switch(timeString) {
-                case "EIGHT_AM_TO_TEN_AM":
-                    return '8.00AM - 10.00AM';
-                case "TEN_AM_TO_TWELVE_PM":
-                    
-                    return '10.00AM - 12.00PM';
-                case "TWO_PM_TO_FOUR_PM":
-                    return '2.00PM - 4.00PM';
-                default:
-                    return '4.00PM - 6.PM';
-            }
+        switch(timeString) {
+            case "EIGHT_AM_TO_TEN_AM":
+                return '8.00AM - 10.00AM';
+            case "TEN_AM_TO_TWELVE_PM":
+                return '10.00AM - 12.00PM';
+            case "TWO_PM_TO_FOUR_PM":
+                return '2.00PM - 4.00PM';
+            default:
+                return '4.00PM - 6.PM';
+        }
     }
 
     useEffect(() => {
@@ -242,10 +252,10 @@ const MyBookings = ()=>{
                             <h5>Activity Bookings</h5>
                             {outdoorActivitySchedules.map((schedule,index)=>{
                                 return(
-                                    <div key="{test.bookingID}">
+                                    <div key={index}>
                                     <div style={{textAlign:'left'}} className="row">
                                         <div className="col-md-7">
-                                                    <h6>Activity Schedule ID : 1</h6>
+                                                    <h6>{index+1}</h6>
                                                     <h6>Activity Name : {schedule.outdoorActivity.outdoorActivityName}</h6>
                                                     <h6>Schedule Date : {schedule.scheduledDate}</h6>
                                                     {/* <h6>Room Type : {test.roomTypes}</h6> */}
@@ -254,7 +264,7 @@ const MyBookings = ()=>{
                                         </div> 
                                                     
                                         <div className="col-md-5" style={{justifyContent:'center',textAlign:'center'}}>
-                                            <Button onClick={()=>Update(test.bookingID)} type="submit" variant="info" style={{width:'5rem'}}>Edit</Button> <Button onClick={()=>Delete(test.bookingID)} type="submit" variant="danger">Remove</Button>
+                                            <Button onClick={()=>deleteOutdoorActivitySchedule(schedule.outdoorActivityScheduleId)} type="submit" variant="danger">Remove</Button>
                                         </div>
                                     </div>
                                 </div>

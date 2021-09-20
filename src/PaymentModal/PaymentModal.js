@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container,Form,Col,Button, Table, Modal, Row} from 'react-bootstrap'
 // import './payment_modal.css'
 
 const PaymentModal = ({ orderId, name, amount }) => {
@@ -50,7 +51,7 @@ const PaymentModal = ({ orderId, name, amount }) => {
     window.payhere.startPayment(payment);
   }
 
-  return (<button variant="secondary" 
+  return (<Button variant="secondary" 
   style={{
       minHeight: "5rem",
       minWidth: "10rem",
@@ -58,7 +59,7 @@ const PaymentModal = ({ orderId, name, amount }) => {
       marginTop: "6rem",
       textAlign: "center",
       color: "red",
-      }} onClick={pay}>Pay with Payhere</button> )
+      }} onClick={pay}>Pay with Payhere</Button> )
 };
 
 export default PaymentModal;
