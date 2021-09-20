@@ -291,7 +291,6 @@ export default class Login extends Component {
                 }else if(response.data.userType=="KITCHEN_STAFF"){
                   this.props.history.push('/kitchen/order');
                 }else if(response.data.userType=="CUSTOMER"){ 
-                  console.log(response.data);
                   localStorage.setItem('userId', response.data.userId);
                   localStorage.setItem('firstName', response.data.fName);
                   localStorage.setItem('lastName', response.data.lName);
