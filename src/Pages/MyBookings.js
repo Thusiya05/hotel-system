@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
-import {Container,Form,Col,Button, Table, Modal} from 'react-bootstrap'
+import {Container,Form,Col,Row,Button, Table, Modal} from 'react-bootstrap'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -13,11 +13,12 @@ function EditBooking(props) {
         checkOutDate:"",
         roomTypes:"",
         custName:"",
+        realBookID:"",
     })
     
     function submitt(e){
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         axios.post(`http://localhost:3030/customer/booking/updatebooking/${props.bookingid}`,data)
         .then(res=>{
              props.setadded(!props.added);
@@ -59,9 +60,9 @@ function EditBooking(props) {
         <Modal.Body>
                         <Form onSubmit={(e) => submitt(e)}>
                                 <Form.Row >
-                                    <Form.Group as={Col} controlId="bookingID">
+                                    <Form.Group as={Col} controlId="realBookID">
                                     <Form.Label style={{textAlign:'center'}}><h6>Booking ID</h6></Form.Label>
-                                    <Form.Control value={data.bookingID} id="bookingID" type="text" readOnly/>
+                                    <Form.Control value={data.realBookID} id="realBookID" type="text" readOnly/>
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="custName">
@@ -183,7 +184,7 @@ const MyBookings = ()=>{
                                 <div key="{test.bookingID}">
                                     <div style={{textAlign:'left'}} className="row">
                                         <div className="col-md-7">
-                                                    <h6>Booking ID : {test.bookingID}</h6>
+                                                    <h6>Booking ID : {test.realBookID}</h6>
                                                     <h6>Customer Name : {test.custName}</h6>
                                                     {/* <h6>Room Type : {test.roomTypes}</h6> */}
                                                     <h6>Meal : {test.meal}</h6>
