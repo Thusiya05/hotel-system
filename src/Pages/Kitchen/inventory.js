@@ -214,7 +214,9 @@ function Inventory() {
         const currentDate = date.format(now,'YYYY-MM-DD');
         console.log(currentDate)
 
-            axios.delete(`http://localhost:3030/deleteIngredient/${ingredientId}`)
+            axios.post(`http://localhost:3030/deleteIngredient/${ingredientId}`,{
+                currentDate: currentDate
+            })
             .then(res=>{
                 toast.success('✅ '+' '+ res.data);
             })
@@ -222,9 +224,9 @@ function Inventory() {
                 console.log(err)
             })
 
-            axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
-                currentDate: currentDate
-            })
+            // axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
+            //     currentDate: currentDate
+            // })
     }
     
     useEffect(() => {

@@ -40,9 +40,11 @@ import Cusfoodmenu from "./Pages/Customer/cusfoodmenu"
 import GuestRepo from "./Pages/Manager/GuestRepo";
 import IncomeRepo from "./Pages/Manager/IncomeRepo";
 import InventoryRepo from "./Pages/Manager/InventoryRepo";
+import OrderRepo from "./Pages/Manager/orderRepo";
 import Payment from "./Pages/Payment";
 import axios from "axios";
 import "./App.css"
+import orderRepo from "./Pages/Manager/orderRepo";
 
 
 
@@ -122,6 +124,7 @@ export default class App extends Component {
             <Route exact path ="/manager/guestrepo" component={GuestRepo} />
             <Route exact path ="/manager/incomerepo" component={IncomeRepo} />
             <Route exact path ="/manager/inventoryrepo" component={InventoryRepo} />
+            <Route exact path ="/manager/orderrepo" component={OrderRepo} />
             <Route exact path ="/payment" component={Payment} />
             <Route component={Error} />
             
