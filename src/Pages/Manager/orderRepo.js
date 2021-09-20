@@ -8,29 +8,30 @@ import Sidebar from '../../Components/Sidebar';
 // import './App.css';
 import axios from 'axios';
 
-const InventoryRepo=()=> {
-  const[InventoryData,setInventoryData]=useState([]);
+const OrderRepo=()=> {
+  const[OrderData,setOrderData]=useState([]);
   var[dateFrom,setDateFrom]=useState(new Date());
   var[dateTo,setDateTo]=useState(new Date());
   
-  function exportUsageReport(){
+  function exportOrderReport(){
     
     var from = dateFrom.toString();
     var to = dateTo.toString();
     console.log(from)
     // console.log(typeof(from))
     
-    axios.post('http://localhost:3030/report/generateInventoryReport',{
+    axios.post('http://localhost:3030/report/ordersReport',{
         dateFrom: from,
         dateTo: to
     })
     .then(res => {
-      setInventoryData(res.data)
-      console.log(InventoryData)
+      setOrderData(res.data)
+      console.log(res.data)
     })
     .catch(err => {
       console.log(err)
     })
+    
 
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
@@ -41,14 +42,13 @@ const InventoryRepo=()=> {
 
     doc.setFontSize(15);
 
-    const title = "INVENTORY REPORT";
-    const Description = "Use for Orders";
+    const title = "FOOD ORDER REPORT";
     const dateStart = "From : " + dateFrom.toString();
     const dateEnds = "To    : " + dateTo.toString();
 
-    const headers = [["Ingredient ID", "Ingredient Name", "Available Qty", "Used Qty"]];
+    const headers = [["Order Date", "Order ID", "Room Id", "Customer Name", "Steward ID", "Steward Name",  "Ordered Foods", "QTY"]];
 
-    const data = InventoryData.map(elt=> [elt.ingredientId, elt.ingredientName, elt.availableQty, elt.usedQty]);
+    const data = OrderData.map(elt=> [elt.orderDate, elt.orderId, elt.roomId, elt.customerName, elt.assignedStewardId, elt.assignedStewardName, elt.orderedFoods , elt.orderedFoodQty]);
 
     let content = {
       startY: 120,
@@ -57,7 +57,6 @@ const InventoryRepo=()=> {
     };
 
     doc.text(title, marginLeft, 40);
-    doc.text(Description, marginLeft, 60);
     doc.text(dateStart, marginLeft, 80);
     doc.text(dateEnds, marginLeft, 100);
     doc.autoTable(content);
@@ -65,62 +64,10 @@ const InventoryRepo=()=> {
     doc.save("Inventory Report.pdf")
   }
 
-
-
-  function exportStockUpdateReport(){
-    
-    var from = dateFrom.toString();
-    var to = dateTo.toString();
-    console.log(from)
-    // console.log(typeof(from))
-    
-    axios.post('http://localhost:3030/report/StockReport',{
-        dateFrom: from,
-        dateTo: to
-    })
-    .then(res => {
-      setInventoryData(res.data)
-      console.log(InventoryData)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-
-    const unit = "pt";
-    const size = "A4"; // Use A1, A2, A3 or A4
-    const orientation = "portrait"; // portrait or landscape
-
-    const marginLeft = 40;
-    const doc = new jsPDF(orientation, unit, size);
-
-    doc.setFontSize(15);
-
-    const title = "STOCK CHANGE REPORT";
-    const dateStart = "From : " + dateFrom.toString();
-    const dateEnds = "To    : " + dateTo.toString();
-
-    const headers = [["Date", "Ingredient ID", "Ingredient Name", "Updated Stock", "Status"]];
-
-    const data = InventoryData.map(elt=> [elt.updatedDate, elt.ingredientId, elt.ingredientName, elt.updatedQty, elt.status]);
-
-    let content = {
-      startY: 120,
-      head: headers,
-      body: data
-    };
-
-    doc.text(title, marginLeft, 40);
-    doc.text(dateStart, marginLeft, 60);
-    doc.text(dateEnds, marginLeft, 80);
-    doc.autoTable(content);
-    
-    doc.save("Stock Report.pdf")
-  }
-
     return (
         <div className= 'reports'>
             <Sidebar/>
-            <Title title="Inventory Report"></Title>
+            <Title title="Food Orders eport"></Title>
         <div class="text-center">
           <Form>
                               <Form.Row>
@@ -148,24 +95,12 @@ const InventoryRepo=()=> {
                         textAlign: "center",
                         // color: "red",
                         }} 
-                        onClick={() => exportUsageReport()}>Download Usage Report  <FaFileDownload />
+                        onClick={() => exportOrderReport()}>Download Food Orders Report  <FaFileDownload />
                 </Button>
 
-                <br></br>
-                <Button variant="secondary" 
-                    style={{
-                        minHeight: "5rem",
-                        minWidth: "10rem",
-                        padding: "0rem 0rem 0rem 0rem",
-                        marginTop: "6rem",
-                        textAlign: "center", 
-                        // color: "red",
-                        }} 
-                        onClick={() => exportStockUpdateReport()}>Download Stock Update Report  <FaFileDownload />
-                </Button>
       </div>
       </div>
     );
   } 
 
-export default InventoryRepo;
+export default OrderRepo;

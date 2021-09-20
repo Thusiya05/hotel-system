@@ -12,10 +12,8 @@ import "../../CSS/Cusfoodmenu.css";
 import NavBar from '../../Components/NavBar';
 import Hero from '../../Components/Hero'
 import Banner from '../../Components/Banner'
-
 import date from 'date-and-time';
-
-import FoodItem from '../../Components/FoodItem';
+import food from "../../images/food.jpg"
 import '../../CSS/box.css'
 
 
@@ -119,6 +117,30 @@ function ConfirmOrder(props){
                     Adventure Base Camp, Kitulgala.
                 </Modal.Footer>
             </Modal>
+    );
+}
+
+
+
+function FoodItem(){
+    return (
+        
+        <div className="col-sm-6 col-md-4 col-lg-3 item">
+            <div className="box">
+            <br/>
+                <img className="rounded img-fluid pizza-img" src={food}/>
+                <h3>BBQ</h3>
+            
+                <div className="d-flex justify-content-around align-items-center">
+                    <button className="btn btn-success" >
+                        Add to basket
+                    </button>
+                    <span className="badge rounded-pill bg-danger price">$100</span>
+                </div>
+                <br/>
+                <br />
+            </div>
+        </div>
     );
 }
 
