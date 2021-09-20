@@ -61,19 +61,19 @@ const OrderRepo=()=> {
     doc.text(dateEnds, marginLeft, 100);
     doc.autoTable(content);
     
-    doc.save("Inventory Report.pdf")
+    doc.save("Food Order Report.pdf")
   }
 
     return (
         <div className= 'reports'>
             <Sidebar/>
-            <Title title="Food Orders eport"></Title>
+            <Title title="Food Orders Report"></Title>
         <div class="text-center">
           <Form>
                               <Form.Row>
                                   <Form.Group as={Col} controlId="formGridFirstName">
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
-                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} 
+                                  <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} required 
                                      selected={dateFrom} onChange={(date) => setDateFrom(date.target.value.toString())}
                                     type="date" required/>
                                   </Form.Group>
@@ -95,7 +95,7 @@ const OrderRepo=()=> {
                         textAlign: "center",
                         // color: "red",
                         }} 
-                        onClick={() => exportOrderReport()}>Download Food Orders Report  <FaFileDownload />
+                        onClick={() => exportOrderReport()}>Download Report  <FaFileDownload />
                 </Button>
 
       </div>

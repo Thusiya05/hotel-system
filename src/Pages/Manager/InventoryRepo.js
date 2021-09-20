@@ -149,10 +149,7 @@ const InventoryRepo=()=> {
                         // color: "red",
                         }} 
                         onClick={() => exportUsageReport()}>Download Usage Report  <FaFileDownload />
-                </Button>
-
-                <br></br>
-                <Button variant="secondary" 
+                </Button> <Button variant="secondary" 
                     style={{
                         minHeight: "5rem",
                         minWidth: "10rem",

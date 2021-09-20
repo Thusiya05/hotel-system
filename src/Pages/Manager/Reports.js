@@ -35,9 +35,8 @@ function Reports() {
                 textAlign: "center",
                 }}>
             Income Report 
-            </Button> 
-            
-            <Button size="lg" href="./InventoryRepo" variant="secondary" 
+            </Button> <Button 
+            size="lg" href="./InventoryRepo" variant="secondary" 
             style={{
                 minHeight: "10rem",
                 minWidth: "10rem",
@@ -45,20 +44,18 @@ function Reports() {
                 marginTop: "5rem",
                 textAlign: "center",
                 }}
-                >Inventory Report</Button> 
-                
-                <Button size="lg" href="./OrderRepo" variant="secondary" 
+                >Inventory Reports</Button> <Button 
+                size="lg" href="./OrderRepo" variant="secondary" 
                 style={{
                     minHeight: "10rem",
                     minWidth: "10rem",
-                    padding: "3.5rem 0rem 0rem 0rem",
+                    padding: "3.5rem 0.5rem 0.5rem 0.5rem",
                     marginTop: "5rem",
                     textAlign: "center",
                     }}
-                    >Food Order Reports</Button>
-                
-                <Button size="lg" href="./GuestRepo" variant="secondary" 
-                style={{
+                    >Food Order Report</Button> <Button 
+                    size="lg" href="./GuestRepo" variant="secondary" 
+                    style={{
                     minHeight: "10rem",
                     minWidth: "10rem",
                     padding: "3.5rem 0rem 0rem 0rem",
