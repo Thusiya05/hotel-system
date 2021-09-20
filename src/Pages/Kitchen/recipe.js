@@ -14,17 +14,20 @@ import date from 'date-and-time';
 
 function Editfood(props){
     console.log(props.editFood)
-    const [Ingredients,setIngredients]=useState([])
-    
+    const [Ingredients,setIngredients]=useState([]);
+
     useEffect(() => {
         axios.get(`http://localhost:3030/foodIngredientById/${props.editFood}`)
         .then(res => {
+
             let IngredientList = res.data;
+            console.log(IngredientList)
             setIngredients(
                 IngredientList.map(d => {
                   return {
                     fiId: d.fiId,
-                    ingredientId: d.ingredientId
+                    ingredientId: d.ingredientId,
+                    ingredientName: d.ingredientName
                     
                   };
                 })
@@ -67,16 +70,9 @@ function Editfood(props){
        })
        .catch(err => {
            toast.error('❌ '+' '+ err.response.data);
-           // props.onHide();
+           props.onHide();
        })
     }
-
-    // function handle(e){
-    //     const newdata={...data}
-    //     newdata[e.target.id] = e.target.value
-    //     setData(newdata)
-    //     // console.log(newdata)
-    // }
 
     return(
         <Modal
@@ -106,8 +102,13 @@ function Editfood(props){
                                                     Ingredients.map(
                                                         test =>
                                                         <tr key = {test.fiId}>
-                                                            <td style={{ display:'inline-flex'}}>
+                                                            {/* <td style={{ display:'inline-flex'}}>
                                                                 {test.ingredientId} 
+                                                            </td> */}
+                                                            <td>
+                                                                {test.ingredientName}
+                                                            </td>
+                                                            <td>    
                                                                 <Form.Control 
                                                                     type="text" id={test.fiId} style={{width:'15rem', padding:'0.5rem', marginLeft:'2rem'}}
                                                                     onChange={e=>{
@@ -159,7 +160,7 @@ const Recipe =()=> {
 
     const now = new Date();
     const currentDate = date.format(now,'MM-DD-YYYY');
-    console.log(currentDate);
+    // console.log(currentDate);
 
     function Update(foodId){
         // console.log(foodId)

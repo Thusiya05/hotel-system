@@ -253,15 +253,14 @@ export default class Login extends Component {
                 })
                 
               .then(function (response) {
-                  // handle success
-                  console.log(response);
-                  alert(response.data);
+                  toast.success('✅ '+' '+ response.data);
+            // handle success
   
               })
               .catch(function (error) {
                   // handle error
-                  // toast.error('❌ ' + error.response.data);
-                  alert(error.response.data);
+                  toast.error('❌ ' + error.response.data);
+                  // alert(error.response.data);
               })
               .then(function () {
                   // always executed
@@ -331,6 +330,18 @@ export default class Login extends Component {
 
         return (
             <>
+
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
             <NavBar
             path1="/" name1="Home"
             path2="/rooms/" name2="Rooms" 
