@@ -128,7 +128,7 @@ const InventoryRepo=()=> {
                                   <Form.Label style={{textAlign:'center',marginLeft:"18rem"}}><h6>Start Date</h6></Form.Label>
                                   <Form.Control style={{textAlign:'center', width:"15rem", marginLeft:"18rem" }} 
                                      selected={dateFrom} onChange={(date) => setDateFrom(date.target.value.toString())}
-                                    type="date" required/>
+                                    type="date" max={new Date().toISOString().split("T")[0]} required/>
                                   </Form.Group>
 
                                   <Form.Group as={Col} controlId="formGridLastName">

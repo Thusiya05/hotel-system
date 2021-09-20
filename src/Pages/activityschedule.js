@@ -17,21 +17,25 @@ import axios from 'axios'
 
 const Activityschedule = () => {
 
+    const [scheduleDate,setScheduleDate] = useState(null);
     const [avilableSchedules, setAvailableSchedules] = useState(null);
     const [loaded, setLoaded] = useState(false);
     const url = "http://localhost:3030/outdoor-activity-schedules/available";
 
-    const getAvailableSchedules= ()=>{
+    const getAvailableSchedules= (sDate)=>{
         // add a loader
+        if(sDate==null){
+            const temp = new Date();
+            sDate = temp.toISOString().split('T')[0]
+            console.log("Undefined xxxxxx"+sDate)
+        }
         let requestBody = {
-            "scheduledDate" : "2021-09-18"
+            "scheduledDate" : sDate
         }
         let headers = {
             "Content-Type" : "application/json"
         }
-        axios.post(url, {
-            "scheduledDate" : "2021-09-18"
-        }, headers).then(response=>{
+        axios.post(url, requestBody, headers).then(response=>{
             let schedules = response.data;
             console.log(schedules);
             setAvailableSchedules(schedules);
@@ -41,13 +45,44 @@ const Activityschedule = () => {
         })
     }
 
-    const createOutdoorActivitySchedule=()=>{
-        
+    function getTimeSlot(timeString){
+        switch(timeString) {
+            case "EIGHT_AM_TO_TEN_AM":
+                return 0;
+            case "TEN_AM_TO_TWELVE_PM":
+                return 1;
+            case "TWO_PM_TO_FOUR_PM":
+                return 2;
+            default:
+                return 3;
+        }
     }
 
+    const createOutdoorActivitySchedule=(outdoorActivityId,timeString)=>{
+        let timeSlot = getTimeSlot(timeString);
+        let url = "http://localhost:3030/outdoor-activity-schedules";
+        let customerId = localStorage.getItem('userId');
+        let requestBody = {
+            "customerId" : customerId,
+            "outdoorActivityId": outdoorActivityId,
+            "scheduleTimeSlot": timeSlot,
+            "scheduledDate": "2021-09-18"
+        }
+        let headers = {
+            "Content-Type" : "application/json"
+        }
+        axios.post(url,requestBody,headers).then((response)=>{
+            console.log(response.data);
+            setScheduleDate(null);
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }
+
+
     useEffect(()=>{
-        getAvailableSchedules();
-    },[]);
+        getAvailableSchedules(scheduleDate);
+    },[scheduleDate]);
 
     return (
         <>
@@ -146,7 +181,7 @@ const Activityschedule = () => {
                                     <Col sm={6}>
                                         <Form.Group as={Col} controlId="formGridFirstName">
                                         <Form.Label style={{textAlign:'center'}}><h6>Select the Date</h6></Form.Label>
-                                        <Form.Control type="date" min={new Date().toISOString().split("T")[0]} required/>
+                                        <Form.Control value={scheduleDate} type="date" min={new Date().toISOString().split("T")[0]} required onChange={(e)=>getAvailableSchedules(e.target.value)}/>
                                         </Form.Group>
                                     </Col>
                                </Form.Row>
@@ -169,16 +204,16 @@ const Activityschedule = () => {
                                                 <td>{index+1}</td>
                                                 <td>{item.outdoorActivity.outdoorActivityName}</td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.EIGHT_AM_TO_TEN_AM == 0}>Available {item.availableSlots.EIGHT_AM_TO_TEN_AM}</Button>   
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.EIGHT_AM_TO_TEN_AM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"EIGHT_AM_TO_TEN_AM")}>Available {item.availableSlots.EIGHT_AM_TO_TEN_AM}</Button>   
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TWO_PM_TO_FOUR_PM == 0}>Available {item.availableSlots.TWO_PM_TO_FOUR_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TEN_AM_TO_TWELVE_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TEN_AM_TO_TWELVE_PM")}>Available {item.availableSlots.TEN_AM_TO_TWELVE_PM}</Button>
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.FOUR_PM_TO_SIX_PM == 0}>Available {item.availableSlots.FOUR_PM_TO_SIX_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TWO_PM_TO_FOUR_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"TWO_PM_TO_FOUR_PM")}>Available {item.availableSlots.TWO_PM_TO_FOUR_PM}</Button>
                                                 </td>
                                                 <td style={{textAlign:'center'}}>
-                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.TEN_AM_TO_TWELVE_PM == 0}>Available {item.availableSlots.TEN_AM_TO_TWELVE_PM}</Button>
+                                                    <Button variant="dark" type='submit' disabled={item.availableSlots.FOUR_PM_TO_SIX_PM == 0} onClick={()=>createOutdoorActivitySchedule(item.outdoorActivity.outdoorActivityId,"FOUR_PM_TO_SIX_PM")}>Available {item.availableSlots.FOUR_PM_TO_SIX_PM}</Button>
                                                 </td>
                                             </tr>
                                         );
