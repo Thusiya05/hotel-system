@@ -314,14 +314,23 @@ export default class Login extends Component {
               })
               .then(function () {
                   // always executed
-
               });              
-          }      
+          }  
+          
+          forget = (e) => {
+            axios.put("http://localhost:3030/auth/forgetpassword", 
+              {
+                  "email": this.state.loginEmail
+              })
+              .then((response) => {                   
+                toast.success('✅ '+' '+ response.data);
+              })
+              .catch((error) => {
+                toast.error('❌ '+' '+ error.response.data);
+              })
+          }
 
 
-            
-
-   
     render() {
       const data=this.state.data; 
       console.warn(data);
@@ -374,7 +383,7 @@ export default class Login extends Component {
                               <Button variant="outline-dark" style={{width:"200px"}} className="submit" onClick={this.login} >Log In</Button>
                             {/* </Link> */}
                             </div>
-                            <p className="forgot-pass">Forgot Password ?</p>
+                            <p onClick={this.forget} className="forgot-pass">Forgot Password ?</p>
                             {/* <div className="social-media">
                                 <ul>
                                     <li><img src={facebook} alt="Facebook.png"></img></li>
