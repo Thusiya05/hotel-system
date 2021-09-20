@@ -95,6 +95,13 @@ import { Redirect } from 'react-router'
           return ({display:'none'});
     }
 
+    // const Allow = () => {
+    //   if (localStorage.getItem("type") == "CUSTOMER"){
+    //     return("/rooms/");
+    //   }
+      
+    // }
+
 export default class NavBar extends Component{
 
 
@@ -110,7 +117,7 @@ export default class NavBar extends Component{
                   
 
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/rooms/">Rooms</Nav.Link>
+                  <Nav.Link href={"/rooms/"}>Rooms </Nav.Link>
                   <Nav.Link style={FoodTabStyle()} href={FoodTabRedirectTo()}> {DisplyaFoodTabText()} </Nav.Link>
                   <Nav.Link href="/activities">Activities</Nav.Link>
                   <Nav.Link href="/facilities">Facilities</Nav.Link>

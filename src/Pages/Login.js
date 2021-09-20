@@ -253,15 +253,14 @@ export default class Login extends Component {
                 })
                 
               .then(function (response) {
-                  // handle success
-                  console.log(response);
-                  alert(response.data);
+                  toast.success('✅ '+' '+ response.data);
+            // handle success
   
               })
               .catch(function (error) {
                   // handle error
-                  // toast.error('❌ ' + error.response.data);
-                  alert(error.response.data);
+                  toast.error('❌ ' + error.response.data);
+                  // alert(error.response.data);
               })
               .then(function () {
                   // always executed
@@ -282,9 +281,6 @@ export default class Login extends Component {
                 // console.log(response.data);   
                 // alert(response.data.token);
 
-                
-                // localStorage.removeItem("firstName");
-                
                 if(response.data.userType=="MANAGER"){
                   this.props.history.push('/manager');
                 }else if(response.data.userType=="STEWARD"){
@@ -298,6 +294,7 @@ export default class Login extends Component {
                   localStorage.setItem('userId', response.data.userId);
                   localStorage.setItem('firstName', response.data.fName);
                   localStorage.setItem('lastName', response.data.lName);
+                  localStorage.setItem('type', response.data.userType);
                   this.props.history.push('/'); 
                 }else if(response.data.userType=="GUIDE"){
                   this.props.history.push('/AssignGuide');
@@ -333,6 +330,18 @@ export default class Login extends Component {
 
         return (
             <>
+
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
             <NavBar
             path1="/" name1="Home"
             path2="/rooms/" name2="Rooms" 
@@ -366,28 +375,28 @@ export default class Login extends Component {
                             {/* </Link> */}
                             </div>
                             <p className="forgot-pass">Forgot Password ?</p>
-                            <div className="social-media">
+                            {/* <div className="social-media">
                                 <ul>
                                     <li><img src={facebook} alt="Facebook.png"></img></li>
                                     <li><img src={google} alt="google.png"></img></li>
                                     <li><img src={instagram} alt="instagram.png"></img></li>
                                 </ul>
-                            </div>
+                            </div> */}
                           </div>  
                     </div>
                     <div className="sub-cont">
                         <div class="Login-SignIn-Image" className="login-img" style={{ backgroundImage: "url(/sakshi2.jpg)" }}>
                             <div className="img-text m-up">
                                 <h2>New here?</h2>
-                                <p>Sign up and discover great amount of new opportunities!</p>
+                                <p>Welcome to Adventure Base Camp. May all who come as Guests Leave as Friends</p>
                             </div>
                             <div className="img-text m-in">
                                 <h2>One of us?</h2>
                                 <p>If you already has an account, just sign in. We've missed you!</p>
                             </div>
                             <div className="img-btn" onClick={this.myfunc}>
-                                <span className="m-up">Sign Up</span>
-                                <span className="m-in">Sign In</span>
+                                <span className="m-up">Sign-Up</span>
+                                <span className="m-in">Sign-In</span>
                             </div>
                         </div>
                         <div className="login-form sign-up">

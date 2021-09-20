@@ -12,17 +12,23 @@ import "../../CSS/Cusfoodmenu.css";
 import NavBar from '../../Components/NavBar';
 import Hero from '../../Components/Hero'
 import Banner from '../../Components/Banner'
-import FoodItem from '../../Components/FoodItem';
+import date from 'date-and-time';
+import food from "../../images/food.jpg"
 import '../../CSS/box.css'
 
+
 function ConfirmOrder(props){
+    console.log(props.PriceofAllFoods)
 
     // const[date,setDate] = useState(new Date());
 
-    var [date,setDate] = useState(new Date());
+    const now = new Date();
+    const currentDate = date.format(now,'YYYY-MM-DD');
+
+    var [time,setTime] = useState(new Date());
     
     useEffect(() => {
-        var timer = setInterval(()=>setDate(new Date()), 1000 )
+        var timer = setInterval(()=>setTime(new Date()), 1000 )
         return function cleanup() {
             clearInterval(timer)
         }
@@ -48,13 +54,14 @@ function ConfirmOrder(props){
         axios.post("http://localhost:3030/order/createOrderId", {
             customerId: localStorage.getItem('userId'),
             roomId: "",
-            orderDate: date.toLocaleDateString(),
-            orderTime: date.toLocaleTimeString(),
-            status: "PENDING"
+            orderDate: currentDate,
+            orderTime: time.toLocaleTimeString(),
+            status: "PENDING",
+            totalPrice: props.PriceofAllFoods
         })
         .then(function(res){
             // console.log(res.data);
-            axios.post(`http://localhost:3030/order/placeOrder/${date.toLocaleTimeString()}`,{
+            axios.post(`http://localhost:3030/order/placeOrder/${time.toLocaleTimeString()}`,{
                 customerId: localStorage.getItem('userId'),
                 foIdList: props.IdOfOrderedFoods,
                 qtyList: props.QtyOfOrderedFoods
@@ -115,7 +122,6 @@ function ConfirmOrder(props){
     );
 }
 
-
 const Cusfoodmenu =()=> {
     const [IdOfOrderedFoods, setIdOfOrderedFoods]=useState([])
     const [QtyOfOrderedFoods, setQtyOfOrderedFoods]=useState([])
@@ -132,6 +138,7 @@ const Cusfoodmenu =()=> {
         axios.get('http://localhost:3030/cusfoodmenu')
         .then(res => {
             setFood(res.data)
+            // console.log(foods)
         })
         .catch(err => {
             console.log(err)
@@ -202,16 +209,7 @@ const Cusfoodmenu =()=> {
             <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="Schedule your Meal" path="/activityschedule"></Banner>
         </Hero>
         <br />
-        <div className="row justify-content-center features">
-        <FoodItem />
-        <FoodItem />
-        <FoodItem />
-        <FoodItem />
-        <FoodItem />
-        <FoodItem />
-        <FoodItem />
-        </div>
-            
+
              <h4 style={{textAlign:'center',fontFamily:'monospace'}}>Food Menu.</h4>
              
 
@@ -223,49 +221,46 @@ const Cusfoodmenu =()=> {
              <br></br>
              <br></br>
 
-             <Table striped bordered hover size="sm" responsive id="CheckInTable">
-                 <thead>
-                     <tr>
-                         <th>Food Name</th>
-                         <th>Price</th>
-                         <th> </th>
-                     </tr>
-                 </thead>
-                 <tbody>
+         <div className="row justify-content-center features">
+
                      {
                          foods.map(
                              test=>
-                             <tr key = {test.foodId}>
-                                 <td>{test.foodName}</td>
-                                 <td>{test.price}</td>
-                                 <td style={{textAlign:'center'}}>
-                                    {/* <Tippy content="Minus">
-                                        <Button onClick={()=>Update(test.foodId)} type="minus"><FaMinus /></Button>
-                                    </Tippy> */}
-                                    <input class="number_increment_decrement_box" type="number" min="0" id={test.foodId}
-                                        onChange={e=>{
-                                            let value=e.target.value;
-                                            let Total_Price=0;
-                                            setFood(
-                                                foods.map(sd=>{
-                                                    if(sd.foodId==e.target.id){
-                                                        sd.value=value;
-                                                        sd.Total_Price=Total_Price+(sd.value*test.price);
-                                                    }
-                                                    return sd;
+                            
+                            <div key = {test.foodId} className="col-sm-6 col-md-4 col-lg-3 item">
+                                <div className="box">
+                                <br/>
+                                    <img className="rounded img-fluid pizza-img" src={food}/>
+                                    <h3>{test.foodName}</h3>
 
-                                                })
-                                            );
-                                        }}
-                                    ></input>
-                                </td>
-                             </tr>
+                                    <div className="d-flex justify-content-around align-items-center">
+                                        <span className="badge rounded-pill bg-danger price">Price : Rs.{test.price}</span>
+                                            <input class="number_increment_decrement_box" type="number" min="0" id={test.foodId}
+                                                onChange={e=>{
+                                                    let value=e.target.value;
+                                                    let Total_Price=0;
+                                                    setFood(
+                                                        foods.map(sd=>{
+                                                            if(sd.foodId==e.target.id){
+                                                                sd.value=value;
+                                                                sd.Total_Price=Total_Price+(sd.value*test.price);
+                                                            }
+                                                            return sd;
+                                                        })
+                                                    );
+                                                }}
+                                            ></input>
+                                    </div>
+                                        {/* <p>{test.foodDescription}</p> */}
+                                    <br/>
+                                    <br />
+                                </div>
+                            </div>
+                             
                          )
                      }
-                 </tbody>
+            </div>     
 
-                
-             </Table>
              <ConfirmOrder
                          show={editView}
                          onHide={()=> setEditView(false)} 

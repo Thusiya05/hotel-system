@@ -13,7 +13,7 @@ import date from 'date-and-time';
 function Addingr(props){
 
     const now = new Date();
-    const currentDate = date.format(now,'MM/DD/YYYY');
+    const currentDate = date.format(now,'YYYY-MM-DD');
 
     const url = "http://localhost:3030/addIngredient"
     const [data, setData] = useState({
@@ -128,7 +128,7 @@ function Editingr(props){
     })
 
     const now = new Date();
-    const currentDate = date.format(now,'MM/DD/YYYY');
+    const currentDate = date.format(now,'YYYY-MM-DD');
 
     function submit(e){
         e.preventDefault();
@@ -211,10 +211,12 @@ function Inventory() {
 
     function Delete(ingredientId){
         const now = new Date();
-        const currentDate = date.format(now,'MM/DD/YYYY');
+        const currentDate = date.format(now,'YYYY-MM-DD');
         console.log(currentDate)
 
-            axios.delete(`http://localhost:3030/deleteIngredient/${ingredientId}`)
+            axios.post(`http://localhost:3030/deleteIngredient/${ingredientId}`,{
+                currentDate: currentDate
+            })
             .then(res=>{
                 toast.success('✅ '+' '+ res.data);
             })
@@ -222,9 +224,9 @@ function Inventory() {
                 console.log(err)
             })
 
-            axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
-                currentDate: currentDate
-            })
+            // axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
+            //     currentDate: currentDate
+            // })
     }
     
     useEffect(() => {
