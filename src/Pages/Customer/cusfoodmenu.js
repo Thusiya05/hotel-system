@@ -206,7 +206,7 @@ const Cusfoodmenu =()=> {
              <br></br>
              
              <Hero hero="foodhero">
-            <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="Schedule your Meal" path="/activityschedule"></Banner>
+            <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="return Home" path="/"></Banner>
         </Hero>
         <br />
 
@@ -214,7 +214,7 @@ const Cusfoodmenu =()=> {
              
 
              <div style={{textAlign:'center'}}>
-                        <Button type="button" onClick={() => submit()} variant="info">Place Order <h3 style={DisplayPriceStyle()}> $ {DisplayPrice()} </h3>  </Button>
+                        <Button type="button" onClick={() => submit()} variant="info">Place Order <h3 style={DisplayPriceStyle()}> Rs. {DisplayPrice()} </h3>  </Button>
 
              </div>
 
@@ -227,14 +227,15 @@ const Cusfoodmenu =()=> {
                          foods.map(
                              test=>
                             
-                            <div key = {test.foodId} className="col-sm-6 col-md-4 col-lg-3 item">
-                                <div className="box">
+                            <div key = {test.foodId} className="col-sm-6 col-md-4 col-lg-2 item">
+                                <div className="img-cntainer">
                                 <br/>
                                     <img className="rounded img-fluid pizza-img" src={food}/>
-                                    <h3>{test.foodName}</h3>
+                                    <br/>
+                                    <h2>{test.foodName}</h2>
 
                                     <div className="d-flex justify-content-around align-items-center">
-                                        <span className="badge rounded-pill bg-danger price">Price : Rs.{test.price}</span>
+                                        <h6 className="prce-top">Price : Rs.{test.price}</h6>
                                             <input class="number_increment_decrement_box" type="number" min="0" id={test.foodId}
                                                 onChange={e=>{
                                                     let value=e.target.value;
