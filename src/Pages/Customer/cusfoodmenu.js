@@ -18,6 +18,7 @@ import '../../CSS/box.css'
 
 
 function ConfirmOrder(props){
+    console.log(props.PriceofAllFoods)
 
     // const[date,setDate] = useState(new Date());
 
@@ -55,7 +56,8 @@ function ConfirmOrder(props){
             roomId: "",
             orderDate: currentDate,
             orderTime: time.toLocaleTimeString(),
-            status: "PENDING"
+            status: "PENDING",
+            totalPrice: props.PriceofAllFoods
         })
         .then(function(res){
             // console.log(res.data);
