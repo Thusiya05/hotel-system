@@ -337,7 +337,8 @@ function AddRoomTypes(props){
 }
 function AddOutdoorActivities(props){
 
-    const url = "http://localhost:3030/manager/activity/addActivity"
+    // const url = "http://localhost:3030/manager/activity/addActivity"
+    const url = "http://localhost:3030/outdoor-activities";
     const [data,setData]= useState({
         activityName:"",
         checkInTime:"",
@@ -353,10 +354,10 @@ function AddOutdoorActivities(props){
             props.setadded(!props.added);
             props.onHide();
             setData({
-                activityName:"",
-                checkInTime:"",
-                checkOutTime:"",
-                description:""
+                outdoorActivityName:"",
+                // checkInTime:"",
+                // checkOutTime:"",
+                // description:""
             })
             toast.success('✅ '+' '+ res.data);
         })
@@ -387,14 +388,14 @@ function AddOutdoorActivities(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="activityName">
+                                <Form.Group as={Col} controlId="outdoorActivityName">
                                 <Form.Label style={{textAlign:'center'}}><h6>Outdoor Activity Name</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.activityName} type="text" required/>
+                                <Form.Control onChange={(e)=>handle(e)} value={data.outdoorActivityName} type="text" required/>
                             
                                 </Form.Group>
                             </Col>             
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <Col md={3}></Col> 
                             <Col md={3}>
                                 <Form.Group as={Col} controlId="checkInTime">
@@ -410,9 +411,9 @@ function AddOutdoorActivities(props){
                                 </Form.Group>
                             </Col>
                             <Col md={3}></Col>                 
-                        </Row>
+                        </Row> */}
                        
-                        <br></br>
+                        {/* <br></br>
                         <Row>
                             <Col md={4}>
                                 
@@ -424,7 +425,7 @@ function AddOutdoorActivities(props){
                                
                                 </Form.Group>
                             </Col>             
-                        </Row>
+                        </Row> */}
                         <div style={{textAlign:'center'}}>
                             <Button type="submit" variant="info">Add</Button> <Button onClick={props.onHide} variant="danger">Cancel</Button>
                         </div>
@@ -906,7 +907,9 @@ function HotelConfig() {
     }, [added])
 
     useEffect(() => {
-        axios.get('http://localhost:3030/manager/activity/viewActivity')
+        //let url = 'http://localhost:3030/manager/activity/viewActivity';
+        let url = 'http://localhost:3030/outdoor-activities';
+        axios.get(url)
         .then(res=>{
             setaddActivity(res.data)
         })
@@ -1186,10 +1189,17 @@ function HotelConfig() {
                         <tbody>
                         {
                             addActivity.map(
-                                test =>
-                                <tr key={test.id}>
-                                    <td>{test.activityId}</td>
-                                    <td>{test.activityName}</td>
+                                (test,index) =>
+                                // <tr key={test.id}>
+                                //     <td>{test.activityId}</td>
+                                //     <td>{test.activityName}</td>
+                                //     <td>{test.checkInTime}</td>
+                                //     <td>{test.checkOutTime}</td>
+                                //     <td>{test.description}</td>
+                                //     <td style={{textAlign:'center'}}>
+                                <tr key={index}>
+                                    <td>{index+1}</td>
+                                    <td>{test.outdoorActivityName}</td>
                                     <td>{test.checkInTime}</td>
                                     <td>{test.checkOutTime}</td>
                                     <td>{test.description}</td>
