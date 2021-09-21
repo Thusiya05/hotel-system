@@ -19,11 +19,11 @@ export const RecepSideBar = [
 
     // },
 
-    {
-        title: "Assign Guide",
-        icon: <MdIcons.MdAssignmentInd />,
-        link:'/receptionist/AssignGuides/',
-    },
+    // {
+    //     title: "Assign Guide",
+    //     icon: <MdIcons.MdAssignmentInd />,
+    //     link:'/receptionist/AssignGuides/',
+    // },
 
     {
         title: "Logout",
