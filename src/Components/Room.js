@@ -149,7 +149,7 @@ useEffect(() => {
 
 
 export default function Room({ room }){
-  const { name, slug, images, price } = room;
+  const { name, slug, images, price,value } = room;
   const [cart,setCart]=useState(false);
   const [roomName, setRoomName]=useState();
   const[discounts,setDiscounts]=useState([]);
@@ -195,23 +195,6 @@ export default function Room({ room }){
         <div className="price-top">
           <h6>${price}</h6>
           <p>per night</p>
-          <h6>{
-                                discounts.map( 
-                                    test=>
-                                        <tr key= {test.discountID}>
-                                  
-                                        
-                                                <div>{test.value}% OFF</div>
-                                             
-                                          
-
-                                             
-                                             
-                                             
-                                           
-                                           
-                                        </tr>
-                                )}</h6>
         </div>
         <Link to={`/rooms/${slug}`} className=" btn btn-outline-primary room-link">
           Features
