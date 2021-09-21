@@ -138,7 +138,9 @@ function AddRooms(props){
     const url = "http://localhost:3030/manager/addRooms"
     const [data,setData]=useState({
         roomNo:"",
-        roomTypeID:""
+        // roomTypeID:"",
+        roomTypes:""
+
     })
 
     function submit(e){
@@ -149,7 +151,8 @@ function AddRooms(props){
             props.onHide();
             setData({
                 roomNo:"",
-                roomTypeID:""
+                // roomTypeID:""
+                roomTypes:""
             })
             toast.success('✅ '+' '+ res.data);
         })
@@ -193,9 +196,9 @@ function AddRooms(props){
                         <Row>
                             <Col md={4}></Col> 
                             <Col md={4}>
-                                <Form.Group as={Col} controlId="roomTypeID">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
-                                <Form.Control  onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
+                                <Form.Group as={Col} controlId="roomTypes">
+                                <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
+                                <Form.Control  onChange={(e)=>handle(e)} value={data.roomTypes} type="text" required/>
                                 </Form.Group>
                             </Col>             
                         </Row>
@@ -265,18 +268,19 @@ function AddRoomTypes(props){
                 <Modal.Body>
                     <Form onSubmit={(e)=>submit(e)}>
                         <Row>
-                            <Col md={6}>
-                            <Form.Group as={Col} controlId="roomTypeID">
+                            <Col md={4}>
+                            {/* <Form.Group as={Col} controlId="roomTypeID">
                                 <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
-                                </Form.Group>
+                                </Form.Group> */}
                             </Col> 
-                            <Col md={6}>
+                            <Col md={4}>
                             <Form.Group as={Col} controlId="roomTypes">
                                     <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
                                     <Form.Control onChange={(e)=>handle(e)} value={data.roomTypes} type="text" required/>
                                     </Form.Group>
-                            </Col>             
+                            </Col>
+                            <Col md={4}></Col>             
                         </Row>
                         <br></br>
                         <Row>

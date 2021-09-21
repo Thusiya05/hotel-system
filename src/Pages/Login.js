@@ -179,27 +179,27 @@ export default class Login extends Component {
                    
             break;          
 
-          case 'password': 
-            errors.password = 
-              value.length < 8
-                ? 'Password must be 8 characters long!'
-                : '';
-                this.setState({password: event.target.value});
+          // case 'password': 
+          //   errors.password = 
+          //     value.length < 8
+          //       ? 'Password must be 8 characters long!'
+          //       : '';
+          //       this.setState({password: event.target.value});
                    
-            break;
+          //   break;
 
-          case 'confirmPassword': 
-          errors.confirmPassword = 
-            this.setState({confirmPassword: event.target.value});
+          // case 'confirmPassword': 
+          // errors.confirmPassword = 
+          //   this.setState({confirmPassword: event.target.value});
 
-          if(this.state.confirmPassword!=this.state.password){                
-            errors.confirmPassword = "Password don't match!"
+          // if(this.state.confirmPassword!=this.state.password){                
+          //   errors.confirmPassword = "Password don't match!"
                  
-            }else{
-            errors.confirmPassword = "Password matched!"
-            }
+          //   }else{
+          //   errors.confirmPassword = "Password matched!"
+          //   }
                    
-            break;
+          //   break;
 
             case 'loginEmail': 
  
