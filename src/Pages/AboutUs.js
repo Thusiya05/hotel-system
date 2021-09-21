@@ -293,8 +293,8 @@ const AboutUs = () => {
                     
                         <tr key = {test.id}>  
                         <br/>
-                          <td>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</td>   
-                          <td>{test.feedback}</td>
+                          <td>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}  <br />
+                          {test.feedback}</td>
                         </tr>
                             )
                         }
