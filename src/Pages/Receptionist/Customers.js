@@ -259,10 +259,10 @@ const Customers=()=>{
                                 <tbody>
                                 {
                                     customers.map(
-                                        test=>
+                                        (test,index)=>
                                         
                                     <tr key={test.email}>
-                                        <td>{test.customerId}</td>
+                                        <td>{index+1}</td>
                                         <td>{test.firstName}</td>
                                         <td>{test.lastName}</td>
                                         <td>{test.nic}</td>
@@ -430,9 +430,9 @@ const Customers=()=>{
                                 <tbody>
                                 {
                                     customers.map(
-                                        test=>
+                                        (test,index)=>
                                     <tr key={test.email}>
-                                        <td>{test.customerId}</td>
+                                        <td>{index+1}</td>
                                         <td>{test.firstName}</td>
                                         <td>{test.lastName}</td>
                                         <td>{test.nic}</td>
