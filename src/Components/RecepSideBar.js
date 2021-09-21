@@ -12,12 +12,12 @@ export const RecepSideBar = [
         link:'/receptionist/customers/',
     },
 
-    {
-        title: "Assign Steward",
-        icon: <MdIcons.MdAssignmentInd />,
-        link:'/receptionist/AssignStewards/',
+    // {
+    //     title: "Assign Steward",
+    //     icon: <MdIcons.MdAssignmentInd />,
+    //     link:'/receptionist/AssignStewards/',
 
-    },
+    // },
 
     {
         title: "Assign Guide",
