@@ -68,6 +68,7 @@ const InventoryRepo=()=> {
 
 
   function exportStockUpdateReport(){
+    console.log(localStorage.getItem('userId'));
     
     var from = dateFrom.toString();
     var to = dateTo.toString();
@@ -101,7 +102,7 @@ const InventoryRepo=()=> {
 
     const headers = [["Date", "Ingredient ID", "Ingredient Name", "Updated Stock", "Status"]];
 
-    const data = InventoryData.map(elt=> [elt.updatedDate, elt.ingredientId, elt.ingredientName, elt.updatedQty, elt.status]);
+    const data = InventoryData.map(elt=> [elt.upatedDate, elt.ingredientId, elt.ingredientName, elt.updatedQty, elt.status]);
 
     let content = {
       startY: 120,

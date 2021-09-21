@@ -1,11 +1,18 @@
 .number_increment_decrement_box {
   /* -webkit-appearance: none; */
   margin: 0;
-  background-color:red;
+  background-color: rgb(84, 214, 208);
   width: 5em;
   height:3em;
-  /* border-radius:1em; */
+  border-radius: 50px 10px 10px 50px;
   text-align:center
+}
+
+.number_increment_decrement_box:hover{
+  border-radius: 50px 10px 10px 50px;
+  background: rgb(34, 225, 250);
+	color: #202020;
+	transition-delay: 0.15s;
 }
 
 
