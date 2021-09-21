@@ -86,7 +86,7 @@ function ConfirmOrder(props){
       >
         <Modal.Header closeButton style={{backgroundColor:'lightgray'}}>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please Confirm your Order
+            Please Confirm your Order <p style={{fontSize:'0.7em'}}>Price : {props.PriceofAllFoods} </p>
           </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -179,6 +179,7 @@ const Cusfoodmenu =()=> {
     }
     function DisplayPriceStyle(){
         if(PriceofAllFoods==0){
+
             return({display:'none'});
         }
     }    
@@ -209,7 +210,7 @@ const Cusfoodmenu =()=> {
              
              <Hero hero="foodhero">
 
-            <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="return Home" path="/"></Banner>
+            <Banner title="Enjoy Your Meal" subtitle="People who love to eat are always the best people" children="My Orders" path="/"></Banner>
 
         </Hero>
         <br />
@@ -227,11 +228,15 @@ const Cusfoodmenu =()=> {
 
          <div className="row justify-content-center features">
 
+             <table>
+
+             </table>
+
                      {
                          foods.map(
                              test=>
                             
-                            <div key = {test.foodId} className="col-sm-6 col-md-4 col-lg-2 item">
+                            <div key = {test.foodId} className="col-sm-6 col-md-4 col-lg-3 item">
                                 <div className="img-cntainer">
                                 <br/>
                                     <img className="rounded img-fluid pizza-img" src={food}/>

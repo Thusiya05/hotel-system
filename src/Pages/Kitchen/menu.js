@@ -218,7 +218,7 @@ function Addfood(props){
                                     Upload a picture
                                 </td>
                                 <td>
-                                    <Form.Control onChange={onChangePicture} id="food_image" type="file" required/>
+                                    <Form.Control onChange={onChangePicture} id="food_image" type="file" />
                                 </td>
                             </tr>
 
