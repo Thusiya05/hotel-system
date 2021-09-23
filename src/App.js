@@ -45,6 +45,7 @@ import Payment from "./Pages/Payment";
 import axios from "axios";
 import "./App.css"
 import orderRepo from "./Pages/Manager/orderRepo";
+import "react-app-polyfill/stable";
 
 
 
