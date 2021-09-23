@@ -40,13 +40,13 @@ function EditBooking(props) {
         // console.log(newdata)
     }
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:3030/customer/booking/viewbookingbyid/${props.bookingid}`)
-    //     .then((res)=>{
-    //         // console.log(res.data);  
-    //         setData(res.data);
-    //     })
-    // },[props.added])
+    useEffect(() => {
+        axios.get(`http://localhost:3030/customer/booking/viewbookingbyid/${props.bookingid}`)
+        .then((res)=>{
+            // console.log(res.data);  
+            setData(res.data);
+        })
+    },[props.added])
     
     return (
       <Modal
