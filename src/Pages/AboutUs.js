@@ -44,7 +44,7 @@ const styles = {
 
 function Review(props) {
 
-    const url = "/customer/review/addReviewFeedback"
+    const url = "http://localhost:3030/customer/review/addReviewFeedback"
     const [data, setData] = useState({
     
         feedback: ""
@@ -171,7 +171,7 @@ const AboutUs = () => {
     const [added, setadded] = useState(true);
 
     useEffect(() => {
-        axios.get('/customer/review/reviewFeedback')
+        axios.get('http://localhost:3030/customer/review/reviewFeedback')
         .then(res => {
             setEmployees(res.data)
         })

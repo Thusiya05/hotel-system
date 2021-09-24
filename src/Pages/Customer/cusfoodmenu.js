@@ -46,12 +46,12 @@ function ConfirmOrder(props){
     );
 
 
-    const url = "/placeOrder";
+    const url = "http://localhost:3030/placeOrder";
 
 
     function submit(e){
         e.preventDefault();
-        axios.post("/order/createOrderId", {
+        axios.post("http://localhost:3030/order/createOrderId", {
             customerId: localStorage.getItem('userId'),
             roomId: "",
             orderDate: currentDate,
@@ -61,7 +61,7 @@ function ConfirmOrder(props){
         })
         .then(function(res){
             // console.log(res.data);
-            axios.post(`/order/placeOrder/${time.toLocaleTimeString()}`,{
+            axios.post(`http://localhost:3030/order/placeOrder/${time.toLocaleTimeString()}`,{
                 customerId: localStorage.getItem('userId'),
                 foIdList: props.IdOfOrderedFoods,
                 qtyList: props.QtyOfOrderedFoods
@@ -136,7 +136,7 @@ const Cusfoodmenu =()=> {
     const[editFood,setEditFood]=useState(1);
 
     useEffect(() => {
-        axios.get('/cusfoodmenu')
+        axios.get('http://localhost:3030/cusfoodmenu')
         .then(res => {
             setFood(res.data)
             setUsed(true);

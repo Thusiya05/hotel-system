@@ -20,7 +20,7 @@ const InventoryRepo=()=> {
     console.log(from)
     // console.log(typeof(from))
     
-    axios.post('/report/generateInventoryReport',{
+    axios.post('http://localhost:3030/report/generateInventoryReport',{
         dateFrom: from,
         dateTo: to
     })
@@ -75,7 +75,7 @@ const InventoryRepo=()=> {
     console.log(from)
     // console.log(typeof(from))
     
-    axios.post('/report/StockReport',{
+    axios.post('http://localhost:3030/report/StockReport',{
         dateFrom: from,
         dateTo: to
     })
