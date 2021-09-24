@@ -14,7 +14,7 @@ function ViewOrderDerails(props){
 
     useEffect(() => {    
         // console.log("hello");
-        axios.get(`http://localhost:3030/order/findByoderNumber/${props.ordersDetails}`)
+        axios.get(`http://143.244.133.116:3030/order/findByoderNumber/${props.ordersDetails}`)
         .then(res => {
             // console.log(res.data); 
             // let order = res.data;
@@ -75,7 +75,7 @@ function AssignStewardToOrder(props){
 
     useEffect(() => {    
         // console.log("hello");
-        axios.get(`http://localhost:3030/api/v1/avaialableStewards`)
+        axios.get(`http://143.244.133.116:3030/api/v1/avaialableStewards`)
         .then(res => {
             // let order = res.data;
             setStewards(res.data)              
@@ -87,7 +87,7 @@ function AssignStewardToOrder(props){
     function AssignSteward(empId){
         console.log(empId);
         console.log(props.ordersDetails);
-        const url = "http://localhost:3030/order/assignSteward";
+        const url = "http://143.244.133.116:3030/order/assignSteward";
         setStatus3(!status3);
 
         // useEffect(() => {
@@ -169,7 +169,7 @@ function Order() {
     
 
     function PrepareOrder(orderId){
-        axios.post(`http://localhost:3030/order/prepareOrder/${orderId}`);
+        axios.post(`http://143.244.133.116:3030/order/prepareOrder/${orderId}`);
         setStatus2(!status2);
         toast.success('✅ '+' '+ "Order is added to the progress list");
     }
@@ -187,7 +187,7 @@ function Order() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3030/order/pendingOrders')
+        axios.get('http://143.244.133.116:3030/order/pendingOrders')
         .then(res => {
             setPendingOrder(res.data)
             // console.log(orders)
@@ -198,7 +198,7 @@ function Order() {
     },[status1, status2])
 
     useEffect(() => {
-        axios.get('http://localhost:3030/order/inprogressOrders')
+        axios.get('http://143.244.133.116:3030/order/inprogressOrders')
         .then(res => {
             setInProgressOrder(res.data)
             // console.log(orders)

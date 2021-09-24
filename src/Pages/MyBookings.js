@@ -21,7 +21,7 @@ function EditBooking(props) {
     function submitt(e){
         e.preventDefault();
         // console.log(data);
-        axios.post(`http://localhost:3030/customer/booking/updatebooking/${props.bookingid}`,data)
+        axios.post(`http://143.244.133.116:3030/customer/booking/updatebooking/${props.bookingid}`,data)
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
@@ -41,7 +41,7 @@ function EditBooking(props) {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3030/customer/booking/viewbookingbyid/${props.bookingid}`)
+        axios.get(`http://143.244.133.116:3030/customer/booking/viewbookingbyid/${props.bookingid}`)
         .then((res)=>{
             // console.log(res.data);  
             setData(res.data);
@@ -130,7 +130,7 @@ const MyBookings = ()=>{
     }
 
     function Delete(id){
-        axios.delete(`http://localhost:3030/customer/booking/deletebooking/${id}`)
+        axios.delete(`http://143.244.133.116:3030/customer/booking/deletebooking/${id}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -138,7 +138,7 @@ const MyBookings = ()=>{
     }
 
     const getOutdoorActivitySchedules = () =>{
-        let url = "http://localhost:3030/outdoor-activity-schedules/customer-schedules";
+        let url = "http://143.244.133.116:3030/outdoor-activity-schedules/customer-schedules";
         let body = {
             "customerId" : localStorage.getItem("userId")
         }
@@ -153,7 +153,7 @@ const MyBookings = ()=>{
     const deleteOutdoorActivitySchedule=(outdoorActivityScheduleId)=>{
         console.log(outdoorActivityScheduleId);
         let userId = localStorage.getItem('userId');
-        let url = `http://localhost:3030/outdoor-activity-schedules/${userId}/${outdoorActivityScheduleId}`;
+        let url = `http://143.244.133.116:3030/outdoor-activity-schedules/${userId}/${outdoorActivityScheduleId}`;
         axios.delete(url).then((res)=>{
             console.log(res);
             getOutdoorActivitySchedules();
@@ -179,7 +179,7 @@ const MyBookings = ()=>{
 
         getOutdoorActivitySchedules();
 
-        axios.get(`http://localhost:3030/customer/booking/viewbookings/${localStorage.getItem('userId')}`)
+        axios.get(`http://143.244.133.116:3030/customer/booking/viewbookings/${localStorage.getItem('userId')}`)
         .then(res => {
             setViewbooking(res.data)
             // console.log(res.data)
