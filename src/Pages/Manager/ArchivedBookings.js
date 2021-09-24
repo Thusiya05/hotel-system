@@ -13,7 +13,7 @@ function ArchivedBookings() {
   const[viewBill,setViewBill]=useState(false)
 
   useEffect(()=>{
-    axios.get(`http://localhost:3030/receptionist/viewCustomers/CHECK_OUT`)
+    axios.get(`/receptionist/viewCustomers/CHECK_OUT`)
     .then(res=>{
         console.log(res.data.roomNo);
         setCustomers(res.data)

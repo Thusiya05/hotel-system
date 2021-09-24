@@ -20,7 +20,7 @@ const OrderRepo=()=> {
     console.log(from)
     // console.log(typeof(from))
     
-    axios.post('http://localhost:3030/report/ordersReport',{
+    axios.post('/report/ordersReport',{
         dateFrom: from,
         dateTo: to
     })

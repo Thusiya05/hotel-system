@@ -68,7 +68,7 @@ function EditPendingCustomer(props) {
         e.preventDefault();
         console.log(data)
         console.log(props.realId)
-        axios.put(`http://localhost:3030/receptionist/updateBookingStatus/${props.realId}`,data)
+        axios.put(`/receptionist/updateBookingStatus/${props.realId}`,data)
         .then(res=>{
             props.setadded(!props.added);
             props.onHide();
@@ -172,7 +172,7 @@ const Customers=()=>{
     }
 
     function DeleteStatus(realBookId){
-        axios.delete(`http://localhost:3030/receptionist/deleteBooking/${realBookId}`)
+        axios.delete(`/receptionist/deleteBooking/${realBookId}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -180,7 +180,7 @@ const Customers=()=>{
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:3030/receptionist/viewCustomers/${status}`)
+        axios.get(`/receptionist/viewCustomers/${status}`)
         .then(res=>{
             console.log(res.data.roomNo);
             setCustomers(res.data)

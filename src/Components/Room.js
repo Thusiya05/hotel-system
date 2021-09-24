@@ -34,7 +34,7 @@ function AddCart(props) {
     numberOfRooms: 1,
 })
 useEffect(() => {
-  axios.get(`http://localhost:3030/customer/booking/getroomnumbers/${props.roomName}/${data.checkInDate}/${data.checkOutDate}`)
+  axios.get(`/customer/booking/getroomnumbers/${props.roomName}/${data.checkInDate}/${data.checkOutDate}`)
   .then((res)=>{
       // setMaxroom(res.data);
       // console.log(res.data)
@@ -56,7 +56,7 @@ useEffect(() => {
 
   function submit(e){
         e.preventDefault();
-        axios.post(`http://localhost:3030/customer/booking/addbooking`,data)
+        axios.post(`/customer/booking/addbooking`,data)
         .then(res=>{
           props.onHide();
           setData({
@@ -156,7 +156,7 @@ export default function Room({ room }){
   const[added, setadded] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3030/manager/viewDiscounts')
+    axios.get('/manager/viewDiscounts')
     .then(res=>{
         setDiscounts(res.data)
     })
