@@ -267,41 +267,19 @@ function AddRoomTypes(props){
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={(e)=>submit(e)}>
+                        <br></br>
                         <Row>
-                            <Col md={4}>
-                            {/* <Form.Group as={Col} controlId="roomTypeID">
-                                <Form.Label style={{textAlign:'center'}}><h6>Room Type ID</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.roomTypeID} type="text" required/>
-                                </Form.Group> */}
-                            </Col> 
-                            <Col md={4}>
+                            <Col md={6}>
                             <Form.Group as={Col} controlId="roomTypes">
                                     <Form.Label style={{textAlign:'center'}}><h6>Room Type</h6></Form.Label>
                                     <Form.Control onChange={(e)=>handle(e)} value={data.roomTypes} type="text" required/>
                                     </Form.Group>
-                            </Col>
-                            <Col md={4}></Col>             
-                        </Row>
-                        <br></br>
-                        <Row>
-                            {/* <Col md={6}>
-                            <Form.Group as={Col} controlId="no_of_rooms">
-                                <Form.Label style={{textAlign:'center'}}><h6>Number Of Rooms</h6></Form.Label>
-                                <Form.Control onChange={(e)=>handle(e)} value={data.no_of_rooms} type="text" required/>
-                                </Form.Group>
-                            </Col>  */}
+                            </Col>   
                             <Col md={6}>
-                                <Form.Group as={Col} controlId="no_of_persons">
+                            <Form.Group as={Col} controlId="no_of_persons">
                                 <Form.Label style={{textAlign:'center'}}><h6>No Of Persons</h6></Form.Label>
                                 <Form.Control onChange={(e)=>handle(e)} value={data.no_of_persons} type="text" required/>
                                 </Form.Group>
-                            </Col>   
-                            <Col md={6}>
-                                 <Form.Group controlId="image" className="mb-3">
-                                    <Form.Label style={{textAlign:'center'}}><h6>Choose Image</h6></Form.Label>
-                                    <Form.Control onChange={(e)=>handle(e)} value={data.image} type="file" size="sm" />
-                                    {/* <Form.Control type="text" required/> */}
-                                </Form.Group> 
                             </Col>           
                         </Row>
                         
@@ -1115,9 +1093,8 @@ function HotelConfig() {
                                 <th style={{width:'5rem',paddingBottom:'.5rem'}}>RoomType ID</th>
                                 <th style={{width:'9rem',paddingBottom:'2rem'}}>Room Type</th>
                                 {/* <th style={{width:'5rem'}}>Number Of Rooms</th> */}
-                                <th style={{width:'5rem'}}>Number of Persons</th>
+                                <th style={{width:'20%'}}>Number of Persons</th>
                                 <th style={{paddingBottom:'2rem'}}>Description</th>
-                                <th style={{paddingBottom:'2rem'}}>Image</th>
                                 <th style={{paddingBottom:'2rem'}}>Price</th>
                                 <th style={{width:'7rem',textAlign:'center'}}> </th>
                             </tr>
@@ -1132,7 +1109,6 @@ function HotelConfig() {
                                     {/* <td>{test.no_of_rooms}</td> */}
                                     <td>{test.no_of_persons}</td>
                                     <td>{test.description}</td>
-                                    <td>{test.image}</td>
                                     <td>{test.price}</td>
                                     <td style={{textAlign:'center'}}>
                                 <Tippy content="Delete">
