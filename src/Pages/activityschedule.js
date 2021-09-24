@@ -25,7 +25,7 @@ const Activityschedule = () => {
     const [selectedTimeslot, setSelectedTimeSlot] = useState(null);
     const [selcetdActivity, setSelectedActivity] = useState(null);
 
-    const url = "http://localhost:3030/outdoor-activity-schedules/available";
+    const url = "http://143.244.133.116:3030/outdoor-activity-schedules/available";
 
     const getAvailableSchedules= (sDate)=>{
         // add a loader
@@ -63,7 +63,7 @@ const Activityschedule = () => {
 
     const createOutdoorActivitySchedule=(outdoorActivityId, timeString)=>{
         let timeSlot = getTimeSlot(timeString);
-        let url = "http://localhost:3030/outdoor-activity-schedules";
+        let url = "http://143.244.133.116:3030/outdoor-activity-schedules";
         let customerId = localStorage.getItem('userId');
         let requestBody = {
             "customerId" : customerId,

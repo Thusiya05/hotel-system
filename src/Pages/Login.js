@@ -230,13 +230,13 @@ export default class Login extends Component {
       }
 
       signup = (e) => {
-                // axios.post("http://localhost:3030/addCustomersss",
+                // axios.post("http://143.244.133.116:3030/addCustomersss",
                 // {
                 //     "email": this.state.email, 
                 //     "password": this.state.password
                 // })
 
-                axios.post("http://localhost:3030/auth/signup", 
+                axios.post("http://143.244.133.116:3030/auth/signup", 
                 {
                     "firstName": this.state.firstName,
                     "lastName": this.state.lastName,
@@ -271,7 +271,7 @@ export default class Login extends Component {
       login = (e) => {
         
 
-              axios.post("http://localhost:3030/auth/customer/login", 
+              axios.post("http://143.244.133.116:3030/auth/customer/login", 
               {
                   "email": this.state.loginEmail,
                   "password": this.state.loginPassword
@@ -330,7 +330,7 @@ export default class Login extends Component {
           }  
           
           forget = (e) => {
-            axios.put("http://localhost:3030/auth/forgetpassword", 
+            axios.put("http://143.244.133.116:3030/auth/forgetpassword", 
               {
                   "email": this.state.loginEmail
               })

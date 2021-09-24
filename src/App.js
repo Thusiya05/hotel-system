@@ -64,7 +64,7 @@ export default class App extends Component {
 //     //     }
 //     // };
 
-//     axios.get(`http://localhost:3030/user/${localStorage.getItem('userId')}`)
+//     axios.get(`http://143.244.133.116:3030/user/${localStorage.getItem('userId')}`)
 //         .then(
 //             res => {
 //                 this.setState({

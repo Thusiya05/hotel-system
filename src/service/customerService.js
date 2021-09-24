@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-// const CUSTOMER_API_BASE_URL = "http://localhost:3030/addCustomer";
+// const CUSTOMER_API_BASE_URL = "http://143.244.133.116:3030/addCustomer";
 
 // class customerService{
     

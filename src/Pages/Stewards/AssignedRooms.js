@@ -18,7 +18,7 @@ const AssignedRooms=()=> {
     // console.log("howw")
 
     useEffect(() => {
-        axios.get(`http://localhost:3030/api/v1/assignedTasks/${localStorage.getItem('userId')}`)
+        axios.get(`http://143.244.133.116:3030/api/v1/assignedTasks/${localStorage.getItem('userId')}`)
         .then(res => {
             setTasks(res.data); 
             // console.log(tasks);
@@ -30,7 +30,7 @@ const AssignedRooms=()=> {
     },[added])
 
     function Done(orderId){
-        axios.post(`http://localhost:3030/order/finishOrder/${orderId}`,
+        axios.post(`http://143.244.133.116:3030/order/finishOrder/${orderId}`,
         {
             userId: localStorage.getItem('userId'),
             orderId: orderId

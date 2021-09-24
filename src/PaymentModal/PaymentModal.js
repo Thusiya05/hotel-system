@@ -8,9 +8,9 @@ const PaymentModal = ({ orderId, name, amount }) => {
   var payment = {
     sandbox: true, // if the account is sandbox or real
     merchant_id: '1218592', // Replace your Merchant ID
-    return_url: 'http://localhost:3000/',
-    cancel_url: 'http://localhost:3000/MyBookings',
-    notify_url: 'http://sample.com/notify',
+    return_url: 'http://143.244.133.116:3000/',
+    cancel_url: 'http://143.244.133.116:3000/MyBookings',
+    notify_url: 'http://143.244.133.116:3000',
     order_id: orderId,
     items: name,
     amount: amount, 

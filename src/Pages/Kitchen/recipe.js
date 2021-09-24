@@ -17,7 +17,7 @@ function Editfood(props){
     const [Ingredients,setIngredients]=useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3030/foodIngredientById/${props.editFood}`)
+        axios.get(`http://143.244.133.116:3030/foodIngredientById/${props.editFood}`)
         .then(res => {
 
             let IngredientList = res.data;
@@ -37,7 +37,7 @@ function Editfood(props){
 
     },[props.added])
     
-    // const url = "http://localhost:3030/addFoodIngredientsQty";
+    // const url = "http://143.244.133.116:3030/addFoodIngredientsQty";
     // const [data, setData] = useState({
     //     id: "",
     //     ingredient_qty: ""
@@ -57,7 +57,7 @@ function Editfood(props){
         });
         console.log(ingredientQtyArray);
         console.log(fiIdArray);
-        axios.post(`http://localhost:3030/updateRecipe/${props.editFood}`,
+        axios.post(`http://143.244.133.116:3030/updateRecipe/${props.editFood}`,
          {
             fiIdList: fiIdArray,
             ingredientsQtyList: ingredientQtyArray
@@ -170,7 +170,7 @@ const Recipe =()=> {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3030/foods')
+        axios.get('http://143.244.133.116:3030/foods')
         .then(res => {
             setFood(res.data)
         })
