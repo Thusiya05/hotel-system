@@ -11,7 +11,7 @@ import {useHistory} from 'react-router-dom';
 
 
 function AddUser(props) {
-    const url = "http://localhost:3030/api/v1/addEmployee"
+    const url = "http://143.244.135.160:3030/api/v1/addEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
         firstName: "",
