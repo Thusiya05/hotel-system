@@ -15,7 +15,7 @@ function Addingr(props){
     const now = new Date();
     const currentDate = date.format(now,'YYYY-MM-DD');
 
-    const url = "http://localhost:3030/addIngredient"
+    const url = "/addIngredient"
     const [data, setData] = useState({
         ingredient_name: "",
         ingredient_qty: "",
@@ -133,7 +133,7 @@ function Editingr(props){
     function submit(e){
         e.preventDefault();
         console.log(data.qty);
-        axios.post("http://localhost:3030/updateIngredientQty",{
+        axios.post("/updateIngredientQty",{
             ingredientId: props.updateIngredient,
             qty: data.qty,
             currentDate: currentDate
@@ -214,7 +214,7 @@ function Inventory() {
         const currentDate = date.format(now,'YYYY-MM-DD');
         console.log(currentDate)
 
-            axios.post(`http://localhost:3030/deleteIngredient/${ingredientId}`,{
+            axios.post(`/deleteIngredient/${ingredientId}`,{
                 currentDate: currentDate
             })
             .then(res=>{
@@ -224,13 +224,13 @@ function Inventory() {
                 console.log(err)
             })
 
-            // axios.post(`http://localhost:3030/saveDeletedIngredientStatus/${ingredientId}`,{
+            // axios.post(`/saveDeletedIngredientStatus/${ingredientId}`,{
             //     currentDate: currentDate
             // })
     }
     
     useEffect(() => {
-        axios.get('http://localhost:3030/ingredientsHaveToReFill')
+        axios.get('/ingredientsHaveToReFill')
         .then(res => {
             setIngredient(res.data)
         })
@@ -240,7 +240,7 @@ function Inventory() {
     },[added])
 
     useEffect(() => {
-        axios.get('http://localhost:3030/ingredientsStillNotHaveToReFill')
+        axios.get('/ingredientsStillNotHaveToReFill')
         .then(res => {
             setIngredient2(res.data)
         })

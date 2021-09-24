@@ -11,7 +11,7 @@ import {useHistory} from 'react-router-dom';
 
 
 function AddUser(props) {
-    const url = "http://143.244.135.160:3030/api/v1/addEmployee"
+    const url = "/api/v1/addEmployee"
     const [data, setData] = useState({
         // emp_Id= "",
         firstName: "",
@@ -141,7 +141,7 @@ function AddUser(props) {
     function submitt(e){
         e.preventDefault();
         // console.log(data);
-        axios.put(`http://localhost:3030/api/v1/updateEmployee/${props.editemployees}`,data)
+        axios.put(`/api/v1/updateEmployee/${props.editemployees}`,data)
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
@@ -161,7 +161,7 @@ function AddUser(props) {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3030/api/v1/viewEmployee/${props.editemployees}`)
+        axios.get(`/api/v1/viewEmployee/${props.editemployees}`)
         .then((res)=>{
             console.log(res.data);  
             setData(res.data);
@@ -237,7 +237,7 @@ function AddUser(props) {
 
 // function DeleteUser(props) {
 //     // useEffect(() => {
-//     //     axios.put(`http://localhost:3030/api/v1/deleteEmployee/${props.editemployees}`)
+//     //     axios.put(`/api/v1/deleteEmployee/${props.editemployees}`)
 //     //     .then(res =>{
 //     //         alert(res.data);
 //     //         props.setadded(!props.added);
@@ -262,7 +262,7 @@ const Users =()=>{
     }
 
     function Delete(id){
-        axios.put(`http://localhost:3030/api/v1/deleteEmployee/${id}`)
+        axios.put(`/api/v1/deleteEmployee/${id}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -270,7 +270,7 @@ const Users =()=>{
     }
     
     useEffect(() => {
-        axios.get('http://localhost:3030/api/v1/viewEmployeess/CUSTOMER')
+        axios.get('/api/v1/viewEmployeess/CUSTOMER')
         .then(res => {
             setEmployees(res.data)
         })
@@ -284,7 +284,7 @@ const Users =()=>{
             setadded(!added);
         }
         else{
-            axios.get(`http://localhost:3030/api/v1/viewEmployeeByName/CUSTOMER/${e.target.value}`)
+            axios.get(`/api/v1/viewEmployeeByName/CUSTOMER/${e.target.value}`)
             .then(res => {
                 setEmployees(res.data)
             })

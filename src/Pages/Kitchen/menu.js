@@ -25,7 +25,7 @@ function Addfood(props){
         };
     
         useEffect(() => {
-            axios.get('http://localhost:3030/ingredients')
+            axios.get('/ingredients')
             .then(res => {
                 // setIngredients(res.data)
                 let IngredientList = res.data;
@@ -43,8 +43,8 @@ function Addfood(props){
  
         },[])
 
-        const url = "http://localhost:3030/addFood";
-        const urlingre = "http://localhost:3030/addFoodIngredients";
+        const url = "/addFood";
+        const urlingre = "/addFoodIngredients";
         const [data, setData] = useState({
             food_name: "",
             food_price: "",
@@ -255,7 +255,7 @@ function Editfood(props){
     function submit(e){
         e.preventDefault();
         console.log(data);
-        axios.post("http://localhost:3030/updateFoodPrice",{
+        axios.post("/updateFoodPrice",{
             foodId: props.updateFood,
             foodName: data.name,
             price: data.price
@@ -345,7 +345,7 @@ function Menu() {
     const[addIngredientView, setAddIngredientView] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:3030/foods')
+        axios.get('/foods')
         .then(res => {
             setFood(res.data)
         })
@@ -365,7 +365,7 @@ function Menu() {
 
     function Delete(foodId){
         console.log("hello")
-            axios.delete(`http://localhost:3030/deleteFood/${foodId}`)
+            axios.delete(`/deleteFood/${foodId}`)
             .then(res=>{
                 toast.success('✅ '+' '+ res.data);
             })
