@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function AddDiscount(props){
     const history = useHistory();
-    const url = "/manager/addDiscounts"
+    const url = "http://localhost:3030/manager/addDiscounts"
     const [data,setData]=useState({
        discountName:"",
        description:"",
@@ -135,7 +135,7 @@ function AddDiscount(props){
 }
 function AddRooms(props){
     const history = useHistory;
-    const url = "/manager/addRooms"
+    const url = "http://localhost:3030/manager/addRooms"
     const [data,setData]=useState({
         roomNo:"",
         // roomTypeID:"",
@@ -215,7 +215,7 @@ function AddRooms(props){
     );
 }
 function AddRoomTypes(props){
-    const url = "/manager/addRoomType"
+    const url = "http://localhost:3030/manager/addRoomType"
     const [data,setData]= useState({
         roomTypeID:"",
         roomTypes:"",
@@ -319,8 +319,8 @@ function AddRoomTypes(props){
 }
 function AddOutdoorActivities(props){
 
-    // const url = "/manager/activity/addActivity"
-    const url = "/outdoor-activities";
+    // const url = "http://localhost:3030/manager/activity/addActivity"
+    const url = "http://localhost:3030/outdoor-activities";
     const [data,setData]= useState({
         activityName:"",
         checkInTime:"",
@@ -510,7 +510,7 @@ function EditRoomTypes(props){
     function submitt(e){
         e.preventDefault();
         // console.log(data);
-        axios.put(`/manager/updateRoomType/${props.editRoomType}`,data)
+        axios.put(`http://localhost:3030/manager/updateRoomType/${props.editRoomType}`,data)
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
@@ -529,7 +529,7 @@ function EditRoomTypes(props){
     }
 
     useEffect(() =>{
-        axios.get(`/manager/viewUpdateRoomTypeDetails/${props.editRoomType}`)
+        axios.get(`http://localhost:3030/manager/viewUpdateRoomTypeDetails/${props.editRoomType}`)
         .then((res)=>{
             setData(res.data);
         })
@@ -628,7 +628,7 @@ function EditRooms(props){
     function submitt(e){
         e.preventDefault();
         // console.log(data);
-        axios.put(`/manager/updateRooms/${props.editRoom}`,data)
+        axios.put(`http://localhost:3030/manager/updateRooms/${props.editRoom}`,data)
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
@@ -643,7 +643,7 @@ function EditRooms(props){
     }
 
     useEffect(() =>{
-        axios.get(`/manager/viewUpdateRoomDetails/${props.editRoom}`)
+        axios.get(`http://localhost:3030/manager/viewUpdateRoomDetails/${props.editRoom}`)
         .then((res)=>{
             setData(res.editRoom);
         })
@@ -714,7 +714,7 @@ function EditDiscount(props){
     function submit(e){
         e.preventDefault();
         // console.log(data);
-        axios.put(`/manager/updateDiscounts/${props.editDiscount}`,data)
+        axios.put(`http://localhost:3030/manager/updateDiscounts/${props.editDiscount}`,data)
         .then(res=>{
              props.setadded(!props.added);
              props.onHide();
@@ -723,7 +723,7 @@ function EditDiscount(props){
     }
 
     useEffect(() =>{
-        axios.get(`/manager/viewDiscountUpdateDetails/${props.editDiscount}`)
+        axios.get(`http://localhost:3030/manager/viewDiscountUpdateDetails/${props.editDiscount}`)
         .then((res)=>{
             setData(res.data);
             console.log(res.data);
@@ -843,7 +843,7 @@ function HotelConfig() {
     }
 
     function DeleteRoomType(roomTypeID){
-        axios.delete(`/manager/deleteRoomType/${roomTypeID}`)
+        axios.delete(`http://localhost:3030/manager/deleteRoomType/${roomTypeID}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -851,7 +851,7 @@ function HotelConfig() {
     }
 
     function DeleteRoom(roomNo){
-        axios.delete(`/manager/deleteRoom/${roomNo}`)
+        axios.delete(`http://localhost:3030/manager/deleteRoom/${roomNo}`)
         .then(res =>{
             toast.success('✅ '+' '+ res.data);
             setadded(!added);
@@ -859,7 +859,7 @@ function HotelConfig() {
     }
 
     useEffect(() => {
-            axios.get('/manager/viewRoomTypes')
+            axios.get('http://localhost:3030/manager/viewRoomTypes')
             .then(res=>{
                 setRoomTypes(res.data)
             })
@@ -869,7 +869,7 @@ function HotelConfig() {
     },[added])
 
     useEffect(() => {
-        axios.get('/manager/viewRooms')
+        axios.get('http://localhost:3030/manager/viewRooms')
         .then(res=>{
             setRooms(res.data)
         })
@@ -879,7 +879,7 @@ function HotelConfig() {
     }, [added])
 
     useEffect(() => {
-        axios.get('/manager/viewDiscounts')
+        axios.get('http://localhost:3030/manager/viewDiscounts')
         .then(res=>{
             setDiscounts(res.data)
         })
@@ -889,8 +889,8 @@ function HotelConfig() {
     }, [added])
 
     useEffect(() => {
-        //let url = '/manager/activity/viewActivity';
-        let url = '/outdoor-activities';
+        //let url = 'http://localhost:3030/manager/activity/viewActivity';
+        let url = 'http://localhost:3030/outdoor-activities';
         axios.get(url)
         .then(res=>{
             setaddActivity(res.data)
